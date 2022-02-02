@@ -3,6 +3,8 @@ from nltk.tree import ParentedTree
 from src.tree_handler import TreeHandler
 
 
+def test_test():
+    assert True
 # %%
 input_0: str = "その国王には二人の王子がありました。"
 
