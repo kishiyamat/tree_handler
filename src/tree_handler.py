@@ -1,0 +1,88 @@
+# %%
+from nltk.tree import ParentedTree
+
+# %%
+print("## 1. assign morpheme IDs  to terminal nodes")
+
+
+class TreeHandler:
+    def __init__(self):
+        pass
+
+    def assign_morph(self, tree: ParentedTree) -> ParentedTree:
+        morph_idx = 0
+        for subtree_idx in tree.treepositions():  # tree を上から順番に走査
+            subtree = tree[subtree_idx]
+            if isinstance(subtree, str):  # leaveなら
+                # FIXME: not_morph_list の外部参照を修正
+                if subtree in self.not_morph_list:  # *等なら無視
+                    continue
+                # ## 1. assign morpheme IDs  to terminal nodes
+                tree[subtree_idx] = f"#{morph_idx}-" + tree[subtree_idx]
+                morph_idx += 1
+        return tree
+
+    @property
+    def not_morph_list(self):
+        not_morph = """
+                *
+                *T*
+                *exp*
+                *arb*
+                *pro*
+                *hearer*
+                *hearer+pro*
+                *speaker*
+                *speaker+hearer*
+                *speaker+pro*
+                *ICH*
+                """
+        return not_morph.split()
+
+    def wrap_siblings(self, tree: ParentedTree = None,
+                      key_pos: str = "VB",
+                      wrap_pos: str = "VP",
+                      left_pos: str = "SBJ",
+                      right_pos: str = "PU",
+                      ignore: str = "PU",
+                      ) -> ParentedTree:
+        """
+        # whileで回した方が絶対にはやい
+        tree から key_pos を見つけて wrap_pos でラップする
+        その際、ingnore はラップの両端から除外する
+        """
+        for subtree_idx in tree.treepositions():
+            if not self.is_kwey_pos(tree[subtree_idx], key_pos):  # leaf node
+                continue
+            print("VB")
+            key_pos_idx = subtree_idx[-1]
+            parent_idx = list(subtree_idx[:-1])
+            if tree[parent_idx].label() == "VP":
+                continue
+            # set left and right idx
+            left_idx, right_idx = 0, len(tree[parent_idx])
+            for idx, t in enumerate(tree[parent_idx]):
+                if idx < key_pos_idx and left_pos in t.label():
+                    left_idx = idx + 1
+                if key_pos_idx < idx and right_pos in t.label():
+                    right_idx = idx
+            new_node = ParentedTree.fromstring(f'({wrap_pos})')
+            tree[parent_idx].insert(left_idx, new_node)
+            for pop_idx in range(left_idx, right_idx):
+                # TODO: ignore を無視
+                hoge = tree[parent_idx].pop(left_idx+1)
+                tree[parent_idx + [left_idx]].insert(pop_idx-left_idx, hoge)
+            break
+        return tree
+
+    @staticmethod
+    def is_kwey_pos(tree, key_pos) -> bool:
+        if isinstance(tree, str):  # leaf node
+            return False
+        if tree.label() == key_pos:
+            return True
+        return False
+
+# %%
+
+# %%
