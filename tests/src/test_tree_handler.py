@@ -1,4 +1,5 @@
 # %%
+from nltk.tree import ParentedTree
 from src.tree_handler import TreeHandler
 
 
@@ -45,16 +46,15 @@ haruniwa2_tree_0.pretty_print()
 
 tree_0 = ParentedTree.fromstring(haruniwa2_out_0)
 tree_0.pretty_print()
-assert 1==1
+assert 1 == 1
 
 # %%
 print("## 2. create VP nodes")
 tree_i = ParentedTree.fromstring(haruniwa2_out_0_2)
 
 
-# だめだ、whileで回した方が絶対にはやい
 tree_i.pretty_print()
-wrap_siblings(tree_i).pretty_print()
+# wrap_siblings(tree_i).pretty_print()
 
 th = TreeHandler()
 th.assign_morph(tree_0).pretty_print()

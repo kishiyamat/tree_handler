@@ -39,13 +39,6 @@ class TreeHandler:
                 """
         return not_morph.split()
 
-    def is_kwey_pos(self, tree, key_pos) -> bool:
-        if isinstance(tree, str):  # leaf node
-            return False
-        if tree.label() == key_pos:
-            return True
-        return False
-
     def wrap_siblings(self, tree: ParentedTree = None,
                       key_pos: str = "VB",
                       wrap_pos: str = "VP",
@@ -54,11 +47,12 @@ class TreeHandler:
                       ignore: str = "PU",
                       ) -> ParentedTree:
         """
+        # whileで回した方が絶対にはやい
         tree から key_pos を見つけて wrap_pos でラップする
         その際、ingnore はラップの両端から除外する
         """
         for subtree_idx in tree.treepositions():
-            if not is_kwey_pos(tree[subtree_idx], key_pos):  # leaf node
+            if not self.is_kwey_pos(tree[subtree_idx], key_pos):  # leaf node
                 continue
             print("VB")
             key_pos_idx = subtree_idx[-1]
@@ -80,6 +74,14 @@ class TreeHandler:
                 tree[parent_idx + [left_idx]].insert(pop_idx-left_idx, hoge)
             break
         return tree
+
+    @staticmethod
+    def is_kwey_pos(tree, key_pos) -> bool:
+        if isinstance(tree, str):  # leaf node
+            return False
+        if tree.label() == key_pos:
+            return True
+        return False
 
 # %%
 
