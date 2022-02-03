@@ -1,8 +1,10 @@
 # %%
+from copy import deepcopy
+from typing import Any
+
 from nltk.tree import ParentedTree
 
 # %%
-print("## 1. assign morpheme IDs  to terminal nodes")
 
 
 class TreeHandler:
@@ -39,33 +41,61 @@ class TreeHandler:
                 """
         return not_morph.split()
 
-    def wrap_siblings(self, tree: ParentedTree = None,
-                      key_pos: str = "VB",
-                      wrap_pos: str = "VP",
-                      left_pos: str = "SBJ",
-                      right_pos: str = "PU",
-                      ignore: str = "PU",
-                      ) -> ParentedTree:
+    def all_wrapped(self, tree, key_pos, wrap_pos):
+        for subtree_idx in tree.treepositions():
+            if not self.is_key_pos(tree[subtree_idx], key_pos):  # leaf node
+                continue
+            parent_idx = list(subtree_idx[:-1])
+            if tree[parent_idx].label() != wrap_pos:
+                return False
+        return True
+
+    def wrap_siblings(
+        self,
+        tree: ParentedTree = None,
+        key_pos: str = "VB",
+        wrap_pos: str = "VP",
+        **kwags: Any,
+    ) -> ParentedTree:
+        tree = deepcopy(tree)
+        while not self.all_wrapped(tree, key_pos, wrap_pos):
+            tree = self._wrap_siblings(tree, key_pos, wrap_pos, **kwags)
+        return tree
+
+    def _wrap_siblings(
+        self,
+        tree: ParentedTree = None,
+        key_pos: str = "VB",
+        wrap_pos: str = "VP",
+        left_pos: str = "SBJ",
+        right_pos: str = "NONE",
+        ignore: str = "PU",
+    ) -> ParentedTree:
         """
-        # whileで回した方が絶対にはやい
+        whileで回した方が実装が楽
         tree から key_pos を見つけて wrap_pos でラップする
         その際、ingnore はラップの両端から除外する
         """
         for subtree_idx in tree.treepositions():
-            if not self.is_kwey_pos(tree[subtree_idx], key_pos):  # leaf node
+            if not self.is_key_pos(tree[subtree_idx], key_pos):  # leaf node
                 continue
-            print("VB")
             key_pos_idx = subtree_idx[-1]
             parent_idx = list(subtree_idx[:-1])
-            if tree[parent_idx].label() == "VP":
+            if tree[parent_idx].label() == wrap_pos:
                 continue
             # set left and right idx
             left_idx, right_idx = 0, len(tree[parent_idx])
             for idx, t in enumerate(tree[parent_idx]):
                 if idx < key_pos_idx and left_pos in t.label():
                     left_idx = idx + 1
+                if idx < key_pos_idx and ignore in t.label():
+                    # 後ろに key_pos がくれば上書きされる
+                    left_idx += 1
                 if key_pos_idx < idx and right_pos in t.label():
                     right_idx = idx
+                if key_pos_idx < idx and ignore in t.label():
+                    # key_pos が後ろにくれば上書きされる
+                    right_idx -= 1
             new_node = ParentedTree.fromstring(f'({wrap_pos})')
             tree[parent_idx].insert(left_idx, new_node)
             for pop_idx in range(left_idx, right_idx):
@@ -76,13 +106,70 @@ class TreeHandler:
         return tree
 
     @staticmethod
-    def is_kwey_pos(tree, key_pos) -> bool:
+    def is_key_pos(tree, key_pos) -> bool:
         if isinstance(tree, str):  # leaf node
             return False
         if tree.label() == key_pos:
             return True
         return False
 
-# %%
 
+th = TreeHandler()
+
+# %%
+# VBが2つのケース
+haruniwa2_out = """
+( (IP-MAT (PP-SBJ (NP (D #0-かの)
+                      (N #1-猫))
+                  (P-OPTR #2-は))
+          (PP-OB1 (NP (IP-REL (NP-SBJ *T*)
+                              (PP-OB1 (NP (IP-REL (NP-SBJ *T*)
+                                                  (ADJI #3-黄色い))
+                                          (N #4-道))
+                                      (P-ROLE #5-を))
+                              (VB #6-歩く))
+                      (N #7-犬))
+                  (P-ROLE #8-を))
+          (ADVP (ADV #9-ゆっくり))
+          (VB #10-見)
+          (AXD #11-た)
+          (MD #12-よう)
+          (AX #13-だっ)
+          (AXD #14-た)
+          (AX #15-らしい)
+          (PU #16-。))
+  (ID 1_ex1642489342;JP))
+"""
+# FIXME
+# 正解のパターンを現在問合せ中
+haruniwa2_out_tgt = """
+( (IP-MAT (PP-SBJ (NP (D #0 かの)
+                      (N #1 猫))
+                  (P-OPTR #2 は))
+          (VP  (PP-OB1 (NP (IP-REL (NP-SBJ *T*)
+                              (PP-OB1 (NP (IP-REL (NP-SBJ *T*)
+                                                   (VP (ADJI #3 黄色い))
+                                          (N #4 道))
+                                      (P-ROLE #5 を))
+                              (VB #6 歩く)))
+                      (N #7 犬))
+                  (P-ROLE #8 を))
+          (ADVP (ADV #9 ゆっくり))
+          (VB #10 見)
+          (AXD #11 た)
+          (MD #12 よう)
+          (AX #13 だっ)
+          (AXD #14 た)
+          (AX #15 らしい))
+          (PU #16 。))
+  (ID 1_ex1642489342;JP))
+"""
+src = ParentedTree.fromstring(haruniwa2_out)
+tgt = ParentedTree.fromstring(haruniwa2_out_tgt)
+res = th.wrap_siblings(src)
+# assert res == tgt
+# %%
+src.pretty_print()
+# %%
+res.pretty_print()
 # %%
