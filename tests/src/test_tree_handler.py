@@ -101,6 +101,7 @@ def test_wrap_siblings():
     res.pretty_print()
     assert res == tgt
 
+    # 例1
     haruniwa2_out = """
     ( (IP-MAT (PP-SBJ (NP (D #0-かの)
                           (N #1-猫))
@@ -152,4 +153,85 @@ def test_wrap_siblings():
     res.pretty_print()
     assert res == tgt
 
+    # 例2
+    haruniwa2_out = """
+    ( (CP-QUE (IP-SUB (NP-SBJ *pro*)
+                  (PP-OB1 (NP (WPRO #0-何))
+                          (P-ROLE #1-を))
+                  (VB #2-買っ)
+                  (P-CONN #3-て)
+                  (VB2 #4-あげ)
+                  (MD #5-よう))
+          (P-FINAL #6-か)
+          (PU #7-？))
+    (ID 1_ex1643115998;JP))
+    """
+    haruniwa2_out_tgt = """
+    ( (CP-QUE (IP-SUB (NP-SBJ *pro*)
+                  (VP (PP-OB1 (NP (WPRO #0-何))
+                          (P-ROLE #1-を))
+                  (VB #2-買っ)
+                  (P-CONN #3-て)
+                  (VB2 #4-あげ)
+                  (MD #5-よう)) )
+          (P-FINAL #6-か)
+          (PU #7-？))
+    (ID 1_ex1643115998;JP))
+    """
+    src = ParentedTree.fromstring(haruniwa2_out)
+    tgt = ParentedTree.fromstring(haruniwa2_out_tgt)
+    res = th.wrap_siblings(src)
+    tgt.pretty_print()
+    res.pretty_print()
+    assert res == tgt
+
+    # 例3
+    haruniwa2_out = """
+    ( (IP-MAT (PP-SBJ (NP (NPR #0-太郎))
+                  (P-OPTR #1-は))
+          (PU #2-、)
+          (CP-THT (CP-FINAL (PUL #3-「)
+                            (IP-SUB (PP-OB1 (NP (NPR #4-二郎))
+                                            (P-ROLE #5-を))
+                                    (PP-SBJ (NP (NPR #6-花子))
+                                            (P-ROLE #7-が))
+                                    (VB #8-殴っ)
+                                    (AXD #9-た))
+                            (P-FINAL #10-よ)
+                            (PUR #11-」))
+                  (P-COMP #12-と))
+          (PP (NP (NPR #13-花子))
+              (P-ROLE #14-に))
+          (VB #15-言っ)
+          (AXD #16-た)
+          (PU #17-。))
+    (ID 1_ex1643432427;JP))
+    """
+    haruniwa2_out_tgt = """
+    ( (IP-MAT (PP-SBJ (NP (NPR #0-太郎))
+                  (P-OPTR #1-は))
+          (PU #2-、)
+       (VP    (CP-THT (CP-FINAL (PUL #3-「)
+                            (IP-SUB (PP-OB1 (NP (NPR #4-二郎))
+                                            (P-ROLE #5-を))
+                                    (PP-SBJ (NP (NPR #6-花子))
+                                            (P-ROLE #7-が))
+                                  (VP   (VB #8-殴っ)
+                                    (AXD #9-た)))
+                            (P-FINAL #10-よ)
+                            (PUR #11-」))
+                  (P-COMP #12-と))
+          (PP (NP (NPR #13-花子))
+              (P-ROLE #14-に))
+          (VB #15-言っ)
+          (AXD #16-た))
+          (PU #17-。))
+    (ID 1_ex1643432427;JP))
+    """
+    src = ParentedTree.fromstring(haruniwa2_out)
+    tgt = ParentedTree.fromstring(haruniwa2_out_tgt)
+    res = th.wrap_siblings(src)
+    tgt.pretty_print()
+    res.pretty_print()
+    assert res == tgt
 # %%
