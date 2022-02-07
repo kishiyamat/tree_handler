@@ -105,6 +105,43 @@ class TreeHandler:
             break
         return tree
 
+    # TODO: add tests
+    def all_align_np(self, tree):
+        for subtree_idx in tree.treepositions():
+            if not self.is_key_pos(tree[subtree_idx], "NP"):  # leaf node
+                continue
+            key_pos_idx = subtree_idx[-1]
+            parent_idx = list(subtree_idx[:-1])
+            try:
+                # 参照できるなら存在する
+                _ = tree[[parent_idx] + [key_pos_idx+1]]
+                return False
+            except IndexError:
+                # すでにNPの右隣は存在しない場合は続ける
+                continue
+        return True
+
+    def align_np(self, tree):
+        while not self.all_align_np(tree):
+            tree = self._align_np(tree)
+        return tree
+
+    def _align_np(self, tree):
+        for subtree_idx in tree.treepositions():
+            if not self.is_key_pos(tree[subtree_idx], "NP"):  # leaf node
+                continue
+            key_pos_idx = subtree_idx[-1]
+            parent_idx = list(subtree_idx[:-1])
+            try:
+                port = tree[parent_idx].pop(key_pos_idx+1)  # 1は0, 1番目だから
+                tree[subtree_idx].insert(
+                    len(tree[subtree_idx]), port)  # subtreeの真横
+            except IndexError:
+                # すでにNPの右隣は存在しない場合は続ける
+                continue
+            break
+        return tree
+
     @staticmethod
     def is_key_pos(tree, key_pos) -> bool:
         if isinstance(tree, str):  # leaf node
@@ -138,29 +175,9 @@ tgt = """
         (VP (VB #8あり AX #9まし AXD #10た))
         (PU #11。))
 """
-tgt_a = """ 
-(IP-MAT (PP (NP (D #0その)
-                (N #1国王 P-ROLE #2に P-OPTR #3は)))
-        (PP-SBJ (NP (PP (NP )
-                        (N #4二人 P-ROLE #5の))
-            (N #6王子 P-ROLE #7が)))
-        (VP (VB #8あり AX #9まし AXD #10た))
-        (PU #11。))
-"""
-tgt_b = """ 
-(IP-MAT (PP (NP (D #0その)
-                (N #1国王 P-ROLE #2に P-OPTR #3は)))
-        (PP-SBJ (NP (PP (N #4二人 P-ROLE #5の))
-                    (N #6王子 P-ROLE #7が)))
-        (VP (VB #8あり AX #9まし AXD #10た))
-        (PU #11。))
-"""
 src = ParentedTree.fromstring(src)
 tgt = ParentedTree.fromstring(tgt)
-
-src
-# %%
-src.pretty_print()
+th.align_np(src).pretty_print()
 # %%
 src = """ 
 (IP-MAT (PP-SBJ (NP (D #0-かの)
@@ -198,25 +215,5 @@ tgt = """
 """
 src = ParentedTree.fromstring(src)
 tgt = ParentedTree.fromstring(tgt)
-# %%
-src.pretty_print()
-print(src.__str__())
-# %%
-tgt.pretty_print()
-print(tgt.__str__())
-# %%
-tree = src
-key_pos = "N"
-wrap_pos = "NP"
-for subtree_idx in tree.treepositions():
-    if not th.is_key_pos(tree[subtree_idx], wrap_pos):  # leaf node
-        continue
-    key_pos_idx = subtree_idx[-1]
-    parent_idx = list(subtree_idx[:-1])
-    print("parent tree")
-    tree[parent_idx].pretty_print()
-    print("child tree")
-    tree[subtree_idx].pretty_print()
-# %%
-
+th.align_np(src).pretty_print()
 # %%
