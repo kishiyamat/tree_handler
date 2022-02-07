@@ -114,4 +114,109 @@ class TreeHandler:
         return False
 
 
+# %%
 th = TreeHandler()
+src = """
+(IP-MAT (PP (NP (D #0その)
+                (N #1国王))
+        (P-ROLE #2に)
+        (P-OPTR #3は))
+        (PP-SBJ (NP (PP (NP (N #4二人))
+                (P-ROLE #5の))
+                (N #6王子))
+                (P-ROLE #7が))
+        (VP (VB #8あり)
+            (AX #9まし)
+            (AXD #10た))
+        (PU #11。))
+"""
+tgt = """ 
+(IP-MAT (PP (NP (D #0その)
+                (N #1国王 P-ROLE #2に P-OPTR #3は)))
+        (PP-SBJ (NP (PP (NP (N #4二人 P-ROLE #5の)))
+            (N #6王子 P-ROLE #7が)))
+        (VP (VB #8あり AX #9まし AXD #10た))
+        (PU #11。))
+"""
+tgt_a = """ 
+(IP-MAT (PP (NP (D #0その)
+                (N #1国王 P-ROLE #2に P-OPTR #3は)))
+        (PP-SBJ (NP (PP (NP )
+                        (N #4二人 P-ROLE #5の))
+            (N #6王子 P-ROLE #7が)))
+        (VP (VB #8あり AX #9まし AXD #10た))
+        (PU #11。))
+"""
+tgt_b = """ 
+(IP-MAT (PP (NP (D #0その)
+                (N #1国王 P-ROLE #2に P-OPTR #3は)))
+        (PP-SBJ (NP (PP (N #4二人 P-ROLE #5の))
+                    (N #6王子 P-ROLE #7が)))
+        (VP (VB #8あり AX #9まし AXD #10た))
+        (PU #11。))
+"""
+src = ParentedTree.fromstring(src)
+tgt = ParentedTree.fromstring(tgt)
+
+src
+# %%
+src.pretty_print()
+# %%
+src = """ 
+(IP-MAT (PP-SBJ (NP (D #0-かの)
+                    (N #1-猫))
+                (P-OPTR #2-は))
+        (VP (PP-OB1 (NP (IP-REL (NP-SBJ *T*)
+                                (VP (PP-OB1 (NP (IP-REL (NP-SBJ *T*)
+                                                    (VP (ADJI #3-黄色い)))
+                                            (N #4-道))
+                                        (P-ROLE #5-を))
+                                    (VB #6-歩く)))
+                        (N #7-犬))
+                    (P-ROLE #8-を))
+            (ADVP (ADV #9-ゆっくり))
+            (VB #10-見)
+            (AXD #11-た)
+            (MD #12-よう)
+            (AX #13-だっ)
+            (AXD #14-た)
+            (AX #15-らしい))
+        (PU #16-。))
+"""
+tgt = """
+(IP-MAT (PP-SBJ (NP (D #0-かの)
+                    (N #1-猫 P-OPTR #2-は)))
+        (VP (PP-OB1 (NP (IP-REL (NP-SBJ *T*)
+                                (VP (PP-OB1 (NP (IP-REL (NP-SBJ *T*)
+                                                        (VP (ADJI #3-黄色い)))
+                                                (N #4-道 P-ROLE #5-を)))
+                                    (VB #6-歩く)))
+                        (N #7-犬 P-ROLE #8-を)))
+            (ADVP (ADV #9-ゆっくり))
+            (VB #10-見 AXD #11-た MD #12-よう AX #13-だっ AXD #14-た AX #15-らしい))
+        (PU #16-。))
+"""
+src = ParentedTree.fromstring(src)
+tgt = ParentedTree.fromstring(tgt)
+# %%
+src.pretty_print()
+print(src.__str__())
+# %%
+tgt.pretty_print()
+print(tgt.__str__())
+# %%
+tree = src
+key_pos = "N"
+wrap_pos = "NP"
+for subtree_idx in tree.treepositions():
+    if not th.is_key_pos(tree[subtree_idx], wrap_pos):  # leaf node
+        continue
+    key_pos_idx = subtree_idx[-1]
+    parent_idx = list(subtree_idx[:-1])
+    print("parent tree")
+    tree[parent_idx].pretty_print()
+    print("child tree")
+    tree[subtree_idx].pretty_print()
+# %%
+
+# %%
