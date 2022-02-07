@@ -1,6 +1,5 @@
 # %%
 from copy import deepcopy
-from tkinter.tix import Tree
 from typing import Any
 
 from nltk.tree import ParentedTree

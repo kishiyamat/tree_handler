@@ -228,7 +228,7 @@ def test_wrap_siblings():
 
 
 def test_all_wrapped():
-    src_false = """ 
+    src_false = """
         (IP-MAT (PP-SBJ (NP (D #0-かの)
                         (N #1-猫))
                         (P-OPTR #2-は))
@@ -264,20 +264,20 @@ def test_all_wrapped():
         """
     src_false = ParentedTree.fromstring(src_false)
     src_true = ParentedTree.fromstring(src_true)
-    assert th.all_align_np(src_false) == False
-    assert th.all_align_np(src_true) == True
+    assert not th.all_align_np(src_false)
+    assert th.all_align_np(src_true)
 
 
 def test_align_np():
     # 例0
-    src = """ 
+    src = """
         (IP-MAT
           (PP (NP (D #0その) (N #1国王)) (P-ROLE #2に) (P-OPTR #3は))
           (PP-SBJ (NP (PP (NP (N #4二人)) (P-ROLE #5の)) (N #6王子)) (P-ROLE #7が))
           (VP (VB #8あり) (AX #9まし) (AXD #10た))
           (PU #11。))
         """
-    tgt = """ 
+    tgt = """
         (IP-MAT
           (PP (NP (D #0その) (N #1国王) (P-ROLE #2に) (P-OPTR #3は)))
           (PP-SBJ (NP (PP (NP (N #4二人) (P-ROLE #5の))) (N #6王子) (P-ROLE #7が)))
