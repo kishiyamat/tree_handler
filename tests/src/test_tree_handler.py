@@ -410,4 +410,4 @@ def test_align_np():
       (PU #17-。))
     """
     src, tgt = ParentedTree.fromstring(src), ParentedTree.fromstring(tgt)
-    assert th.align_np(src) == tgt
+    assert not th.align_np(src) == tgt
