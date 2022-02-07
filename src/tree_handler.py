@@ -1,5 +1,6 @@
 # %%
 from copy import deepcopy
+from tkinter.tix import Tree
 from typing import Any
 
 from nltk.tree import ParentedTree
@@ -105,7 +106,6 @@ class TreeHandler:
             break
         return tree
 
-    # TODO: add tests
     def all_align_np(self, tree):
         for subtree_idx in tree.treepositions():
             if not self.is_key_pos(tree[subtree_idx], "NP"):  # leaf node
@@ -122,6 +122,7 @@ class TreeHandler:
         return True
 
     def align_np(self, tree):
+        tree = deepcopy(tree)
         while not self.all_align_np(tree):
             tree = self._align_np(tree)
         return tree
@@ -150,70 +151,4 @@ class TreeHandler:
             return True
         return False
 
-
-# %%
-th = TreeHandler()
-src = """
-(IP-MAT (PP (NP (D #0その)
-                (N #1国王))
-        (P-ROLE #2に)
-        (P-OPTR #3は))
-        (PP-SBJ (NP (PP (NP (N #4二人))
-                (P-ROLE #5の))
-                (N #6王子))
-                (P-ROLE #7が))
-        (VP (VB #8あり)
-            (AX #9まし)
-            (AXD #10た))
-        (PU #11。))
-"""
-tgt = """ 
-(IP-MAT (PP (NP (D #0その)
-                (N #1国王 P-ROLE #2に P-OPTR #3は)))
-        (PP-SBJ (NP (PP (NP (N #4二人 P-ROLE #5の)))
-            (N #6王子 P-ROLE #7が)))
-        (VP (VB #8あり AX #9まし AXD #10た))
-        (PU #11。))
-"""
-src = ParentedTree.fromstring(src)
-tgt = ParentedTree.fromstring(tgt)
-th.align_np(src).pretty_print()
-# %%
-src = """ 
-(IP-MAT (PP-SBJ (NP (D #0-かの)
-                    (N #1-猫))
-                (P-OPTR #2-は))
-        (VP (PP-OB1 (NP (IP-REL (NP-SBJ *T*)
-                                (VP (PP-OB1 (NP (IP-REL (NP-SBJ *T*)
-                                                    (VP (ADJI #3-黄色い)))
-                                            (N #4-道))
-                                        (P-ROLE #5-を))
-                                    (VB #6-歩く)))
-                        (N #7-犬))
-                    (P-ROLE #8-を))
-            (ADVP (ADV #9-ゆっくり))
-            (VB #10-見)
-            (AXD #11-た)
-            (MD #12-よう)
-            (AX #13-だっ)
-            (AXD #14-た)
-            (AX #15-らしい))
-        (PU #16-。))
-"""
-tgt = """
-(IP-MAT (PP-SBJ (NP (D #0-かの)
-                    (N #1-猫 P-OPTR #2-は)))
-        (VP (PP-OB1 (NP (IP-REL (NP-SBJ *T*)
-                                (VP (PP-OB1 (NP (IP-REL (NP-SBJ *T*)
-                                                        (VP (ADJI #3-黄色い)))
-                                                (N #4-道 P-ROLE #5-を)))
-                                    (VB #6-歩く)))
-                        (N #7-犬 P-ROLE #8-を)))
-            (ADVP (ADV #9-ゆっくり))
-            (VB #10-見 AXD #11-た MD #12-よう AX #13-だっ AXD #14-た AX #15-らしい))
-        (PU #16-。))
-"""
-src = ParentedTree.fromstring(src)
-tgt = ParentedTree.fromstring(tgt)
-th.align_np(src).pretty_print()
-# %%
+# th = TreeHandler()
