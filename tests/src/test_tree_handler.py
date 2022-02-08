@@ -345,26 +345,26 @@ def test_align_np():
       (IP-SUB
         (NP-SBJ *pro*)
         (VP
-          (PP-OB1 (NP (WPRO #0 何)) (P-ROLE #1 を))
-          (VB #2 買っ)
-          (P-CONN #3 て)
-          (VB2 #4 あげ)
-          (MD #5 よう)))
-      (P-FINAL #6 か)
-      (PU #7？))
+          (PP-OB1 (NP (WPRO #0-何)) (P-ROLE #1-を))
+          (VB #2-買っ)
+          (P-CONN #3-て)
+          (VB2 #4-あげ)
+          (MD #5-よう)))
+      (P-FINAL #6-か)
+      (PU #7-？))
     """
     tgt = """
     (CP-QUE
       (IP-SUB
         (NP-SBJ *pro*)
         (VP
-          (PP-OB1 (NP (WPRO #0 何) (P-ROLE #1 を)))
-          (VB #2 買っ)
-          (P-CONN #3 て)
-          (VB2 #4 あげ)
-          (MD #5 よう)))
-      (P-FINAL #6 か)
-      (PU #7？))
+          (PP-OB1 (NP (WPRO #0-何) (P-ROLE #1-を)))
+          (VB #2-買っ)
+          (P-CONN #3-て)
+          (VB2 #4-あげ)
+          (MD #5-よう)))
+      (P-FINAL #6-か)
+      (PU #7-？))
     """
     src, tgt = ParentedTree.fromstring(src), ParentedTree.fromstring(tgt)
     assert th.align_np(src) == tgt
