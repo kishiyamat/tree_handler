@@ -417,3 +417,145 @@ def test_align_np():
     src.pretty_print()
     tgt.pretty_print()
     assert th.align_np(src) == tgt
+
+
+def test_align_vp():
+    # 例0
+    src = """
+        (IP-MAT
+          (PP (NP (D #0その) (N #1国王 #2に #3は)))
+          (PP-SBJ (NP (PP (NP (N #4二人 #5の))) (N #6王子 #7が)))
+          (VP (VB #8あり) (AX #9まし) (AXD #10た))
+          (PU #11。))
+        """
+    tgt = """
+        (IP-MAT
+          (PP (NP (D #0その) (N #1国王 #2に #3は)))
+          (PP-SBJ (NP (PP (NP (N #4二人 #5の))) (N #6王子 #7が)))
+          (VP (VB #8あり #9まし #10た))
+          (PU #11。))
+        """
+    src, tgt = ParentedTree.fromstring(src), ParentedTree.fromstring(tgt)
+    src.pretty_print()
+    tgt.pretty_print()
+    assert True
+
+    src = """
+    (IP-MAT
+      (PP-SBJ (NP (D #0-かの) (N #1-猫 #2-は)))
+      (VP
+        (PP-OB1
+          (NP
+            (IP-REL
+              (NP-SBJ *T*)
+              (VP
+                (PP-OB1
+                  (NP
+                    (IP-REL (NP-SBJ *T*) (ADJI #3-黄色い))
+                    (N #4-道 #5-を)))
+                (VB #6-歩く)))
+            (N #7-犬 #8-を)))
+        (ADVP (ADV #9-ゆっくり))
+        (VB #10-見)
+        (AXD #11-た)
+        (MD #12-よう)
+        (AX #13-だっ)
+        (AXD #14-た)
+        (AX #15-らしい))
+      (PU #16-。))
+    """
+    tgt = """
+    (IP-MAT
+      (PP-SBJ (NP (D #0-かの) (N #1-猫 #2-は)))
+      (VP
+        (PP-OB1
+          (NP
+            (IP-REL
+              (NP-SBJ *T*)
+              (VP
+                (PP-OB1
+                  (NP
+                    (IP-REL (NP-SBJ *T*) (ADJI #3-黄色い))
+                    (N #4-道 #5-を)))
+                (VB #6-歩く)))
+            (N #7-犬 #8-を)))
+        (ADVP (ADV #9-ゆっくり))
+        (VB #10-見 #11-た #12-よう #13-だっ #14-た #15-らしい))
+      (PU #16-。))
+    """
+    src, tgt = ParentedTree.fromstring(src), ParentedTree.fromstring(tgt)
+    src.pretty_print()
+    tgt.pretty_print()
+    assert True
+    # 例2
+    src = """
+    (CP-QUE
+      (IP-SUB
+        (NP-SBJ *pro*)
+        (VP
+          (PP-OB1 (NP (WPRO #0-何 #1-を)))
+          (VB #2-買っ)
+          (P-CONN #3-て)
+          (VB2 #4-あげ)
+          (MD #5-よう)))
+      (P-FINAL #6-か)
+      (PU #7-？))
+    """
+    tgt = """
+    (CP-QUE
+      (IP-SUB
+        (NP-SBJ *pro*)
+        (VP
+          (PP-OB1 (NP (WPRO #0-何 #1-を)))
+          (VB #2-買っ #3-て #4-あげ #5-よう)))
+      (P-FINAL #6-か)
+      (PU #7-？))
+    """
+    src, tgt = ParentedTree.fromstring(src), ParentedTree.fromstring(tgt)
+    src.pretty_print()
+    tgt.pretty_print()
+    assert True
+    # 例3
+    src = """
+    (IP-MAT
+      (PP-SBJ (NP (NPR #0-太郎 #1-は)))
+      (PU #2-、)
+      (VP
+        (CP-THT
+          (CP-FINAL
+            (PUL #3-「)
+            (IP-SUB
+              (PP-OB1 (NP (NPR #4-二郎 #5-を)))
+              (PP-SBJ (NP (NPR #6-花子 #7-が)))
+              (VP (VB #8-殴っ) (AXD #9-た)))
+            (P-FINAL #10-よ)
+            (PUR #11-」))
+          (P-COMP #12-と))
+        (PP (NP (NPR #13-花子 #14-に)))
+        (VB #15-言っ)
+        (AXD #16-た))
+      (PU #17-。))
+    """
+    tgt = """
+    (IP-MAT
+      (PP-SBJ (NP (NPR #0-太郎 #1-は)))
+      (PU #2-、)
+      (VP
+        (CP-THT
+          (CP-FINAL
+            (PUL #3-「)
+            (IP-SUB
+              (PP-OB1 (NP (NPR #4-二郎 #5-を)))
+              (PP-SBJ (NP (NPR #6-花子 #7-が)))
+              (VP (VB #8-殴っ #9-た)))
+            (P-FINAL #10-よ)
+            (PUR #11-」))
+          (P-COMP #12-と))
+        (PP (NP (NPR #13-花子 #14-に)))
+        (VB #15-言っ #16-た))
+      (PU #17-。))
+    """
+    src, tgt = ParentedTree.fromstring(src), ParentedTree.fromstring(tgt)
+    src.pretty_print()
+    tgt.pretty_print()
+    assert True
