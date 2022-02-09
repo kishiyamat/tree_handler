@@ -130,9 +130,10 @@ class TreeHandler:
         for subtree_idx in tree.treepositions():
             if not self.is_key_pos(tree[subtree_idx], "NP"):  # leaf node
                 continue
-            key_pos_idx = subtree_idx[-1]  # NPの最右
+            key_pos_idx = subtree_idx[-1]  # NPの位置
             parent_idx = list(subtree_idx[:-1])
             try:
+                # TODO: tryの幅を狭める
                 # popしたparticleに0は必ず存在する. 例: (P-ROLE が)
                 particle_leaf = tree[parent_idx].pop(key_pos_idx+1)[0]
                 # NPの下のNのインデックス
@@ -146,6 +147,51 @@ class TreeHandler:
             break
         return tree
 
+    def _align_vp(self, tree):
+        # 全てのVPがVBを含むことを保証
+        # TODO: add test
+        if not self.all_wrapped(tree, "VB", "VP"):
+            tree.pretty_print()
+            raise ValueError("There's a VP that doesn't dominate VB.")
+        for subtree_idx in tree.treepositions():
+            if not self.is_key_pos(tree[subtree_idx], "VB"):  # leaf node
+                continue
+            key_pos_idx = subtree_idx[-1]  # VBの位置
+            parent_idx = list(subtree_idx[:-1])
+            try:
+                leaf = tree[parent_idx].pop(key_pos_idx+1)[0]
+                # NPの下のNのインデックス
+                n_idx = len(tree[subtree_idx])-1
+                # Nの下に何この要素があるか(すでにくっついている場合がある)
+                len_n = len(tree[list(subtree_idx) + [n_idx]])
+                tree[subtree_idx].insert(len_n, leaf)
+            except IndexError:
+                # すでにVPの右隣は存在しない場合は続ける
+                continue
+            break
+        return tree
+
+    def all_align_vp(self, tree):
+        for subtree_idx in tree.treepositions():
+            if not self.is_key_pos(tree[subtree_idx], "VB"):  # leaf node
+                continue
+            key_pos_idx = subtree_idx[-1]
+            parent_idx = list(subtree_idx[:-1])
+            try:
+                # 親(VP)の隣を参照できるなら存在する
+                _ = tree[[parent_idx] + [key_pos_idx+1]]
+                return False
+            except IndexError:
+                # すでにNPの右隣は存在しない場合は続ける
+                continue
+        return True
+
+    def align_vp(self, tree):
+        tree = deepcopy(tree)
+        while not self.all_align_vp(tree):
+            tree = self._align_vp(tree)
+        return tree
+
     @staticmethod
     def is_key_pos(tree, key_pos) -> bool:
         if isinstance(tree, str):  # leaf node
@@ -154,4 +200,5 @@ class TreeHandler:
             return True
         return False
 
+# %%
 # th = TreeHandler()

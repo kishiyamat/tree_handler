@@ -438,7 +438,7 @@ def test_align_vp():
     src, tgt = ParentedTree.fromstring(src), ParentedTree.fromstring(tgt)
     src.pretty_print()
     tgt.pretty_print()
-    assert True
+    assert th.align_vp(src) == tgt
 
     src = """
     (IP-MAT
@@ -486,7 +486,8 @@ def test_align_vp():
     src, tgt = ParentedTree.fromstring(src), ParentedTree.fromstring(tgt)
     src.pretty_print()
     tgt.pretty_print()
-    assert True
+    assert th.align_vp(src) == tgt
+
     # 例2
     src = """
     (CP-QUE
@@ -514,7 +515,8 @@ def test_align_vp():
     src, tgt = ParentedTree.fromstring(src), ParentedTree.fromstring(tgt)
     src.pretty_print()
     tgt.pretty_print()
-    assert True
+    assert th.align_vp(src) == tgt
+
     # 例3
     src = """
     (IP-MAT
@@ -558,4 +560,4 @@ def test_align_vp():
     src, tgt = ParentedTree.fromstring(src), ParentedTree.fromstring(tgt)
     src.pretty_print()
     tgt.pretty_print()
-    assert True
+    assert th.align_vp(src) == tgt
