@@ -9,7 +9,7 @@ from nltk.tree import ParentedTree
 
 class TreeHandler:
     def __init__(self):
-        pass
+        self.alinged_np_list = []
 
     def assign_morph(self, tree: ParentedTree) -> ParentedTree:
         morph_idx = 0
@@ -130,12 +130,13 @@ class TreeHandler:
         for subtree_idx in tree.treepositions():
             if not self.is_key_pos(tree[subtree_idx], "NP"):  # leaf node
                 continue
-            key_pos_idx = subtree_idx[-1]
+            key_pos_idx = subtree_idx[-1]  # NPの最右
             parent_idx = list(subtree_idx[:-1])
             try:
-                port = tree[parent_idx].pop(key_pos_idx+1)  # 1は0, 1番目だから
-                tree[subtree_idx].insert(
-                    len(tree[subtree_idx]), port)  # subtreeの真横
+                particle_leaf = tree[parent_idx].pop(key_pos_idx+1)[0]  # 1は0, 1番目だから
+                n_idx =  len(tree[subtree_idx])-1
+                len_n = len(tree[list(subtree_idx) + [n_idx]])
+                tree[list(subtree_idx) + [n_idx]].insert(len_n, particle_leaf)
             except IndexError:
                 # すでにNPの右隣は存在しない場合は続ける
                 continue
