@@ -192,6 +192,10 @@ class TreeHandler:
             tree = self._align_vp(tree)
         return tree
 
+    def align_p_words(self, tree):
+        tree = deepcopy(tree)
+        return self.align_vp(self.align_np(tree))
+
     @staticmethod
     def is_key_pos(tree, key_pos) -> bool:
         if isinstance(tree, str):  # leaf node
