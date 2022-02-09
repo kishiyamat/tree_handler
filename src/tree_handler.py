@@ -133,8 +133,11 @@ class TreeHandler:
             key_pos_idx = subtree_idx[-1]  # NPの最右
             parent_idx = list(subtree_idx[:-1])
             try:
-                particle_leaf = tree[parent_idx].pop(key_pos_idx+1)[0]  # 1は0, 1番目だから
-                n_idx =  len(tree[subtree_idx])-1
+                # popしたparticleに0は必ず存在する. 例: (P-ROLE が)
+                particle_leaf = tree[parent_idx].pop(key_pos_idx+1)[0]
+                # NPの下のNのインデックス
+                n_idx = len(tree[subtree_idx])-1
+                # Nの下に何この要素があるか(すでにくっついている場合がある)
                 len_n = len(tree[list(subtree_idx) + [n_idx]])
                 tree[list(subtree_idx) + [n_idx]].insert(len_n, particle_leaf)
             except IndexError:
