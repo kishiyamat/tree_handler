@@ -299,7 +299,7 @@ def test_align_np():
               (NP-SBJ *T*)
               (VP
                 (PP-OB1
-                  (NP (IP-REL (NP-SBJ *T*) (VP (ADJI #3-黄色い))) (N #4-道))
+                  (NP (IP-REL (NP-SBJ *T*) (ADJI #3-黄色い)) (N #4-道))
                   (P-ROLE #5-を))
                 (VB #6-歩く)))
             (N #7-犬))
@@ -324,7 +324,7 @@ def test_align_np():
               (VP
                 (PP-OB1
                   (NP
-                    (IP-REL (NP-SBJ *T*) (VP (ADJI #3-黄色い)))
+                    (IP-REL (NP-SBJ *T*) (ADJI #3-黄色い))
                     (N #4-道 #5-を)))
                 (VB #6-歩く)))
             (N #7-犬 #8-を)))
