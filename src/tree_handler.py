@@ -1,4 +1,5 @@
 # %%
+from ast import Index
 from copy import deepcopy
 from typing import Any
 
@@ -10,17 +11,18 @@ from nltk.tree import ParentedTree
 class TreeHandler:
     def __init__(self):
         self.alinged_np_list = []
+        self.morph_symbol = "#"
 
     def assign_morph(self, tree: ParentedTree) -> ParentedTree:
+        tree = deepcopy(tree)
         morph_idx = 0
         for subtree_idx in tree.treepositions():  # tree を上から順番に走査
             subtree = tree[subtree_idx]
             if isinstance(subtree, str):  # leaveなら
-                # FIXME: not_morph_list の外部参照を修正
                 if subtree in self.not_morph_list:  # *等なら無視
                     continue
                 # ## 1. assign morpheme IDs  to terminal nodes
-                tree[subtree_idx] = f"#{morph_idx}-" + tree[subtree_idx]
+                tree[subtree_idx] = f"{self.morph_symbol}{morph_idx}-{tree[subtree_idx]}"
                 morph_idx += 1
         return tree
 
@@ -204,5 +206,91 @@ class TreeHandler:
             return True
         return False
 
+
 # %%
-# th = TreeHandler()
+th = TreeHandler()
+src_1 = "#0 k a \ n o #1 n e k o \  #2 w a #3 k i i r o i #4 m i ch i #5 o #6 a r u \ k u #7 i n u \  #8 o #9 y u k k u \ r i #10 m i \ #11 t a #12 y o \ o #13 da t  #14 t a  #15 r a sh i i #16 ."
+src_2 = """
+    (IP-MAT
+      (PP-SBJ (NP (D #0-かの) (N #1-猫 #2-は)))
+      (VP
+        (PP-OB1
+          (NP
+            (IP-REL
+              (NP-SBJ *T*)
+              (VP
+                (PP-OB1
+                  (NP
+                    (IP-REL (NP-SBJ *T*) (ADJI #3-黄色い))
+                    (N #4-道 #5-を)))
+                (VB #6-歩く)))
+            (N #7-犬 #8-を)))
+        (ADVP (ADV #9-ゆっくり))
+        (VB #10-見 #11-た #12-よう #13-だっ #14-た #15-らしい))
+      (PU #16-。))
+    """
+tgt = """
+    (IP-MAT
+      (PP-SBJ (NP (D k a \ n o) (N n e k o \ w a)))
+      (VP
+        (PP-OB1
+          (NP
+            (IP-REL
+              (NP-SBJ *T*)
+              (VP
+                (PP-OB1
+                  (NP
+                    (IP-REL (NP-SBJ *T*) (ADJI k i i r o i))
+                    (N m i ch i o)))
+                (VB a r u \ k u)))
+            (N i n u \ o)))
+        (ADVP (ADV y u k k u \ r i))
+        (VB m i \ t a y o \ o da t t a r a sh i i))
+      (PU .))
+    """
+morph_symbol = "#"
+idx_accent_gen = filter(len, src_1.split(morph_symbol))
+src, tgt = ParentedTree.fromstring(src_2), ParentedTree.fromstring(tgt)
+
+
+def split_idx_accent(str_row) -> tuple:
+    str_split = str_row.split()
+    return (int(str_split[0]), " ".join(str_split[1::]))
+
+
+def integrate_morph_accent(tree, idx_accent):
+    pass
+
+
+idx_accent = list(map(split_idx_accent, idx_accent_gen))
+[print(pitch) for _, pitch in idx_accent]
+
+# %%
+src.pretty_print()
+# %%
+
+def integrate_morph_accent(tree: ParentedTree, idx_accent) -> ParentedTree:
+    tree = deepcopy(tree)
+    morph_idx = 0
+    for subtree_idx in tree.treepositions():  # tree を上から順番に走査
+        subtree = tree[subtree_idx]
+        if isinstance(subtree, str):  # leaveなら
+            if subtree in th.not_morph_list:  # *等なら無視
+                continue
+            idx, accent = idx_accent[morph_idx]
+            if morph_idx != idx:
+                raise IndexError("The morph idx is not compatible!")
+            # ## 1. assign morpheme IDs  to terminal nodes
+            tree[subtree_idx] = accent
+            morph_idx += 1
+    return tree
+
+# %%
+tgt.pretty_print()
+print(tgt.__str__())
+# %%
+res = integrate_morph_accent(src, idx_accent)
+print(res.__str__())
+# %%
+tgt.__str__() == res.__str__()
+# %%
