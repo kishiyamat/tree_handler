@@ -1,4 +1,5 @@
 # %%
+from ast import Index
 from copy import deepcopy
 from typing import Any
 
@@ -10,17 +11,18 @@ from nltk.tree import ParentedTree
 class TreeHandler:
     def __init__(self):
         self.alinged_np_list = []
+        self.morph_symbol = "#"
 
     def assign_morph(self, tree: ParentedTree) -> ParentedTree:
+        tree = deepcopy(tree)
         morph_idx = 0
         for subtree_idx in tree.treepositions():  # tree を上から順番に走査
             subtree = tree[subtree_idx]
             if isinstance(subtree, str):  # leaveなら
-                # FIXME: not_morph_list の外部参照を修正
                 if subtree in self.not_morph_list:  # *等なら無視
                     continue
                 # ## 1. assign morpheme IDs  to terminal nodes
-                tree[subtree_idx] = f"#{morph_idx}-" + tree[subtree_idx]
+                tree[subtree_idx] = f"{self.morph_symbol}{morph_idx}-{tree[subtree_idx]}"
                 morph_idx += 1
         return tree
 
@@ -195,6 +197,30 @@ class TreeHandler:
     def align_p_words(self, tree):
         tree = deepcopy(tree)
         return self.align_vp(self.align_np(tree))
+
+    def integrate_morph_accent(self, tree: ParentedTree, idx_accent) -> ParentedTree:
+        idx_accent = filter(len, idx_accent.split(self.morph_symbol))
+        idx_accent = list(map(self.split_idx_accent, idx_accent))
+        # TODO: flatten
+        tree = deepcopy(tree)
+        morph_idx = 0
+        for subtree_idx in tree.treepositions():  # tree を上から順番に走査
+            subtree = tree[subtree_idx]
+            if isinstance(subtree, str):  # leaveなら
+                if subtree in self.not_morph_list:  # *等なら無視
+                    continue
+                idx, accent = idx_accent[morph_idx]
+                if morph_idx != idx:
+                    raise IndexError("The morph idx is not compatible!")
+                # ## 1. assign morpheme IDs  to terminal nodes
+                tree[subtree_idx] = accent
+                morph_idx += 1
+        return tree
+
+    @staticmethod
+    def split_idx_accent(str_row) -> tuple:
+        str_split = str_row.split()
+        return (int(str_split[0]), " ".join(str_split[1::]))
 
     @staticmethod
     def is_key_pos(tree, key_pos) -> bool:
