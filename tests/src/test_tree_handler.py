@@ -706,7 +706,10 @@ def test_align_p_words():
 
 
 def test_integrate_morph_accent():
-    src_1 = "#0 k a \ n o #1 n e k o \  #2 w a #3 k i i r o i #4 m i ch i #5 o #6 a r u \ k u #7 i n u \  #8 o #9 y u k k u \ r i #10 m i \ #11 t a #12 y o \ o #13 da t  #14 t a  #15 r a sh i i #16 ."
+    src_1 = """#0 k a \ n o #1 n e k o \ #2 w a
+               #3 k i i r o i #4 m i ch i #5 o #6 a r u \ k u #7 i n u \  #8 o
+               #9 y u k k u \ r i #10 m i \ #11 t a #12 y o \ o #13 da t  #14 t a 
+               #15 r a sh i i #16 ."""
     src_2 = """
         (IP-MAT
           (PP-SBJ (NP (D #0-かの) (N #1-猫 #2-は)))
