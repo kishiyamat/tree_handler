@@ -703,3 +703,74 @@ def test_align_p_words():
     src.pretty_print()
     tgt.pretty_print()
     assert th.align_p_words(src) == tgt
+
+
+def test_integrate_morph_accent():
+    # 例0
+    src_1 = """#0 s o n o #1 k o k u o \ o #2 n i #3 w a 
+               #4 f U t a r i \ #5 n o #6 o \ o j i #7 g a
+               #8 a r i #9 m a \ sh I #10 t a #11 ."""
+    src_2 = """
+        (IP-MAT
+          (PP (NP (D #0-その) (N #1-国王 #2-に #3-は)))
+          (PP-SBJ (NP (PP (NP (N #4-二人 #5-の))) (N #6-王子 #7-が)))
+          (VP (VB #8-あり #9-まし #10-た))
+          (PU #11-。))
+        """
+    tgt = """
+        (IP-MAT
+          (PP (NP (D s o n o) (N k o k u o \ o n i w a)))
+          (PP-SBJ (NP (PP (NP (N f U t a r i \ n o))) (N o \ o j i g a)))
+          (VP (VB a r i m a \ sh I t a))
+          (PU .))
+        """
+    src_2, tgt = ParentedTree.fromstring(src_2), ParentedTree.fromstring(tgt)
+    res = th.integrate_morph_accent(src_2, src_1)
+    tgt.__str__() == res.__str__()  # tree自体は異なる. tgtはスペース区切りがすべて独立したPOSになっている
+
+    # 例1
+    src_1 = """#0 k a \ n o #1 n e k o \ #2 w a
+               #3 k i i r o i #4 m i ch i #5 o #6 a r u \ k u #7 i n u \  #8 o
+               #9 y u k k u \ r i #10 m i \ #11 t a #12 y o \ o #13 da t  #14 t a 
+               #15 r a sh i i #16 ."""
+    src_2 = """
+        (IP-MAT
+          (PP-SBJ (NP (D #0-かの) (N #1-猫 #2-は)))
+          (VP
+            (PP-OB1
+              (NP
+                (IP-REL
+                  (NP-SBJ *T*)
+                  (VP
+                    (PP-OB1
+                      (NP
+                        (IP-REL (NP-SBJ *T*) (ADJI #3-黄色い))
+                        (N #4-道 #5-を)))
+                    (VB #6-歩く)))
+                (N #7-犬 #8-を)))
+            (ADVP (ADV #9-ゆっくり))
+            (VB #10-見 #11-た #12-よう #13-だっ #14-た #15-らしい))
+          (PU #16-。))
+        """
+    tgt = """
+        (IP-MAT
+          (PP-SBJ (NP (D k a \ n o) (N n e k o \ w a)))
+          (VP
+            (PP-OB1
+              (NP
+                (IP-REL
+                  (NP-SBJ *T*)
+                  (VP
+                    (PP-OB1
+                      (NP
+                        (IP-REL (NP-SBJ *T*) (ADJI k i i r o i))
+                        (N m i ch i o)))
+                    (VB a r u \ k u)))
+                (N i n u \ o)))
+            (ADVP (ADV y u k k u \ r i))
+            (VB m i \ t a y o \ o da t t a r a sh i i))
+          (PU .))
+        """
+    src_2, tgt = ParentedTree.fromstring(src_2), ParentedTree.fromstring(tgt)
+    res = th.integrate_morph_accent(src_2, src_1)
+    tgt.__str__() == res.__str__()  # tree自体は異なる. tgtはスペース区切りがすべて独立したPOSになっている
