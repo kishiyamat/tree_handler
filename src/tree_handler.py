@@ -204,5 +204,62 @@ class TreeHandler:
             return True
         return False
 
+
 # %%
-# th = TreeHandler()
+th = TreeHandler()
+
+# ・実装したい制約：アクセント( / )の後ろは必ず境界になる。
+# [ (  )  (  \ )  ] なら、くっつけて　[      \ ]
+# [ (  )  (   )   ] なら、くっつけて　[       ]
+# [ (  \ )  (  )  ] なら、分離させて[ [  \ ] [   ] ]
+# [ (  \ )  ( \ )  ] なら、分離させて[ [  \ ] [ \  ] ]
+#
+# ・[  ]の後ろの（　）は、[  ]になる。*はアクセントの有無を問わない。
+# [ [ * ] ( * ) ] なら、新しく[ ]を作って[ [ * ] [ * ] ]
+# 例：[ [ ( ) ( ) ] ( \ ) ]　→　[ [  ] ( \ ) ]  →　  [ [  ] [ \ ] ]
+#
+
+# %%
+# PP-SBJは[]
+src = """
+(IP-MAT
+    (PP-SBJ (NP (D #0-かの) (N #1-猫 #2-は)))
+    (VP
+    (PP-OB1
+        (NP
+        (IP-REL
+            (NP-SBJ *T*)
+            (VP
+            (PP-OB1
+                (NP
+                (IP-REL (NP-SBJ *T*) (ADJI #3-黄色い))
+                (N #4-道 #5-を)))
+            (VB #6-歩く)))
+        (N #7-犬 #8-を)))
+    (ADVP (ADV #9-ゆっくり))
+    (VB #10-見 #11-た #12-よう #13-だっ #14-た #15-らしい))
+    (PU #16-。))
+"""
+src = """
+(IP-MAT
+    (PP-SBJ (NP (L (D #0-かの)) (L (N #1-猫 #2-は))))
+    (VP
+    (PP-OB1
+        (NP
+        (IP-REL
+            (NP-SBJ *T*)
+            (VP
+            (PP-OB1
+                (NP
+                (IP-REL (NP-SBJ *T*) (ADJI #3-黄色い))
+                (N #4-道 #5-を)))
+            (L (VB #6-歩く))))
+        (L (N #7-犬 #8-を))))
+    (L (ADVP (ADV #9-ゆっくり)))
+    (L (VB #10-見 #11-た #12-よう #13-だっ #14-た #15-らしい)))
+    (PU #16-。))
+"""
+src, tgt = ParentedTree.fromstring(src), ParentedTree.fromstring(tgt)
+src.pretty_print()
+tgt.pretty_print()
+assert th.align_p_words(src) == tgt
