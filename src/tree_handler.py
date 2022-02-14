@@ -246,46 +246,37 @@ th = TreeHandler()
 #
 
 # %%
-# PP-SBJは[]
+# それぞれの Phoneme が独立してNやDから生えている。
 src = """
-(IP-MAT
-    (PP-SBJ (NP (D #0-かの) (N #1-猫 #2-は)))
-    (VP
-    (PP-OB1
-        (NP
-        (IP-REL
-            (NP-SBJ *T*)
-            (VP
-            (PP-OB1
-                (NP
-                (IP-REL (NP-SBJ *T*) (ADJI #3-黄色い))
-                (N #4-道 #5-を)))
-            (VB #6-歩く)))
-        (N #7-犬 #8-を)))
-    (ADVP (ADV #9-ゆっくり))
-    (VB #10-見 #11-た #12-よう #13-だっ #14-た #15-らしい))
-    (PU #16-。))
+    (IP-MAT
+      (PP (NP (D s o n o) (N k o k u o \ o n i w a)))
+      (PP-SBJ (NP (PP (NP (N f U t a r i \ n o))) (N o \ o j i g a)))
+      (VP (VB a r i m a \ sh I t a))
+      (PU .))
+    """
+tgt = """
+    (IP-MAT
+      (PP (NP (SQUARE (D s o n o) (N k o k u o \ o n i w a))))
+      (PP-SBJ (NP (PP (NP (N f U t a r i \ n o))) (N o \ o j i g a)))
+      (VP (VB a r i m a \ sh I t a))
+      (PU .))
+    """
+# PP to PPhrases [ ] # 
+# VP -> 
+
+tgt = """
+    { [ s o n o k o k u o \ o n i w a ]	#[ ( ) ( \ ) ] → [ \ ]
+          [ [ f U t a r i \  n o ]
+                      [ o \ o j i g a ] ]	#[ ( \ ) ( \ ) ] → [ [ \ ] [ \ ] ]
+          [a r i m a \ sh I  t a]
+          (.)}
 """
-src = """
-(IP-MAT
-    (PP-SBJ (NP (L (D #0-かの)) (L (N #1-猫 #2-は))))
-    (VP
-    (PP-OB1
-        (NP
-        (IP-REL
-            (NP-SBJ *T*)
-            (VP
-            (PP-OB1
-                (NP
-                (IP-REL (NP-SBJ *T*) (ADJI #3-黄色い))
-                (N #4-道 #5-を)))
-            (L (VB #6-歩く))))
-        (L (N #7-犬 #8-を))))
-    (L (ADVP (ADV #9-ゆっくり)))
-    (L (VB #10-見 #11-た #12-よう #13-だっ #14-た #15-らしい)))
-    (PU #16-。))
-"""
-src, tgt = ParentedTree.fromstring(src), ParentedTree.fromstring(tgt)
-src.pretty_print()
+tgt = ParentedTree.fromstring(tgt)
+src
+# tgt.__str__() == res.__str__()  # tree自体は異なる. tgtはスペース区切りがすべて独立したPOSになっている
 tgt.pretty_print()
-assert th.align_p_words(src) == tgt
+# %%
+
+ParentedTree.fromstring("[VP hoge]", brackets="[]").__str__()
+
+# %%
