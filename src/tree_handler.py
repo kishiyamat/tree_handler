@@ -261,8 +261,8 @@ tgt = """
       (VP (VB a r i m a \ sh I t a))
       (PU .))
     """
-# PP to PPhrases [ ] # 
-# VP -> 
+# PP to PPhrases [ ] #
+# VP ->
 
 tgt = """
     { [ s o n o k o k u o \ o n i w a ]	#[ ( ) ( \ ) ] → [ \ ]
