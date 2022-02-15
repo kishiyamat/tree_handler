@@ -232,4 +232,65 @@ class TreeHandler:
 
 
 # %%
-# th = TreeHandler()
+# workflow
+# wrap_siblings で VP作成
+# assign-phrase IPとPP、VPに情報をつける
+th = TreeHandler()
+
+# %%
+# 例0
+src: str = """
+( (IP-MAT (PP (NP (D #0その)
+                (N #1国王))
+            (P-ROLE #2に)
+            (P-OPTR #3は))
+        (PP-SBJ (NP (PP (NP (N #4二人))
+                        (P-ROLE #5の))
+                    (N #6王子))
+                (P-ROLE #7が))
+        (VB #8あり)
+        (AX #9まし)
+        (AXD #10た)
+        (PU #11。))
+(ID 1_ex1640391709;JP))
+"""
+tgt: str = """
+( (IP-MAT (PP (NP (D #0その)
+                (N #1国王))
+            (P-ROLE #2に)
+            (P-OPTR #3は))
+        (PP-SBJ (NP (PP (NP (N #4二人))
+                        (P-ROLE #5の))
+                    (N #6王子))
+                (P-ROLE #7が))
+        (VP (VB #8あり)
+        (AX #9まし)
+        (AXD #10た))
+        (PU #11。))
+(ID 1_ex1640391709;JP))
+"""
+src = ParentedTree.fromstring(src)
+tgt = ParentedTree.fromstring(tgt)
+res = th.wrap_siblings(src)
+# assert res == tgt
+src.pretty_print()
+tree = src
+SUFFIX = "{}"
+TARGET = "PP"
+SUFFIX = "[]"
+TARGET = "PP"
+# condition = lambda subtree: True
+
+for subtree_idx in tree.treepositions():
+    subtree = tree[subtree_idx]
+    if isinstance(subtree, str):  # leaf node
+        continue
+    target = subtree.label() == "PP"
+    condition = "の" not in subtree[-1][0]
+    if target and condition:
+        label = subtree.label()
+        subtree.set_label("|".join([label, "[]"]))
+src.pretty_print()
+# アタマから回して条件にあう場合はノードの名前を変更
+
+# %%
