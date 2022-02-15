@@ -12,6 +12,9 @@ class TreeHandler:
     def __init__(self):
         self.alinged_np_list = []
         self.morph_symbol = "#"
+        self.type_given = "|"
+        self.i_type = "{}"
+        self.p_type = "[]"
 
     def assign_morph(self, tree: ParentedTree) -> ParentedTree:
         tree = deepcopy(tree)
@@ -201,7 +204,7 @@ class TreeHandler:
     def integrate_morph_accent(self, tree: ParentedTree, idx_accent) -> ParentedTree:
         idx_accent = filter(len, idx_accent.split(self.morph_symbol))
         idx_accent = list(map(self.split_idx_accent, idx_accent))
-        # TODO: flatten
+        # TODO: flattenを検討
         tree = deepcopy(tree)
         morph_idx = 0
         for subtree_idx in tree.treepositions():  # tree を上から順番に走査
@@ -215,6 +218,37 @@ class TreeHandler:
                 # ## 1. assign morpheme IDs  to terminal nodes
                 tree[subtree_idx] = accent
                 morph_idx += 1
+        return tree
+
+    def p_conditional_operation(self, subtree):
+        if isinstance(subtree, str):  # leaf node
+            return subtree
+        if subtree.label() == "VP":
+            subtree.set_label(subtree.label()+self.type_given+self.p_type)
+            return subtree
+        if "PP" not in subtree.label():
+            return subtree
+        if not "P-" in subtree[-1].label():
+            return subtree
+        if "の" in subtree[-1][0]:
+            return subtree
+        subtree.set_label(subtree.label()+self.type_given+self.p_type)
+        return subtree
+
+    def i_conditional_operation(self, subtree):
+        if isinstance(subtree, str):  # leaf node
+            return subtree
+        if not subtree.label() == "IP-MAT":
+            return subtree
+        subtree.set_label(subtree.label()+self.type_given+self.i_type)
+        return subtree
+
+    def add_phrase_type(self, tree):
+        tree = deepcopy(tree)
+        for subtree_idx in tree.treepositions():
+            subtree = tree[subtree_idx]
+            subtree = self.p_conditional_operation(subtree)
+            subtree = self.i_conditional_operation(subtree)
         return tree
 
     @staticmethod
@@ -248,48 +282,34 @@ src: str = """
                         (P-ROLE #5の))
                     (N #6王子))
                 (P-ROLE #7が))
-        (VB #8あり)
-        (AX #9まし)
-        (AXD #10た)
-        (PU #11。))
-(ID 1_ex1640391709;JP))
-"""
-tgt: str = """
-( (IP-MAT (PP (NP (D #0その)
-                (N #1国王))
-            (P-ROLE #2に)
-            (P-OPTR #3は))
-        (PP-SBJ (NP (PP (NP (N #4二人))
-                        (P-ROLE #5の))
-                    (N #6王子))
-                (P-ROLE #7が))
         (VP (VB #8あり)
         (AX #9まし)
         (AXD #10た))
         (PU #11。))
 (ID 1_ex1640391709;JP))
 """
+src: str = """
+( (IP-MAT|{} (PP|[] (NP (D #0その)
+                (N #1国王))
+            (P-ROLE #2に)
+            (P-OPTR #3は))
+        (PP-SBJ|[] (NP (PP (NP (N #4二人))
+                        (P-ROLE #5の))
+                    (N #6王子))
+                (P-ROLE #7が))
+        (VP|[] (VB #8あり)
+        (AX #9まし)
+        (AXD #10た))
+        (PU #11。))
+(ID 1_ex1640391709;JP))
+"""
 src = ParentedTree.fromstring(src)
-tgt = ParentedTree.fromstring(tgt)
 res = th.wrap_siblings(src)
 # assert res == tgt
 src.pretty_print()
 tree = src
-SUFFIX = "{}"
-TARGET = "PP"
-SUFFIX = "[]"
-TARGET = "PP"
-# condition = lambda subtree: True
 
-for subtree_idx in tree.treepositions():
-    subtree = tree[subtree_idx]
-    if isinstance(subtree, str):  # leaf node
-        continue
-    target = subtree.label() == "PP"
-    condition = "の" not in subtree[-1][0]
-    if target and condition:
-        label = subtree.label()
-        subtree.set_label("|".join([label, "[]"]))
+
 src.pretty_print()
 # アタマから回して条件にあう場合はノードの名前を変更
 
