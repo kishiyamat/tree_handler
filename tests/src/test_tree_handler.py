@@ -875,7 +875,7 @@ def test_add_phrase_type():
         (ID 1_ex1643115998;JP))
     """
     tgt = """
-        ( (CP-QUE (IP-SUB (NP-SBJ *pro*)
+        ( (CP-QUE|{} (IP-SUB (NP-SBJ *pro*)
                         (VP|[] (PP-OB1|[] (NP (WPRO #0-何))
                                 (P-ROLE #1-を))
                         (VB #2-買っ)

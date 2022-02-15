@@ -226,7 +226,7 @@ class TreeHandler:
         if subtree.label() == "VP":
             subtree.set_label(subtree.label()+self.type_given+self.p_type)
             return subtree
-        if "PP" not in subtree.label():
+        if "PP" not in subtree.label()[:2]:
             return subtree
         if not "P-" in subtree[-1].label():
             return subtree
@@ -236,12 +236,28 @@ class TreeHandler:
         return subtree
 
     def i_conditional_operation(self, subtree):
+        # TODO: IPの種類を特定
+        # IP-SUBが含まれる場合はちょっと面倒になる
         if isinstance(subtree, str):  # leaf node
             return subtree
         if not subtree.label() == "IP-MAT":
             return subtree
         subtree.set_label(subtree.label()+self.type_given+self.i_type)
         return subtree
+
+    def cp_conditional_operation(self, subtree):
+        # TODO: CPの条件を絞る
+        if isinstance(subtree, str):  # leaf node
+            return subtree
+        if "CP-" not in subtree.label():
+            return subtree
+        if not "IP-" in subtree[-1].label():
+            # IP-SUBしかないと思うが一応
+            # IP-
+            return subtree
+        subtree.set_label(subtree.label()+self.type_given+self.i_type)
+        return subtree
+
 
     def add_phrase_type(self, tree):
         tree = deepcopy(tree)
