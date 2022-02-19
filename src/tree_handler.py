@@ -45,7 +45,7 @@ class TreeHandler:
                 """
         return not_morph.split()
 
-    def all_wrapped(self, tree, key_pos, wrap_pos):
+    def all_wrapped(self, tree: ParentedTree, key_pos: str, wrap_pos: str) -> bool:
         for subtree_idx in tree.treepositions():
             if not self.is_key_pos(tree[subtree_idx], key_pos):  # leaf node
                 continue
@@ -175,7 +175,7 @@ class TreeHandler:
             break
         return tree
 
-    def all_align_vp(self, tree: ParentedTree) -> ParentedTree:
+    def all_align_vp(self, tree: ParentedTree) -> bool:
         for subtree_idx in tree.treepositions():
             if not self.is_key_pos(tree[subtree_idx], "VB"):  # leaf node
                 continue
@@ -298,6 +298,51 @@ class TreeHandler:
             raise ValueError("The input doesn't have ID node.")
         return tree[0]
 
+    def is_redundunt(self, tree: ParentedTree) -> bool:
+        """_summary_
+            以下のLHSは冗長
+            [ ( ) ] →[     ]
+            ( ( ) ) →(     )
+            (空白) → 削除
+            # 以下は非冗長
+            [ [ ] ] →[ [ ] ]  # current が[]なら飛ばす
+        Args:
+            tree (_type_): _description_
+
+        Returns:
+            _type_: _description_
+        """
+        for subtree_idx in tree.treepositions():  # tree を上から順番に走査
+            subtree = tree[subtree_idx]
+            if isinstance(subtree, str):  # leaveは無視
+                continue
+            if subtree.parent() == None:  # topは無視
+                continue
+            if subtree.label().split(self.type_given)[-1] == self.p_type:
+                continue  # []: pは無視
+            if len(subtree.parent()) == 1:  # 親が[]でなく、sisterが1なら冗長
+                return True
+            # TODO: こどもがleafかつproなど -> return True
+        return False
+
+    def remove_redunduncy(self, tree: ParentedTree) -> ParentedTree:
+        tree = deepcopy(tree)
+        while self.is_redundunt(tree):
+            for subtree_idx in tree.treepositions():  # tree を上から順番に走査
+                if isinstance(tree[subtree_idx], str):
+                    continue
+                subtree = tree[subtree_idx]
+                if subtree.parent() == None:
+                    continue
+                if subtree.label().split(self.type_given)[-1] == self.p_type:
+                    continue
+                if len(subtree.parent()) == 1:
+                    for _ in range(len(subtree)):
+                        subtree.parent().insert(0, subtree.pop())
+                    subtree.parent().pop()
+                    break  # 編集したら0から is_redunduntである限りやり直す
+        return tree
+
     @staticmethod
     def split_idx_accent(str_row) -> tuple:
         str_split = str_row.split()
@@ -333,36 +378,8 @@ src_accent = """#0 s o n o #1 k o k u o \ o #2 n i #3 w a
             #4 f U t a r i \ #5 n o #6 o \ o j i #7 g a
             #8 a r i #9 m a \ sh I #10 t a #11 ."""
 src = th.integrate_morph_accent(src, src_accent)
-
-# 以下のケースで False を返す
-# [ [ ] ] →[ [ ] ]  # current が[]なら飛ばす
-# [ ( ) ] →[     ]
-# ( ( ) ) →(     )
-# (空白) → 削除
-
-tree = src
-tree.pretty_print()
-done = False
-for i in range(10):
-    for subtree_idx in tree.treepositions():  # tree を上から順番に走査
-        if isinstance(tree[subtree_idx], str):
-            continue
-        subtree = tree[subtree_idx]
-        if subtree.parent()==None:
-            continue
-        if subtree.label()[-2:]=="[]":
-            continue
-        if len(subtree.parent())==1:
-            print(len(subtree))
-            for _ in range(len(subtree)):
-                subtree.parent().insert(0, subtree.pop()) 
-            subtree.parent().pop() 
-            break
-        print(subtree.label())
-        # 最後までbreakなしでたどり着けたら true
-    # done = True  # とりあえず一回
-    
-tree.pretty_print()
+src = th.remove_redunduncy(src)
+src.pretty_print()
 # %%
 'hello'[-2:]
 # %%
