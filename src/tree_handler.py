@@ -201,7 +201,8 @@ class TreeHandler:
         return self.align_vp(self.align_np(tree))
 
     def integrate_morph_accent(self, tree: ParentedTree, idx_accent) -> ParentedTree:
-        idx_accent = filter(len, idx_accent.split(self.morph_symbol))
+        idx_accent = idx_accent.strip()
+        idx_accent = list(filter(len, idx_accent.split(self.morph_symbol)))
         idx_accent = list(map(self.split_idx_accent, idx_accent))
         # TODO: flattenを検討
         tree = deepcopy(tree)
@@ -310,19 +311,24 @@ class TreeHandler:
             tree (_type_): _description_
 
         Returns:
-            _type_: _description_
+            _type_: 編集されるべき木ならTrue
         """
         for subtree_idx in tree.treepositions():  # tree を上から順番に走査
             subtree = tree[subtree_idx]
             if isinstance(subtree, str):  # leaveは無視
                 continue
+            if len(subtree) == 0:
+                continue
+            if subtree[0] in self.not_morph_list:
+                subtree.parent().pop(subtree_idx[-1])
+                return True  # 編集されるべき条件
             if subtree.parent() == None:  # topは無視.
                 # FIXME: トップはredundunt でないことを仮定している
                 continue
             if subtree.label().split(self.type_given)[-1] == self.p_type:
                 continue  # []: pは無視
             if len(subtree.parent()) == 1:  # 親が[]でなく、sisterが1なら冗長
-                return True
+                return True  # 編集されるべき条件
             # TODO: こどもがleafかつproなど -> return True
         return False
 
@@ -330,9 +336,14 @@ class TreeHandler:
         tree = deepcopy(tree)
         while self.is_redundunt(tree):
             for subtree_idx in tree.treepositions():  # tree を上から順番に走査
-                if isinstance(tree[subtree_idx], str):
-                    continue
                 subtree = tree[subtree_idx]
+                if isinstance(subtree, str):
+                    continue
+                if len(subtree) == 0:
+                    return tree
+                if subtree[0] in self.not_morph_list:
+                    subtree.parent().pop(subtree_idx[-1])
+                    break  # 編集したら0から is_redunduntである限りやり直す
                 if subtree.parent() == None:
                     # FIXME: 親がいないケースを握りつぶしている
                     continue
@@ -348,7 +359,8 @@ class TreeHandler:
     @staticmethod
     def split_idx_accent(str_row) -> tuple:
         str_split = str_row.split()
-        return (int(str_split[0]), " ".join(str_split[1::]))
+        # ここ 1:: となっていたが...
+        return (int(str_split[0]), " ".join(str_split[1:]))
 
     @staticmethod
     def is_key_pos(tree, key_pos) -> bool:
@@ -358,41 +370,49 @@ class TreeHandler:
             return True
         return False
 
+    def workflow(self, OpenJTalk: str, Haruniwa2: str):
+        src, src_1 = ParentedTree.fromstring(Haruniwa2), OpenJTalk
+        src = self.remove_outmost_id(src)
+        src = self.wrap_siblings(src)
+        src = self.add_phrase_type(src)
+        src = self.align_p_words(src)
+        src = self.integrate_morph_accent(src, src_1)
+        src = self.remove_redunduncy(src)
+        # print(src.__str__())
+        return src
+
 
 # %%
-# workflow
-# wrap_siblings で VP作成
-# assign-phrase IPとPP、VPに情報をつける
 th = TreeHandler()
+src = """
+        ( (IP-MAT (PP-SBJ (NP (NPR #0-太郎))
+                        (P-OPTR #1-は))
+                (PU #2-、)
+                (CP-THT (CP-FINAL (PUL #3-「)
+                                (IP-SUB (PP-OB1 (NP (NPR #4-二郎))
+                                                (P-ROLE #5-を))
+                                        (PP-SBJ (NP (NPR #6-花子))
+                                                (P-ROLE #7-が))
+                                        (VB #8-殴っ)
+                                        (AXD #9-た))
+                                (P-FINAL #10-よ)
+                                (PUR #11-」))
+                        (P-COMP #12-と))
+                (PP (NP (NPR #13-花子))
+                (P-ROLE #14-に))
+                (VB #15-言っ)
+                (AXD #16-た)
+                (PU #17-。))
+        (ID 1_ex1643432427;JP))
+"""
+src_1 = """
+#0 t a r o \ o #1 w a #2 , #3 “ #4 j i r o \ o #5 o #6 h a \ n a k o
+#7 g a #8 n a g u \ t  #9 t a #10 y o #11 “ #12 t o #13 h a \ n a k o
+#14 n i #15 i t #16 t a #17 ."""
+# TODO: 08. apply Lapse-L and Accent_as_head constraints
+# TODO: 09. Remove redundant brackets and ( )s
+# TODO: 10. (X|{} Y) -> {Y}; (X|[] Y) -> [Y]; (X Y) -> Y
 
-# %%
-src: str = """
-    ( (IP-MAT (PP (NP (D #0その)
-                    (N #1国王))
-                (P-ROLE #2に)
-                (P-OPTR #3は))
-            (PP-SBJ (NP (PP (NP (N #4二人))
-                            (P-ROLE #5の))
-                        (N #6王子))
-                    (P-ROLE #7が))
-            (VB #8あり)
-            (AX #9まし)
-            (AXD #10た)
-            (PU #11。))
-    (ID 1_ex1640391709;JP))
-    """
-src = ParentedTree.fromstring(src)
-src = th.remove_outmost_id(src)
-src = th.wrap_siblings(src)
-src = th.add_phrase_type(src)
-src = th.align_p_words(src)
-src_accent = """#0 s o n o #1 k o k u o \ o #2 n i #3 w a 
-            #4 f U t a r i \ #5 n o #6 o \ o j i #7 g a
-            #8 a r i #9 m a \ sh I #10 t a #11 ."""
-src = th.integrate_morph_accent(src, src_accent)
-src = th.remove_redunduncy(src)
-src.pretty_print()
+src = th.workflow(src_1, src)
 print(src.__str__())
-# %%
-'hello'[-2:]
-# %%
+src.pretty_print()
