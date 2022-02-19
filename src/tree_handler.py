@@ -54,7 +54,7 @@ class TreeHandler:
                 return False
         return True
 
-    def wrap_siblings(
+    def create_vp_node(
         self,
         tree: ParentedTree = None,
         key_pos: str = "VB",
@@ -373,7 +373,7 @@ class TreeHandler:
     def workflow(self, OpenJTalk: str, Haruniwa2: str):
         src, src_1 = ParentedTree.fromstring(Haruniwa2), OpenJTalk
         src = self.remove_outmost_id(src)
-        src = self.wrap_siblings(src)
+        src = self.create_vp_node(src)
         src = self.add_phrase_type(src)
         src = self.align_p_words(src)
         src = self.integrate_morph_accent(src, src_1)

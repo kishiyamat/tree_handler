@@ -7,8 +7,7 @@ from src.tree_handler import TreeHandler
 th = TreeHandler()
 
 
-def test_wrap_siblings():
-    # 1. assign morpheme IDs  to terminal nodes
+def test_create_vp_node():
     # 2. create VP nodes
     # 例0
     src: str = """
@@ -43,7 +42,7 @@ def test_wrap_siblings():
     """
     src = ParentedTree.fromstring(src)
     tgt = ParentedTree.fromstring(tgt)
-    res = th.wrap_siblings(src)
+    res = th.create_vp_node(src)
     assert res == tgt
 
     # 例0でPUなどが複数存在するケース
@@ -89,7 +88,7 @@ def test_wrap_siblings():
     """
     src = ParentedTree.fromstring(src)
     tgt = ParentedTree.fromstring(tgt)
-    res = th.wrap_siblings(src)
+    res = th.create_vp_node(src)
     assert res == tgt
 
     # 例1
@@ -139,7 +138,7 @@ def test_wrap_siblings():
     """
     src = ParentedTree.fromstring(src)
     tgt = ParentedTree.fromstring(tgt)
-    res = th.wrap_siblings(src)
+    res = th.create_vp_node(src)
     assert res == tgt
 
     # 例2
@@ -169,7 +168,7 @@ def test_wrap_siblings():
     """
     src = ParentedTree.fromstring(src)
     tgt = ParentedTree.fromstring(tgt)
-    res = th.wrap_siblings(src)
+    res = th.create_vp_node(src)
     assert res == tgt
 
     # 例3
@@ -217,7 +216,7 @@ def test_wrap_siblings():
     """
     src = ParentedTree.fromstring(src)
     tgt = ParentedTree.fromstring(tgt)
-    res = th.wrap_siblings(src)
+    res = th.create_vp_node(src)
     assert res == tgt
 
 
