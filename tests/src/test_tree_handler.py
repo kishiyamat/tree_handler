@@ -1140,3 +1140,39 @@ def test_remove_id():
     tgt.pretty_print()
     res.pretty_print()
     assert res == tgt
+
+def test_remove_redunduncy():
+    src: str = """
+    ( (IP-MAT (PP (NP (D #0その)
+                    (N #1国王))
+                (P-ROLE #2に)
+                (P-OPTR #3は))
+            (PP-SBJ (NP (PP (NP (N #4二人))
+                            (P-ROLE #5の))
+                        (N #6王子))
+                    (P-ROLE #7が))
+            (VB #8あり)
+            (AX #9まし)
+            (AXD #10た)
+            (PU #11。))
+    (ID 1_ex1640391709;JP))
+    """
+    src_accent = """#0 s o n o #1 k o k u o \ o #2 n i #3 w a 
+                #4 f U t a r i \ #5 n o #6 o \ o j i #7 g a
+                #8 a r i #9 m a \ sh I #10 t a #11 ."""
+    tgt= """
+    (IP-MAT|{}
+      (PP|[] (D s o n o) (N k o k u o \ o n i w a))
+      (PP-SBJ|[] (PP f U t a r i \ n o) (N o \ o j i g a))
+      (VP|[] a r i m a \ sh I t a)
+      (PU .))
+    """
+    src = ParentedTree.fromstring(src)
+    tgt = ParentedTree.fromstring(tgt).__str__()
+    src = th.remove_outmost_id(src)
+    src = th.wrap_siblings(src)
+    src = th.add_phrase_type(src)
+    src = th.align_p_words(src)
+    src = th.integrate_morph_accent(src, src_accent)
+    res = th.remove_redunduncy(src).__str__()
+    assert tgt == res

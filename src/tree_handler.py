@@ -366,17 +366,25 @@ class TreeHandler:
 th = TreeHandler()
 
 # %%
-src = """
-    (IP-MAT
-        (PP (NP (D #0その) (N #1国王)) (P-ROLE #2に) (P-OPTR #3は))
-        (PP-SBJ (NP (PP (NP (N #4二人)) (P-ROLE #5の)) (N #6王子)) (P-ROLE #7が))
-        (VP (VB #8あり) (AX #9まし) (AXD #10た))
-        (PU #11。))
+src: str = """
+    ( (IP-MAT (PP (NP (D #0その)
+                    (N #1国王))
+                (P-ROLE #2に)
+                (P-OPTR #3は))
+            (PP-SBJ (NP (PP (NP (N #4二人))
+                            (P-ROLE #5の))
+                        (N #6王子))
+                    (P-ROLE #7が))
+            (VB #8あり)
+            (AX #9まし)
+            (AXD #10た)
+            (PU #11。))
+    (ID 1_ex1640391709;JP))
     """
 src = ParentedTree.fromstring(src)
-src.pretty_print()
+src = th.remove_outmost_id(src)
+src = th.wrap_siblings(src)
 src = th.add_phrase_type(src)
-src.pretty_print()
 src = th.align_p_words(src)
 src_accent = """#0 s o n o #1 k o k u o \ o #2 n i #3 w a 
             #4 f U t a r i \ #5 n o #6 o \ o j i #7 g a
@@ -384,6 +392,7 @@ src_accent = """#0 s o n o #1 k o k u o \ o #2 n i #3 w a
 src = th.integrate_morph_accent(src, src_accent)
 src = th.remove_redunduncy(src)
 src.pretty_print()
+print(src.__str__())
 # %%
 'hello'[-2:]
 # %%
