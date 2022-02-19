@@ -1,5 +1,6 @@
 # %%
 from nltk.tree import ParentedTree
+import pytest
 
 from src.tree_handler import TreeHandler
 
@@ -943,7 +944,24 @@ def test_add_phrase_type():
 
 
 def test_remove_id():
-    # もしなければraise
+    # もしidがなければValueError
+    ill_formed_src: str = """
+    ( (IP-MAT (PP (NP (D #0その)
+                    (N #1国王))
+                (P-ROLE #2に)
+                (P-OPTR #3は))
+            (PP-SBJ (NP (PP (NP (N #4二人))
+                            (P-ROLE #5の))
+                        (N #6王子))
+                    (P-ROLE #7が))
+            (VB #8あり)
+            (AX #9まし)
+            (AXD #10た)
+            (PU #11。))
+    (id 1_ex1640391709;JP))
+    """
+    with pytest.raises(ValueError):
+        th.remove_outmost_id(ParentedTree.fromstring(ill_formed_src))
     # 例0
     src: str = """
     ( (IP-MAT (PP (NP (D #0その)
@@ -962,21 +980,24 @@ def test_remove_id():
     """
     tgt: str = """
     (IP-MAT (PP (NP (D #0その)
-                        (N #1国王))
-                    (P-ROLE #2に)
-                    (P-OPTR #3は))
-                (PP-SBJ (NP (PP (NP (N #4二人))
-                                (P-ROLE #5の))
-                            (N #6王子))
-                        (P-ROLE #7が))
-                (VP (VB #8あり)
-                (AX #9まし)
-                (AXD #10た))
-                (PU #11。))
+                    (N #1国王))
+                (P-ROLE #2に)
+                (P-OPTR #3は))
+            (PP-SBJ (NP (PP (NP (N #4二人))
+                            (P-ROLE #5の))
+                        (N #6王子))
+                    (P-ROLE #7が))
+            (VB #8あり)
+            (AX #9まし)
+            (AXD #10た)
+            (PU #11。))
     """
     src = ParentedTree.fromstring(src)
     tgt = ParentedTree.fromstring(tgt)
     res = th.remove_outmost_id(src)
+    src.pretty_print()
+    tgt.pretty_print()
+    res.pretty_print()
     assert res == tgt
 
     # 例1
@@ -1004,28 +1025,31 @@ def test_remove_id():
     """
     tgt = """
     (IP-MAT (PP-SBJ (NP (D #0-かの)
-                              (N #1-猫))
-                          (P-OPTR #2-は))
-                  (VP  (PP-OB1 (NP (IP-REL (NP-SBJ *T*)
-                                      (VP (PP-OB1 (NP (IP-REL (NP-SBJ *T*)
-                                                           (ADJI #3-黄色い))
-                                                  (N #4-道))
-                                              (P-ROLE #5-を))
-                                      (VB #6-歩く)))
-                              (N #7-犬))
-                          (P-ROLE #8-を))
-                  (ADVP (ADV #9-ゆっくり))
-                  (VB #10-見)
-                  (AXD #11-た)
-                  (MD #12-よう)
-                  (AX #13-だっ)
-                  (AXD #14-た)
-                  (AX #15-らしい))
-                  (PU #16-。))
+                          (N #1-猫))
+                      (P-OPTR #2-は))
+              (PP-OB1 (NP (IP-REL (NP-SBJ *T*)
+                                  (PP-OB1 (NP (IP-REL (NP-SBJ *T*)
+                                                      (ADJI #3-黄色い))
+                                              (N #4-道))
+                                          (P-ROLE #5-を))
+                                  (VB #6-歩く))
+                          (N #7-犬))
+                      (P-ROLE #8-を))
+              (ADVP (ADV #9-ゆっくり))
+              (VB #10-見)
+              (AXD #11-た)
+              (MD #12-よう)
+              (AX #13-だっ)
+              (AXD #14-た)
+              (AX #15-らしい)
+              (PU #16-。))
     """
     src = ParentedTree.fromstring(src)
     tgt = ParentedTree.fromstring(tgt)
     res = th.remove_outmost_id(src)
+    src.pretty_print()
+    tgt.pretty_print()
+    res.pretty_print()
     assert res == tgt
 
     # 例2
@@ -1043,18 +1067,21 @@ def test_remove_id():
     """
     tgt = """
     (CP-QUE (IP-SUB (NP-SBJ *pro*)
-                    (VP (PP-OB1 (NP (WPRO #0-何))
-                            (P-ROLE #1-を))
-                    (VB #2-買っ)
-                    (P-CONN #3-て)
-                    (VB2 #4-あげ)
-                    (MD #5-よう)) )
-                    (P-FINAL #6-か)
-                    (PU #7-？))
+                      (PP-OB1 (NP (WPRO #0-何))
+                              (P-ROLE #1-を))
+                      (VB #2-買っ)
+                      (P-CONN #3-て)
+                      (VB2 #4-あげ)
+                      (MD #5-よう))
+            (P-FINAL #6-か)
+            (PU #7-？))
     """
     src = ParentedTree.fromstring(src)
     tgt = ParentedTree.fromstring(tgt)
     res = th.remove_outmost_id(src)
+    src.pretty_print()
+    tgt.pretty_print()
+    res.pretty_print()
     assert res == tgt
 
     # 例3
@@ -1081,25 +1108,28 @@ def test_remove_id():
     """
     tgt = """
     (IP-MAT (PP-SBJ (NP (NPR #0-太郎))
-                        (P-OPTR #1-は))
-                  (PU #2-、)
-                  (VP (CP-THT (CP-FINAL (PUL #3-「)
-                                (IP-SUB (PP-OB1 (NP (NPR #4-二郎))
-                                                (P-ROLE #5-を))
-                                        (PP-SBJ (NP (NPR #6-花子))
-                                                (P-ROLE #7-が))
-                                        (VP   (VB #8-殴っ)
-                                        (AXD #9-た)))
-                                (P-FINAL #10-よ)
-                                (PUR #11-」))
-                        (P-COMP #12-と))
-                (PP (NP (NPR #13-花子))
-                (P-ROLE #14-に))
-                (VB #15-言っ)
-                (AXD #16-た))
-                (PU #17-。))
+                          (P-OPTR #1-は))
+            (PU #2-、)
+            (CP-THT (CP-FINAL (PUL #3-「)
+                            (IP-SUB (PP-OB1 (NP (NPR #4-二郎))
+                                            (P-ROLE #5-を))
+                                    (PP-SBJ (NP (NPR #6-花子))
+                                            (P-ROLE #7-が))
+                                    (VB #8-殴っ)
+                                    (AXD #9-た))
+                            (P-FINAL #10-よ)
+                            (PUR #11-」))
+                    (P-COMP #12-と))
+            (PP (NP (NPR #13-花子))
+            (P-ROLE #14-に))
+            (VB #15-言っ)
+            (AXD #16-た)
+            (PU #17-。))
     """
     src = ParentedTree.fromstring(src)
     tgt = ParentedTree.fromstring(tgt)
     res = th.remove_outmost_id(src)
+    src.pretty_print()
+    tgt.pretty_print()
+    res.pretty_print()
     assert res == tgt

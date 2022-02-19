@@ -109,7 +109,7 @@ class TreeHandler:
             break
         return tree
 
-    def all_align_np(self, tree):
+    def all_align_np(self, tree: ParentedTree) -> ParentedTree:
         for subtree_idx in tree.treepositions():
             if not self.is_key_pos(tree[subtree_idx], "NP"):  # leaf node
                 continue
@@ -124,13 +124,13 @@ class TreeHandler:
                 continue
         return True
 
-    def align_np(self, tree):
+    def align_np(self, tree: ParentedTree) -> ParentedTree:
         tree = deepcopy(tree)
         while not self.all_align_np(tree):
             tree = self._align_np(tree)
         return tree
 
-    def _align_np(self, tree):
+    def _align_np(self, tree: ParentedTree) -> ParentedTree:
         for subtree_idx in tree.treepositions():
             if not self.is_key_pos(tree[subtree_idx], "NP"):  # leaf node
                 continue
@@ -151,7 +151,7 @@ class TreeHandler:
             break
         return tree
 
-    def _align_vp(self, tree):
+    def _align_vp(self, tree: ParentedTree) -> ParentedTree:
         # 全てのVPがVBを含むことを保証
         # TODO: add test
         if not self.all_wrapped(tree, "VB", "VP"):
@@ -175,7 +175,7 @@ class TreeHandler:
             break
         return tree
 
-    def all_align_vp(self, tree):
+    def all_align_vp(self, tree: ParentedTree) -> ParentedTree:
         for subtree_idx in tree.treepositions():
             if not self.is_key_pos(tree[subtree_idx], "VB"):  # leaf node
                 continue
@@ -190,13 +190,13 @@ class TreeHandler:
                 continue
         return True
 
-    def align_vp(self, tree):
+    def align_vp(self, tree: ParentedTree) -> ParentedTree:
         tree = deepcopy(tree)
         while not self.all_align_vp(tree):
             tree = self._align_vp(tree)
         return tree
 
-    def align_p_words(self, tree):
+    def align_p_words(self, tree: ParentedTree) -> ParentedTree:
         tree = deepcopy(tree)
         return self.align_vp(self.align_np(tree))
 
@@ -219,7 +219,7 @@ class TreeHandler:
                 morph_idx += 1
         return tree
 
-    def p_conditional_operation(self, subtree):
+    def p_conditional_operation(self, subtree: ParentedTree) -> ParentedTree:
         if isinstance(subtree, str):  # leaf node
             return subtree
         if subtree.label() == "VP":
@@ -234,7 +234,7 @@ class TreeHandler:
         subtree.set_label(subtree.label()+self.type_given+self.p_type)
         return subtree
 
-    def i_conditional_operation(self, subtree):
+    def i_conditional_operation(self, subtree: ParentedTree) -> ParentedTree:
         # 親がCP*でない、子にADJ*を持たないすべてのIPを{}にする
         if isinstance(subtree, str):  # leaf node
             return subtree
@@ -249,7 +249,7 @@ class TreeHandler:
         subtree.set_label(subtree.label()+self.type_given+self.i_type)
         return subtree
 
-    def cp_conditional_operation(self, subtree):
+    def cp_conditional_operation(self, subtree: ParentedTree) -> ParentedTree:
         # 子がIPであるCPを{}にする
         # i_conditional_opereationより、cpとiが両方{}になることはない
         if isinstance(subtree, str):  # leaf node
@@ -262,7 +262,7 @@ class TreeHandler:
         subtree.set_label(subtree.label()+self.type_given+self.i_type)
         return subtree
 
-    def add_phrase_type(self, tree):
+    def add_phrase_type(self, tree: ParentedTree) -> ParentedTree:
         """_summary_
             See: https://github.com/kishiyamat/tree_handler/issues/4
 
@@ -280,8 +280,23 @@ class TreeHandler:
             subtree = self.cp_conditional_operation(subtree)
         return tree
 
-    def remove_outmost_id(tree):
-        return tree
+    def remove_outmost_id(self, tree: ParentedTree) -> ParentedTree:
+        """Treeの最上階は0に本体、1にIDがいる。そこで
+            0を返せばIDを飛ばせる
+
+        Args:
+            tree (_type_): _description_
+
+        Raises:
+            ValueError: _description_
+
+        Returns:
+            _type_: _description_
+        """
+        if tree[-1].label() != "ID":
+            # そもそもIDが存在しなくて長さが1の場合もある
+            raise ValueError("The input doesn't have ID node.")
+        return tree[0]
 
     @staticmethod
     def split_idx_accent(str_row) -> tuple:
