@@ -280,6 +280,9 @@ class TreeHandler:
             subtree = self.cp_conditional_operation(subtree)
         return tree
 
+    def remove_outmost_id(tree):
+        return tree
+
     @staticmethod
     def split_idx_accent(str_row) -> tuple:
         str_split = str_row.split()
