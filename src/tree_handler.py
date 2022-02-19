@@ -1,5 +1,4 @@
 # %%
-from ast import Index
 from copy import deepcopy
 from typing import Any
 
@@ -12,6 +11,9 @@ class TreeHandler:
     def __init__(self):
         self.alinged_np_list = []
         self.morph_symbol = "#"
+        self.type_given = "|"
+        self.i_type = "{}"
+        self.p_type = "[]"
 
     def assign_morph(self, tree: ParentedTree) -> ParentedTree:
         tree = deepcopy(tree)
@@ -201,7 +203,7 @@ class TreeHandler:
     def integrate_morph_accent(self, tree: ParentedTree, idx_accent) -> ParentedTree:
         idx_accent = filter(len, idx_accent.split(self.morph_symbol))
         idx_accent = list(map(self.split_idx_accent, idx_accent))
-        # TODO: flatten
+        # TODO: flattenを検討
         tree = deepcopy(tree)
         morph_idx = 0
         for subtree_idx in tree.treepositions():  # tree を上から順番に走査
@@ -215,6 +217,67 @@ class TreeHandler:
                 # ## 1. assign morpheme IDs  to terminal nodes
                 tree[subtree_idx] = accent
                 morph_idx += 1
+        return tree
+
+    def p_conditional_operation(self, subtree):
+        if isinstance(subtree, str):  # leaf node
+            return subtree
+        if subtree.label() == "VP":
+            subtree.set_label(subtree.label()+self.type_given+self.p_type)
+            return subtree
+        if "PP" not in subtree.label()[:2]:
+            return subtree
+        if not "P-" in subtree[-1].label():
+            return subtree
+        if "の" in subtree[-1][0]:
+            return subtree
+        subtree.set_label(subtree.label()+self.type_given+self.p_type)
+        return subtree
+
+    def i_conditional_operation(self, subtree):
+        # 親がCP*でない、子にADJ*を持たないすべてのIPを{}にする
+        if isinstance(subtree, str):  # leaf node
+            return subtree
+        if subtree.parent() == None:  # 最上位ノード
+            return subtree
+        if not "IP-" in subtree.label():  # そもそもIPじゃない
+            return subtree
+        if "CP-" in subtree.parent().label():  # 親がCP
+            return subtree
+        if sum(["ADJ" in st_i.label() for st_i in subtree]):  # 子のラベルがADJが含む
+            return subtree
+        subtree.set_label(subtree.label()+self.type_given+self.i_type)
+        return subtree
+
+    def cp_conditional_operation(self, subtree):
+        # 子がIPであるCPを{}にする
+        # i_conditional_opereationより、cpとiが両方{}になることはない
+        if isinstance(subtree, str):  # leaf node
+            return subtree
+        if not "CP-" in subtree.label():  # 自身がCPでない
+            return subtree
+        if not sum(["IP-" in st_i.label() for st_i in subtree]):  # 子のラベルがIPが含まない
+            return subtree
+        # 自身がCPであり、子にIPがある。
+        subtree.set_label(subtree.label()+self.type_given+self.i_type)
+        return subtree
+
+    def add_phrase_type(self, tree):
+        """_summary_
+            See: https://github.com/kishiyamat/tree_handler/issues/4
+
+        Args:
+            tree (_type_): _description_
+
+        Returns:
+            _type_: _description_
+        """
+        tree = deepcopy(tree)
+        for subtree_idx in tree.treepositions():
+            subtree = tree[subtree_idx]
+            subtree = self.p_conditional_operation(subtree)
+            subtree = self.i_conditional_operation(subtree)
+            subtree = self.cp_conditional_operation(subtree)
         return tree
 
     @staticmethod
@@ -232,4 +295,46 @@ class TreeHandler:
 
 
 # %%
-# th = TreeHandler()
+# workflow
+# wrap_siblings で VP作成
+# assign-phrase IPとPP、VPに情報をつける
+th = TreeHandler()
+
+# %%
+# 例0
+src: str = """
+( (IP-MAT (PP (NP (D #0その)
+                (N #1国王))
+            (P-ROLE #2に)
+            (P-OPTR #3は))
+        (PP-SBJ (NP (PP (NP (N #4二人))
+                        (P-ROLE #5の))
+                    (N #6王子))
+                (P-ROLE #7が))
+        (VP (VB #8あり)
+        (AX #9まし)
+        (AXD #10た))
+        (PU #11。))
+(ID 1_ex1640391709;JP))
+"""
+tgt: str = """
+( (IP-MAT|{} (PP|[] (NP (D #0その)
+                (N #1国王))
+            (P-ROLE #2に)
+            (P-OPTR #3は))
+        (PP-SBJ|[] (NP (PP (NP (N #4二人))
+                        (P-ROLE #5の))
+                    (N #6王子))
+                (P-ROLE #7が))
+        (VP|[] (VB #8あり)
+        (AX #9まし)
+        (AXD #10た))
+        (PU #11。))
+(ID 1_ex1640391709;JP))
+"""
+src = ParentedTree.fromstring(src)
+res = th.wrap_siblings(src)
+# assert res == tgt
+src.pretty_print()
+tree = src
+th.add_phrase_type(src).pretty_print()
