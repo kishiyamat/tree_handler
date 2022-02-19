@@ -50,7 +50,7 @@ class TreeHandler:
             if not self.is_key_pos(tree[subtree_idx], key_pos):  # leaf node
                 continue
             parent_idx = list(subtree_idx[:-1])
-            if tree[parent_idx].label() != wrap_pos:
+            if tree[parent_idx].label()[:2] != wrap_pos:
                 return False
         return True
 
@@ -319,40 +319,50 @@ class TreeHandler:
 th = TreeHandler()
 
 # %%
-# 例0
-src: str = """
-( (IP-MAT (PP (NP (D #0その)
-                (N #1国王))
-            (P-ROLE #2に)
-            (P-OPTR #3は))
-        (PP-SBJ (NP (PP (NP (N #4二人))
-                        (P-ROLE #5の))
-                    (N #6王子))
-                (P-ROLE #7が))
-        (VP (VB #8あり)
-        (AX #9まし)
-        (AXD #10た))
+src = """
+    (IP-MAT
+        (PP (NP (D #0その) (N #1国王)) (P-ROLE #2に) (P-OPTR #3は))
+        (PP-SBJ (NP (PP (NP (N #4二人)) (P-ROLE #5の)) (N #6王子)) (P-ROLE #7が))
+        (VP (VB #8あり) (AX #9まし) (AXD #10た))
         (PU #11。))
-(ID 1_ex1640391709;JP))
-"""
-tgt: str = """
-( (IP-MAT|{} (PP|[] (NP (D #0その)
-                (N #1国王))
-            (P-ROLE #2に)
-            (P-OPTR #3は))
-        (PP-SBJ|[] (NP (PP (NP (N #4二人))
-                        (P-ROLE #5の))
-                    (N #6王子))
-                (P-ROLE #7が))
-        (VP|[] (VB #8あり)
-        (AX #9まし)
-        (AXD #10た))
-        (PU #11。))
-(ID 1_ex1640391709;JP))
-"""
+    """
 src = ParentedTree.fromstring(src)
-res = th.wrap_siblings(src)
-# assert res == tgt
-src.pretty_print()
+src = th.add_phrase_type(src)
+src = th.align_p_words(src)
+src_accent = """#0 s o n o #1 k o k u o \ o #2 n i #3 w a 
+            #4 f U t a r i \ #5 n o #6 o \ o j i #7 g a
+            #8 a r i #9 m a \ sh I #10 t a #11 ."""
+src = th.integrate_morph_accent(src, src_accent)
+
+# 以下のケースで False を返す
+# [ [ ] ] →[ [ ] ]  # current が[]なら飛ばす
+# [ ( ) ] →[     ]
+# ( ( ) ) →(     )
+# (空白) → 削除
+
 tree = src
-th.add_phrase_type(src).pretty_print()
+tree.pretty_print()
+done = False
+for i in range(10):
+    for subtree_idx in tree.treepositions():  # tree を上から順番に走査
+        if isinstance(tree[subtree_idx], str):
+            continue
+        subtree = tree[subtree_idx]
+        if subtree.parent()==None:
+            continue
+        if subtree.label()[-2:]=="[]":
+            continue
+        if len(subtree.parent())==1:
+            print(len(subtree))
+            for _ in range(len(subtree)):
+                subtree.parent().insert(0, subtree.pop()) 
+            subtree.parent().pop() 
+            break
+        print(subtree.label())
+        # 最後までbreakなしでたどり着けたら true
+    # done = True  # とりあえず一回
+    
+tree.pretty_print()
+# %%
+'hello'[-2:]
+# %%
