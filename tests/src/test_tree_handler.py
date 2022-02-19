@@ -3,14 +3,6 @@ from nltk.tree import ParentedTree
 
 from src.tree_handler import TreeHandler
 
-# TODO: morphのテスト
-# #Numberは形態素ID
-# \はアクセント記号
-# invalid escape sequence になる
-# ojt_out_0: str = """#0 s o n o #1 k o k u o \ o #2 n i #3 w a
-#                     #4 f U t a r i \ # 5 n o #6 o \ o j i #7 g a #8 a r i
-#                     #9 m a \ sh I #10 t a #11."""
-
 th = TreeHandler()
 
 
@@ -810,6 +802,9 @@ def test_add_phrase_type():
     """
     src, tgt = ParentedTree.fromstring(src), ParentedTree.fromstring(tgt)
     res = th.add_phrase_type(src)
+    src.pretty_print()
+    tgt.pretty_print()
+    res.pretty_print()
     assert res == tgt
 
     # 例1
@@ -839,7 +834,7 @@ def test_add_phrase_type():
     ( (IP-MAT|{} (PP-SBJ|[] (NP (D #0-かの)
                           (N #1-猫))
                       (P-OPTR #2-は))
-              (VP|[]  (PP-OB1|[] (NP (IP-REL (NP-SBJ *T*)
+              (VP|[]  (PP-OB1|[] (NP (IP-REL|{} (NP-SBJ *T*)
                                   (VP|[] (PP-OB1|[] (NP (IP-REL (NP-SBJ *T*)
                                                        (ADJI #3-黄色い))
                                               (N #4-道))
@@ -859,6 +854,9 @@ def test_add_phrase_type():
     """
     src, tgt = ParentedTree.fromstring(src), ParentedTree.fromstring(tgt)
     res = th.add_phrase_type(src)
+    src.pretty_print()
+    tgt.pretty_print()
+    res.pretty_print()
     assert res == tgt
 
     # 例2
@@ -888,6 +886,9 @@ def test_add_phrase_type():
     """
     src, tgt = ParentedTree.fromstring(src), ParentedTree.fromstring(tgt)
     res = th.add_phrase_type(src)
+    src.pretty_print()
+    tgt.pretty_print()
+    res.pretty_print()
     assert res == tgt
 
     # 例3
@@ -916,7 +917,7 @@ def test_add_phrase_type():
         ( (IP-MAT|{} (PP-SBJ|[] (NP (NPR #0-太郎))
                         (P-OPTR #1-は))
                 (PU #2-、)
-        (VP|[]    (CP-THT (CP-FINAL (PUL #3-「)
+        (VP|[]    (CP-THT (CP-FINAL|{} (PUL #3-「)
                                 (IP-SUB (PP-OB1|[] (NP (NPR #4-二郎))
                                                 (P-ROLE #5-を))
                                         (PP-SBJ|[] (NP (NPR #6-花子))
@@ -935,4 +936,7 @@ def test_add_phrase_type():
     """
     src, tgt = ParentedTree.fromstring(src), ParentedTree.fromstring(tgt)
     res = th.add_phrase_type(src)
+    src.pretty_print()
+    tgt.pretty_print()
+    res.pretty_print()
     assert res == tgt

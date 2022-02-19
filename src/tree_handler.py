@@ -1,5 +1,4 @@
 # %%
-from ast import Index
 from copy import deepcopy
 from typing import Any
 
@@ -236,35 +235,49 @@ class TreeHandler:
         return subtree
 
     def i_conditional_operation(self, subtree):
-        # TODO: IPの種類を特定
-        # IP-SUBが含まれる場合はちょっと面倒になる
+        # 親がCP*でない、子にADJ*を持たないすべてのIPを{}にする
         if isinstance(subtree, str):  # leaf node
             return subtree
-        if not subtree.label() == "IP-MAT":
+        if subtree.parent() == None:  # 最上位ノード
+            return subtree
+        if not "IP-" in subtree.label():  # そもそもIPじゃない
+            return subtree
+        if "CP-" in subtree.parent().label():  # 親がCP
+            return subtree
+        if sum(["ADJ" in st_i.label() for st_i in subtree]):  # 子のラベルがADJが含む
             return subtree
         subtree.set_label(subtree.label()+self.type_given+self.i_type)
         return subtree
 
     def cp_conditional_operation(self, subtree):
-        # TODO: CPの条件を絞る
+        # 子がIPであるCPを{}にする
+        # i_conditional_opereationより、cpとiが両方{}になることはない
         if isinstance(subtree, str):  # leaf node
             return subtree
-        if "CP-" not in subtree.label():
+        if not "CP-" in subtree.label():  # 自身がCPでない
             return subtree
-        if not "IP-" in subtree[-1].label():
-            # IP-SUBしかないと思うが一応
-            # IP-
+        if not sum(["IP-" in st_i.label() for st_i in subtree]):  # 子のラベルがIPが含まない
             return subtree
+        # 自身がCPであり、子にIPがある。
         subtree.set_label(subtree.label()+self.type_given+self.i_type)
         return subtree
 
-
     def add_phrase_type(self, tree):
+        """_summary_
+            See: https://github.com/kishiyamat/tree_handler/issues/4
+
+        Args:
+            tree (_type_): _description_
+
+        Returns:
+            _type_: _description_
+        """
         tree = deepcopy(tree)
         for subtree_idx in tree.treepositions():
             subtree = tree[subtree_idx]
             subtree = self.p_conditional_operation(subtree)
             subtree = self.i_conditional_operation(subtree)
+            subtree = self.cp_conditional_operation(subtree)
         return tree
 
     @staticmethod
@@ -304,7 +317,7 @@ src: str = """
         (PU #11。))
 (ID 1_ex1640391709;JP))
 """
-src: str = """
+tgt: str = """
 ( (IP-MAT|{} (PP|[] (NP (D #0その)
                 (N #1国王))
             (P-ROLE #2に)
@@ -324,9 +337,4 @@ res = th.wrap_siblings(src)
 # assert res == tgt
 src.pretty_print()
 tree = src
-
-
-src.pretty_print()
-# アタマから回して条件にあう場合はノードの名前を変更
-
-# %%
+th.add_phrase_type(src).pretty_print()
