@@ -238,11 +238,10 @@ class TreeHandler:
         # 親がCP*でない、子にADJ*を持たないすべてのIPを{}にする
         if isinstance(subtree, str):  # leaf node
             return subtree
-        if subtree.parent() == None:  # 最上位ノード
-            return subtree
+        if subtree.parent() != None:
+            if "CP-" in subtree.parent().label():  # 親がCP
+                return subtree
         if not "IP-" in subtree.label():  # そもそもIPじゃない
-            return subtree
-        if "CP-" in subtree.parent().label():  # 親がCP
             return subtree
         if sum(["ADJ" in st_i.label() for st_i in subtree]):  # 子のラベルがADJが含む
             return subtree
@@ -275,9 +274,10 @@ class TreeHandler:
         tree = deepcopy(tree)
         for subtree_idx in tree.treepositions():
             subtree = tree[subtree_idx]
+            # 一つのsubtreeに対して複数の操作
             subtree = self.p_conditional_operation(subtree)
-            subtree = self.i_conditional_operation(subtree)
             subtree = self.cp_conditional_operation(subtree)
+            subtree = self.i_conditional_operation(subtree)
         return tree
 
     def remove_outmost_id(self, tree: ParentedTree) -> ParentedTree:
@@ -316,7 +316,8 @@ class TreeHandler:
             subtree = tree[subtree_idx]
             if isinstance(subtree, str):  # leaveは無視
                 continue
-            if subtree.parent() == None:  # topは無視
+            if subtree.parent() == None:  # topは無視.
+                # FIXME: トップはredundunt でないことを仮定している
                 continue
             if subtree.label().split(self.type_given)[-1] == self.p_type:
                 continue  # []: pは無視
@@ -333,6 +334,7 @@ class TreeHandler:
                     continue
                 subtree = tree[subtree_idx]
                 if subtree.parent() == None:
+                    # FIXME: 親がいないケースを握りつぶしている
                     continue
                 if subtree.label().split(self.type_given)[-1] == self.p_type:
                     continue
@@ -372,7 +374,9 @@ src = """
         (PU #11。))
     """
 src = ParentedTree.fromstring(src)
+src.pretty_print()
 src = th.add_phrase_type(src)
+src.pretty_print()
 src = th.align_p_words(src)
 src_accent = """#0 s o n o #1 k o k u o \ o #2 n i #3 w a 
             #4 f U t a r i \ #5 n o #6 o \ o j i #7 g a
