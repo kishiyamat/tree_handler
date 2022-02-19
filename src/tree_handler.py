@@ -45,16 +45,16 @@ class TreeHandler:
                 """
         return not_morph.split()
 
-    def all_wrapped(self, tree, key_pos, wrap_pos):
+    def all_wrapped(self, tree: ParentedTree, key_pos: str, wrap_pos: str) -> bool:
         for subtree_idx in tree.treepositions():
             if not self.is_key_pos(tree[subtree_idx], key_pos):  # leaf node
                 continue
             parent_idx = list(subtree_idx[:-1])
-            if tree[parent_idx].label() != wrap_pos:
+            if tree[parent_idx].label()[:2] != wrap_pos:
                 return False
         return True
 
-    def wrap_siblings(
+    def create_vp_node(
         self,
         tree: ParentedTree = None,
         key_pos: str = "VB",
@@ -175,7 +175,7 @@ class TreeHandler:
             break
         return tree
 
-    def all_align_vp(self, tree: ParentedTree) -> ParentedTree:
+    def all_align_vp(self, tree: ParentedTree) -> bool:
         for subtree_idx in tree.treepositions():
             if not self.is_key_pos(tree[subtree_idx], "VB"):  # leaf node
                 continue
@@ -201,7 +201,8 @@ class TreeHandler:
         return self.align_vp(self.align_np(tree))
 
     def integrate_morph_accent(self, tree: ParentedTree, idx_accent) -> ParentedTree:
-        idx_accent = filter(len, idx_accent.split(self.morph_symbol))
+        idx_accent = idx_accent.strip()
+        idx_accent = list(filter(len, idx_accent.split(self.morph_symbol)))
         idx_accent = list(map(self.split_idx_accent, idx_accent))
         # TODO: flattenを検討
         tree = deepcopy(tree)
@@ -238,11 +239,10 @@ class TreeHandler:
         # 親がCP*でない、子にADJ*を持たないすべてのIPを{}にする
         if isinstance(subtree, str):  # leaf node
             return subtree
-        if subtree.parent() == None:  # 最上位ノード
-            return subtree
+        if subtree.parent() != None:
+            if "CP-" in subtree.parent().label():  # 親がCP
+                return subtree
         if not "IP-" in subtree.label():  # そもそもIPじゃない
-            return subtree
-        if "CP-" in subtree.parent().label():  # 親がCP
             return subtree
         if sum(["ADJ" in st_i.label() for st_i in subtree]):  # 子のラベルがADJが含む
             return subtree
@@ -275,9 +275,10 @@ class TreeHandler:
         tree = deepcopy(tree)
         for subtree_idx in tree.treepositions():
             subtree = tree[subtree_idx]
+            # 一つのsubtreeに対して複数の操作
             subtree = self.p_conditional_operation(subtree)
-            subtree = self.i_conditional_operation(subtree)
             subtree = self.cp_conditional_operation(subtree)
+            subtree = self.i_conditional_operation(subtree)
         return tree
 
     def remove_outmost_id(self, tree: ParentedTree) -> ParentedTree:
@@ -298,10 +299,68 @@ class TreeHandler:
             raise ValueError("The input doesn't have ID node.")
         return tree[0]
 
+    def is_redundunt(self, tree: ParentedTree) -> bool:
+        """_summary_
+            以下のLHSは冗長
+            [ ( ) ] →[     ]
+            ( ( ) ) →(     )
+            (空白) → 削除
+            # 以下は非冗長
+            [ [ ] ] →[ [ ] ]  # current が[]なら飛ばす
+        Args:
+            tree (_type_): _description_
+
+        Returns:
+            _type_: 編集されるべき木ならTrue
+        """
+        for subtree_idx in tree.treepositions():  # tree を上から順番に走査
+            subtree = tree[subtree_idx]
+            if isinstance(subtree, str):  # leaveは無視
+                continue
+            if len(subtree) == 0:
+                continue
+            if subtree[0] in self.not_morph_list:
+                subtree.parent().pop(subtree_idx[-1])
+                return True  # 編集されるべき条件
+            if subtree.parent() == None:  # topは無視.
+                # FIXME: トップはredundunt でないことを仮定している
+                continue
+            if subtree.label().split(self.type_given)[-1] == self.p_type:
+                continue  # []: pは無視
+            if len(subtree.parent()) == 1:  # 親が[]でなく、sisterが1なら冗長
+                return True  # 編集されるべき条件
+            # TODO: こどもがleafかつproなど -> return True
+        return False
+
+    def remove_redunduncy(self, tree: ParentedTree) -> ParentedTree:
+        tree = deepcopy(tree)
+        while self.is_redundunt(tree):
+            for subtree_idx in tree.treepositions():  # tree を上から順番に走査
+                subtree = tree[subtree_idx]
+                if isinstance(subtree, str):
+                    continue
+                if len(subtree) == 0:
+                    return tree
+                if subtree[0] in self.not_morph_list:
+                    subtree.parent().pop(subtree_idx[-1])
+                    break  # 編集したら0から is_redunduntである限りやり直す
+                if subtree.parent() == None:
+                    # FIXME: 親がいないケースを握りつぶしている
+                    continue
+                if subtree.label().split(self.type_given)[-1] == self.p_type:
+                    continue
+                if len(subtree.parent()) == 1:
+                    for _ in range(len(subtree)):
+                        subtree.parent().insert(0, subtree.pop())
+                    subtree.parent().pop()
+                    break  # 編集したら0から is_redunduntである限りやり直す
+        return tree
+
     @staticmethod
     def split_idx_accent(str_row) -> tuple:
         str_split = str_row.split()
-        return (int(str_split[0]), " ".join(str_split[1::]))
+        # ここ 1:: となっていたが...
+        return (int(str_split[0]), " ".join(str_split[1:]))
 
     @staticmethod
     def is_key_pos(tree, key_pos) -> bool:
@@ -311,48 +370,49 @@ class TreeHandler:
             return True
         return False
 
+    def workflow(self, OpenJTalk: str, Haruniwa2: str):
+        src, src_1 = ParentedTree.fromstring(Haruniwa2), OpenJTalk
+        src = self.remove_outmost_id(src)
+        src = self.create_vp_node(src)
+        src = self.add_phrase_type(src)
+        src = self.align_p_words(src)
+        src = self.integrate_morph_accent(src, src_1)
+        src = self.remove_redunduncy(src)
+        # print(src.__str__())
+        return src
+
 
 # %%
-# workflow
-# wrap_siblings で VP作成
-# assign-phrase IPとPP、VPに情報をつける
 th = TreeHandler()
+src = """
+        ( (IP-MAT (PP-SBJ (NP (NPR #0-太郎))
+                        (P-OPTR #1-は))
+                (PU #2-、)
+                (CP-THT (CP-FINAL (PUL #3-「)
+                                (IP-SUB (PP-OB1 (NP (NPR #4-二郎))
+                                                (P-ROLE #5-を))
+                                        (PP-SBJ (NP (NPR #6-花子))
+                                                (P-ROLE #7-が))
+                                        (VB #8-殴っ)
+                                        (AXD #9-た))
+                                (P-FINAL #10-よ)
+                                (PUR #11-」))
+                        (P-COMP #12-と))
+                (PP (NP (NPR #13-花子))
+                (P-ROLE #14-に))
+                (VB #15-言っ)
+                (AXD #16-た)
+                (PU #17-。))
+        (ID 1_ex1643432427;JP))
+"""
+src_1 = """
+#0 t a r o \ o #1 w a #2 , #3 “ #4 j i r o \ o #5 o #6 h a \ n a k o
+#7 g a #8 n a g u \ t  #9 t a #10 y o #11 “ #12 t o #13 h a \ n a k o
+#14 n i #15 i t #16 t a #17 ."""
+# TODO: 08. apply Lapse-L and Accent_as_head constraints
+# TODO: 09. Remove redundant brackets and ( )s
+# TODO: 10. (X|{} Y) -> {Y}; (X|[] Y) -> [Y]; (X Y) -> Y
 
-# %%
-# 例0
-src: str = """
-( (IP-MAT (PP (NP (D #0その)
-                (N #1国王))
-            (P-ROLE #2に)
-            (P-OPTR #3は))
-        (PP-SBJ (NP (PP (NP (N #4二人))
-                        (P-ROLE #5の))
-                    (N #6王子))
-                (P-ROLE #7が))
-        (VP (VB #8あり)
-        (AX #9まし)
-        (AXD #10た))
-        (PU #11。))
-(ID 1_ex1640391709;JP))
-"""
-tgt: str = """
-( (IP-MAT|{} (PP|[] (NP (D #0その)
-                (N #1国王))
-            (P-ROLE #2に)
-            (P-OPTR #3は))
-        (PP-SBJ|[] (NP (PP (NP (N #4二人))
-                        (P-ROLE #5の))
-                    (N #6王子))
-                (P-ROLE #7が))
-        (VP|[] (VB #8あり)
-        (AX #9まし)
-        (AXD #10た))
-        (PU #11。))
-(ID 1_ex1640391709;JP))
-"""
-src = ParentedTree.fromstring(src)
-res = th.wrap_siblings(src)
-# assert res == tgt
+src = th.workflow(src_1, src)
+print(src.__str__())
 src.pretty_print()
-tree = src
-th.add_phrase_type(src).pretty_print()
