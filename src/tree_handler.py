@@ -1,5 +1,4 @@
 # %%
-from ast import Index
 from copy import deepcopy
 from typing import Any
 
@@ -12,6 +11,9 @@ class TreeHandler:
     def __init__(self):
         self.alinged_np_list = []
         self.morph_symbol = "#"
+        self.type_given = "|"
+        self.i_type = "{}"
+        self.p_type = "[]"
 
     def assign_morph(self, tree: ParentedTree) -> ParentedTree:
         tree = deepcopy(tree)
@@ -43,16 +45,16 @@ class TreeHandler:
                 """
         return not_morph.split()
 
-    def all_wrapped(self, tree, key_pos, wrap_pos):
+    def all_wrapped(self, tree: ParentedTree, key_pos: str, wrap_pos: str) -> bool:
         for subtree_idx in tree.treepositions():
             if not self.is_key_pos(tree[subtree_idx], key_pos):  # leaf node
                 continue
             parent_idx = list(subtree_idx[:-1])
-            if tree[parent_idx].label() != wrap_pos:
+            if tree[parent_idx].label()[:2] != wrap_pos:
                 return False
         return True
 
-    def wrap_siblings(
+    def create_vp_node(
         self,
         tree: ParentedTree = None,
         key_pos: str = "VB",
@@ -107,7 +109,7 @@ class TreeHandler:
             break
         return tree
 
-    def all_align_np(self, tree):
+    def all_align_np(self, tree: ParentedTree) -> ParentedTree:
         for subtree_idx in tree.treepositions():
             if not self.is_key_pos(tree[subtree_idx], "NP"):  # leaf node
                 continue
@@ -122,13 +124,13 @@ class TreeHandler:
                 continue
         return True
 
-    def align_np(self, tree):
+    def align_np(self, tree: ParentedTree) -> ParentedTree:
         tree = deepcopy(tree)
         while not self.all_align_np(tree):
             tree = self._align_np(tree)
         return tree
 
-    def _align_np(self, tree):
+    def _align_np(self, tree: ParentedTree) -> ParentedTree:
         for subtree_idx in tree.treepositions():
             if not self.is_key_pos(tree[subtree_idx], "NP"):  # leaf node
                 continue
@@ -149,7 +151,7 @@ class TreeHandler:
             break
         return tree
 
-    def _align_vp(self, tree):
+    def _align_vp(self, tree: ParentedTree) -> ParentedTree:
         # 全てのVPがVBを含むことを保証
         # TODO: add test
         if not self.all_wrapped(tree, "VB", "VP"):
@@ -173,7 +175,7 @@ class TreeHandler:
             break
         return tree
 
-    def all_align_vp(self, tree):
+    def all_align_vp(self, tree: ParentedTree) -> bool:
         for subtree_idx in tree.treepositions():
             if not self.is_key_pos(tree[subtree_idx], "VB"):  # leaf node
                 continue
@@ -188,20 +190,21 @@ class TreeHandler:
                 continue
         return True
 
-    def align_vp(self, tree):
+    def align_vp(self, tree: ParentedTree) -> ParentedTree:
         tree = deepcopy(tree)
         while not self.all_align_vp(tree):
             tree = self._align_vp(tree)
         return tree
 
-    def align_p_words(self, tree):
+    def align_p_words(self, tree: ParentedTree) -> ParentedTree:
         tree = deepcopy(tree)
         return self.align_vp(self.align_np(tree))
 
     def integrate_morph_accent(self, tree: ParentedTree, idx_accent) -> ParentedTree:
-        idx_accent = filter(len, idx_accent.split(self.morph_symbol))
+        idx_accent = idx_accent.strip()
+        idx_accent = list(filter(len, idx_accent.split(self.morph_symbol)))
         idx_accent = list(map(self.split_idx_accent, idx_accent))
-        # TODO: flatten
+        # TODO: flattenを検討
         tree = deepcopy(tree)
         morph_idx = 0
         for subtree_idx in tree.treepositions():  # tree を上から順番に走査
@@ -217,10 +220,150 @@ class TreeHandler:
                 morph_idx += 1
         return tree
 
+    def p_conditional_operation(self, subtree: ParentedTree) -> ParentedTree:
+        if isinstance(subtree, str):  # leaf node
+            return subtree
+        if subtree.label() == "VP":
+            subtree.set_label(subtree.label()+self.type_given+self.p_type)
+            return subtree
+        if "PP" not in subtree.label()[:2]:
+            return subtree
+        if not "P-" in subtree[-1].label():
+            return subtree
+        if "の" in subtree[-1][0]:
+            return subtree
+        subtree.set_label(subtree.label()+self.type_given+self.p_type)
+        return subtree
+
+    def i_conditional_operation(self, subtree: ParentedTree) -> ParentedTree:
+        # 親がCP*でない、子にADJ*を持たないすべてのIPを{}にする
+        if isinstance(subtree, str):  # leaf node
+            return subtree
+        if subtree.parent() != None:
+            if "CP-" in subtree.parent().label():  # 親がCP
+                return subtree
+        if not "IP-" in subtree.label():  # そもそもIPじゃない
+            return subtree
+        if sum(["ADJ" in st_i.label() for st_i in subtree]):  # 子のラベルがADJが含む
+            return subtree
+        subtree.set_label(subtree.label()+self.type_given+self.i_type)
+        return subtree
+
+    def cp_conditional_operation(self, subtree: ParentedTree) -> ParentedTree:
+        # 子がIPであるCPを{}にする
+        # i_conditional_opereationより、cpとiが両方{}になることはない
+        if isinstance(subtree, str):  # leaf node
+            return subtree
+        if not "CP-" in subtree.label():  # 自身がCPでない
+            return subtree
+        if not sum(["IP-" in st_i.label() for st_i in subtree]):  # 子のラベルがIPが含まない
+            return subtree
+        # 自身がCPであり、子にIPがある。
+        subtree.set_label(subtree.label()+self.type_given+self.i_type)
+        return subtree
+
+    def add_phrase_type(self, tree: ParentedTree) -> ParentedTree:
+        """_summary_
+            See: https://github.com/kishiyamat/tree_handler/issues/4
+
+        Args:
+            tree (_type_): _description_
+
+        Returns:
+            _type_: _description_
+        """
+        tree = deepcopy(tree)
+        for subtree_idx in tree.treepositions():
+            subtree = tree[subtree_idx]
+            # 一つのsubtreeに対して複数の操作
+            subtree = self.p_conditional_operation(subtree)
+            subtree = self.cp_conditional_operation(subtree)
+            subtree = self.i_conditional_operation(subtree)
+        return tree
+
+    def remove_outmost_id(self, tree: ParentedTree) -> ParentedTree:
+        """Treeの最上階は0に本体、1にIDがいる。そこで
+            0を返せばIDを飛ばせる
+
+        Args:
+            tree (_type_): _description_
+
+        Raises:
+            ValueError: _description_
+
+        Returns:
+            _type_: _description_
+        """
+        if tree[-1].label() != "ID":
+            # そもそもIDが存在しなくて長さが1の場合もある
+            raise ValueError("The input doesn't have ID node.")
+        return tree[0]
+
+    def is_redundunt(self, tree: ParentedTree) -> bool:
+        """_summary_
+            以下のLHSは冗長
+            [ ( ) ] →[     ]
+            ( ( ) ) →(     )
+            (空白) → 削除
+            # 以下は非冗長
+            [ [ ] ] →[ [ ] ]  # current が[]なら飛ばす
+        Args:
+            tree (_type_): _description_
+
+        Returns:
+            _type_: 編集されるべき木ならTrue
+        """
+        for subtree_idx in tree.treepositions():  # tree を上から順番に走査
+            subtree = tree[subtree_idx]
+            if isinstance(subtree, str):  # leaveは無視
+                continue
+            if len(subtree) == 0:
+                continue
+            if subtree[0] in self.not_morph_list:
+                subtree.parent().pop(subtree_idx[-1])
+                return True  # 編集されるべき条件
+            if subtree.parent() == None:  # topは無視.
+                # FIXME: トップはredundunt でないことを仮定している
+                continue
+            if subtree.label().split(self.type_given)[-1] == self.p_type:
+                continue  # []: pは無視
+            if len(subtree.parent()) == 1:  # 親が[]でなく、sisterが1なら冗長
+                return True  # 編集されるべき条件
+            # TODO: こどもがleafかつproなど -> return True
+        return False
+
+    def remove_redunduncy(self, tree: ParentedTree) -> ParentedTree:
+        tree = deepcopy(tree)
+        while self.is_redundunt(tree):
+            for subtree_idx in tree.treepositions():  # tree を上から順番に走査
+                subtree = tree[subtree_idx]
+                if isinstance(subtree, str):
+                    continue
+                if len(subtree) == 0:
+                    return tree
+                if subtree[0] in self.not_morph_list:
+                    subtree.parent().pop(subtree_idx[-1])
+                    break  # 編集したら0から is_redunduntである限りやり直す
+                if subtree.parent() == None:
+                    # FIXME: 親がいないケースを握りつぶしている
+                    continue
+                if subtree.label().split(self.type_given)[-1] == self.p_type:
+                    continue
+                if len(subtree.parent()) == 1:
+                    for _ in range(len(subtree)):
+                        subtree.parent().insert(0, subtree.pop())
+                    subtree.parent().pop()
+                    break  # 編集したら0から is_redunduntである限りやり直す
+        return tree
+
+    def apply_constraints(self):
+        pass
+
     @staticmethod
     def split_idx_accent(str_row) -> tuple:
         str_split = str_row.split()
-        return (int(str_split[0]), " ".join(str_split[1::]))
+        # ここ 1:: となっていたが...
+        return (int(str_split[0]), " ".join(str_split[1:]))
 
     @staticmethod
     def is_key_pos(tree, key_pos) -> bool:
@@ -230,10 +373,37 @@ class TreeHandler:
             return True
         return False
 
+    def workflow(self, OpenJTalk: str, Haruniwa2: str):
+        src, src_1 = ParentedTree.fromstring(Haruniwa2), OpenJTalk
+        src = self.remove_outmost_id(src)
+        src = self.create_vp_node(src)
+        src = self.add_phrase_type(src)
+        src = self.align_p_words(src)
+        src = self.integrate_morph_accent(src, src_1)
+        src = self.remove_redunduncy(src)
+        # print(src.__str__())
+        return src
+
 
 # %%
 th = TreeHandler()
-
+src = """
+(IP-MAT|{}
+    (PP|[] (D s o n o) (N k o k u o \ o n i w a))
+    (PP-SBJ|[] (PP f U t a r i \ n o) (N o \ o j i g a))
+    (VP|[] a r i m a \ sh I t a)
+    (PU .))
+"""
+tgt = """
+(IP-MAT|{}
+    (PP|[] s o n o k o k u o \ o n i w a)
+    (PP-SBJ|[] (PP|[] f U t a r i \ n o) (N|[] o \ o j i g a))
+    (VP|[] a r i m a \ sh I t a)
+    (PU .))
+"""
+# TODO: 08. apply Lapse-L and Accent_as_head constraints
+# https://docs.google.com/document/d/1cE592_2x5xeZgEksUzhiyGvxsxz6P0YOJIyYpP-IyzY/edit#heading=h.t6pbi6utknbu
+# を参考に実装を進める
 # ・実装したい制約：アクセント( / )の後ろは必ず境界になる。
 # [ (  )  (  \ )  ] なら、くっつけて　[      \ ]
 # [ (  )  (   )   ] なら、くっつけて　[       ]
@@ -243,40 +413,15 @@ th = TreeHandler()
 # ・[  ]の後ろの（　）は、[  ]になる。*はアクセントの有無を問わない。
 # [ [ * ] ( * ) ] なら、新しく[ ]を作って[ [ * ] [ * ] ]
 # 例：[ [ ( ) ( ) ] ( \ ) ]　→　[ [  ] ( \ ) ]  →　  [ [  ] [ \ ] ]
-#
 
-# %%
-# それぞれの Phoneme が独立してNやDから生えている。
-src = """
-    (IP-MAT
-      (PP (NP (D s o n o) (N k o k u o \ o n i w a)))
-      (PP-SBJ (NP (PP (NP (N f U t a r i \ n o))) (N o \ o j i g a)))
-      (VP (VB a r i m a \ sh I t a))
-      (PU .))
-    """
-tgt = """
-    (IP-MAT
-      (PP (NP (SQUARE (D s o n o) (N k o k u o \ o n i w a))))
-      (PP-SBJ (NP (PP (NP (N f U t a r i \ n o))) (N o \ o j i g a)))
-      (VP (VB a r i m a \ sh I t a))
-      (PU .))
-    """
-# PP to PPhrases [ ] #
-# VP ->
+def apply_constraints(tree):
+    pass
 
-tgt = """
-    { [ s o n o k o k u o \ o n i w a ]	#[ ( ) ( \ ) ] → [ \ ]
-          [ [ f U t a r i \  n o ]
-                      [ o \ o j i g a ] ]	#[ ( \ ) ( \ ) ] → [ [ \ ] [ \ ] ]
-          [a r i m a \ sh I  t a]
-          (.)}
-"""
-tgt = ParentedTree.fromstring(tgt)
-src
-# tgt.__str__() == res.__str__()  # tree自体は異なる. tgtはスペース区切りがすべて独立したPOSになっている
-tgt.pretty_print()
-# %%
+res = apply_constraints(src)
 
-ParentedTree.fromstring("[VP hoge]", brackets="[]").__str__()
+# TODO: 09. Remove redundant brackets and ( )s
+# TODO: 10. (X|{} Y) -> {Y}; (X|[] Y) -> [Y]; (X Y) -> Y
 
-# %%
+src = th.workflow(src_1, src)
+print(src.__str__())
+src.pretty_print()
