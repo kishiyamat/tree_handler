@@ -3,3 +3,6 @@ check:
 	flake8 src tests --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
 	pytest
 
+test:
+	echo mew
+	pytest
