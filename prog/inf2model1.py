@@ -13,60 +13,35 @@ class InfFile():
         pass
 
 
-def get_p3(content: str) -> str:
-    """_summary_
-
-    Args:
-        content (str): sh^i-pau+i=...
-
-    Returns:
-        str: symbol between - and +
-            in this case, pau
-    """
-    return content.split("-")[1].split("+")[0]
-
-
-def strip_and_split(inf2_str: str) -> List[str]:
-    """入力のinfを行に分け、最後の行が""なら除外
-
-    Args:
-        inf2_str (str): _description_
-
-    Returns:
-        List[str]: _description_
-    """
-    rlist = inf2_str.split("\n")
-    if (rlist[-1] == ""):
-        rlist.pop()
-    return rlist
-
-
-def inf2model(inf2_str: str):
-    rlist: List[str] = strip_and_split(inf2_str)
-
+def inf2model(rlist: List[str]):
+    # p3, f2, a1, L, a2, M を各行で取得
+    # r_list の要素iを split した 2 番目が必要な情報(pやaなど)
+    # 0 3950000 xx^xx-sil+s=o/A:xx+xx+xx/B:xx-xx_xx/C:xx_xx+xx/D:07+xx_xx/E:xx_xx!xx_xx-xx/F:xx_xx#xx_xx@xx_xx|xx_xx/G:2_2%0_xx_xx/H:xx_xx/I:xx-xx@xx+xx&xx-xx|xx+xx/J:5_21/K:1+5-11/L:
+    # cf. https://docs.google.com/document/d/1qTUQO-dfWQjJovI0_cvV9V60NG-wD4Ic4Ev3_xjeBfA/edit#heading=h.7xfwt25c9zms
+    contents = map(lambda s: s.split(" ")[2], rlist)
+    # 最初の p3, f2, a1, L, a2, M を加えておく
     line = [["sil", 0, 100, 100, 100, 0]]
-    for w in rlist:
-        # w is the follwoing string, which has the content (xx^xx...) in the second position given `split`
-        # 0 3950000 xx^xx-sil+s=o/A:xx+xx+xx/B:xx-xx_xx/C:xx_xx+xx/D:07+xx_xx/E:xx_xx!xx_xx-xx/F:xx_xx#xx_xx@xx_xx|xx_xx/G:2_2%0_xx_xx/H:xx_xx/I:xx-xx@xx+xx&xx-xx|xx+xx/J:5_21/K:1+5-11/L:
-        # https://docs.google.com/document/d/1qTUQO-dfWQjJovI0_cvV9V60NG-wD4Ic4Ev3_xjeBfA/edit#heading=h.7xfwt25c9zms
-        content = w.split(" ")[2]
-        p3 = get_p3(content)
-        line_dict = {"pau": [["pau", 0, 100, 100, 100, 0]],
-                     "sil": [["sil", 0, -100, 200, 100, 0]]}
-        if p3 in ["pau", "sil"]:
-            line += line_dict[p3]
+    # 以下の処理は必要なタグが変わるかもしれないので、できるかぎりネストせずに保つ
+    for content in contents:
+        p3 = content.split("-")[1].split("+")[0]
+        f2 = re.findall(r"\/F:.*?_([0-9])", content)
+        a1 = re.findall(r"\/A:([0-9\-]+)", content)
+        L = re.findall(r"\/L:.*?_([0-9\-]+)*", content)
+        a2 = re.findall(r"\/A:.*?\+([0-9]+)\+", content)
+        M = re.findall(r"\/M:.*?_([0-9\-]+)*", content)
+        # get content (pau) between - and + (e.g. sh^i-pau+i=...) as list
+        if p3 == "pau":
+            line_i = ["pau", 0, 100, 100, 100, 0]
+        elif p3 == "sil":
+            line_i = ["sil", 0, -100, 200, 100, 0]
         else:
-            a1 = re.findall(r"\/A:([0-9\-]+)", content)[0]
-            a2 = re.findall(r"\/A:.*?\+([0-9]+)\+", content)[0]
-            f2 = re.findall(r"\/F:.*?_([0-9])", content)[0]
-            # 以下の2つはinf2の特殊な事例
-            L = re.findall(r"\/L:.*?_([0-9\-]+)*", content)[0]
-            M = re.findall(r"\/M:.*?_([0-9\-]+)*", content)[0]
-            line += [[p3, int(f2), int(a1), int(L), int(a2), int(M)]]
+            line_i = [p3]+list(map(lambda i: int(i[0]), [f2, a1, L, a2, M]))
+        line += [line_i]
 
+    # 取得したp3やa1などの情報から記号(,.?!/\)と依存関係の距離(#[0-9])を追加
     txt = ""
     M_map = {1: ", ", 2: ". ", 3: "? ", 4: "! "}
-    for i, line_i in enumerate(line, 0):
+    for i, line_i in enumerate(line):
         M_prev = line[i-1][5]
         if line_i[0] == "sil":
             if M_prev in [2, 3, 4] and i != 0:
@@ -111,10 +86,11 @@ def main():
         print("処理ファイル名を指定してください。\n")
         sys.exit()
 
-    obj = open("yomi/" + sys.argv[1] + ".inf2", "r")
-    inf2_str = obj.read()
-    obj.close()
-    txt = inf2model(inf2_str)
+    with open("yomi/" + sys.argv[1] + ".inf2", "r") as f:
+        l_strip = [s.strip() for s in f.readlines()]  # readlines and remove \n
+        inf2_str = list(filter(len, l_strip))  # filter zero-length str: ""
+        txt = inf2model(inf2_str)
+
     print(sys.argv[1], txt)
 
 
