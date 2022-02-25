@@ -26,32 +26,51 @@ def current_segment(content: str) -> str:
     return content.split("-")[1].split("+")[0]
 
 
-def inf2model(inf2_str: str):
+def strip_and_split(inf2_str: str) -> List[str]:
+    """入力のinfを行に分け、最後の行が""なら除外
+
+    Args:
+        inf2_str (str): _description_
+
+    Returns:
+        List[str]: _description_
+    """
     rlist = inf2_str.split("\n")
     if (rlist[-1] == ""):
         rlist.pop()
+    return rlist
+
+
+def inf2model(inf2_str: str):
+    rlist: List[str] = strip_and_split(inf2_str)
 
     lin = [["sil", 0, 100, 100, 100, 0]]
     for w in rlist:
-        # xx^xx-sil+s=o/A:xx+xx+xx/B:xx-xx_xx/C:xx_xx+xx/D:07+xx_xx/E:xx_xx!xx_xx-xx/F:xx_xx#xx_xx@xx_xx|xx_xx/G:2_2%0_xx_xx/H:xx_xx/I:xx-xx@xx+xx&xx-xx|xx+xx/J:5_21/K:1+5-11/L:
+        # w is the follwoing string, which has the content (xx^xx...) in the second position given `split`
+        # 0 3950000 xx^xx-sil+s=o/A:xx+xx+xx/B:xx-xx_xx/C:xx_xx+xx/D:07+xx_xx/E:xx_xx!xx_xx-xx/F:xx_xx#xx_xx@xx_xx|xx_xx/G:2_2%0_xx_xx/H:xx_xx/I:xx-xx@xx+xx&xx-xx|xx+xx/J:5_21/K:1+5-11/L:
         content = w.split(" ")[2]
         if current_segment(content) == "pau":
             lin += [["pau", 0, 100, 100, 100, 0]]
             continue
 
-        p = re.findall(
-            r"\-(.*?)\+.*?\/A:([0-9\-]+).*?\/F:.*?_([0-9])", content)
+        if current_segment(content) == "sil":
+            lin += [["sil", 0, -100, 200, 100, 0]]
+            continue
+
+        # (content, A, F)
+        p = re.findall(r"\-(.*?)\+.*?\/A:([0-9\-]+).*?\/F:.*?_([0-9])",
+                       content)
+        # if p != current_segment(content):
+        #     print(p, current_segment(content))
         a2 = re.findall(r"\/A:.*?\+([0-9]+)\+", content)
         p2 = re.findall(r"\/L:.*?_([0-9\-]+)*", content)
         p3 = re.findall(r"\/M:.*?_([0-9\-]+)*", content)
         #    p2 = c[2][-14:]
-        # TODO:
 
-        if len(p) == 1:
-            lin += [[p[0][0], int(p[0][2]), int(p[0][1]), int(p2[0]), int(a2[0]),
-                     int(p3[0])]]
+        lin += [[p[0][0], int(p[0][2]), int(p[0][1]),
+                 int(p2[0]), int(a2[0]), int(p3[0])]]
 
-    lin += [["sil", 0, -100, 200, 100, 0]]
+    # lin += [["sil", 0, -100, 200, 100, 0]]
     # print(lin)
 
     txt = ""
@@ -116,5 +135,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-# %%
