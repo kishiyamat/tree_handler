@@ -6,3 +6,4 @@ def test_shell():
     diff_res = subprocess.run(
         ["diff", "results_original.txt", "results_new.txt"]).stdout
     assert diff_res == None
+    # assert False

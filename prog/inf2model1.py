@@ -7,30 +7,52 @@ import re
 from typing import List
 
 
-def inf2model(rlist: List[str]):
+class InfFile():
+    def __init__(self, dep_info=True):
+        self.dep_info = dep_info  # true: inf2 a
+        pass
+
+
+def current_segment(content: str) -> str:
+    """_summary_
+
+    Args:
+        content (str): sh^i-pau+i=...
+
+    Returns:
+        str: symbol between - and +
+            in this case, pau
+    """
+    return content.split("-")[1].split("+")[0]
+
+
+def inf2model(inf2_str: str):
+    rlist = inf2_str.split("\n")
     if (rlist[-1] == ""):
         rlist.pop()
 
     lin = [["sil", 0, 100, 100, 100, 0]]
     for w in rlist:
-        c = w.split(" ")
-        m = c[2].split("/")
-
-        if c[2].split("-")[1].split("+")[0] == "pau":
+        # xx^xx-sil+s=o/A:xx+xx+xx/B:xx-xx_xx/C:xx_xx+xx/D:07+xx_xx/E:xx_xx!xx_xx-xx/F:xx_xx#xx_xx@xx_xx|xx_xx/G:2_2%0_xx_xx/H:xx_xx/I:xx-xx@xx+xx&xx-xx|xx+xx/J:5_21/K:1+5-11/L:
+        content = w.split(" ")[2]
+        if current_segment(content) == "pau":
             lin += [["pau", 0, 100, 100, 100, 0]]
             continue
 
-        p = re.findall(r"\-(.*?)\+.*?\/A:([0-9\-]+).*?\/F:.*?_([0-9])", c[2])
-        a2 = re.findall(r"\/A:.*?\+([0-9]+)\+", c[2])
-        p2 = re.findall(r"\/L:.*?_([0-9\-]+)*", c[2])
-        p3 = re.findall(r"\/M:.*?_([0-9\-]+)*", c[2])
-    #    p2 = c[2][-14:]
+        p = re.findall(
+            r"\-(.*?)\+.*?\/A:([0-9\-]+).*?\/F:.*?_([0-9])", content)
+        a2 = re.findall(r"\/A:.*?\+([0-9]+)\+", content)
+        p2 = re.findall(r"\/L:.*?_([0-9\-]+)*", content)
+        p3 = re.findall(r"\/M:.*?_([0-9\-]+)*", content)
+        #    p2 = c[2][-14:]
+        # TODO:
+
         if len(p) == 1:
             lin += [[p[0][0], int(p[0][2]), int(p[0][1]), int(p2[0]), int(a2[0]),
                      int(p3[0])]]
 
     lin += [["sil", 0, -100, 200, 100, 0]]
-    # print( lin )
+    # print(lin)
 
     txt = ""
     for i, l in enumerate(lin, 0):
@@ -86,10 +108,9 @@ def main():
         sys.exit()
 
     obj = open("yomi/" + sys.argv[1] + ".inf2", "r")
-    rlist = obj.read()
-    rlist = rlist.split("\n")
+    inf2_str = obj.read()
     obj.close()
-    txt = inf2model(rlist)
+    txt = inf2model(inf2_str)
     print(sys.argv[1], txt)
 
 

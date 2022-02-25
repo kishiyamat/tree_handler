@@ -4,5 +4,4 @@ check:
 	pytest
 
 test:
-	echo mew
 	pytest
