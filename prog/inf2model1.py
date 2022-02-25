@@ -68,28 +68,29 @@ def inf2model(inf2_str: str):
     txt = ""
     M_map = {1: ", ", 2: ". ", 3: "? ", 4: "! "}
     for i, line_i in enumerate(line, 0):
-        M_i_prev = line[i-1][5]
+        M_prev = line[i-1][5]
         if line_i[0] == "sil":
-            if M_i_prev in [2, 3, 4] and i != 0:
-                txt += M_map[M_i_prev]
+            if M_prev in [2, 3, 4] and i != 0:
+                txt += M_map[M_prev]
             continue
         elif line_i[0] == "pau":
-            if M_i_prev in [1, 2, 3, 4]:
-                txt += M_map[M_i_prev]
+            if M_prev in [1, 2, 3, 4]:
+                txt += M_map[M_prev]
             else:
                 txt += "_ "
             continue
 
+        line_next = line[i+1]
         txt += line_i[0] + " "
 
         # 正直、ここが一番大事
-        if (line_i[2] == 0 and line[i+1][2] == 1):
+        if (line_i[2] == 0 and line_next[2] == 1):
             txt += "\ "
-        elif (line_i[4] == 1 and line[i+1][4] == 2):
+        elif (line_i[4] == 1 and line_next[4] == 2):
             txt += "/ "
 
-        if (line[i][2] > line[i+1][2] or line[i][1] != line[i+1][1]):
-            if ((line_i[3] > 1) and (line[i][3] == line[i+1][3])):
+        if (line_i[2] > line_next[2] or line_i[1] != line_next[1]):
+            if ((line_i[3] > 1) and (line_i[3] == line_next[3])):
                 dd = "#1 "
             elif (line_i[3] < 1):
                 dd = "#1 "
