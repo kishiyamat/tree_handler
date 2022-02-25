@@ -44,78 +44,61 @@ def strip_and_split(inf2_str: str) -> List[str]:
 def inf2model(inf2_str: str):
     rlist: List[str] = strip_and_split(inf2_str)
 
-    lin = [["sil", 0, 100, 100, 100, 0]]
+    line = [["sil", 0, 100, 100, 100, 0]]
     for w in rlist:
         # w is the follwoing string, which has the content (xx^xx...) in the second position given `split`
         # 0 3950000 xx^xx-sil+s=o/A:xx+xx+xx/B:xx-xx_xx/C:xx_xx+xx/D:07+xx_xx/E:xx_xx!xx_xx-xx/F:xx_xx#xx_xx@xx_xx|xx_xx/G:2_2%0_xx_xx/H:xx_xx/I:xx-xx@xx+xx&xx-xx|xx+xx/J:5_21/K:1+5-11/L:
         # https://docs.google.com/document/d/1qTUQO-dfWQjJovI0_cvV9V60NG-wD4Ic4Ev3_xjeBfA/edit#heading=h.7xfwt25c9zms
         content = w.split(" ")[2]
         p3 = get_p3(content)
+        L_pau, L_sil, M = 100, 200, 0
         if p3 == "pau":
-            lin += [["pau", 0, 100, 100, 100, 0]]
-            continue
-
-        if p3 == "sil":
-            lin += [["sil", 0, -100, 200, 100, 0]]
-            continue
-
-        a1 = re.findall(r"\/A:([0-9\-]+)", content)[0]
-        a2 = re.findall(r"\/A:.*?\+([0-9]+)\+", content)[0]
-        f2 = re.findall(r"\/F:.*?_([0-9])", content)[0]
-        # 以下の2つはinf2の特殊な事例
-        L = re.findall(r"\/L:.*?_([0-9\-]+)*", content)[0]
-        M = re.findall(r"\/M:.*?_([0-9\-]+)*", content)[0]
-        #    p2 = c[2][-14:]  # TODO: remove me
-
-        lin += [[p3, int(f2), int(a1), int(L), int(a2), int(M)]]
-
-    # lin += [["sil", 0, -100, 200, 100, 0]]
-    # print(lin)
+            line += [["pau", 0, 100, L_pau, 100, M]]
+        elif p3 == "sil":
+            line += [["sil", 0, -100, L_sil, 100, M]]
+        else:
+            a1 = re.findall(r"\/A:([0-9\-]+)", content)[0]
+            a2 = re.findall(r"\/A:.*?\+([0-9]+)\+", content)[0]
+            f2 = re.findall(r"\/F:.*?_([0-9])", content)[0]
+            # 以下の2つはinf2の特殊な事例
+            L = re.findall(r"\/L:.*?_([0-9\-]+)*", content)[0]
+            M = re.findall(r"\/M:.*?_([0-9\-]+)*", content)[0]
+            line += [[p3, int(f2), int(a1), int(L), int(a2), int(M)]]
 
     txt = ""
-    for i, l in enumerate(lin, 0):
-        if (l[0] == "sil"):
-            if (i == 0):
+    M_map = {1: ", ", 2: ". ", 3: "? ", 4: "! "}
+    for i, line_i in enumerate(line, 0):
+        if (line_i[0] == "sil"):
+            if i in [0, 1]:
                 continue
-            elif (lin[i-1][5] == 2):
-                txt += ". "
-            elif (lin[i-1][5] == 3):
-                txt += "? "
-            elif (lin[i-1][5] == 4):
-                txt += "! "
-            continue
+            M_i_prev = line[i-1][5]
+            txt += M_map[M_i_prev]
 
-        elif (l[0] == "pau"):
-            if (lin[i-1][5] == 1):
-                txt += ", "
-            elif (lin[i-1][5] == 2):
-                txt += ". "
-            elif (lin[i-1][5] == 3):
-                txt += "? "
-            elif (lin[i-1][5] == 4):
-                txt += "! "
-            else:
-                txt += "_ "
-            continue
+        elif (line_i[0] == "pau"):
+            if i in [0]:
+                continue
+            M_i_prev = line[i-1][5]
+            txt += M_map[M_i_prev]
 
-        txt += l[0] + " "
+        txt += line_i[0] + " "
 
-        if (l[2] == 0 and lin[i+1][2] == 1):
+        # 正直、ここが一番大事
+        if (line_i[2] == 0 and line[i+1][2] == 1):
             txt += "\ "
-        elif (l[4] == 1 and lin[i+1][4] == 2):
+        elif (line_i[4] == 1 and line[i+1][4] == 2):
             txt += "/ "
 
-        if (lin[i][2] > lin[i+1][2] or lin[i][1] != lin[i+1][1]):
-            if ((l[3] > 1) and (lin[i][3] == lin[i+1][3])):
+        if (line[i][2] > line[i+1][2] or line[i][1] != line[i+1][1]):
+            if ((line_i[3] > 1) and (line[i][3] == line[i+1][3])):
                 dd = "#1 "
-            elif (l[3] < 1):
+            elif (line_i[3] < 1):
                 dd = "#1 "
-            elif (l[3] > 6):
+            elif (line_i[3] > 6):
                 dd = "#6 "
             else:
-                dd = "#" + str(l[3]) + " "
+                dd = "#" + str(line_i[3]) + " "
 
-            if (lin[i+1][3] != 200):
+            if (line[i+1][3] != 200):
                 txt += dd
     return txt
 
