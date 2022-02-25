@@ -20,35 +20,37 @@ def inf2model(rlist: List[str]):
     # cf. https://docs.google.com/document/d/1qTUQO-dfWQjJovI0_cvV9V60NG-wD4Ic4Ev3_xjeBfA/edit#heading=h.7xfwt25c9zms
     contents = map(lambda s: s.split(" ")[2], rlist)
     # 最初の p3, f2, a1, L, a2, M を加えておく
-    line = [["sil", 0, 100, 100, 100, 0]]
+    keys = "p3", "f2", "a1", "L", "a2", "M"
+    line_1 = ["sil", 0, 100, 100, 100, 0]
+    line = [{k: v for k, v in zip(keys, line_1)}]
     # 以下の処理は必要なタグが変わるかもしれないので、できるかぎりネストせずに保つ
     for content in contents:
-        p3 = content.split("-")[1].split("+")[0]
+        # p3 is between - and + (e.g. sh^i-pau+i=...)
+        p3: str = content.split("-")[1].split("+")[0]
         f2 = re.findall(r"\/F:.*?_([0-9])", content)
         a1 = re.findall(r"\/A:([0-9\-]+)", content)
         L = re.findall(r"\/L:.*?_([0-9\-]+)*", content)
         a2 = re.findall(r"\/A:.*?\+([0-9]+)\+", content)
         M = re.findall(r"\/M:.*?_([0-9\-]+)*", content)
-        # get content (pau) between - and + (e.g. sh^i-pau+i=...) as list
         if p3 == "pau":
             line_i = ["pau", 0, 100, 100, 100, 0]
         elif p3 == "sil":
             line_i = ["sil", 0, -100, 200, 100, 0]
         else:
             line_i = [p3]+list(map(lambda i: int(i[0]), [f2, a1, L, a2, M]))
-        line += [line_i]
+        line += [{k: v for k, v in zip(keys, line_i)}]
 
     # 取得したp3やa1などの情報から記号(,.?!/\)と依存関係の距離(#[0-9])を追加
     txt = ""
     M_map = {1: ", ", 2: ". ", 3: "? ", 4: "! "}
     for i, line_i in enumerate(line):
-        M_prev = line[i-1][5]
-        if line_i[0] == "sil":
+        M_prev = line[i-1]["M"]
+        if line_i["p3"] == "sil":
             if M_prev in [2, 3, 4] and i != 0:
                 # . ? !
                 txt += M_map[M_prev]
             continue
-        elif line_i[0] == "pau":
+        elif line_i["p3"] == "pau":
             if M_prev in [1, 2, 3, 4]:
                 # , . ? !
                 txt += M_map[M_prev]
@@ -57,26 +59,23 @@ def inf2model(rlist: List[str]):
             continue
 
         line_next = line[i+1]
-        p3_i, a1_i, a2_i = line_i[0], line_i[2], line_i[4]
-        a1_next, a2_next = line_next[2], line_next[4]
-        txt += p3_i + " "
-
+        txt += line_i["p3"] + " "
         # ""を足す、と考えると一般化できる
-        if (a1_i == 0 and a1_next == 1):
+        if (line_i["a1"] == 0 and line_next["a1"] == 1):
             txt += "\ "
-        elif (a2_i == 1 and a2_next == 2):
+        elif (line_i["a2"] == 1 and line_next["a2"] == 2):
             txt += "/ "
         # 依存距離
-        if (a1_i > a1_next or line_i[1] != line_next[1]):
-            if ((line_i[3] > 1) and (line_i[3] == line_next[3])):
+        if (line_i["a1"] > line_next["a1"] or line_i["f2"] != line_next["f2"]):
+            if ((line_i["L"] > 1) and (line_i["L"] == line_next["L"])):
                 dependency_dist = "#1 "
-            elif (line_i[3] < 1):
+            elif (line_i["L"] < 1):
                 dependency_dist = "#1 "
-            elif (line_i[3] > 6):
+            elif (line_i["L"] > 6):
                 dependency_dist = "#6 "
             else:
-                dependency_dist = "#" + str(line_i[3]) + " "
-            if (line[i+1][3] != 200):
+                dependency_dist = "#" + str(line_i["L"]) + " "
+            if (line_next["L"] != 200):
                 txt += dependency_dist
     return txt
 
