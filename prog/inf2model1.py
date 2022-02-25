@@ -77,9 +77,10 @@ def inf2model(rlist: List[str]):
 
             if (lin[i+1][3] != 200):
                 txt += dd
+    return txt
 
 
-if __name__ == "__main__":
+def main():
     if len(sys.argv) < 2:
         print("処理ファイル名を指定してください。\n")
         sys.exit()
@@ -90,5 +91,9 @@ if __name__ == "__main__":
     obj.close()
     txt = inf2model(rlist)
     print(sys.argv[1], txt)
+
+
+if __name__ == "__main__":
+    main()
 
 # %%
