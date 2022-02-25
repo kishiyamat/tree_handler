@@ -51,11 +51,10 @@ def inf2model(inf2_str: str):
         # https://docs.google.com/document/d/1qTUQO-dfWQjJovI0_cvV9V60NG-wD4Ic4Ev3_xjeBfA/edit#heading=h.7xfwt25c9zms
         content = w.split(" ")[2]
         p3 = get_p3(content)
-        L_pau, L_sil, M = 100, 200, 0
-        if p3 == "pau":
-            line += [["pau", 0, 100, L_pau, 100, M]]
-        elif p3 == "sil":
-            line += [["sil", 0, -100, L_sil, 100, M]]
+        line_dict = {"pau": [["pau", 0, 100, 100, 100, 0]],
+                     "sil": [["sil", 0, -100, 200, 100, 0]]}
+        if p3 in ["pau", "sil"]:
+            line += line_dict[p3]
         else:
             a1 = re.findall(r"\/A:([0-9\-]+)", content)[0]
             a2 = re.findall(r"\/A:.*?\+([0-9]+)\+", content)[0]
