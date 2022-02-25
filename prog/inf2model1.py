@@ -13,7 +13,7 @@ class InfFile():
         pass
 
 
-def current_segment(content: str) -> str:
+def get_p3(content: str) -> str:
     """_summary_
 
     Args:
@@ -48,27 +48,26 @@ def inf2model(inf2_str: str):
     for w in rlist:
         # w is the follwoing string, which has the content (xx^xx...) in the second position given `split`
         # 0 3950000 xx^xx-sil+s=o/A:xx+xx+xx/B:xx-xx_xx/C:xx_xx+xx/D:07+xx_xx/E:xx_xx!xx_xx-xx/F:xx_xx#xx_xx@xx_xx|xx_xx/G:2_2%0_xx_xx/H:xx_xx/I:xx-xx@xx+xx&xx-xx|xx+xx/J:5_21/K:1+5-11/L:
+        # https://docs.google.com/document/d/1qTUQO-dfWQjJovI0_cvV9V60NG-wD4Ic4Ev3_xjeBfA/edit#heading=h.7xfwt25c9zms
         content = w.split(" ")[2]
-        if current_segment(content) == "pau":
+        p3 = get_p3(content)
+        if p3 == "pau":
             lin += [["pau", 0, 100, 100, 100, 0]]
             continue
 
-        if current_segment(content) == "sil":
+        if p3 == "sil":
             lin += [["sil", 0, -100, 200, 100, 0]]
             continue
 
-        # (content, A, F)
-        p = re.findall(r"\-(.*?)\+.*?\/A:([0-9\-]+).*?\/F:.*?_([0-9])",
-                       content)
-        # if p != current_segment(content):
-        #     print(p, current_segment(content))
-        a2 = re.findall(r"\/A:.*?\+([0-9]+)\+", content)
-        p2 = re.findall(r"\/L:.*?_([0-9\-]+)*", content)
-        p3 = re.findall(r"\/M:.*?_([0-9\-]+)*", content)
-        #    p2 = c[2][-14:]
+        a1 = re.findall(r"\/A:([0-9\-]+)", content)[0]
+        a2 = re.findall(r"\/A:.*?\+([0-9]+)\+", content)[0]
+        f2 = re.findall(r"\/F:.*?_([0-9])", content)[0]
+        # 以下の2つはinf2の特殊な事例
+        L = re.findall(r"\/L:.*?_([0-9\-]+)*", content)[0]
+        M = re.findall(r"\/M:.*?_([0-9\-]+)*", content)[0]
+        #    p2 = c[2][-14:]  # TODO: remove me
 
-        lin += [[p[0][0], int(p[0][2]), int(p[0][1]),
-                 int(p2[0]), int(a2[0]), int(p3[0])]]
+        lin += [[p3, int(f2), int(a1), int(L), int(a2), int(M)]]
 
     # lin += [["sil", 0, -100, 200, 100, 0]]
     # print(lin)
