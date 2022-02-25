@@ -71,36 +71,39 @@ def inf2model(inf2_str: str):
         M_prev = line[i-1][5]
         if line_i[0] == "sil":
             if M_prev in [2, 3, 4] and i != 0:
+                # . ? !
                 txt += M_map[M_prev]
             continue
         elif line_i[0] == "pau":
             if M_prev in [1, 2, 3, 4]:
+                # , . ? !
                 txt += M_map[M_prev]
             else:
                 txt += "_ "
             continue
 
         line_next = line[i+1]
-        txt += line_i[0] + " "
+        p3_i, a1_i, a2_i = line_i[0], line_i[2], line_i[4]
+        a1_next, a2_next = line_next[2], line_next[4]
+        txt += p3_i + " "
 
-        # 正直、ここが一番大事
-        if (line_i[2] == 0 and line_next[2] == 1):
+        # ""を足す、と考えると一般化できる
+        if (a1_i == 0 and a1_next == 1):
             txt += "\ "
-        elif (line_i[4] == 1 and line_next[4] == 2):
+        elif (a2_i == 1 and a2_next == 2):
             txt += "/ "
-
-        if (line_i[2] > line_next[2] or line_i[1] != line_next[1]):
+        # 依存距離
+        if (a1_i > a1_next or line_i[1] != line_next[1]):
             if ((line_i[3] > 1) and (line_i[3] == line_next[3])):
-                dd = "#1 "
+                dependency_dist = "#1 "
             elif (line_i[3] < 1):
-                dd = "#1 "
+                dependency_dist = "#1 "
             elif (line_i[3] > 6):
-                dd = "#6 "
+                dependency_dist = "#6 "
             else:
-                dd = "#" + str(line_i[3]) + " "
-
+                dependency_dist = "#" + str(line_i[3]) + " "
             if (line[i+1][3] != 200):
-                txt += dd
+                txt += dependency_dist
     return txt
 
 
