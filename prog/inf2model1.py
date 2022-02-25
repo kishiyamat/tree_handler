@@ -69,13 +69,11 @@ def inf2model(inf2_str: str):
     M_map = {1: ", ", 2: ". ", 3: "? ", 4: "! "}
     for i, line_i in enumerate(line, 0):
         M_i_prev = line[i-1][5]
-        if (line_i[0] == "sil"):
-            if i == 0:
-                continue
-            elif M_i_prev in [2, 3, 4]:
+        if line_i[0] == "sil":
+            if M_i_prev in [2, 3, 4] and i != 0:
                 txt += M_map[M_i_prev]
             continue
-        elif (line_i[0] == "pau"):
+        elif line_i[0] == "pau":
             if M_i_prev in [1, 2, 3, 4]:
                 txt += M_map[M_i_prev]
             else:
