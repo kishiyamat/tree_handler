@@ -21,8 +21,8 @@ def inf2model(rlist: List[str]):
     contents = map(lambda s: s.split(" ")[2], rlist)
     # 最初の p3, f2, a1, L, a2, M を加えておく
     keys = "p3", "f2", "a1", "L", "a2", "M"
-    line_1 = ["sil", 0, 100, 100, 100, 0]
-    line = [{k: v for k, v in zip(keys, line_1)}]
+    value_1 = ["sil", 0, 100, 100, 100, 0]
+    line = [{k: v for k, v in zip(keys, value_1)}]
     # 以下の処理は必要なタグが変わるかもしれないので、できるかぎりネストせずに保つ
     for content in contents:
         # p3 is between - and + (e.g. sh^i-pau+i=...)
@@ -32,39 +32,38 @@ def inf2model(rlist: List[str]):
         L = re.findall(r"\/L:.*?_([0-9\-]+)*", content)
         a2 = re.findall(r"\/A:.*?\+([0-9]+)\+", content)
         M = re.findall(r"\/M:.*?_([0-9\-]+)*", content)
+        # FIXME: remove if statement
         if p3 == "pau":
-            line_i = ["pau", 0, 100, 100, 100, 0]
+            value_i = ["pau", 0, 100, 100, 100, 0]
         elif p3 == "sil":
-            line_i = ["sil", 0, -100, 200, 100, 0]
+            value_i = ["sil", 0, -100, 200, 100, 0]
         else:
-            line_i = [p3]+list(map(lambda i: int(i[0]), [f2, a1, L, a2, M]))
-        line += [{k: v for k, v in zip(keys, line_i)}]
+            value_i = [p3]+list(map(lambda i: int(i[0]), [f2, a1, L, a2, M]))
+        line += [{k: v for k, v in zip(keys, value_i)}]
 
-    # 取得したp3やa1などの情報から記号(,.?!/\)と依存関係の距離(#[0-9])を追加
-    txt = ""
+    # 取得したp3やa1など中身(int)から記号(,.?!/\)と依存関係の距離(#[0-9])を追加
     M_map = {1: ", ", 2: ". ", 3: "? ", 4: "! "}
-    for i, line_i in enumerate(line):
-        M_prev = line[i-1]["M"]
+    txt = ""
+    for i, line_i in enumerate(line):  # ""を足す、と考えると一般化していく
         if line_i["p3"] == "sil":
-            if M_prev in [2, 3, 4] and i != 0:
-                # . ? !
-                txt += M_map[M_prev]
+            if i != 0 and line[i-1]["M"] in [2, 3, 4]:  # . ? !
+                txt += M_map[line[i-1]["M"]]
             continue
         elif line_i["p3"] == "pau":
-            if M_prev in [1, 2, 3, 4]:
-                # , . ? !
-                txt += M_map[M_prev]
+            if line[i-1]["M"] in [1, 2, 3, 4]:  # , . ? !
+                txt += M_map[line[i-1]["M"]]
             else:
                 txt += "_ "
             continue
 
         line_next = line[i+1]
         txt += line_i["p3"] + " "
-        # ""を足す、と考えると一般化できる
         if (line_i["a1"] == 0 and line_next["a1"] == 1):
             txt += "\ "
         elif (line_i["a2"] == 1 and line_next["a2"] == 2):
             txt += "/ "
+        else:
+            txt += ""
         # 依存距離
         if (line_i["a1"] > line_next["a1"] or line_i["f2"] != line_next["f2"]):
             if ((line_i["L"] > 1) and (line_i["L"] == line_next["L"])):
