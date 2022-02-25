@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 # ファイル syn.py
 #
+# %%
 import sys
 import re
 
@@ -12,6 +13,9 @@ obj = open( "yomi/" + sys.argv[1] + ".inf2", "r" )
 rlist = obj.read()
 rlist = rlist.split( "\n" )
 obj.close()
+# print(rlist)
+# %%
+
 if ( rlist[-1] == "" ): rlist.pop()
 
 lin = [[ "sil", 0, 100, 100, 100, 0 ]]
@@ -33,8 +37,9 @@ for w in rlist:
             int( p3[0] ) ]]
 
 lin += [[ "sil", 0, -100, 200, 100, 0 ]]
-#print( lin )
+# print( lin )
 
+# %%
 txt = ""
 for i, l in enumerate( lin, 0 ):
     if   ( l[0] == "sil" ):
@@ -67,3 +72,5 @@ for i, l in enumerate( lin, 0 ):
         if ( lin[i+1][3] != 200 ): txt += dd 
 
 print( sys.argv[1], txt )
+
+# %%
