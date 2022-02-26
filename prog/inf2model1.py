@@ -13,7 +13,18 @@ class InfFile():
         pass
 
 
-def inf2model(rlist: List[str]):
+def inf2model(rlist: List[str], version: int = 0):
+    """テキストを生成
+
+    Args:
+        rlist (List[str]): _description_
+        version (int, optional): 
+            0: 先行研究
+            1: 本研究1
+            2: 本研究2
+    Returns:
+        _type_: _description_
+    """
     # p3, f2, a1, L, a2, M を各行で取得
     # r_list の要素iを split した 2 番目が必要な情報(pやaなど)
     # 0 3950000 xx^xx-sil+s=o/A:xx+xx+xx/B:xx-xx_xx/C:xx_xx+xx/D:07+xx_xx/E:xx_xx!xx_xx-xx/F:xx_xx#xx_xx@xx_xx|xx_xx/G:2_2%0_xx_xx/H:xx_xx/I:xx-xx@xx+xx&xx-xx|xx+xx/J:5_21/K:1+5-11/L:
@@ -48,7 +59,7 @@ def inf2model(rlist: List[str]):
     txt = ""
     for i, line_i in enumerate(line):
         if line_i["p3"] in ["sil", "pau"]:
-            txt += line[i-1]["M"]
+            txt += line[i-1]["M"]  # 現在がsil等なら一つ前のMを参照(理由不明)
             continue
 
         txt += line_i["p3"] + " "
@@ -77,14 +88,22 @@ def inf2model(rlist: List[str]):
 
 
 def main():
+    """
+        arg1: file name w/o suffix
+        arg2: experiment version
+    """
     if len(sys.argv) < 2:
         print("処理ファイル名を指定してください。\n")
         sys.exit()
 
     with open("yomi/" + sys.argv[1] + ".inf2", "r") as f:
+        if len(sys.argv)==2:
+            version = 0
+        else:
+            version = sys.argv[2]
         l_strip = [s.strip() for s in f.readlines()]  # readlines and remove \n
         inf2_str = list(filter(len, l_strip))  # filter zero-length str: ""
-        txt = inf2model(inf2_str)
+        txt = inf2model(inf2_str, version)
 
     print(sys.argv[1], txt)
 
