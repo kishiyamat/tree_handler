@@ -21,7 +21,7 @@ def inf2model(rlist: List[str]):
     contents = map(lambda s: s.split(" ")[2], rlist)
     # 最初の p3, f2, a1, L, a2, M を加えておく
     keys = "p3", "f2", "a1", "L", "a2", "M"
-    value_1 = ["sil", 0, 100, 100, 100, 0]
+    value_1 = ["sil", 0, 100, 100, 100, ""]
     line = [{k: v for k, v in zip(keys, value_1)}]
     # 以下の処理は必要なタグが変わるかもしれないので、できるかぎりネストせずに保つ
     for content in contents:
@@ -34,39 +34,34 @@ def inf2model(rlist: List[str]):
         M = re.findall(r"\/M:.*?_([0-9\-]+)*", content)
         # FIXME: remove if statement
         if p3 == "pau":
-            value_i = ["pau", 0, 100, 100, 100, 0]
+            value_i = ["pau", 0, 100, 100, 100, ""]
         elif p3 == "sil":
-            value_i = ["sil", 0, -100, 200, 100, 0]
+            value_i = ["sil", 0, -100, 200, 100, ""]
         else:
-            value_i = [p3]+list(map(lambda i: int(i[0]), [f2, a1, L, a2, M]))
+            # ここで \ とか / とか処理したい
+            M_map = {0: "", 1: ", ", 2: ". ", 3: "? ", 4: "! "}
+            M = M_map.get(int(M[0]), "_ ")
+            value_i = [p3]+list(map(lambda i: int(i[0]), [f2, a1, L, a2]))+[M]
         line += [{k: v for k, v in zip(keys, value_i)}]
 
     # 取得したp3やa1など中身(int)から記号(,.?!/\)と依存関係の距離(#[0-9])を追加
-    M_map = {1: ", ", 2: ". ", 3: "? ", 4: "! "}
     txt = ""
     for i, line_i in enumerate(line):  # ""を足す、と考えると一般化していく
-        if line_i["p3"] == "sil":
-            if i != 0 and line[i-1]["M"] in [2, 3, 4]:  # . ? !
-                txt += M_map[line[i-1]["M"]]
-            continue
-        elif line_i["p3"] == "pau":
-            if line[i-1]["M"] in [1, 2, 3, 4]:  # , . ? !
-                txt += M_map[line[i-1]["M"]]
-            else:
-                txt += "_ "
+        if line_i["p3"] in ["sil", "pau"]:
+            txt += line[i-1]["M"]
             continue
 
-        line_next = line[i+1]
         txt += line_i["p3"] + " "
-        if (line_i["a1"] == 0 and line_next["a1"] == 1):
+        # TODO: ここもMに格納するタイミングで処理したいなぁ
+        if (line_i["a1"] == 0 and line[i+1]["a1"] == 1):
             txt += "\ "
-        elif (line_i["a2"] == 1 and line_next["a2"] == 2):
+        elif (line_i["a2"] == 1 and line[i+1]["a2"] == 2):
             txt += "/ "
         else:
             txt += ""
         # 依存距離
-        if (line_i["a1"] > line_next["a1"] or line_i["f2"] != line_next["f2"]):
-            if ((line_i["L"] > 1) and (line_i["L"] == line_next["L"])):
+        if (line_i["a1"] > line[i+1]["a1"] or line_i["f2"] != line[i+1]["f2"]):
+            if ((line_i["L"] > 1) and (line_i["L"] == line[i+1]["L"])):
                 dependency_dist = "#1 "
             elif (line_i["L"] < 1):
                 dependency_dist = "#1 "
@@ -74,7 +69,7 @@ def inf2model(rlist: List[str]):
                 dependency_dist = "#6 "
             else:
                 dependency_dist = "#" + str(line_i["L"]) + " "
-            if (line_next["L"] != 200):
+            if (line[i+1]["L"] != 200):
                 txt += dependency_dist
     return txt
 
