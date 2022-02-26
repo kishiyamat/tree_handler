@@ -1,5 +1,8 @@
 import subprocess
+
 from prog.inf2model1 import InfParser
+
+parser = InfParser(version=0)
 
 
 def test_shell():
@@ -21,7 +24,6 @@ def test_shell():
 
 
 def test_content2columns():
-    parser = InfParser(version=0)
     inf2 = "3100000 4300000 xx^sil-s+o=n/A:-1+1+2/B:xx-xx_xx/C:07_xx+xx/D:02+xx_xx/E:xx_xx!xx_xx-xx/F:2_2#0_xx@1_5|1_21/G:6_3%0_xx_1/H:xx_xx/I:5-21@1+1&1-5|1+11/J:xx_xx/K:1+5-11/L:0_1/M:0_0/N:"
     inf2 = inf2.split(" ")[2]
     res = parser.content2columns(inf2)
