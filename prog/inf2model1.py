@@ -10,12 +10,12 @@ from typing import List
 class InfParser():
     def __init__(self, version=0):
         self.version = version
-        self.keys = "p3", "f2", "a1", "L", "a2", "M"
+        self.keys = "p3", "f2", "a1", "L", "a2", "M", "B", "C", "D"
 
     @property
     def value_1(self):
         if self.version == 0:
-            return ["sil", 0, 100, 100, 100, ""]
+            return ["sil", 0, 100, 100, 100, "", 0, 0, 0]
         elif self.version == 1:
             raise NotImplementedError
         else:
@@ -24,18 +24,20 @@ class InfParser():
     @property
     def value_pau(self):
         if self.version == 0:
-            return ["pau", 0, 100, 100, 100, ""]
+            return ["pau", 0, 100, 100, 100, "", 0, 0, 0]
         elif self.version == 1:
-            raise NotImplementedError
+            # 変わることは想定していない
+            return ["pau", 0, 100, 100, 100, "", 0, 0, 0]
         else:
             raise NotImplementedError
 
     @property
     def value_sil(self):
         if self.version == 0:
-            return ["sil", 0, -100, 200, 100, ""]
+            return ["sil", 0, -100, 200, 100, "", 0, 0, 0]
         elif self.version == 1:
-            raise NotImplementedError
+            # 変わることは想定していない
+            return ["sil", 0, -100, 200, 100, "", 0, 0, 0]
         else:
             raise NotImplementedError
 
@@ -55,11 +57,20 @@ class InfParser():
         # is_first みたいなのもあると#で挿入しやすい
         # LMN は inf がない. カラムは統一する。
         p3: str = content.split("-")[1].split("+")[0]
-        f2 = re.findall(r"\/F:.*?_([0-9])", content)
         a1 = re.findall(r"\/A:([0-9\-]+)", content)
-        L = re.findall(r"\/L:.*?_([0-9\-]+)*", content)
         a2 = re.findall(r"\/A:.*?\+([0-9]+)\+", content)
-        M = re.findall(r"\/M:.*?_([0-9\-]+)*", content)
+        f2 = re.findall(r"\/F:.*?_([0-9])", content)
+        B = re.findall(r"\/B:(.*)\/C", content)[0]
+        C = re.findall(r"\/C:(.*)\/D", content)[0]
+        D = re.findall(r"\/D:(.*)\/E", content)[0]
+        if self.version == 0:
+            L = re.findall(r"\/L:.*?_([0-9\-]+)*", content)
+            M = re.findall(r"\/M:.*?_([0-9\-]+)*", content)
+        elif self.version == 1:
+            L = [0]
+            M = [0]
+        else:
+            raise NotImplementedError
         if p3 == "pau":
             value_i = self.value_pau
         elif p3 == "sil":
@@ -68,7 +79,8 @@ class InfParser():
             M_map = {0: "", 1: ", ", 2: ". ", 3: "? ", 4: "! "}
             M = M_map.get(int(M[0]), "_ ")
             value_i = [p3] + \
-                list(map(lambda i: int(i[0]), [f2, a1, L, a2]))+[M]
+                list(map(lambda i: int(i[0]), [f2, a1, L, a2])) + \
+                [M, B, C, D]
         return {k: v for k, v in zip(self.keys, value_i)}
 
     def inf2lines(self, rlist: List[str]):
