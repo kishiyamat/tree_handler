@@ -46,19 +46,21 @@ def inf2model(rlist: List[str]):
 
     # 取得したp3やa1など中身(int)から記号(,.?!/\)と依存関係の距離(#[0-9])を追加
     txt = ""
-    for i, line_i in enumerate(line):  # ""を足す、と考えると一般化していく
+    for i, line_i in enumerate(line):
         if line_i["p3"] in ["sil", "pau"]:
             txt += line[i-1]["M"]
             continue
 
         txt += line_i["p3"] + " "
-        # TODO: ここもMに格納するタイミングで処理したいなぁ
+
+        # TODO: ここもMに格納するタイミングで処理したいが、次のラインのa1が必要だからだめか？
         if (line_i["a1"] == 0 and line[i+1]["a1"] == 1):
             txt += "\ "
         elif (line_i["a2"] == 1 and line[i+1]["a2"] == 2):
             txt += "/ "
         else:
             txt += ""
+
         # 依存距離
         if (line_i["a1"] > line[i+1]["a1"] or line_i["f2"] != line[i+1]["f2"]):
             if ((line_i["L"] > 1) and (line_i["L"] == line[i+1]["L"])):
