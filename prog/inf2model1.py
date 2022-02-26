@@ -45,12 +45,15 @@ class InfParser():
         Args:
             content (str): a1, a2, などとパースする対象のstr
                 p3, f2, a1, L, a2, M などの列を取得
+                本当はここで\とか/とか処理したい
+
         Returns:
             dict: "a1" や "a2" などを key に持つ dict
         """
         # p3 is between - and + (e.g. sh^i-pau+i=...)
-        # bcdを取得して morph id を追加する。
-        # is_first みたいなのもあると #で挿入しやすい
+        # self.versionが1の時はbcdを取得して morph id を追加する。
+        # is_first みたいなのもあると#で挿入しやすい
+        # LMN は inf がない. カラムは統一する。
         p3: str = content.split("-")[1].split("+")[0]
         f2 = re.findall(r"\/F:.*?_([0-9])", content)
         a1 = re.findall(r"\/A:([0-9\-]+)", content)
@@ -62,7 +65,6 @@ class InfParser():
         elif p3 == "sil":
             value_i = self.value_sil
         else:
-            # ここで \ とか / とか処理したい
             M_map = {0: "", 1: ", ", 2: ". ", 3: "? ", 4: "! "}
             M = M_map.get(int(M[0]), "_ ")
             value_i = [p3] + \
@@ -71,7 +73,6 @@ class InfParser():
 
     def inf2lines(self, rlist: List[str]):
         """テキストを生成
-
         Args:
             rlist (List[str]): _description_
             version (int, optional): 
@@ -85,8 +86,8 @@ class InfParser():
         # 0 3950000 xx^xx-sil+s=o/A:xx+xx+xx/B:xx-xx_xx/C:xx_xx+xx/D:07+xx_xx/E:xx_xx!xx_xx-xx/F:xx_xx#xx_xx@xx_xx|xx_xx/G:2_2%0_xx_xx/H:xx_xx/I:xx-xx@xx+xx&xx-xx|xx+xx/J:5_21/K:1+5-11/L:
         # cf. https://docs.google.com/document/d/1qTUQO-dfWQjJovI0_cvV9V60NG-wD4Ic4Ev3_xjeBfA/edit#heading=h.7xfwt25c9zms
         contents: List[str] = list(map(lambda s: s.split(" ")[2], rlist))
-        lines = [{k: v for k, v in zip(self.keys, self.value_1)}]
-        return lines + list(map(self.content2columns, contents))
+        first_line = [{k: v for k, v in zip(self.keys, self.value_1)}]
+        return first_line + list(map(self.content2columns, contents))
 
     def lines2txt(self, lines):
         # やっぱ個々で分割だな
