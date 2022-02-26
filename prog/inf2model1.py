@@ -90,7 +90,6 @@ class InfParser():
         return first_line + list(map(self.content2columns, contents))
 
     def lines2txt(self, lines):
-        # やっぱ個々で分割だな
         # 取得したp3やa1など中身(int)から記号(,.?!/\)と依存関係の距離(#[0-9])を追加
         txt = ""
         for i, line_i in enumerate(lines):
