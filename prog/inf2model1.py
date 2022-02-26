@@ -85,33 +85,8 @@ class InfParser():
         # 0 3950000 xx^xx-sil+s=o/A:xx+xx+xx/B:xx-xx_xx/C:xx_xx+xx/D:07+xx_xx/E:xx_xx!xx_xx-xx/F:xx_xx#xx_xx@xx_xx|xx_xx/G:2_2%0_xx_xx/H:xx_xx/I:xx-xx@xx+xx&xx-xx|xx+xx/J:5_21/K:1+5-11/L:
         # cf. https://docs.google.com/document/d/1qTUQO-dfWQjJovI0_cvV9V60NG-wD4Ic4Ev3_xjeBfA/edit#heading=h.7xfwt25c9zms
         contents: List[str] = list(map(lambda s: s.split(" ")[2], rlist))
-        # 最初の p3, f2, a1, L, a2, M を加えておく. dictで扱うので増えても構わない
         lines = [{k: v for k, v in zip(self.keys, self.value_1)}]
-        # 以下の処理は必要なタグが変わるかもしれないので、できるかぎりネストせずに保つ
-        for content in contents:
-            # p3 is between - and + (e.g. sh^i-pau+i=...)
-            # bcdを取得して morph id を追加する。
-            # is_first みたいなのもあると #で挿入しやすい
-            p3: str = content.split("-")[1].split("+")[0]
-            f2 = re.findall(r"\/F:.*?_([0-9])", content)
-            a1 = re.findall(r"\/A:([0-9\-]+)", content)
-            L = re.findall(r"\/L:.*?_([0-9\-]+)*", content)
-            a2 = re.findall(r"\/A:.*?\+([0-9]+)\+", content)
-            M = re.findall(r"\/M:.*?_([0-9\-]+)*", content)
-            # FIXME: remove if statement
-            if p3 == "pau":
-                value_i = ["pau", 0, 100, 100, 100, ""]
-            elif p3 == "sil":
-                value_i = ["sil", 0, -100, 200, 100, ""]
-            else:
-                # ここで \ とか / とか処理したい
-                M_map = {0: "", 1: ", ", 2: ". ", 3: "? ", 4: "! "}
-                M = M_map.get(int(M[0]), "_ ")
-                value_i = [p3] + \
-                    list(map(lambda i: int(i[0]), [f2, a1, L, a2]))+[M]
-            lines += [{k: v for k, v in zip(self.keys, value_i)}]
-
-        return lines
+        return lines + list(map(self.content2columns, contents))
 
     def lines2txt(self, lines):
         # やっぱ個々で分割だな
