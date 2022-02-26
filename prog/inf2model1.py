@@ -10,6 +10,64 @@ from typing import List
 class InfParser():
     def __init__(self, version=0):
         self.version = version
+        self.keys = "p3", "f2", "a1", "L", "a2", "M"
+
+    @property
+    def value_1(self):
+        if self.version == 0:
+            return ["sil", 0, 100, 100, 100, ""]
+        elif self.version == 1:
+            raise NotImplementedError
+        else:
+            raise NotImplementedError
+
+    @property
+    def value_pau(self):
+        if self.version == 0:
+            return ["pau", 0, 100, 100, 100, ""]
+        elif self.version == 1:
+            raise NotImplementedError
+        else:
+            raise NotImplementedError
+
+    @property
+    def value_sil(self):
+        if self.version == 0:
+            return ["sil", 0, -100, 200, 100, ""]
+        elif self.version == 1:
+            raise NotImplementedError
+        else:
+            raise NotImplementedError
+
+    def content2columns(self, content: str) -> dict:
+        """_summary_
+
+        Args:
+            content (str): a1, a2, などとパースする対象のstr
+                p3, f2, a1, L, a2, M などの列を取得
+        Returns:
+            dict: "a1" や "a2" などを key に持つ dict
+        """
+        # p3 is between - and + (e.g. sh^i-pau+i=...)
+        # bcdを取得して morph id を追加する。
+        # is_first みたいなのもあると #で挿入しやすい
+        p3: str = content.split("-")[1].split("+")[0]
+        f2 = re.findall(r"\/F:.*?_([0-9])", content)
+        a1 = re.findall(r"\/A:([0-9\-]+)", content)
+        L = re.findall(r"\/L:.*?_([0-9\-]+)*", content)
+        a2 = re.findall(r"\/A:.*?\+([0-9]+)\+", content)
+        M = re.findall(r"\/M:.*?_([0-9\-]+)*", content)
+        if p3 == "pau":
+            value_i = self.value_pau
+        elif p3 == "sil":
+            value_i = self.value_sil
+        else:
+            # ここで \ とか / とか処理したい
+            M_map = {0: "", 1: ", ", 2: ". ", 3: "? ", 4: "! "}
+            M = M_map.get(int(M[0]), "_ ")
+            value_i = [p3] + \
+                list(map(lambda i: int(i[0]), [f2, a1, L, a2]))+[M]
+        return {k: v for k, v in zip(self.keys, value_i)}
 
     def inf2lines(self, rlist: List[str]):
         """テキストを生成
@@ -23,15 +81,12 @@ class InfParser():
         Returns:
             _type_: _description_
         """
-        # p3, f2, a1, L, a2, M を各行で取得
         # r_list の要素iを split した 2 番目が必要な情報(pやaなど)
         # 0 3950000 xx^xx-sil+s=o/A:xx+xx+xx/B:xx-xx_xx/C:xx_xx+xx/D:07+xx_xx/E:xx_xx!xx_xx-xx/F:xx_xx#xx_xx@xx_xx|xx_xx/G:2_2%0_xx_xx/H:xx_xx/I:xx-xx@xx+xx&xx-xx|xx+xx/J:5_21/K:1+5-11/L:
         # cf. https://docs.google.com/document/d/1qTUQO-dfWQjJovI0_cvV9V60NG-wD4Ic4Ev3_xjeBfA/edit#heading=h.7xfwt25c9zms
-        contents = map(lambda s: s.split(" ")[2], rlist)
+        contents: List[str] = list(map(lambda s: s.split(" ")[2], rlist))
         # 最初の p3, f2, a1, L, a2, M を加えておく. dictで扱うので増えても構わない
-        keys = "p3", "f2", "a1", "L", "a2", "M"
-        value_1 = ["sil", 0, 100, 100, 100, ""]
-        lines = [{k: v for k, v in zip(keys, value_1)}]
+        lines = [{k: v for k, v in zip(self.keys, self.value_1)}]
         # 以下の処理は必要なタグが変わるかもしれないので、できるかぎりネストせずに保つ
         for content in contents:
             # p3 is between - and + (e.g. sh^i-pau+i=...)
@@ -54,7 +109,7 @@ class InfParser():
                 M = M_map.get(int(M[0]), "_ ")
                 value_i = [p3] + \
                     list(map(lambda i: int(i[0]), [f2, a1, L, a2]))+[M]
-            lines += [{k: v for k, v in zip(keys, value_i)}]
+            lines += [{k: v for k, v in zip(self.keys, value_i)}]
 
         return lines
 
