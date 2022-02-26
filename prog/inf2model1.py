@@ -30,13 +30,15 @@ def inf2model(rlist: List[str], version: int = 0):
     # 0 3950000 xx^xx-sil+s=o/A:xx+xx+xx/B:xx-xx_xx/C:xx_xx+xx/D:07+xx_xx/E:xx_xx!xx_xx-xx/F:xx_xx#xx_xx@xx_xx|xx_xx/G:2_2%0_xx_xx/H:xx_xx/I:xx-xx@xx+xx&xx-xx|xx+xx/J:5_21/K:1+5-11/L:
     # cf. https://docs.google.com/document/d/1qTUQO-dfWQjJovI0_cvV9V60NG-wD4Ic4Ev3_xjeBfA/edit#heading=h.7xfwt25c9zms
     contents = map(lambda s: s.split(" ")[2], rlist)
-    # 最初の p3, f2, a1, L, a2, M を加えておく
+    # 最初の p3, f2, a1, L, a2, M を加えておく. dictで扱うので増えても構わない
     keys = "p3", "f2", "a1", "L", "a2", "M"
     value_1 = ["sil", 0, 100, 100, 100, ""]
     line = [{k: v for k, v in zip(keys, value_1)}]
     # 以下の処理は必要なタグが変わるかもしれないので、できるかぎりネストせずに保つ
     for content in contents:
         # p3 is between - and + (e.g. sh^i-pau+i=...)
+        # bcdを取得して morph id を追加する。
+        # is_first みたいなのもあると #で挿入しやすい
         p3: str = content.split("-")[1].split("+")[0]
         f2 = re.findall(r"\/F:.*?_([0-9])", content)
         a1 = re.findall(r"\/A:([0-9\-]+)", content)
@@ -97,10 +99,11 @@ def main():
         sys.exit()
 
     with open("yomi/" + sys.argv[1] + ".inf2", "r") as f:
-        if len(sys.argv)==2:
+        if len(sys.argv) == 2:
             version = 0
         else:
-            version = sys.argv[2]
+            version = int(sys.argv[2])
+            version = sys.argv[2]  # int()
         l_strip = [s.strip() for s in f.readlines()]  # readlines and remove \n
         inf2_str = list(filter(len, l_strip))  # filter zero-length str: ""
         txt = inf2model(inf2_str, version)
