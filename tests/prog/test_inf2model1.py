@@ -53,3 +53,12 @@ def test_content2columns():
     # Lは存在しないので0になる。
     tgt = {"p3": "s", "f2": 2, "a1": -1, "L": 0, "a2": 1, "M": "", "B": "xx-xx_xx", "C": "07_xx+xx", "D": "02+xx_xx"}
     assert res == tgt
+
+    fname = "yomi/Arabian01_00050.inf"
+    with open(fname, "r") as f:
+        l_strip = [s.strip() for s in f.readlines()]  # readlines and remove \n
+        inf2_str = list(filter(len, l_strip))  # filter zero-length str: ""
+        parser = InfParser(version=1)
+        txt = parser.inf2txt(inf2_str)
+        print(txt)
+        assert txt == 0

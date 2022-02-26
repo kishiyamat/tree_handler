@@ -17,7 +17,7 @@ class InfParser():
         if self.version == 0:
             return ["sil", 0, 100, 100, 100, "", 0, 0, 0]
         elif self.version == 1:
-            raise NotImplementedError
+            return ["sil", 0, 100, 100, 100, "", 0, 0, 0]
         else:
             raise NotImplementedError
 
@@ -104,6 +104,7 @@ class InfParser():
     def lines2txt(self, lines):
         # 取得したp3やa1など中身(int)から記号(,.?!/\)と依存関係の距離(#[0-9])を追加
         txt = ""
+        morph_idx = 0
         for i, line_i in enumerate(lines):
             if line_i["p3"] in ["sil", "pau"]:
                 txt += lines[i-1]["M"]  # 現在がsil等なら一つ前のMを参照(理由不明)
@@ -119,18 +120,25 @@ class InfParser():
             else:
                 txt += ""
 
-            # 依存距離
-            if (line_i["a1"] > lines[i+1]["a1"] or line_i["f2"] != lines[i+1]["f2"]):
-                if ((line_i["L"] > 1) and (line_i["L"] == lines[i+1]["L"])):
-                    dependency_dist = "#1 "
-                elif (line_i["L"] < 1):
-                    dependency_dist = "#1 "
-                elif (line_i["L"] > 6):
-                    dependency_dist = "#6 "
-                else:
-                    dependency_dist = "#" + str(line_i["L"]) + " "
-                if (lines[i+1]["L"] != 200):
-                    txt += dependency_dist
+            # 依存距離 OR Morph id
+            if self.version == 0:
+                if (line_i["a1"] > lines[i+1]["a1"] or line_i["f2"] != lines[i+1]["f2"]):
+                    if ((line_i["L"] > 1) and (line_i["L"] == lines[i+1]["L"])):
+                        dependency_dist = "#1 "
+                    elif (line_i["L"] < 1):
+                        dependency_dist = "#1 "
+                    elif (line_i["L"] > 6):
+                        dependency_dist = "#6 "
+                    else:
+                        dependency_dist = "#" + str(line_i["L"]) + " "
+                    if (lines[i+1]["L"] != 200):
+                        txt += dependency_dist
+            if self.version == 1:
+                is_not_switched = line_i["B"]== lines[i+1]["B"] and line_i["C"]== lines[i+1]["C"] and line_i["D"]== lines[i+1]["D"]
+                is_switched  = not is_not_switched 
+                if is_switched:
+                    txt += f"#{morph_idx} "
+                    morph_idx += 1
         return txt
 
     def inf2txt(self, rlist):
