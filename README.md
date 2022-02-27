@@ -10,6 +10,14 @@ $ python inf2model1.py Arabian01_00050
 > Arabian01_00010 a / r a b i a N n a \ i t o
 ```
 
+## Hot to Use
+
+```sh
+$ . inf2model1_col.sh results_new.txt 0  # baseline
+$ . inf2model1_col.sh results_new.txt 1  # thiers
+$ . inf2model1_col.sh results_new.txt 2  # ours
+```
+
 ## リファクタリング手順
 
 ```sh
