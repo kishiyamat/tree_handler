@@ -11,35 +11,9 @@ class InfParser():
     def __init__(self, version=0):
         self.version = version
         self.keys = "p3", "f2", "a1", "L", "a2", "M", "B", "C", "D"
-
-    @property
-    def value_1(self):
-        if self.version == 0:
-            return ["sil", 0, 100, 100, 100, "", 0, 0, 0]
-        elif self.version == 1:
-            return ["sil", 0, 100, 100, 100, "", 0, 0, 0]
-        else:
-            raise NotImplementedError
-
-    @property
-    def value_pau(self):
-        if self.version == 0:
-            return ["pau", 0, 100, 100, 100, "", 0, 0, 0]
-        elif self.version == 1:
-            # 変わることは想定していない
-            return ["pau", 0, 100, 100, 100, "", 0, 0, 0]
-        else:
-            raise NotImplementedError
-
-    @property
-    def value_sil(self):
-        if self.version == 0:
-            return ["sil", 0, -100, 200, 100, "", 0, 0, 0]
-        elif self.version == 1:
-            # 変わることは想定していない
-            return ["sil", 0, -100, 200, 100, "", 0, 0, 0]
-        else:
-            raise NotImplementedError
+        self.value_1 = ["sil", 0, 100, 100, 100, "", 0, 0, 0]
+        self.value_pau = ["pau", 0, 100, 100, 100, "", 0, 0, 0]
+        self.value_sil = ["sil", 0, -100, 200, 100, "", 0, 0, 0]
 
     def content2columns(self, content: str) -> dict:
         """_summary_
@@ -63,14 +37,9 @@ class InfParser():
         B = re.findall(r"\/B:(.*)\/C", content)[0]
         C = re.findall(r"\/C:(.*)\/D", content)[0]
         D = re.findall(r"\/D:(.*)\/E", content)[0]
-        if self.version == 0:
-            L = re.findall(r"\/L:.*?_([0-9\-]+)*", content)
-            M = re.findall(r"\/M:.*?_([0-9\-]+)*", content)
-        elif self.version == 1:
-            L = [0]
-            M = [0]
-        else:
-            raise NotImplementedError
+        L = re.findall(r"\/L:.*?_([0-9\-]+)*", content)
+        M = re.findall(r"\/M:.*?_([0-9\-]+)*", content)
+
         if p3 == "pau":
             value_i = self.value_pau
         elif p3 == "sil":
@@ -105,23 +74,37 @@ class InfParser():
         # 取得したp3やa1など中身(int)から記号(,.?!/\)と依存関係の距離(#[0-9])を追加
         txt = ""
         morph_idx = 0
+        if self.version == 2:
+            txt += f"#{morph_idx} "
+            morph_idx += 1
         for i, line_i in enumerate(lines):
             if line_i["p3"] in ["sil", "pau"]:
                 txt += lines[i-1]["M"]  # 現在がsil等なら一つ前のMを参照(理由不明)
                 continue
 
             txt += line_i["p3"] + " "
-
             # TODO: ここもMに格納するタイミングで処理したいが、次のラインのa1が必要だからだめか？
-            if (line_i["a1"] == 0 and lines[i+1]["a1"] == 1):
-                txt += "\ "
-            elif (line_i["a2"] == 1 and lines[i+1]["a2"] == 2):
-                txt += "/ "
+            if self.version == 1:
+                if (line_i["a1"] == 0 and lines[i+1]["a1"] == 1):
+                    txt += "\ "
+                elif (line_i["a2"] == 1 and lines[i+1]["a2"] == 2):
+                    txt += "/ "
+                else:
+                    txt += ""
+            elif self.version in [0, 2]:
+                if (line_i["a1"] == 0 and lines[i+1]["a1"] == 1):
+                    txt += "\ "
+                elif (line_i["a2"] == 1 and lines[i+1]["a2"] == 2):
+                    # FIXME: /が必要ならこの条件分岐は不要になる
+                    txt += ""
+                else:
+                    txt += ""
             else:
-                txt += ""
+                raise ValueError
 
+            # txt += line_i["p3"] + " "
             # 依存距離 OR Morph id
-            if self.version == 0:
+            if self.version == 1:
                 if (line_i["a1"] > lines[i+1]["a1"] or line_i["f2"] != lines[i+1]["f2"]):
                     if ((line_i["L"] > 1) and (line_i["L"] == lines[i+1]["L"])):
                         dependency_dist = "#1 "
@@ -133,12 +116,15 @@ class InfParser():
                         dependency_dist = "#" + str(line_i["L"]) + " "
                     if (lines[i+1]["L"] != 200):
                         txt += dependency_dist
-            if self.version == 1:
-                is_not_switched = line_i["B"]== lines[i+1]["B"] and line_i["C"]== lines[i+1]["C"] and line_i["D"]== lines[i+1]["D"]
-                is_switched  = not is_not_switched 
+            elif self.version == 2:
+                is_not_switched = line_i["B"] == lines[i+1]["B"] and line_i["C"] == lines[i +
+                                                                                          1]["C"] and line_i["D"] == lines[i+1]["D"]
+                is_switched = not is_not_switched
                 if is_switched:
                     txt += f"#{morph_idx} "
                     morph_idx += 1
+            else:
+                continue
         return txt
 
     def inf2txt(self, rlist):
@@ -154,13 +140,9 @@ def main():
         print("処理ファイル名を指定してください。\n")
         sys.exit()
 
-    version = 0 if len(sys.argv) == 2 else int(sys.argv[2])
-    if version == 0:
-        suffix = ".inf2"
-    elif version == 1:
-        suffix = ".inf"
-    else:
-        raise NotImplementedError("version の指定 {0, 1}がおかしい")
+    # デフォルトは先行研究の1
+    version = 1 if len(sys.argv) == 2 else int(sys.argv[2])
+    suffix = ".inf2"
 
     with open("yomi/" + sys.argv[1] + suffix, "r") as f:
         l_strip = [s.strip() for s in f.readlines()]  # readlines and remove \n
