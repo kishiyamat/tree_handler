@@ -565,35 +565,58 @@ class TreeHandler:
 th = TreeHandler()
 src = """
 (IP-MAT|{}
-    (PP|[] (D s o n o) (N k o k u o \ o n i w a))
-    (PP-SBJ|[] (PP f U t a r i \ n o) (N o \ o j i g a))
-    (VP|[] a r i m a \ sh I t a)
-    (PU .))
-"""
-tgt = """
-(IP-MAT|{}
-    (PP|[] s o n o k o k u o \ o n i w a)
-    (PP-SBJ|[] (PP|[] f U t a r i \ n o) (N|[] o \ o j i g a))
-    (VP|[] a r i m a \ sh I t a)
-    (PU .))
+    (N|[]\ s o n o k o k u o \ o n i w a)
+    (PP-SBJ|[] (PP|[]\ f U t a r i \ n o) (N|[]\ o \ o j i g a))
+    (VP|[]\ a r i m a \ sh I t a)
+    (PU|[] .))
 """
 # TODO: 08. apply Lapse-L and Accent_as_head constraints
 src = ParentedTree.fromstring(src)
-res = th.reduce(src)
-res.pretty_print()
-# reduce後に残っている()はすべて(\)の右側にある。
-# 2. lapse: (a\)(b)＊ -> [a\][b＊]
-res = th.lapse(res)
-res.pretty_print()
-# 3. flatten: [[a]] -> [a]
-res = th.flatten(res)
-res.pretty_print()
 
+
+def to_line(tree):
+    tree = deepcopy(tree)
+    tgt = ""
+    for subtree_idx in tree.treepositions():
+        subtree = tree[subtree_idx]
+        if isinstance(subtree, str):
+            continue
+        tgt += " " + subtree.label().replace("\\", "").split("|")[1]
+        if isinstance(subtree[0], str):
+            tgt += " " + '%'.join(subtree)
+    return tgt
+
+
+line = to_line(src)
+
+def pushdown(line):
+    stack = []
+    line = line.split()
+    out = ""
+    for symbol in line:
+        print(len(stack))
+        if symbol in ["{}", "[]"]:
+            out += " " + symbol[0]
+            stack.append(symbol[1])
+        else:
+            out += " " + symbol + " " + stack.pop()
+            print(stack)
+    # out += " " + stack.pop()
+    # out += " " + stack.pop()
+    return out.replace("%", " ").rstrip()
+
+
+print(pushdown(line))
+
+# print(to_nest(to_line(src)))
+# src.pretty_print()
 # TODO: 09. Remove redundant brackets and ( )s
 # TODO: 10. (X|{} Y) -> {Y}; (X|[] Y) -> [Y]; (X Y) -> Y
 
 # src = th.workflow(src_1, src)
 # print(src.__str__())
 # src.pretty_print()
+
+# %%
 
 # %%
