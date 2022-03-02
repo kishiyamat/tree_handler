@@ -415,7 +415,47 @@ class TreeHandler:
                 subtree.set_label(subtree.label()+"\\")
         return tree
 
-    def is_reduced(self, tree):
+    def is_reduced_1(self, tree):
+        tree = deepcopy(tree)
+        pos_list = [t[1] for t in tree.pos()]
+        for subtree_idx in tree.treepositions():
+            subtree = tree[subtree_idx]
+            if isinstance(subtree, str):
+                continue
+            if subtree.label() in pos_list:
+                # posレベルまで下がると、下が葉っぱになってしまう。
+                continue
+            n_sisters = len(subtree)
+            for i in range(n_sisters-1):
+                left = subtree[i].label().split("|")[1]
+                right = subtree[i+1].label().split("|")[1]
+                if left== "" and right== "":
+                    return False
+        return True
+
+    def _reduce_1(self, tree):
+        tree = deepcopy(tree)
+        pos_list = [t[1] for t in tree.pos()]
+        for subtree_idx in tree.treepositions():
+            subtree = tree[subtree_idx]
+            if isinstance(subtree, str):
+                continue
+            if subtree.label() in pos_list:
+                # posレベルまで下がると、下が葉っぱになってしまう。
+                continue
+            n_sisters = len(subtree)
+            for i in range(n_sisters-1):
+                left = subtree[i].label().split("|")[1]
+                right = subtree[i+1].label().split("|")[1]
+                if left== "" and right== "":
+                    leaves = subtree.pop(i)
+                    leaves.reverse()
+                    # iをpopしたからiに挿入できる
+                    _ = [subtree[i].insert(0, leaf) for leaf in leaves]
+                    # print(subtree[i])
+                    return tree
+
+    def is_reduced_2(self, tree):
         tree = deepcopy(tree)
         pos_list = [t[1] for t in tree.pos()]
         for subtree_idx in tree.treepositions():
@@ -433,7 +473,7 @@ class TreeHandler:
                     return False
         return True
 
-    def _reduce(self, tree):
+    def _reduce_2(self, tree):
         tree = deepcopy(tree)
         pos_list = [t[1] for t in tree.pos()]
         for subtree_idx in tree.treepositions():
@@ -458,8 +498,10 @@ class TreeHandler:
     def reduce(self, tree: ParentedTree) -> ParentedTree:
         tree = deepcopy(tree)
         tree = self.percolate(self.assign_bar(tree))
-        while not self.is_reduced(tree):
-            tree = self._reduce(tree)
+        while not self.is_reduced_1(tree):
+            tree = self._reduce_1(tree)
+        while not self.is_reduced_2(tree):
+            tree = self._reduce_2(tree)
         return tree
 
 
@@ -474,7 +516,18 @@ src = ParentedTree.fromstring(src)
 src.pretty_print()
 res = th.reduce(src)
 res.pretty_print()
-src = "(X|[] (A| a) (B| b) (C| c\) (D| d))"
+# %%
+src = "(X|[] (A| a) (B| b) (C| c) (D| d))"
+src = ParentedTree.fromstring(src)
+src.pretty_print()
+res = th.reduce(src)
+res.pretty_print()
+# %%
+src = "(X|[] (A| a) (B| b\) (C| c) (D| d))"
+src = ParentedTree.fromstring(src)
+src.pretty_print()
+res = th.reduce(src)
+res.pretty_print()
 # %%
 src = """
 (IP-MAT|{}
