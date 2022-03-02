@@ -1351,28 +1351,29 @@ def test_remove_redunduncy():
     res = th.remove_redunduncy(src).__str__()
     assert tgt == res
 
-def test_reduct():
+
+def test_reduce():
     src = "(X|[] (A| a) (B| b) (C| c\) (D| d))"
     tgt = "(X|[] (C|\ a b c\) (D| d))"
     src = ParentedTree.fromstring(src)
     tgt = ParentedTree.fromstring(tgt)
     res = th.reduce(src)
-    assert tgt == res 
+    assert tgt == res
     # %%
     src = "(X|[] (A| a) (B| b) (C| c) (D| d))"
     tgt = "(X|[] (D| a b c d))"
     src = ParentedTree.fromstring(src)
     tgt = ParentedTree.fromstring(tgt)
     res = th.reduce(src)
-    assert tgt == res 
+    assert tgt == res
     # %%
     src = "(X|[] (A| a) (B| b\) (C| c) (D| d))"
     src = ParentedTree.fromstring(src)
     tgt = "(X|[] (B|\ a b\) (D| c d))"
     tgt = ParentedTree.fromstring(tgt)
     res = th.reduce(src)
-    assert tgt == res 
-  
+    assert tgt == res
+
 
 # def test_apply_constraints():
 #     src = """
