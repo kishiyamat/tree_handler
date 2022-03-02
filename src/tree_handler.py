@@ -362,9 +362,6 @@ class TreeHandler:
                     break  # 編集したら0から is_redunduntである限りやり直す
         return tree
 
-    def apply_constraints(self):
-        pass
-
     @staticmethod
     def split_idx_accent(str_row) -> tuple:
         str_split = str_row.split()
@@ -552,6 +549,13 @@ class TreeHandler:
             tree = self._flatten(tree)
         return tree
 
+    def apply_constraints(self, tree):
+        tree = deepcopy(tree)
+        tree = self.reduce(tree)
+        tree = self.lapse(tree)
+        tree = self.flatten(tree)
+        return tree
+
 
 # %%
 # 1. reduce_1: (a)＊→(a＊)  # この時点で存在するすべての（）は一つになる
@@ -575,7 +579,6 @@ tgt = """
 """
 # TODO: 08. apply Lapse-L and Accent_as_head constraints
 src = ParentedTree.fromstring(src)
-tgt = ParentedTree.fromstring(tgt).__str__()
 res = th.reduce(src)
 res.pretty_print()
 # reduce後に残っている()はすべて(\)の右側にある。
@@ -583,39 +586,8 @@ res.pretty_print()
 res = th.lapse(res)
 res.pretty_print()
 # 3. flatten: [[a]] -> [a]
-
-
-def flatten(tree):
-    tree = deepcopy(tree)
-    for subtree_idx in tree.treepositions():
-        print(subtree_idx)
-        subtree = tree[subtree_idx]
-        if isinstance(subtree, str):
-            continue
-        if subtree.parent() == None:
-            # IP−MATではない
-            continue
-        # 兄弟がいない
-        if len(subtree.parent()) == 1:
-            subtree.parent().set_label(subtree.label())
-            leaves = [x for x in subtree]
-            leaves.reverse()
-            [subtree.parent().insert(0, x) for x in leaves]
-            subtree.parent().pop(-1)
-            return tree
-
-
-print(th.is_flat(res))
 res = th.flatten(res)
 res.pretty_print()
-print(th.is_flat(res))
-# src.pretty_print()
-# res.pretty_print()
-# assert tgt == res
-# %%
-# %%
-
-# res = apply_constraints(src)
 
 # TODO: 09. Remove redundant brackets and ( )s
 # TODO: 10. (X|{} Y) -> {Y}; (X|[] Y) -> [Y]; (X Y) -> Y
@@ -623,3 +595,5 @@ print(th.is_flat(res))
 # src = th.workflow(src_1, src)
 # print(src.__str__())
 # src.pretty_print()
+
+# %%

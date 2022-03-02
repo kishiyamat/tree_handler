@@ -1419,23 +1419,25 @@ def test_flatten():
     assert tgt == res
 
 
-# def test_apply_constraints():
-#     src = """
-#     (IP-MAT|{}
-#         (PP|[] (D s o n o) (N k o k u o \ o n i w a))
-#         (PP-SBJ|[] (PP f U t a r i \ n o) (N o \ o j i g a))
-#         (VP|[] a r i m a \ sh I t a)
-#         (PU .))
-#     """
-#     tgt = """
-#     (IP-MAT|{}
-#         (PP|[] s o n o k o k u o \ o n i w a)
-#         (PP-SBJ|[] (PP|[] f U t a r i \ n o) (N|[] o \ o j i g a))
-#         (VP|[] a r i m a \ sh I t a)
-#         (PU .))
-#     """
-#     src = ParentedTree.fromstring(src)
-#     tgt = ParentedTree.fromstring(tgt).__str__()
-#     res = th.apply_constraints(src).__str__()
-#     assert tgt == res
+def test_apply_constraints():
+    src = """
+    (IP-MAT|{}
+        (PP|[] (D s o n o) (N k o k u o \ o n i w a))
+        (PP-SBJ|[] (PP f U t a r i \ n o) (N o \ o j i g a))
+        (VP|[] a r i m a \ sh I t a)
+        (PU .))
+    """
+    tgt = """
+    (IP-MAT|{}
+        (N|[]\ s o n o k o k u o \ o n i w a)
+        (PP-SBJ|[] (PP|[]\ f U t a r i \ n o) (N|[]\ o \ o j i g a))
+        (VP|[]\ a r i m a \ sh I t a)
+        (PU|[] .))
+    """
+    src = ParentedTree.fromstring(src)
+    tgt = ParentedTree.fromstring(tgt).__str__()
+    res = th.apply_constraints(src).__str__()
+    print(tgt)
+    print(res)
+    assert tgt == res
 #
