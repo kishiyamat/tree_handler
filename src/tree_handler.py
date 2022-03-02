@@ -514,6 +514,43 @@ class TreeHandler:
                 subtree.set_label(subtree.label().replace("|", "|[]"))
         return tree
 
+    def is_flat(self, tree):
+        tree = deepcopy(tree)
+        for subtree_idx in tree.treepositions():
+            subtree = tree[subtree_idx]
+            if isinstance(subtree, str):
+                continue
+            if subtree.parent() == None:
+                # IP−MATではない
+                continue
+            # 兄弟がいない
+            if len(subtree.parent()) == 1:
+                return False
+        return True
+
+    def _flatten(self, tree):
+        tree = deepcopy(tree)
+        for subtree_idx in tree.treepositions():
+            subtree = tree[subtree_idx]
+            if isinstance(subtree, str):
+                continue
+            if subtree.parent() == None:
+                # IP−MATではない
+                continue
+            # 兄弟がいない
+            if len(subtree.parent()) == 1:
+                subtree.parent().set_label(subtree.label())
+                leaves = [x for x in subtree]
+                leaves.reverse()
+                [subtree.parent().insert(0, x) for x in leaves]
+                subtree.parent().pop(-1)
+                return tree
+
+    def flatten(self, tree):
+        tree = deepcopy(tree)
+        while not self.is_flat(tree):
+            tree = self._flatten(tree)
+        return tree
 
 
 # %%
@@ -521,7 +558,6 @@ class TreeHandler:
 # 1. reduce_2: (a)(b\)→(a b\)  #
 # 2. lapse: (＊) -> [＊]
 # 3. flatten: [[＊]] -> [＊]
-# %%
 th = TreeHandler()
 src = """
 (IP-MAT|{}
@@ -547,20 +583,32 @@ res.pretty_print()
 res = th.lapse(res)
 res.pretty_print()
 # 3. flatten: [[a]] -> [a]
-# def flatten(tree):
-#     tree = deepcopy(tree)
-#     for subtree_idx in tree.treepositions():
-#         subtree = tree[subtree_idx]
-#         if isinstance(subtree, str):
-#             continue
-#         if isinstance(subtree[0], str):
-#             # 前終端ノードはスルー
-#             continue
-#         if len(subtree)==1:
-#             print(subtree.pop())
-#     return tree
-# res = flatten(res)
-# res.pretty_print()
+
+
+def flatten(tree):
+    tree = deepcopy(tree)
+    for subtree_idx in tree.treepositions():
+        print(subtree_idx)
+        subtree = tree[subtree_idx]
+        if isinstance(subtree, str):
+            continue
+        if subtree.parent() == None:
+            # IP−MATではない
+            continue
+        # 兄弟がいない
+        if len(subtree.parent()) == 1:
+            subtree.parent().set_label(subtree.label())
+            leaves = [x for x in subtree]
+            leaves.reverse()
+            [subtree.parent().insert(0, x) for x in leaves]
+            subtree.parent().pop(-1)
+            return tree
+
+
+print(th.is_flat(res))
+res = th.flatten(res)
+res.pretty_print()
+print(th.is_flat(res))
 # src.pretty_print()
 # res.pretty_print()
 # assert tgt == res
