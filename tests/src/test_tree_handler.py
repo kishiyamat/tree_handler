@@ -1359,19 +1359,41 @@ def test_reduce():
     tgt = ParentedTree.fromstring(tgt)
     res = th.reduce(src)
     assert tgt == res
-    # %%
+
     src = "(X|[] (A| a) (B| b) (C| c) (D| d))"
     tgt = "(X|[] (D| a b c d))"
     src = ParentedTree.fromstring(src)
     tgt = ParentedTree.fromstring(tgt)
     res = th.reduce(src)
     assert tgt == res
-    # %%
+
     src = "(X|[] (A| a) (B| b\) (C| c) (D| d))"
     src = ParentedTree.fromstring(src)
     tgt = "(X|[] (B|\ a b\) (D| c d))"
     tgt = ParentedTree.fromstring(tgt)
     res = th.reduce(src)
+    assert tgt == res
+
+def test_lapse():
+    src = "(X|[] (C|\ a b c\) (D| d))"
+    tgt = "(X|[] (C|[]\ a b c\) (D|[] d))"
+    src = ParentedTree.fromstring(src)
+    tgt = ParentedTree.fromstring(tgt)
+    res = th.lapse(src)
+    assert tgt == res
+    #
+    src = "(X|[] (D| a b c d))"
+    tgt = "(X|[] (D|[] a b c d))"
+    src = ParentedTree.fromstring(src)
+    tgt = ParentedTree.fromstring(tgt)
+    res = th.lapse(src)
+    assert tgt == res
+    #
+    src = "(X|[] (B|\ a b\) (D| c d))"
+    tgt = "(X|[] (B|[]\ a b\) (D|[] c d))"
+    src = ParentedTree.fromstring(src)
+    tgt = ParentedTree.fromstring(tgt)
+    res = th.lapse(src)
     assert tgt == res
 
 

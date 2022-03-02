@@ -15,7 +15,7 @@ class TreeHandler:
         self.type_given = "|"
         self.i_type = "{}"
         self.p_type = "[]"
-        self.n_type = "" # iやpとことなり()は""で表現
+        self.n_type = ""  # iやpとことなり()は""で表現
         self.phoneme_split = " "
         self.phoneme_bind = "_"
 
@@ -400,7 +400,6 @@ class TreeHandler:
                 subtree.set_label(subtree.label()+"|")
         return tree
 
-
     def percolate(self, tree):
         tree = deepcopy(tree)
         # assign_bar -> parcolate にしないと pos の種類が合わない
@@ -430,7 +429,7 @@ class TreeHandler:
             for i in range(n_sisters-1):
                 left = subtree[i].label().split("|")[1]
                 right = subtree[i+1].label().split("|")[1]
-                if left== "" and right== "":
+                if left == "" and right == "":
                     return False
         return True
 
@@ -448,7 +447,7 @@ class TreeHandler:
             for i in range(n_sisters-1):
                 left = subtree[i].label().split("|")[1]
                 right = subtree[i+1].label().split("|")[1]
-                if left== "" and right== "":
+                if left == "" and right == "":
                     leaves = subtree.pop(i)
                     leaves.reverse()
                     # iをpopしたからiに挿入できる
@@ -470,7 +469,7 @@ class TreeHandler:
             for i in range(n_sisters-1):
                 left = subtree[i].label().split("|")[1]
                 right = subtree[i+1].label().split("|")[1]
-                if left== "" and right== "\\":
+                if left == "" and right == "\\":
                     return False
         return True
 
@@ -488,7 +487,7 @@ class TreeHandler:
             for i in range(n_sisters-1):
                 left = subtree[i].label().split("|")[1]
                 right = subtree[i+1].label().split("|")[1]
-                if left== "" and right== "\\":
+                if left == "" and right == "\\":
                     leaves = subtree.pop(i)
                     leaves.reverse()
                     # iをpopしたからiに挿入できる
@@ -505,10 +504,21 @@ class TreeHandler:
             tree = self._reduce_2(tree)
         return tree
 
+    def lapse(self, tree):
+        tree = deepcopy(tree)
+        for subtree_idx in tree.treepositions():
+            subtree = tree[subtree_idx]
+            if isinstance(subtree, str):
+                continue
+            if not("[]" in subtree.label() or "{}" in subtree.label()):
+                subtree.set_label(subtree.label().replace("|", "|[]"))
+        return tree
+
+
 
 # %%
 # 1. reduce_1: (a)＊→(a＊)  # この時点で存在するすべての（）は一つになる
-# 1. reduce_2: (a)(b\)→(a b\)  #   
+# 1. reduce_2: (a)(b\)→(a b\)  #
 # 2. lapse: (＊) -> [＊]
 # 3. flatten: [[＊]] -> [＊]
 # %%
@@ -533,17 +543,8 @@ tgt = ParentedTree.fromstring(tgt).__str__()
 res = th.reduce(src)
 res.pretty_print()
 # reduce後に残っている()はすべて(\)の右側にある。
-def lapse(tree):
-    tree = deepcopy(tree)
-    for subtree_idx in tree.treepositions():
-        subtree = tree[subtree_idx]
-        if isinstance(subtree, str):
-            continue
-        if not("[]" in subtree.label() or "{}" in subtree.label()):
-            subtree.set_label(subtree.label().replace("|", "|[]")) 
-    return tree
 # 2. lapse: (a\)(b)＊ -> [a\][b＊]
-res = lapse(res)
+res = th.lapse(res)
 res.pretty_print()
 # 3. flatten: [[a]] -> [a]
 # def flatten(tree):
