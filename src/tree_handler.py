@@ -411,22 +411,31 @@ src = ParentedTree.fromstring(src)
 tgt = ParentedTree.fromstring(tgt).__str__()
 
 
-def apply_constraints(tree):
-    # 1. reduce: (a)＊(b\)→(a＊b\)
-    # 2. lapse: (a\)(b)＊ -> [a\][b＊]
-    # 3. flatten: [[a]] -> [a]
-    print(tree)
-    for subtree in tree:
-        print(subtree)
-    # return
+# 1. reduce: (a)＊(b\)→(a＊b\)
+# 2. lapse: (a\)(b)＊ -> [a\][b＊]
+# 3. flatten: [[a]] -> [a]
+def percolate(tree):
+    tree = deepcopy(tree)
+    pos_list = [t[1] for t in tree.pos()]  # ここ、なぜか0にleaveが来ているひっくり返ってる
+    for subtree_idx in tree.treepositions():  # tree を上から順番に走査
+        subtree = tree[subtree_idx]
+        if isinstance(subtree, str):
+            continue
+        if subtree.label() not in pos_list:
+            continue
+        if "\\" in "".join(subtree):
+            subtree.set_label(subtree.label()+"\\")
+    return tree
 
 
-res = apply_constraints(src).__str__()
+res = percolate(src)
 print(src)
 print(tgt)
 print(res)
-src.pretty_print()
+# src.pretty_print()
+res.pretty_print()
 # assert tgt == res
+# %%
 # %%
 
 res = apply_constraints(src)
