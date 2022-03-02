@@ -980,8 +980,6 @@ def test_integrate_morph_accent():
     """
     src_2, tgt = ParentedTree.fromstring(src_2), ParentedTree.fromstring(tgt)
     res = th.integrate_morph_accent(src_2, src_1)
-    res.pretty_print()
-    tgt.pretty_print()
     assert tgt == res
 
     # 例3
