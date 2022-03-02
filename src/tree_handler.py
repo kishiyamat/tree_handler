@@ -389,9 +389,93 @@ class TreeHandler:
         # print(src.__str__())
         return src
 
+    def assign_bar(self, tree):
+        tree = deepcopy(tree)
+        for subtree_idx in tree.treepositions():
+            subtree = tree[subtree_idx]
+            if isinstance(subtree, str):
+                continue
+            if "|" not in subtree.label():
+                subtree.set_label(subtree.label()+"|")
+        return tree
+
+
+    def percolate(self, tree):
+        tree = deepcopy(tree)
+        # assign_bar -> parcolate にしないと pos の種類が合わない
+        # ここ、なぜか0にleaveが来ているひっくり返ってる
+        pos_list = [t[1] for t in tree.pos()]
+        for subtree_idx in tree.treepositions():
+            subtree = tree[subtree_idx]
+            if isinstance(subtree, str):
+                continue
+            if subtree.label() not in pos_list:
+                continue
+            if "\\" in "".join(subtree):
+                subtree.set_label(subtree.label()+"\\")
+        return tree
+
+    def is_reduced(self, tree):
+        tree = deepcopy(tree)
+        pos_list = [t[1] for t in tree.pos()]
+        for subtree_idx in tree.treepositions():
+            subtree = tree[subtree_idx]
+            if isinstance(subtree, str):
+                continue
+            if subtree.label() in pos_list:
+                # posレベルまで下がると、下が葉っぱになってしまう。
+                continue
+            n_sisters = len(subtree)
+            for i in range(n_sisters-1):
+                left = subtree[i].label().split("|")[1]
+                right = subtree[i+1].label().split("|")[1]
+                if left== "" and right== "\\":
+                    return False
+        return True
+
+    def _reduce(self, tree):
+        tree = deepcopy(tree)
+        pos_list = [t[1] for t in tree.pos()]
+        for subtree_idx in tree.treepositions():
+            subtree = tree[subtree_idx]
+            if isinstance(subtree, str):
+                continue
+            if subtree.label() in pos_list:
+                # posレベルまで下がると、下が葉っぱになってしまう。
+                continue
+            n_sisters = len(subtree)
+            for i in range(n_sisters-1):
+                left = subtree[i].label().split("|")[1]
+                right = subtree[i+1].label().split("|")[1]
+                if left== "" and right== "\\":
+                    leaves = subtree.pop(i)
+                    leaves.reverse()
+                    # iをpopしたからiに挿入できる
+                    _ = [subtree[i].insert(0, leaf) for leaf in leaves]
+                    # print(subtree[i])
+                    return tree
+
+    def reduce(self, tree: ParentedTree) -> ParentedTree:
+        tree = deepcopy(tree)
+        tree = self.percolate(self.assign_bar(tree))
+        while not self.is_reduced(tree):
+            tree = self._reduce(tree)
+        return tree
+
 
 # %%
+# 1. reduce_1: (a)＊→(a＊)  # この時点で存在するすべての（）は一つになる
+# 1. reduce_2: (a)(b\)→(a b\)  #   
+# 2. lapse: (＊) -> [＊]
+# 3. flatten: [[＊]] -> [＊]
 th = TreeHandler()
+src = "(X|[] (A| a) (B| b) (C| c\) (D| d))"
+src = ParentedTree.fromstring(src)
+src.pretty_print()
+res = th.reduce(src)
+res.pretty_print()
+src = "(X|[] (A| a) (B| b) (C| c\) (D| d))"
+# %%
 src = """
 (IP-MAT|{}
     (PP|[] (D s o n o) (N k o k u o \ o n i w a))
@@ -412,28 +496,35 @@ tgt = ParentedTree.fromstring(tgt).__str__()
 
 
 # 1. reduce: (a)＊(b\)→(a＊b\)
-# 2. lapse: (a\)(b)＊ -> [a\][b＊]
-# 3. flatten: [[a]] -> [a]
-def percolate(tree):
+res = th.reduce(src)
+# reduce後に残っている()はすべて(\)の右側にある。
+def lapse(tree):
     tree = deepcopy(tree)
-    pos_list = [t[1] for t in tree.pos()]  # ここ、なぜか0にleaveが来ているひっくり返ってる
-    for subtree_idx in tree.treepositions():  # tree を上から順番に走査
+    for subtree_idx in tree.treepositions():
         subtree = tree[subtree_idx]
         if isinstance(subtree, str):
             continue
-        if subtree.label() not in pos_list:
-            continue
-        if "\\" in "".join(subtree):
-            subtree.set_label(subtree.label()+"\\")
+        subtree.set_label(subtree.label().replace("()", "[]")) 
     return tree
-
-
-res = percolate(src)
-print(src)
-print(tgt)
-print(res)
-# src.pretty_print()
+# 2. lapse: (a\)(b)＊ -> [a\][b＊]
+res = lapse(res)
+# 3. flatten: [[a]] -> [a]
+def flatten(tree):
+    tree = deepcopy(tree)
+    for subtree_idx in tree.treepositions():
+        subtree = tree[subtree_idx]
+        if isinstance(subtree, str):
+            continue
+        if isinstance(subtree[0], str):
+            # 前終端ノードはスルー
+            continue
+        if len(subtree)==1:
+            print(subtree.pop())
+    return tree
+res = flatten(res)
 res.pretty_print()
+# src.pretty_print()
+# res.pretty_print()
 # assert tgt == res
 # %%
 # %%
