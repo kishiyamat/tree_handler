@@ -1396,6 +1396,28 @@ def test_lapse():
     res = th.lapse(src)
     assert tgt == res
 
+def test_flatten():
+    src = "(X|[] (C|[]\ a b c\) (D|[] d))"
+    tgt = "(X|[] (C|[]\ a b c\) (D|[] d))"
+    src = ParentedTree.fromstring(src)
+    tgt = ParentedTree.fromstring(tgt)
+    res = th.flatten(src)
+    assert tgt == res
+    #
+    src = "(X|[] (D|[] a b c d))"
+    tgt = "(D|[] a b c d)"
+    src = ParentedTree.fromstring(src)
+    tgt = ParentedTree.fromstring(tgt)
+    res = th.flatten(src)
+    assert tgt == res
+    #
+    src = "(X|[] (B|[]\ a b\) (D|[] c d))"
+    tgt = "(X|[] (B|[]\ a b\) (D|[] c d))"
+    src = ParentedTree.fromstring(src)
+    tgt = ParentedTree.fromstring(tgt)
+    res = th.flatten(src)
+    assert tgt == res
+
 
 # def test_apply_constraints():
 #     src = """
