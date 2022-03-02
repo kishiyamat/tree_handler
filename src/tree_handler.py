@@ -11,9 +11,12 @@ class TreeHandler:
     def __init__(self):
         self.alinged_np_list = []
         self.morph_symbol = "#"
+        self.morph_bind = "="
         self.type_given = "|"
         self.i_type = "{}"
         self.p_type = "[]"
+        self.phoneme_split = " "
+        self.phoneme_bind = "_"
 
     def assign_morph(self, tree: ParentedTree) -> ParentedTree:
         tree = deepcopy(tree)
@@ -216,7 +219,9 @@ class TreeHandler:
                 if morph_idx != idx:
                     raise IndexError("The morph idx is not compatible!")
                 # ## 1. assign morpheme IDs  to terminal nodes
-                tree[subtree_idx] = accent
+                # もしかしたら=と_でつないだほうが早いかも
+                tree[subtree_idx] = self.phoneme_bind\
+                    .join(accent.split(self.phoneme_split))
                 morph_idx += 1
         return tree
 
@@ -402,26 +407,33 @@ tgt = """
     (PU .))
 """
 # TODO: 08. apply Lapse-L and Accent_as_head constraints
-# https://docs.google.com/document/d/1cE592_2x5xeZgEksUzhiyGvxsxz6P0YOJIyYpP-IyzY/edit#heading=h.t6pbi6utknbu
-# を参考に実装を進める
-# ・実装したい制約：アクセント( / )の後ろは必ず境界になる。
-# [ (  )  (  \ )  ] なら、くっつけて　[      \ ]
-# [ (  )  (   )   ] なら、くっつけて　[       ]
-# [ (  \ )  (  )  ] なら、分離させて[ [  \ ] [   ] ]
-# [ (  \ )  ( \ )  ] なら、分離させて[ [  \ ] [ \  ] ]
-#
-# ・[  ]の後ろの（　）は、[  ]になる。*はアクセントの有無を問わない。
-# [ [ * ] ( * ) ] なら、新しく[ ]を作って[ [ * ] [ * ] ]
-# 例：[ [ ( ) ( ) ] ( \ ) ]　→　[ [  ] ( \ ) ]  →　  [ [  ] [ \ ] ]
+src = ParentedTree.fromstring(src)
+tgt = ParentedTree.fromstring(tgt).__str__()
+
 
 def apply_constraints(tree):
-    pass
+    # 1. reduce: (a)＊(b\)→(a＊b\)
+    # 2. lapse: (a\)(b)＊ -> [a\][b＊]
+    # 3. flatten: [[a]] -> [a]
+    print(tree)
+    for subtree in tree:
+        print(subtree)
+    # return
+
+
+res = apply_constraints(src).__str__()
+print(src)
+print(tgt)
+print(res)
+src.pretty_print()
+# assert tgt == res
+# %%
 
 res = apply_constraints(src)
 
 # TODO: 09. Remove redundant brackets and ( )s
 # TODO: 10. (X|{} Y) -> {Y}; (X|[] Y) -> [Y]; (X Y) -> Y
 
-src = th.workflow(src_1, src)
-print(src.__str__())
-src.pretty_print()
+# src = th.workflow(src_1, src)
+# print(src.__str__())
+# src.pretty_print()
