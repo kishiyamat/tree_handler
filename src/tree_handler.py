@@ -15,6 +15,7 @@ class TreeHandler:
         self.type_given = "|"
         self.i_type = "{}"
         self.p_type = "[]"
+        self.n_type = "" # iやpとことなり()は""で表現
         self.phoneme_split = " "
         self.phoneme_bind = "_"
 
@@ -510,25 +511,8 @@ class TreeHandler:
 # 1. reduce_2: (a)(b\)→(a b\)  #   
 # 2. lapse: (＊) -> [＊]
 # 3. flatten: [[＊]] -> [＊]
+# %%
 th = TreeHandler()
-src = "(X|[] (A| a) (B| b) (C| c\) (D| d))"
-src = ParentedTree.fromstring(src)
-src.pretty_print()
-res = th.reduce(src)
-res.pretty_print()
-# %%
-src = "(X|[] (A| a) (B| b) (C| c) (D| d))"
-src = ParentedTree.fromstring(src)
-src.pretty_print()
-res = th.reduce(src)
-res.pretty_print()
-# %%
-src = "(X|[] (A| a) (B| b\) (C| c) (D| d))"
-src = ParentedTree.fromstring(src)
-src.pretty_print()
-res = th.reduce(src)
-res.pretty_print()
-# %%
 src = """
 (IP-MAT|{}
     (PP|[] (D s o n o) (N k o k u o \ o n i w a))
@@ -546,10 +530,8 @@ tgt = """
 # TODO: 08. apply Lapse-L and Accent_as_head constraints
 src = ParentedTree.fromstring(src)
 tgt = ParentedTree.fromstring(tgt).__str__()
-
-
-# 1. reduce: (a)＊(b\)→(a＊b\)
 res = th.reduce(src)
+res.pretty_print()
 # reduce後に残っている()はすべて(\)の右側にある。
 def lapse(tree):
     tree = deepcopy(tree)
@@ -557,32 +539,34 @@ def lapse(tree):
         subtree = tree[subtree_idx]
         if isinstance(subtree, str):
             continue
-        subtree.set_label(subtree.label().replace("()", "[]")) 
+        if not("[]" in subtree.label() or "{}" in subtree.label()):
+            subtree.set_label(subtree.label().replace("|", "|[]")) 
     return tree
 # 2. lapse: (a\)(b)＊ -> [a\][b＊]
 res = lapse(res)
-# 3. flatten: [[a]] -> [a]
-def flatten(tree):
-    tree = deepcopy(tree)
-    for subtree_idx in tree.treepositions():
-        subtree = tree[subtree_idx]
-        if isinstance(subtree, str):
-            continue
-        if isinstance(subtree[0], str):
-            # 前終端ノードはスルー
-            continue
-        if len(subtree)==1:
-            print(subtree.pop())
-    return tree
-res = flatten(res)
 res.pretty_print()
+# 3. flatten: [[a]] -> [a]
+# def flatten(tree):
+#     tree = deepcopy(tree)
+#     for subtree_idx in tree.treepositions():
+#         subtree = tree[subtree_idx]
+#         if isinstance(subtree, str):
+#             continue
+#         if isinstance(subtree[0], str):
+#             # 前終端ノードはスルー
+#             continue
+#         if len(subtree)==1:
+#             print(subtree.pop())
+#     return tree
+# res = flatten(res)
+# res.pretty_print()
 # src.pretty_print()
 # res.pretty_print()
 # assert tgt == res
 # %%
 # %%
 
-res = apply_constraints(src)
+# res = apply_constraints(src)
 
 # TODO: 09. Remove redundant brackets and ( )s
 # TODO: 10. (X|{} Y) -> {Y}; (X|[] Y) -> [Y]; (X Y) -> Y
