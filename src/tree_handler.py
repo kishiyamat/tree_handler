@@ -4,16 +4,18 @@ from typing import Any
 
 from nltk.tree import ParentedTree
 
-# %%
-
 
 class TreeHandler:
     def __init__(self):
         self.alinged_np_list = []
         self.morph_symbol = "#"
+        self.morph_bind = "="
         self.type_given = "|"
         self.i_type = "{}"
         self.p_type = "[]"
+        self.n_type = ""  # iやpとことなり()は""で表現
+        self.phoneme_split = " "
+        self.phoneme_bind = "_"
 
     def assign_morph(self, tree: ParentedTree) -> ParentedTree:
         tree = deepcopy(tree)
@@ -155,7 +157,6 @@ class TreeHandler:
         # 全てのVPがVBを含むことを保証
         # TODO: add test
         if not self.all_wrapped(tree, "VB", "VP"):
-            tree.pretty_print()
             raise ValueError("There's a VP that doesn't dominate VB.")
         for subtree_idx in tree.treepositions():
             if not self.is_key_pos(tree[subtree_idx], "VB"):  # leaf node
@@ -216,7 +217,9 @@ class TreeHandler:
                 if morph_idx != idx:
                     raise IndexError("The morph idx is not compatible!")
                 # ## 1. assign morpheme IDs  to terminal nodes
-                tree[subtree_idx] = accent
+                # もしかしたら=と_でつないだほうが早いかも
+                tree[subtree_idx] = self.phoneme_bind\
+                    .join(accent.split(self.phoneme_split))
                 morph_idx += 1
         return tree
 
@@ -378,41 +381,240 @@ class TreeHandler:
         src = self.align_p_words(src)
         src = self.integrate_morph_accent(src, src_1)
         src = self.remove_redunduncy(src)
-        # print(src.__str__())
+        src = self.apply_constraints(src)
+        src = self.to_line(src)
         return src
 
+    def assign_bar(self, tree):
+        tree = deepcopy(tree)
+        for subtree_idx in tree.treepositions():
+            subtree = tree[subtree_idx]
+            if isinstance(subtree, str):
+                continue
+            if "|" not in subtree.label():
+                subtree.set_label(subtree.label()+"|")
+        return tree
 
-# %%
-th = TreeHandler()
-src = """
-        ( (IP-MAT (PP-SBJ (NP (NPR #0-太郎))
-                        (P-OPTR #1-は))
-                (PU #2-、)
-                (CP-THT (CP-FINAL (PUL #3-「)
-                                (IP-SUB (PP-OB1 (NP (NPR #4-二郎))
-                                                (P-ROLE #5-を))
-                                        (PP-SBJ (NP (NPR #6-花子))
-                                                (P-ROLE #7-が))
-                                        (VB #8-殴っ)
-                                        (AXD #9-た))
-                                (P-FINAL #10-よ)
-                                (PUR #11-」))
-                        (P-COMP #12-と))
-                (PP (NP (NPR #13-花子))
-                (P-ROLE #14-に))
-                (VB #15-言っ)
-                (AXD #16-た)
-                (PU #17-。))
-        (ID 1_ex1643432427;JP))
-"""
-src_1 = """
-#0 t a r o \ o #1 w a #2 , #3 “ #4 j i r o \ o #5 o #6 h a \ n a k o
-#7 g a #8 n a g u \ t  #9 t a #10 y o #11 “ #12 t o #13 h a \ n a k o
-#14 n i #15 i t #16 t a #17 ."""
-# TODO: 08. apply Lapse-L and Accent_as_head constraints
-# TODO: 09. Remove redundant brackets and ( )s
-# TODO: 10. (X|{} Y) -> {Y}; (X|[] Y) -> [Y]; (X Y) -> Y
+    def percolate(self, tree):
+        tree = deepcopy(tree)
+        # assign_bar -> parcolate にしないと pos の種類が合わない
+        # ここ、なぜか0にleaveが来ているひっくり返ってる
+        for subtree_idx in tree.treepositions():
+            subtree = tree[subtree_idx]
+            if isinstance(subtree, str):  # not pos
+                continue
+            if not isinstance(subtree[0], str):  # not pos
+                continue
+            if "\\" in "".join(subtree):
+                subtree.set_label(subtree.label()+"\\")
+        return tree
 
-src = th.workflow(src_1, src)
-print(src.__str__())
-src.pretty_print()
+    def is_reduced_1(self, tree):
+        tree = deepcopy(tree)
+        pos_list = [t[1] for t in tree.pos()]
+        for subtree_idx in tree.treepositions():
+            subtree = tree[subtree_idx]
+            if isinstance(subtree, str):
+                continue
+            if subtree.label() in pos_list:
+                # posレベルまで下がると、下が葉っぱになってしまう。
+                continue
+            n_sisters = len(subtree)
+            for i in range(n_sisters-1):
+                # とりあえず pos のみを統合
+                if subtree[i].label() not in pos_list:
+                    continue
+                if subtree[i+1].label() not in pos_list:
+                    continue
+                left = subtree[i].label().split("|")[1]
+                right = subtree[i+1].label().split("|")[1]
+                if left == "" and right == "":
+                    return False
+        return True
+
+    def _reduce_1(self, tree):
+        tree = deepcopy(tree)
+        pos_list = [t[1] for t in tree.pos()]
+        for subtree_idx in tree.treepositions():
+            subtree = tree[subtree_idx]
+            if isinstance(subtree, str):
+                continue
+            if subtree.label() in pos_list:
+                # posレベルまで下がると、下が葉っぱになってしまう。
+                continue
+            n_sisters = len(subtree)
+            for i in range(n_sisters-1):
+                if subtree[i].label() not in pos_list:
+                    continue
+                if subtree[i+1].label() not in pos_list:
+                    continue
+                left = subtree[i].label().split("|")[1]
+                right = subtree[i+1].label().split("|")[1]
+                if left == "" and right == "":
+                    # leavesになってない
+                    leaves = subtree.pop(i)
+                    leaves.reverse()
+                    # iをpopしたからiに挿入できる
+                    _ = [subtree[i].insert(0, leaf) for leaf in leaves]
+                    # _ = [subtree[i].insert(0, leaf) for leaf in leaves]
+                    return tree
+
+    def is_reduced_2(self, tree):
+        tree = deepcopy(tree)
+        pos_list = [t[1] for t in tree.pos()]
+        for subtree_idx in tree.treepositions():
+            subtree = tree[subtree_idx]
+            if isinstance(subtree, str):
+                continue
+            if subtree.label() in pos_list:
+                # posレベルまで下がると、下が葉っぱになってしまう。
+                continue
+            n_sisters = len(subtree)
+            for i in range(n_sisters-1):
+                left = subtree[i].label().split("|")[1]
+                right = subtree[i+1].label().split("|")[1]
+                if left == "" and right == "\\":
+                    return False
+        return True
+
+    def _reduce_2(self, tree):
+        tree = deepcopy(tree)
+        pos_list = [t[1] for t in tree.pos()]
+        for subtree_idx in tree.treepositions():
+            subtree = tree[subtree_idx]
+            if isinstance(subtree, str):
+                continue
+            if subtree.label() in pos_list:
+                # posレベルまで下がると、下が葉っぱになってしまう。
+                continue
+            n_sisters = len(subtree)
+            for i in range(n_sisters-1):
+                left = subtree[i].label().split("|")[1]
+                right = subtree[i+1].label().split("|")[1]
+                if left == "" and right == "\\":
+                    leaves = subtree.pop(i)
+                    leaves.reverse()
+                    # iをpopしたからiに挿入できる
+                    _ = [subtree[i].insert(0, leaf) for leaf in leaves]
+                    return tree
+
+    def reduce(self, tree: ParentedTree) -> ParentedTree:
+        tree = deepcopy(tree)
+        tree = self.percolate(self.assign_bar(tree))
+        while not self.is_reduced_1(tree):
+            tree = self._reduce_1(tree)
+        while not self.is_reduced_2(tree):
+            tree = self._reduce_2(tree)
+        return tree
+
+    def lapse(self, tree):
+        tree = deepcopy(tree)
+        for subtree_idx in tree.treepositions():
+            subtree = tree[subtree_idx]
+            if isinstance(subtree, str):
+                continue
+            if not("[]" in subtree.label() or "{}" in subtree.label()):
+                subtree.set_label(subtree.label().replace("|", "|[]"))
+        return tree
+
+    def is_flat(self, tree):
+        tree = deepcopy(tree)
+        for subtree_idx in tree.treepositions():
+            subtree = tree[subtree_idx]
+            if isinstance(subtree, str):
+                continue
+            if subtree.parent() == None:
+                # IP−MATではない
+                continue
+            # 葉っぱとは限らない
+            subtree_par = subtree.label().replace("\\", "").split("|")[1]
+            parent_par = subtree.parent().label().replace(
+                "\\", "").split("|")[1]
+            if subtree_par != parent_par:  # []や{}が違う
+                continue
+            # 兄弟がいない(葉っぱかどうかは関係ない)
+            if len(subtree.parent()) == 1:
+                return False
+        return True
+
+    def _flatten(self, tree):
+        # 潰す条件
+        # 1. 葉っぱではない
+        # 1. IP−MATではない
+        # 1. []や{}が同じ. ""なら潰す
+        # 1. 兄弟がいない
+        tree = deepcopy(tree)
+        for subtree_idx in tree.treepositions():
+            subtree = tree[subtree_idx]
+            if isinstance(subtree, str):  # 葉っぱ
+                continue
+            if subtree.parent() == None:  # IP−MAT
+                continue
+            # 葉っぱとは限らない
+            subtree_par = subtree.label().replace("\\", "").split("|")[1]
+            parent_par = subtree.parent().label().replace(
+                "\\", "").split("|")[1]
+            if subtree_par != parent_par:  # []や{}が違う
+                continue
+            if len(subtree.parent()) == 1:  # 兄弟がいない
+                if isinstance(subtree[0], str):  # 葉っぱ
+                    subtree.parent().set_label(subtree.label())
+                    leaves = [x for x in subtree]
+                    leaves.reverse()
+                    [subtree.parent().insert(0, x) for x in leaves]
+                    subtree.parent().pop(-1)
+                    return tree
+                else:  # 葉っぱ以外
+                    subtree.parent().set_label(subtree.label())
+                    trees = [subtree.pop(0) for i in range(len(subtree))]
+                    [subtree.parent().insert(-1, t_i)for t_i in trees]
+                    subtree.parent().pop(-1)
+                    return tree
+
+    def flatten(self, tree):
+        tree = deepcopy(tree)
+        while not self.is_flat(tree):
+            tree = self._flatten(tree)
+        return tree
+
+    def apply_constraints(self, tree):
+        # 1. reduce_1: (a)＊→(a＊)  # この時点で存在するすべての（）は一つになる
+        # 1. reduce_2: (a)(b\)→(a b\)  #
+        # 2. lapse: (＊) -> [＊]
+        # 3. flatten: [[＊]] -> [＊]
+        tree = deepcopy(tree)
+        tree = self.reduce(tree)
+        tree = self.lapse(tree)
+        tree = self.flatten(tree)
+        return tree
+
+    def to_line(self, tree, adhoc_list=[".", ",", "“"]):
+        tree = deepcopy(tree)
+        out = ""
+        stack = []
+        nest_prev = -1
+        for subtree_idx in tree.treepositions():
+            nest_level = len(subtree_idx)
+            if nest_level < nest_prev:
+                # 上に戻った場合、その分stackをpopさせる
+                # FIXME: 本当はleavesも1下がって1登る、という一般化ができる
+                n_back = range(nest_prev - nest_level)
+                out += " " + " ".join([stack.pop()
+                                      for _ in n_back])  # 直近をpopする
+            subtree = tree[subtree_idx]
+            if isinstance(subtree, str):
+                continue
+            symbol = subtree.label().replace("\\", "").split("|")[1]
+            out += " " + symbol[0]  # 必ずノードには[]か{}がある
+            stack.append(symbol[1])
+            if isinstance(subtree[0], str):  # 前終端
+                out += " " + " ".join(subtree)
+                out += " " + stack.pop()  # 直近をpopする
+            nest_prev = len(subtree_idx)
+        out += " " + stack.pop()
+        for adhoc in adhoc_list:
+            out = out.replace(f"[ {adhoc} ]", adhoc)
+        out = out.strip()
+        # FIXME: 出力で"_"がたされる. おそらく前の方の処理で_を足している
+        out = out.replace("_", " ")
+        return out

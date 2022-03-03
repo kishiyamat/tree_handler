@@ -255,9 +255,6 @@ def test_add_phrase_type():
     """
     src, tgt = ParentedTree.fromstring(src), ParentedTree.fromstring(tgt)
     res = th.add_phrase_type(src)
-    src.pretty_print()
-    tgt.pretty_print()
-    res.pretty_print()
     assert res == tgt
 
     # 例1
@@ -307,9 +304,6 @@ def test_add_phrase_type():
     """
     src, tgt = ParentedTree.fromstring(src), ParentedTree.fromstring(tgt)
     res = th.add_phrase_type(src)
-    src.pretty_print()
-    tgt.pretty_print()
-    res.pretty_print()
     assert res == tgt
 
     # 例2
@@ -339,9 +333,6 @@ def test_add_phrase_type():
     """
     src, tgt = ParentedTree.fromstring(src), ParentedTree.fromstring(tgt)
     res = th.add_phrase_type(src)
-    src.pretty_print()
-    tgt.pretty_print()
-    res.pretty_print()
     assert res == tgt
 
     # 例3
@@ -389,9 +380,6 @@ def test_add_phrase_type():
     """
     src, tgt = ParentedTree.fromstring(src), ParentedTree.fromstring(tgt)
     res = th.add_phrase_type(src)
-    src.pretty_print()
-    tgt.pretty_print()
-    res.pretty_print()
     assert res == tgt
 
 
@@ -456,8 +444,6 @@ def test_align_np():
           (PU #11。))
         """
     src, tgt = ParentedTree.fromstring(src), ParentedTree.fromstring(tgt)
-    src.pretty_print()
-    tgt.pretty_print()
     assert th.align_np(src) == tgt
 
     # 例1
@@ -510,8 +496,6 @@ def test_align_np():
       (PU #16-。))
     """
     src, tgt = ParentedTree.fromstring(src), ParentedTree.fromstring(tgt)
-    src.pretty_print()
-    tgt.pretty_print()
     assert th.align_np(src) == tgt
 
     # 例2
@@ -542,8 +526,6 @@ def test_align_np():
       (PU #7-？))
     """
     src, tgt = ParentedTree.fromstring(src), ParentedTree.fromstring(tgt)
-    src.pretty_print()
-    tgt.pretty_print()
     assert th.align_np(src) == tgt
 
     # 例3
@@ -588,8 +570,6 @@ def test_align_np():
       (PU #17-。))
     """
     src, tgt = ParentedTree.fromstring(src), ParentedTree.fromstring(tgt)
-    src.pretty_print()
-    tgt.pretty_print()
     assert th.align_np(src) == tgt
 
 
@@ -611,8 +591,6 @@ def test_align_vp():
           (PU #11。))
         """
     src, tgt = ParentedTree.fromstring(src), ParentedTree.fromstring(tgt)
-    src.pretty_print()
-    tgt.pretty_print()
     assert th.align_vp(src) == tgt
 
     # 例1
@@ -660,8 +638,6 @@ def test_align_vp():
       (PU #16-。))
     """
     src, tgt = ParentedTree.fromstring(src), ParentedTree.fromstring(tgt)
-    src.pretty_print()
-    tgt.pretty_print()
     assert th.align_vp(src) == tgt
 
     # 例2
@@ -689,8 +665,6 @@ def test_align_vp():
       (PU #7-？))
     """
     src, tgt = ParentedTree.fromstring(src), ParentedTree.fromstring(tgt)
-    src.pretty_print()
-    tgt.pretty_print()
     assert th.align_vp(src) == tgt
 
     # 例3
@@ -734,8 +708,6 @@ def test_align_vp():
       (PU #17-。))
     """
     src, tgt = ParentedTree.fromstring(src), ParentedTree.fromstring(tgt)
-    src.pretty_print()
-    tgt.pretty_print()
     assert th.align_vp(src) == tgt
 
 
@@ -757,8 +729,6 @@ def test_align_p_words():
           (PU #11。))
         """
     src, tgt = ParentedTree.fromstring(src), ParentedTree.fromstring(tgt)
-    src.pretty_print()
-    tgt.pretty_print()
     assert th.align_p_words(src) == tgt
 
     # 例1
@@ -806,8 +776,6 @@ def test_align_p_words():
       (PU #16-。))
     """
     src, tgt = ParentedTree.fromstring(src), ParentedTree.fromstring(tgt)
-    src.pretty_print()
-    tgt.pretty_print()
     assert th.align_p_words(src) == tgt
 
     # 例2
@@ -835,8 +803,6 @@ def test_align_p_words():
       (PU #7-？))
     """
     src, tgt = ParentedTree.fromstring(src), ParentedTree.fromstring(tgt)
-    src.pretty_print()
-    tgt.pretty_print()
     assert th.align_p_words(src) == tgt
 
     # 例3
@@ -880,8 +846,6 @@ def test_align_p_words():
       (PU #17-。))
     """
     src, tgt = ParentedTree.fromstring(src), ParentedTree.fromstring(tgt)
-    src.pretty_print()
-    tgt.pretty_print()
     assert th.align_p_words(src) == tgt
 
 
@@ -900,14 +864,14 @@ def test_integrate_morph_accent():
         """
     tgt = """
         (IP-MAT
-          (PP (NP (D s o n o) (N k o k u o \ o n i w a)))
-          (PP-SBJ (NP (PP (NP (N f U t a r i \ n o))) (N o \ o j i g a)))
-          (VP (VB a r i m a \ sh I t a))
+          (PP (NP (D s_o_n_o) (N k_o_k_u_o_\_o n_i w_a)))
+          (PP-SBJ (NP (PP (NP (N f_U_t_a_r_i_\ n_o))) (N o_\_o_j_i g_a)))
+          (VP (VB a_r_i m_a_\_sh_I t_a))
           (PU .))
         """
     src_2, tgt = ParentedTree.fromstring(src_2), ParentedTree.fromstring(tgt)
     res = th.integrate_morph_accent(src_2, src_1)
-    tgt.__str__() == res.__str__()  # tree自体は異なる. tgtはスペース区切りがすべて独立したPOSになっている
+    assert tgt == res  # tree自体は異なる. tgtはスペース区切りがすべて独立したPOSになっている
 
     # 例1
     src_1 = """#0 k a \ n o #1 n e k o \ #2 w a
@@ -935,7 +899,7 @@ def test_integrate_morph_accent():
         """
     tgt = """
         (IP-MAT
-          (PP-SBJ (NP (D k a \ n o) (N n e k o \ w a)))
+          (PP-SBJ (NP (D k_a_\_n_o) (N n_e_k_o_\ w_a)))
           (VP
             (PP-OB1
               (NP
@@ -944,17 +908,17 @@ def test_integrate_morph_accent():
                   (VP
                     (PP-OB1
                       (NP
-                        (IP-REL (NP-SBJ *T*) (ADJI k i i r o i))
-                        (N m i ch i o)))
-                    (VB a r u \ k u)))
-                (N i n u \ o)))
-            (ADVP (ADV y u k k u \ r i))
-            (VB m i \ t a y o \ o da t t a r a sh i i))
+                        (IP-REL (NP-SBJ *T*) (ADJI k_i_i_r_o_i))
+                        (N m_i_ch_i o)))
+                    (VB a_r_u_\_k_u)))
+                (N i_n_u_\ o)))
+            (ADVP (ADV y_u_k_k_u_\_r_i))
+            (VB m_i_\ t_a y_o_\_o da_t t_a r_a_sh_i_i))
           (PU .))
         """
     src_2, tgt = ParentedTree.fromstring(src_2), ParentedTree.fromstring(tgt)
     res = th.integrate_morph_accent(src_2, src_1)
-    tgt.__str__() == res.__str__()  # tree自体は異なる. tgtはスペース区切りがすべて独立したPOSになっている
+    assert tgt == res
 
     # 例2
     src_1 = "#0 n a \ n i #1 o #2 k a t #3 t e #4 a g e #5 y o \ o #6 k a #7 ?"
@@ -962,27 +926,25 @@ def test_integrate_morph_accent():
     (CP-QUE
       (IP-SUB
         (NP-SBJ *pro*)
-        (PP-OB1 (NP (WPRO #0-何)) (P-ROLE #1-を))
-        (VB #2-買っ)
-        (P-CONN #3-て)
-        (VB2 #4-あげ)
-        (MD #5-よう))
+        (VP
+          (PP-OB1 (NP (WPRO #0-何 #1-を)))
+          (VB #2-買っ #3-て #4-あげ #5-よう)))
       (P-FINAL #6-か)
       (PU #7-？))
     """
     tgt = """
-    (CP-QUE|{}
+    (CP-QUE
       (IP-SUB
         (NP-SBJ *pro*)
-        (VP|[]
-          (PP-OB1|[] (NP (WPRO n a \ n i o)))
-          (VB k a t t e a g e y o \ o)))
-      (P-FINAL k a)
+        (VP
+          (PP-OB1 (NP (WPRO n_a_\_n_i o)))
+          (VB k_a_t t_e a_g_e y_o_\_o)))
+      (P-FINAL k_a)
       (PU ?))
     """
     src_2, tgt = ParentedTree.fromstring(src_2), ParentedTree.fromstring(tgt)
     res = th.integrate_morph_accent(src_2, src_1)
-    tgt.__str__() == res.__str__()  # tree自体は異なる. tgtはスペース区切りがすべて独立したPOSになっている
+    assert tgt == res
 
     # 例3
     src_1 = """
@@ -991,47 +953,47 @@ def test_integrate_morph_accent():
     #14 n i #15 i t #16 t a #17 .
     """
     src_2 = """
-    (IP-MAT|{}
-      (PP-SBJ|[] (NP (NPR #0-太郎)) (P-OPTR #1-は))
+    (IP-MAT
+      (PP-SBJ (NP (NPR #0-太郎 #1-は)))
       (PU #2-、)
-      (VP|[]
+      (VP
         (CP-THT
-          (CP-FINAL|{}
+          (CP-FINAL
             (PUL #3-「)
             (IP-SUB
-              (PP-OB1|[] (NP (NPR #4-二郎)) (P-ROLE #5-を))
-              (PP-SBJ|[] (NP (NPR #6-花子)) (P-ROLE #7-が))
-              (VP|[] (VB #8-殴っ) (AXD #9-た)))
+              (PP-OB1 (NP (NPR #4-二郎 #5-を)))
+              (PP-SBJ (NP (NPR #6-花子 #7-が)))
+              (VP (VB #8-殴っ #9-た)))
             (P-FINAL #10-よ)
             (PUR #11-」))
           (P-COMP #12-と))
-        (PP|[] (NP (NPR #13-花子)) (P-ROLE #14-に))
-        (VB #15-言っ)
-        (AXD #16-た))
+        (PP (NP (NPR #13-花子 #14-に)))
+        (VB #15-言っ #16-た))
       (PU #17-。))
     """
     tgt = """
-    (IP-MAT|{}
-      (PP-SBJ|[] (NP (NPR t a r o \ o w a)))
+    (IP-MAT
+      (PP-SBJ (NP (NPR t_a_r_o_\_o w_a)))
       (PU ,)
-      (VP|[]
+      (VP
         (CP-THT
-          (CP-FINAL|{}
+          (CP-FINAL
             (PUL “)
             (IP-SUB
-              (PP-OB1|[] (NP (NPR j i r o \ o o)))
-              (PP-SBJ|[] (NP (NPR h a \ n a k o g a)))
-              (VP|[] (VB n a g u \ t t a)))
-            (P-FINAL y o)
+              (PP-OB1 (NP (NPR j_i_r_o_\_o o)))
+              (PP-SBJ (NP (NPR h_a_\_n_a_k_o g_a)))
+              (VP (VB n_a_g_u_\_t t_a)))
+            (P-FINAL y_o)
             (PUR “))
-          (P-COMP t o))
-        (PP|[] (NP (NPR h a \ n a k o n i)))
-        (VB i t t a))
+          (P-COMP t_o))
+        (PP (NP (NPR h_a_\_n_a_k_o n_i)))
+        (VB i_t t_a))
       (PU .))
     """
     src_2, tgt = ParentedTree.fromstring(src_2), ParentedTree.fromstring(tgt)
     res = th.integrate_morph_accent(src_2, src_1)
-    tgt.__str__() == res.__str__()  # tree自体は異なる. tgtはスペース区切りがすべて独立したPOSになっている
+    # TODO: _が入力にないことを保証
+    assert tgt == res
 
 
 def test_remove_id():
@@ -1086,9 +1048,6 @@ def test_remove_id():
     src = ParentedTree.fromstring(src)
     tgt = ParentedTree.fromstring(tgt)
     res = th.remove_outmost_id(src)
-    src.pretty_print()
-    tgt.pretty_print()
-    res.pretty_print()
     assert res == tgt
 
     # 例1
@@ -1138,9 +1097,6 @@ def test_remove_id():
     src = ParentedTree.fromstring(src)
     tgt = ParentedTree.fromstring(tgt)
     res = th.remove_outmost_id(src)
-    src.pretty_print()
-    tgt.pretty_print()
-    res.pretty_print()
     assert res == tgt
 
     # 例2
@@ -1170,9 +1126,6 @@ def test_remove_id():
     src = ParentedTree.fromstring(src)
     tgt = ParentedTree.fromstring(tgt)
     res = th.remove_outmost_id(src)
-    src.pretty_print()
-    tgt.pretty_print()
-    res.pretty_print()
     assert res == tgt
 
     # 例3
@@ -1220,9 +1173,6 @@ def test_remove_id():
     src = ParentedTree.fromstring(src)
     tgt = ParentedTree.fromstring(tgt)
     res = th.remove_outmost_id(src)
-    src.pretty_print()
-    tgt.pretty_print()
-    res.pretty_print()
     assert res == tgt
 
 
@@ -1353,4 +1303,262 @@ def test_remove_redunduncy():
     res = th.remove_redunduncy(src).__str__()
     assert tgt == res
 
-# %%
+
+def test_reduce():
+    src = "(X|[] (A| a) (B| b) (C| c\) (D| d))"
+    tgt = "(X|[] (C|\ a b c\) (D| d))"
+    src = ParentedTree.fromstring(src)
+    tgt = ParentedTree.fromstring(tgt)
+    res = th.reduce(src)
+    assert tgt == res
+
+    src = "(X|[] (A| a) (B| b) (C| c) (D| d))"
+    tgt = "(X|[] (D| a b c d))"
+    src = ParentedTree.fromstring(src)
+    tgt = ParentedTree.fromstring(tgt)
+    res = th.reduce(src)
+    assert tgt == res
+
+    src = "(X|[] (A| a) (B| b\) (C| c) (D| d))"
+    src = ParentedTree.fromstring(src)
+    tgt = "(X|[] (B|\ a b\) (D| c d))"
+    tgt = ParentedTree.fromstring(tgt)
+    res = th.reduce(src)
+    assert tgt == res
+
+def test_lapse():
+    src = "(X|[] (C|\ a b c\) (D| d))"
+    tgt = "(X|[] (C|[]\ a b c\) (D|[] d))"
+    src = ParentedTree.fromstring(src)
+    tgt = ParentedTree.fromstring(tgt)
+    res = th.lapse(src)
+    assert tgt == res
+    #
+    src = "(X|[] (D| a b c d))"
+    tgt = "(X|[] (D|[] a b c d))"
+    src = ParentedTree.fromstring(src)
+    tgt = ParentedTree.fromstring(tgt)
+    res = th.lapse(src)
+    assert tgt == res
+    #
+    src = "(X|[] (B|\ a b\) (D| c d))"
+    tgt = "(X|[] (B|[]\ a b\) (D|[] c d))"
+    src = ParentedTree.fromstring(src)
+    tgt = ParentedTree.fromstring(tgt)
+    res = th.lapse(src)
+    assert tgt == res
+
+def test_flatten():
+    src = "(X|[] (C|[]\ a b c\) (D|[] d))"
+    tgt = "(X|[] (C|[]\ a b c\) (D|[] d))"
+    src = ParentedTree.fromstring(src)
+    tgt = ParentedTree.fromstring(tgt)
+    res = th.flatten(src)
+    assert tgt == res
+    #
+    src = "(X|[] (D|[] a b c d))"
+    tgt = "(D|[] a b c d)"
+    src = ParentedTree.fromstring(src)
+    tgt = ParentedTree.fromstring(tgt)
+    res = th.flatten(src)
+    assert tgt == res
+    #
+    src = "(X|[] (B|[]\ a b\) (D|[] c d))"
+    tgt = "(X|[] (B|[]\ a b\) (D|[] c d))"
+    src = ParentedTree.fromstring(src)
+    tgt = ParentedTree.fromstring(tgt)
+    res = th.flatten(src)
+    assert tgt == res
+
+
+def test_apply_constraints():
+    src = """
+    (IP-MAT|{}
+        (PP|[] (D s o n o) (N k o k u o \ o n i w a))
+        (PP-SBJ|[] (PP f U t a r i \ n o) (N o \ o j i g a))
+        (VP|[] a r i m a \ sh I t a)
+        (PU .))
+    """
+    tgt = """
+    (IP-MAT|{}
+        (N|[]\ s o n o k o k u o \ o n i w a)
+        (PP-SBJ|[] (PP|[]\ f U t a r i \ n o) (N|[]\ o \ o j i g a))
+        (VP|[]\ a r i m a \ sh I t a)
+        (PU|[] .))
+    """
+    src = ParentedTree.fromstring(src)
+    tgt = ParentedTree.fromstring(tgt).__str__()
+    res = th.apply_constraints(src).__str__()
+    print(tgt)
+    print(res)
+    # 01
+    src = """
+    (IP-MAT|{}
+      (PP-SBJ|[] (D k a \ n o) (N n e k o \ w a))
+      (VP|[]
+        (PP-OB1|[]
+          (IP-REL|{}
+            (VP|[]
+              (PP-OB1|[] (IP-REL k i i r o i) (N m i ch i o))
+              (VB a r u \ k u)))
+          (N i n u \ o))
+        (ADVP y u k k u \ r i)
+        (VB m i \ t a y o \ o da t t a r a sh i i))
+      (PU .))
+    """
+    tgt = """
+    (IP-MAT|{}
+      (PP-SBJ|[] (D|[]\ k a \ n o) (N|[]\ n e k o \ w a))
+      (VP|[]
+        (PP-OB1|[]
+          (IP-REL|{}
+            (VP|[] (N|[] k i i r o i m i ch i o) (VB|[]\ a r u \ k u)))
+          (N|[]\ i n u \ o))
+        (ADVP|[]\ y u k k u \ r i)
+        (VB|[]\ m i \ t a y o \ o da t t a r a sh i i))
+      (PU|[] .))
+    """
+    src = ParentedTree.fromstring(src)
+    tgt = ParentedTree.fromstring(tgt).__str__()
+    res = th.apply_constraints(src).__str__()
+    print(tgt)
+    print(res)
+    assert tgt == res
+    # 02
+    src = """
+    (CP-QUE|{}
+      (IP-SUB
+        (VP|[] (PP-OB1|[] n a \ n i o) (VB k a t t e a g e y o \ o)))
+      (P-FINAL k a)
+      (PU ?))
+    """
+    tgt = """
+    (CP-QUE|{}
+      (VP|[] (PP-OB1|[]\ n a \ n i o) (VB|[]\ k a t t e a g e y o \ o))
+      (PU|[] k a ?))
+    """
+    # FIXME: 本来なら (PU| k a ?) であってほしい
+    # { ( ) } の場合は { [ ] } にならない
+    tgt = """
+    (CP-QUE|{}
+      (VP|[] (PP-OB1|[]\ n a \ n i o) (VB|[]\ k a t t e a g e y o \ o))
+      (PU|[] k a ?))
+    """
+    src = ParentedTree.fromstring(src)
+    tgt = ParentedTree.fromstring(tgt).__str__()
+    res = th.apply_constraints(src).__str__()
+    print(tgt)
+    print(res)
+    assert tgt == res
+
+    # 例3
+    src = """
+    (IP-MAT|{}
+      (PP-SBJ|[] t a r o \ o w a)
+      (PU ,)
+      (VP|[]
+        (CP-THT
+          (CP-FINAL|{}
+            (PUL “)
+            (IP-SUB
+              (PP-OB1|[] j i r o \ o o)
+              (PP-SBJ|[] h a \ n a k o g a)
+              (VP|[] n a g u \ t t a))
+            (P-FINAL y o)
+            (PUR “))
+          (P-COMP t o))
+        (PP|[] h a \ n a k o n i)
+        (VB i t t a))
+      (PU .))
+    """
+    tgt = """
+    (IP-MAT|{}
+      (PP-SBJ|[]\ t a r o \ o w a)
+      (PU|[] ,)
+      (VP|[]
+        (CP-THT|[]
+          (CP-FINAL|{}
+            (PUL|[] “)
+            (IP-SUB|[]
+              (PP-OB1|[]\ j i r o \ o o)
+              (PP-SBJ|[]\ h a \ n a k o g a)
+              (VP|[]\ n a g u \ t t a))
+            (PUR|[] y o “))
+          (P-COMP|[] t o))
+        (PP|[]\ h a \ n a k o n i)
+        (VB|[] i t t a))
+      (PU|[] .))
+    """
+    src = ParentedTree.fromstring(src)
+    tgt = ParentedTree.fromstring(tgt).__str__()
+    res = th.apply_constraints(src).__str__()
+    print(tgt)
+    print(res)
+    assert tgt == res
+
+
+def test_to_line():
+    src = """
+    (IP-MAT|{}
+        (N|[]\ s o n o k o k u o \ o n i w a)
+        (PP-SBJ|[] (PP|[]\ f U t a r i \ n o) (N|[]\ o \ o j i g a))
+        (VP|[]\ a r i m a \ sh I t a)
+        (PU|[] .))
+    """
+    src = ParentedTree.fromstring(src)
+    tgt = "{ [ s o n o k o k u o \ o n i w a ] [ [ f U t a r i \ n o ] [ o \ o j i g a ] ] [ a r i m a \ sh I t a ] . }"
+    res = th.to_line(src).__str__()
+    print(tgt)
+    print(res)
+    assert tgt == res
+    src = """
+    (IP-MAT|{}
+      (PP-SBJ|[] (D|[]\ k a \ n o) (N|[]\ n e k o \ w a))
+      (VP|[]
+        (PP-OB1|[]
+          (IP-REL|{}
+            (VP|[] (N|[] k i i r o i m i ch i o) (VB|[]\ a r u \ k u)))
+          (N|[]\ i n u \ o))
+        (ADVP|[]\ y u k k u \ r i)
+        (VB|[]\ m i \ t a y o \ o da t t a r a sh i i))
+      (PU|[] .))
+    """
+    src = ParentedTree.fromstring(src)
+    tgt = "{ [ [ k a \ n o ] [ n e k o \ w a ] ] [ [ { [ [ k i i r o i m i ch i o ] [ a r u \ k u ] ] } [ i n u \ o ] ] [ y u k k u \ r i ] [ m i \ t a y o \ o da t t a r a sh i i ] ] . }"
+    res = th.to_line(src).__str__()
+    print(tgt)
+    print(res)
+    assert tgt == res
+    src = """
+    (CP-QUE|{}
+      (VP|[] (PP-OB1|[]\ n a \ n i o) (VB|[]\ k a t t e a g e y o \ o))
+      (PU|[] k a ?))
+    """
+    src = ParentedTree.fromstring(src)
+    tgt = "{ [ [ n a \ n i o ] [ k a t t e a g e y o \ o ] ] [ k a ? ] }"
+    res = th.to_line(src).__str__()
+    print(tgt)
+    print(res)
+    assert tgt == res
+    src = """
+    (IP-MAT|{}
+      (PP-SBJ|[]\ t a r o \ o w a)
+      (PU|[] ,)
+      (VP|[]
+        (CP-THT|[]
+          (CP-FINAL|{}
+            (PUL|[] “)
+            (IP-SUB|[]
+              (PP-OB1|[]\ j i r o \ o o)
+              (PP-SBJ|[]\ h a \ n a k o g a)
+              (VP|[]\ n a g u \ t t a))
+            (PUR|[] y o “))
+          (P-COMP|[] t o))
+        (PP|[]\ h a \ n a k o n i)
+        (VB|[] i t t a))
+      (PU|[] .))
+    """
+    src = ParentedTree.fromstring(src)
+    tgt = "{ [ t a r o \ o w a ] , [ [ { “ [ [ j i r o \ o o ] [ h a \ n a k o g a ] [ n a g u \ t t a ] ] [ y o “ ] } [ t o ] ] [ h a \ n a k o n i ] [ i t t a ] ] . }"
+    res = th.to_line(src).__str__()
+    assert tgt == res
