@@ -601,6 +601,8 @@ class TreeHandler:
         out += " " + stack.pop()
         out = out.replace(f"[ {adhoc} ]", adhoc)
         out = out.strip()
+        # FIXME: 出力で"_"がたされる. おそらく前の方の処理で_を足している
+        out = out.replace("_", " ")
         return out
 
 

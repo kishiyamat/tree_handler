@@ -1489,4 +1489,21 @@ def test_to_line():
     print(tgt)
     print(res)
     assert tgt == res
-    tgt = "{ [ [ k_a_\_n_o ] [ n_e_k_o_\ w_a ] ] [ [ { [ [ k_i_i_r_o_i m_i_ch_i o ] [ a_r_u_\_k_u ] ] } [ i_n_u_\ o ] ] [ y_u_k_k_u_\_r_i ] [ m_i_\ t_a y_o_\_o da_t t_a r_a_sh_i_i ] ] . }"
+    src = """
+    (IP-MAT|{}
+      (PP-SBJ|[] (D|[]\ k a \ n o) (N|[]\ n e k o \ w a))
+      (VP|[]
+        (PP-OB1|[]
+          (IP-REL|{}
+            (VP|[] (N|[] k i i r o i m i ch i o) (VB|[]\ a r u \ k u)))
+          (N|[]\ i n u \ o))
+        (ADVP|[]\ y u k k u \ r i)
+        (VB|[]\ m i \ t a y o \ o da t t a r a sh i i))
+      (PU|[] .))
+    """
+    src = ParentedTree.fromstring(src)
+    tgt = "{ [ [ k a \ n o ] [ n e k o \ w a ] ] [ [ { [ [ k i i r o i m i ch i o ] [ a r u \ k u ] ] } [ i n u \ o ] ] [ y u k k u \ r i ] [ m i \ t a y o \ o da t t a r a sh i i ] ] . }"
+    res = th.to_line(src).__str__()
+    print(tgt)
+    print(res)
+    assert tgt == res
