@@ -424,6 +424,11 @@ class TreeHandler:
                 continue
             n_sisters = len(subtree)
             for i in range(n_sisters-1):
+                # とりあえず pos のみを統合
+                if subtree[i].label() not in pos_list:
+                    continue
+                if subtree[i+1].label() not in pos_list:
+                    continue
                 left = subtree[i].label().split("|")[1]
                 right = subtree[i+1].label().split("|")[1]
                 if left == "" and right == "":
@@ -442,6 +447,10 @@ class TreeHandler:
                 continue
             n_sisters = len(subtree)
             for i in range(n_sisters-1):
+                if subtree[i].label() not in pos_list:
+                    continue
+                if subtree[i+1].label() not in pos_list:
+                    continue
                 left = subtree[i].label().split("|")[1]
                 right = subtree[i+1].label().split("|")[1]
                 if left == "" and right == "":
@@ -625,12 +634,8 @@ print(src)
 print("")
 print("reduce")
 src = th.percolate(th.assign_bar(src))
-src = th.flatten(src)
-print(src)
-# %%
-# %%
-src = th._reduce_1(src)
 src = th.reduce(src)
+print(src)
 print(src)
 print("")
 print("lapse")
