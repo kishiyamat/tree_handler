@@ -1441,3 +1441,19 @@ def test_apply_constraints():
     print(res)
     assert tgt == res
 #
+
+
+def test_to_line():
+    src = """
+    (IP-MAT|{}
+        (N|[]\ s o n o k o k u o \ o n i w a)
+        (PP-SBJ|[] (PP|[]\ f U t a r i \ n o) (N|[]\ o \ o j i g a))
+        (VP|[]\ a r i m a \ sh I t a)
+        (PU|[] .))
+    """
+    src = ParentedTree.fromstring(src)
+    tgt = "{ [ s o n o k o k u o \ o n i w a ] [ [ f U t a r i \ n o ] [ o \ o j i g a ] ] [ a r i m a \ sh I t a ] . }"
+    res = th.to_line(src).__str__()
+    print(tgt)
+    print(res)
+    assert tgt == res

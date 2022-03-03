@@ -550,73 +550,40 @@ class TreeHandler:
         return tree
 
     def apply_constraints(self, tree):
+        # 1. reduce_1: (a)＊→(a＊)  # この時点で存在するすべての（）は一つになる
+        # 1. reduce_2: (a)(b\)→(a b\)  #
+        # 2. lapse: (＊) -> [＊]
+        # 3. flatten: [[＊]] -> [＊]
         tree = deepcopy(tree)
         tree = self.reduce(tree)
         tree = self.lapse(tree)
         tree = self.flatten(tree)
         return tree
 
-
-# %%
-# 1. reduce_1: (a)＊→(a＊)  # この時点で存在するすべての（）は一つになる
-# 1. reduce_2: (a)(b\)→(a b\)  #
-# 2. lapse: (＊) -> [＊]
-# 3. flatten: [[＊]] -> [＊]
-th = TreeHandler()
-src = """
-(IP-MAT|{}
-    (N|[]\ s o n o k o k u o \ o n i w a)
-    (PP-SBJ|[] (PP|[]\ f U t a r i \ n o) (N|[]\ o \ o j i g a))
-    (VP|[]\ a r i m a \ sh I t a)
-    (PU|[] .))
-"""
-# TODO: 08. apply Lapse-L and Accent_as_head constraints
-src = ParentedTree.fromstring(src)
-
-
-def to_line(tree):
-    tree = deepcopy(tree)
-    tgt = ""
-    for subtree_idx in tree.treepositions():
-        subtree = tree[subtree_idx]
-        if isinstance(subtree, str):
-            continue
-        tgt += " " + subtree.label().replace("\\", "").split("|")[1]
-        if isinstance(subtree[0], str):
-            tgt += " " + '%'.join(subtree)
-    return tgt
-
-
-line = to_line(src)
-
-def pushdown(line):
-    stack = []
-    line = line.split()
-    out = ""
-    for symbol in line:
-        print(len(stack))
-        if symbol in ["{}", "[]"]:
-            out += " " + symbol[0]
+    def to_line(self, tree, adhoc="."):
+        tree = deepcopy(tree)
+        out = ""
+        stack = []
+        nest_prev = -1
+        for subtree_idx in tree.treepositions():
+            nest_level = len(subtree_idx)
+            if nest_level < nest_prev:
+                # 上に戻った場合、その分stackをpopさせる
+                # FIXME: 本当はleavesも1下がって1登る、という一般化ができる
+                n_back = range(nest_prev - nest_level)
+                out += " " + " ".join([stack.pop()
+                                      for _ in n_back])  # 直近をpopする
+            subtree = tree[subtree_idx]
+            if isinstance(subtree, str):
+                continue
+            symbol = subtree.label().replace("\\", "").split("|")[1]
+            out += " " + symbol[0]  # 必ずノードには[]か{}がある
             stack.append(symbol[1])
-        else:
-            out += " " + symbol + " " + stack.pop()
-            print(stack)
-    # out += " " + stack.pop()
-    # out += " " + stack.pop()
-    return out.replace("%", " ").rstrip()
-
-
-print(pushdown(line))
-
-# print(to_nest(to_line(src)))
-# src.pretty_print()
-# TODO: 09. Remove redundant brackets and ( )s
-# TODO: 10. (X|{} Y) -> {Y}; (X|[] Y) -> [Y]; (X Y) -> Y
-
-# src = th.workflow(src_1, src)
-# print(src.__str__())
-# src.pretty_print()
-
-# %%
-
-# %%
+            if isinstance(subtree[0], str):  # 前終端
+                out += " " + " ".join(subtree)
+                out += " " + stack.pop()  # 直近をpopする
+            nest_prev = len(subtree_idx)
+        out += " " + stack.pop()
+        out = out.replace(f"[ {adhoc} ]", adhoc)
+        out = out.strip()
+        return out
