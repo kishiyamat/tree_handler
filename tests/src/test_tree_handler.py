@@ -1577,3 +1577,38 @@ def test_to_line():
     print(tgt)
     print(res)
     assert tgt == res
+    src = """
+    (CP-QUE|{}
+      (VP|[] (PP-OB1|[]\ n a \ n i o) (VB|[]\ k a t t e a g e y o \ o))
+      (PU|[] k a ?))
+    """
+    src = ParentedTree.fromstring(src)
+    tgt = "{ [ [ n a \ n i o ] [ k a t t e a g e y o \ o ] ] [ k a ? ] }"
+    res = th.to_line(src).__str__()
+    print(tgt)
+    print(res)
+    assert tgt == res
+    src = """
+    (IP-MAT|{}
+      (PP-SBJ|[]\ t a r o \ o w a)
+      (PU|[] ,)
+      (VP|[]
+        (CP-THT|[]
+          (CP-FINAL|{}
+            (PUL|[] “)
+            (IP-SUB|[]
+              (PP-OB1|[]\ j i r o \ o o)
+              (PP-SBJ|[]\ h a \ n a k o g a)
+              (VP|[]\ n a g u \ t t a))
+            (PUR|[] y o “))
+          (P-COMP|[] t o))
+        (PP|[]\ h a \ n a k o n i)
+        (VB|[] i t t a))
+      (PU|[] .))
+    """
+    src = ParentedTree.fromstring(src)
+    tgt = "{ [ t a r o \ o w a ] [ , ] [ [ { [ “ ] [ [ j i r o \ o o ] [ h a \ n a k o g a ] [ n a g u \ t t a ] ] [ y o “ ] } [ t o ] ] [ h a \ n a k o n i ] [ i t t a ] ] . }"
+    res = th.to_line(src).__str__()
+    print(tgt)
+    print(res)
+    assert tgt == res
