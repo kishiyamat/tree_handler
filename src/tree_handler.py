@@ -384,6 +384,8 @@ class TreeHandler:
         src = self.align_p_words(src)
         src = self.integrate_morph_accent(src, src_1)
         src = self.remove_redunduncy(src)
+        src = self.apply_constraints(src)
+        src = self.to_line(src)
         # print(src.__str__())
         return src
 
