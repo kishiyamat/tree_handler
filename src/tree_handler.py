@@ -4,8 +4,6 @@ from typing import Any
 
 from nltk.tree import ParentedTree
 
-# %%
-
 
 class TreeHandler:
     def __init__(self):
@@ -522,22 +520,37 @@ class TreeHandler:
             if subtree.parent() == None:
                 # IP−MATではない
                 continue
+            # 葉っぱとは限らない
+            subtree_par = subtree.label().replace("\\", "").split("|")[1]
+            parent_par = subtree.parent().label().replace(
+                "\\", "").split("|")[1]
+            if subtree_par != parent_par:  # []や{}が違う
+                continue
             # 兄弟がいない
             if len(subtree.parent()) == 1:
                 return False
         return True
 
     def _flatten(self, tree):
+        # 潰す条件
+        # 1. 葉っぱではない
+        # 1. IP−MATではない
+        # 1. []や{}が同じ
+        # 1. 兄弟がいない
         tree = deepcopy(tree)
         for subtree_idx in tree.treepositions():
             subtree = tree[subtree_idx]
-            if isinstance(subtree, str):
+            if isinstance(subtree, str):  # 葉っぱ
                 continue
-            if subtree.parent() == None:
-                # IP−MATではない
+            if subtree.parent() == None:  # IP−MAT
                 continue
-            # 兄弟がいない
-            if len(subtree.parent()) == 1:
+            # 葉っぱとは限らない
+            subtree_par = subtree.label().replace("\\", "").split("|")[1]
+            parent_par = subtree.parent().label().replace(
+                "\\", "").split("|")[1]
+            if subtree_par != parent_par:  # []や{}が違う
+                continue
+            if len(subtree.parent()) == 1:  # 兄弟がいない
                 subtree.parent().set_label(subtree.label())
                 leaves = [x for x in subtree]
                 leaves.reverse()
@@ -589,3 +602,58 @@ class TreeHandler:
         out = out.replace(f"[ {adhoc} ]", adhoc)
         out = out.strip()
         return out
+
+
+# %%
+th = TreeHandler()
+src = """
+(IP-MAT|{}
+    (PP-SBJ|[] (D k a \ n o) (N n e k o \ w a))
+    (VP|[]
+    (PP-OB1|[]
+        (IP-REL|{}
+        (VP|[]
+            (PP-OB1|[] (IP-REL k i i r o i) (N m i ch i o))
+            (VB a r u \ k u)))
+        (N i n u \ o))
+    (ADVP y u k k u \ r i)
+    (VB m i \ t a y o \ o da t t a r a sh i i))
+    (PU .))
+"""
+tgt = """
+(IP-MAT|{}
+    (PP-SBJ|[] (D k a \ n o) (N n e k o \ w a))
+    (VP|[]
+    (PP-OB1|[]
+        (IP-REL|{}
+        (VP|[]
+            (PP-OB1|[] (IP-REL k i i r o i) (N m i ch i o))
+            (VB a r u \ k u)))
+        (N i n u \ o))
+    (ADVP y u k k u \ r i)
+    (VB m i \ t a y o \ o da t t a r a sh i i))
+    (PU .))
+"""
+# print("original")
+# src = ParentedTree.fromstring(src)
+# print(src)
+# print("")
+# print("reduce")
+# src = th.reduce(src)
+# print(src)
+# print("")
+# print("lapse")
+# src = th.lapse(src)
+# print(src)
+# print("")
+# print("flatten")
+# src = th.flatten(src)
+# print(src)
+# # tgt = ParentedTree.fromstring(tgt).__str__()
+# # res = th.apply_constraints(src).__str__()
+# # res = th.apply_constraints(src).__str__()
+# # print(tgt)
+# # print(res)
+# #
+
+# %%
