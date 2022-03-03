@@ -401,12 +401,11 @@ class TreeHandler:
         tree = deepcopy(tree)
         # assign_bar -> parcolate にしないと pos の種類が合わない
         # ここ、なぜか0にleaveが来ているひっくり返ってる
-        pos_list = [t[1] for t in tree.pos()]
         for subtree_idx in tree.treepositions():
             subtree = tree[subtree_idx]
-            if isinstance(subtree, str):
+            if isinstance(subtree, str):  # not pos
                 continue
-            if subtree.label() not in pos_list:
+            if not isinstance(subtree[0], str):  # not pos
                 continue
             if "\\" in "".join(subtree):
                 subtree.set_label(subtree.label()+"\\")
@@ -457,8 +456,6 @@ class TreeHandler:
                     # leavesになってない
                     leaves = subtree.pop(i)
                     leaves.reverse()
-                    print("leaves")
-                    print(leaves)
                     # iをpopしたからiに挿入できる
                     _ = [subtree[i].insert(0, leaf) for leaf in leaves]
                     # _ = [subtree[i].insert(0, leaf) for leaf in leaves]
@@ -539,7 +536,7 @@ class TreeHandler:
                 "\\", "").split("|")[1]
             if subtree_par != parent_par:  # []や{}が違う
                 continue
-            # 兄弟がいない
+            # 兄弟がいない(葉っぱかどうかは関係ない)
             if len(subtree.parent()) == 1:
                 return False
         return True
@@ -564,12 +561,19 @@ class TreeHandler:
             if subtree_par != parent_par:  # []や{}が違う
                 continue
             if len(subtree.parent()) == 1:  # 兄弟がいない
-                subtree.parent().set_label(subtree.label())
-                leaves = [x for x in subtree]
-                leaves.reverse()
-                [subtree.parent().insert(0, x) for x in leaves]
-                subtree.parent().pop(-1)
-                return tree
+                if isinstance(subtree[0], str):  # 葉っぱ
+                    subtree.parent().set_label(subtree.label())
+                    leaves = [x for x in subtree]
+                    leaves.reverse()
+                    [subtree.parent().insert(0, x) for x in leaves]
+                    subtree.parent().pop(-1)
+                    return tree
+                else:  # 葉っぱ以外
+                    subtree.parent().set_label(subtree.label())
+                    trees = [subtree.pop(0) for i in range(len(subtree))]
+                    [subtree.parent().insert(-1, t_i)for t_i in trees]
+                    subtree.parent().pop(-1)
+                    return tree
 
     def flatten(self, tree):
         tree = deepcopy(tree)
@@ -617,39 +621,3 @@ class TreeHandler:
         # FIXME: 出力で"_"がたされる. おそらく前の方の処理で_を足している
         out = out.replace("_", " ")
         return out
-
-
-# %%
-th = TreeHandler()
-src = """
-(CP-QUE|{}
-    (IP-SUB (VP|[] (PP-OB1|[] n a \ n i o) (VB k a t t e a g e y o \ o)))
-    (P-FINAL k a)
-    (PU ?)
-    )
-"""
-print("original")
-src = ParentedTree.fromstring(src)
-print(src)
-print("")
-print("reduce")
-src = th.percolate(th.assign_bar(src))
-src = th.reduce(src)
-print(src)
-print(src)
-print("")
-print("lapse")
-src = th.lapse(src)
-print(src)
-print("")
-print("flatten")
-src = th.flatten(src)
-print(src)
-# # tgt = ParentedTree.fromstring(tgt).__str__()
-# # res = th.apply_constraints(src).__str__()
-# # res = th.apply_constraints(src).__str__()
-# # print(tgt)
-# # print(res)
-# #
-
-# %%

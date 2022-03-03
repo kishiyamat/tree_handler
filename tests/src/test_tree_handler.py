@@ -1482,9 +1482,15 @@ def test_apply_constraints():
     """
     tgt = """
     (CP-QUE|{}
-      (VP|[] (PP-OB1|[] n a \ n i o) (VB k a t t e a g e y o \ o))
-      (P-FINAL|[] k a)
-      (PU|[] ?))
+      (VP|[] (PP-OB1|[]\ n a \ n i o) (VB|[]\ k a t t e a g e y o \ o))
+      (PU|[] k a ?))
+    """
+    # FIXME: 本来なら (PU| k a ?) であってほしい
+    # { ( ) } の場合は { [ ] } にならない
+    tgt = """
+    (CP-QUE|{}
+      (VP|[] (PP-OB1|[]\ n a \ n i o) (VB|[]\ k a t t e a g e y o \ o))
+      (PU|[] k a ?))
     """
     src = ParentedTree.fromstring(src)
     tgt = ParentedTree.fromstring(tgt).__str__()
@@ -1513,13 +1519,30 @@ def test_apply_constraints():
         (VB i t t a))
       (PU .))
     """
+    tgt = """
+    (IP-MAT|{}
+      (PP-SBJ|[]\ t a r o \ o w a)
+      (PU|[] ,)
+      (VP|[]
+        (CP-THT|[]
+          (CP-FINAL|{}
+            (PUL|[] “)
+            (IP-SUB|[]
+              (PP-OB1|[]\ j i r o \ o o)
+              (PP-SBJ|[]\ h a \ n a k o g a)
+              (VP|[]\ n a g u \ t t a))
+            (PUR|[] y o “))
+          (P-COMP|[] t o))
+        (PP|[]\ h a \ n a k o n i)
+        (VB|[] i t t a))
+      (PU|[] .))
+    """
     src = ParentedTree.fromstring(src)
     tgt = ParentedTree.fromstring(tgt).__str__()
     res = th.apply_constraints(src).__str__()
     print(tgt)
     print(res)
     assert tgt == res
-#
 
 
 def test_to_line():
