@@ -255,9 +255,6 @@ def test_add_phrase_type():
     """
     src, tgt = ParentedTree.fromstring(src), ParentedTree.fromstring(tgt)
     res = th.add_phrase_type(src)
-    src.pretty_print()
-    tgt.pretty_print()
-    res.pretty_print()
     assert res == tgt
 
     # 例1
@@ -307,9 +304,6 @@ def test_add_phrase_type():
     """
     src, tgt = ParentedTree.fromstring(src), ParentedTree.fromstring(tgt)
     res = th.add_phrase_type(src)
-    src.pretty_print()
-    tgt.pretty_print()
-    res.pretty_print()
     assert res == tgt
 
     # 例2
@@ -339,9 +333,6 @@ def test_add_phrase_type():
     """
     src, tgt = ParentedTree.fromstring(src), ParentedTree.fromstring(tgt)
     res = th.add_phrase_type(src)
-    src.pretty_print()
-    tgt.pretty_print()
-    res.pretty_print()
     assert res == tgt
 
     # 例3
@@ -389,9 +380,6 @@ def test_add_phrase_type():
     """
     src, tgt = ParentedTree.fromstring(src), ParentedTree.fromstring(tgt)
     res = th.add_phrase_type(src)
-    src.pretty_print()
-    tgt.pretty_print()
-    res.pretty_print()
     assert res == tgt
 
 
@@ -456,8 +444,6 @@ def test_align_np():
           (PU #11。))
         """
     src, tgt = ParentedTree.fromstring(src), ParentedTree.fromstring(tgt)
-    src.pretty_print()
-    tgt.pretty_print()
     assert th.align_np(src) == tgt
 
     # 例1
@@ -510,8 +496,6 @@ def test_align_np():
       (PU #16-。))
     """
     src, tgt = ParentedTree.fromstring(src), ParentedTree.fromstring(tgt)
-    src.pretty_print()
-    tgt.pretty_print()
     assert th.align_np(src) == tgt
 
     # 例2
@@ -542,8 +526,6 @@ def test_align_np():
       (PU #7-？))
     """
     src, tgt = ParentedTree.fromstring(src), ParentedTree.fromstring(tgt)
-    src.pretty_print()
-    tgt.pretty_print()
     assert th.align_np(src) == tgt
 
     # 例3
@@ -588,8 +570,6 @@ def test_align_np():
       (PU #17-。))
     """
     src, tgt = ParentedTree.fromstring(src), ParentedTree.fromstring(tgt)
-    src.pretty_print()
-    tgt.pretty_print()
     assert th.align_np(src) == tgt
 
 
@@ -611,8 +591,6 @@ def test_align_vp():
           (PU #11。))
         """
     src, tgt = ParentedTree.fromstring(src), ParentedTree.fromstring(tgt)
-    src.pretty_print()
-    tgt.pretty_print()
     assert th.align_vp(src) == tgt
 
     # 例1
@@ -660,8 +638,6 @@ def test_align_vp():
       (PU #16-。))
     """
     src, tgt = ParentedTree.fromstring(src), ParentedTree.fromstring(tgt)
-    src.pretty_print()
-    tgt.pretty_print()
     assert th.align_vp(src) == tgt
 
     # 例2
@@ -689,8 +665,6 @@ def test_align_vp():
       (PU #7-？))
     """
     src, tgt = ParentedTree.fromstring(src), ParentedTree.fromstring(tgt)
-    src.pretty_print()
-    tgt.pretty_print()
     assert th.align_vp(src) == tgt
 
     # 例3
@@ -734,8 +708,6 @@ def test_align_vp():
       (PU #17-。))
     """
     src, tgt = ParentedTree.fromstring(src), ParentedTree.fromstring(tgt)
-    src.pretty_print()
-    tgt.pretty_print()
     assert th.align_vp(src) == tgt
 
 
@@ -757,8 +729,6 @@ def test_align_p_words():
           (PU #11。))
         """
     src, tgt = ParentedTree.fromstring(src), ParentedTree.fromstring(tgt)
-    src.pretty_print()
-    tgt.pretty_print()
     assert th.align_p_words(src) == tgt
 
     # 例1
@@ -806,8 +776,6 @@ def test_align_p_words():
       (PU #16-。))
     """
     src, tgt = ParentedTree.fromstring(src), ParentedTree.fromstring(tgt)
-    src.pretty_print()
-    tgt.pretty_print()
     assert th.align_p_words(src) == tgt
 
     # 例2
@@ -835,8 +803,6 @@ def test_align_p_words():
       (PU #7-？))
     """
     src, tgt = ParentedTree.fromstring(src), ParentedTree.fromstring(tgt)
-    src.pretty_print()
-    tgt.pretty_print()
     assert th.align_p_words(src) == tgt
 
     # 例3
@@ -880,8 +846,6 @@ def test_align_p_words():
       (PU #17-。))
     """
     src, tgt = ParentedTree.fromstring(src), ParentedTree.fromstring(tgt)
-    src.pretty_print()
-    tgt.pretty_print()
     assert th.align_p_words(src) == tgt
 
 
@@ -1084,9 +1048,6 @@ def test_remove_id():
     src = ParentedTree.fromstring(src)
     tgt = ParentedTree.fromstring(tgt)
     res = th.remove_outmost_id(src)
-    src.pretty_print()
-    tgt.pretty_print()
-    res.pretty_print()
     assert res == tgt
 
     # 例1
@@ -1136,9 +1097,6 @@ def test_remove_id():
     src = ParentedTree.fromstring(src)
     tgt = ParentedTree.fromstring(tgt)
     res = th.remove_outmost_id(src)
-    src.pretty_print()
-    tgt.pretty_print()
-    res.pretty_print()
     assert res == tgt
 
     # 例2
@@ -1168,9 +1126,6 @@ def test_remove_id():
     src = ParentedTree.fromstring(src)
     tgt = ParentedTree.fromstring(tgt)
     res = th.remove_outmost_id(src)
-    src.pretty_print()
-    tgt.pretty_print()
-    res.pretty_print()
     assert res == tgt
 
     # 例3
@@ -1218,9 +1173,6 @@ def test_remove_id():
     src = ParentedTree.fromstring(src)
     tgt = ParentedTree.fromstring(tgt)
     res = th.remove_outmost_id(src)
-    src.pretty_print()
-    tgt.pretty_print()
-    res.pretty_print()
     assert res == tgt
 
 
@@ -1607,8 +1559,6 @@ def test_to_line():
       (PU|[] .))
     """
     src = ParentedTree.fromstring(src)
-    tgt = "{ [ t a r o \ o w a ] [ , ] [ [ { [ “ ] [ [ j i r o \ o o ] [ h a \ n a k o g a ] [ n a g u \ t t a ] ] [ y o “ ] } [ t o ] ] [ h a \ n a k o n i ] [ i t t a ] ] . }"
+    tgt = "{ [ t a r o \ o w a ] , [ [ { “ [ [ j i r o \ o o ] [ h a \ n a k o g a ] [ n a g u \ t t a ] ] [ y o “ ] } [ t o ] ] [ h a \ n a k o n i ] [ i t t a ] ] . }"
     res = th.to_line(src).__str__()
-    print(tgt)
-    print(res)
     assert tgt == res

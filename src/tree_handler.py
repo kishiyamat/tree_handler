@@ -157,7 +157,6 @@ class TreeHandler:
         # 全てのVPがVBを含むことを保証
         # TODO: add test
         if not self.all_wrapped(tree, "VB", "VP"):
-            tree.pretty_print()
             raise ValueError("There's a VP that doesn't dominate VB.")
         for subtree_idx in tree.treepositions():
             if not self.is_key_pos(tree[subtree_idx], "VB"):  # leaf node
@@ -384,7 +383,6 @@ class TreeHandler:
         src = self.remove_redunduncy(src)
         src = self.apply_constraints(src)
         src = self.to_line(src)
-        # print(src.__str__())
         return src
 
     def assign_bar(self, tree):
@@ -459,7 +457,6 @@ class TreeHandler:
                     # iをpopしたからiに挿入できる
                     _ = [subtree[i].insert(0, leaf) for leaf in leaves]
                     # _ = [subtree[i].insert(0, leaf) for leaf in leaves]
-                    # print(subtree[i])
                     return tree
 
     def is_reduced_2(self, tree):
@@ -499,7 +496,6 @@ class TreeHandler:
                     leaves.reverse()
                     # iをpopしたからiに挿入できる
                     _ = [subtree[i].insert(0, leaf) for leaf in leaves]
-                    # print(subtree[i])
                     return tree
 
     def reduce(self, tree: ParentedTree) -> ParentedTree:
@@ -592,7 +588,7 @@ class TreeHandler:
         tree = self.flatten(tree)
         return tree
 
-    def to_line(self, tree, adhoc="."):
+    def to_line(self, tree, adhoc_list=[".", ",", "“"]):
         tree = deepcopy(tree)
         out = ""
         stack = []
@@ -616,7 +612,8 @@ class TreeHandler:
                 out += " " + stack.pop()  # 直近をpopする
             nest_prev = len(subtree_idx)
         out += " " + stack.pop()
-        out = out.replace(f"[ {adhoc} ]", adhoc)
+        for adhoc in adhoc_list:
+            out = out.replace(f"[ {adhoc} ]", adhoc)
         out = out.strip()
         # FIXME: 出力で"_"がたされる. おそらく前の方の処理で_を足している
         out = out.replace("_", " ")
