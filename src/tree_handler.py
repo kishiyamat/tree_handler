@@ -445,10 +445,14 @@ class TreeHandler:
                 left = subtree[i].label().split("|")[1]
                 right = subtree[i+1].label().split("|")[1]
                 if left == "" and right == "":
+                    # leavesになってない
                     leaves = subtree.pop(i)
                     leaves.reverse()
+                    print("leaves")
+                    print(leaves)
                     # iをpopしたからiに挿入できる
                     _ = [subtree[i].insert(0, leaf) for leaf in leaves]
+                    # _ = [subtree[i].insert(0, leaf) for leaf in leaves]
                     # print(subtree[i])
                     return tree
 
@@ -535,7 +539,7 @@ class TreeHandler:
         # 潰す条件
         # 1. 葉っぱではない
         # 1. IP−MATではない
-        # 1. []や{}が同じ
+        # 1. []や{}が同じ. ""なら潰す
         # 1. 兄弟がいない
         tree = deepcopy(tree)
         for subtree_idx in tree.treepositions():
@@ -609,48 +613,33 @@ class TreeHandler:
 # %%
 th = TreeHandler()
 src = """
-(IP-MAT|{}
-    (PP-SBJ|[] (D k a \ n o) (N n e k o \ w a))
-    (VP|[]
-    (PP-OB1|[]
-        (IP-REL|{}
-        (VP|[]
-            (PP-OB1|[] (IP-REL k i i r o i) (N m i ch i o))
-            (VB a r u \ k u)))
-        (N i n u \ o))
-    (ADVP y u k k u \ r i)
-    (VB m i \ t a y o \ o da t t a r a sh i i))
-    (PU .))
+(CP-QUE|{}
+    (IP-SUB (VP|[] (PP-OB1|[] n a \ n i o) (VB k a t t e a g e y o \ o)))
+    (P-FINAL k a)
+    (PU ?)
+    )
 """
-tgt = """
-(IP-MAT|{}
-    (PP-SBJ|[] (D k a \ n o) (N n e k o \ w a))
-    (VP|[]
-    (PP-OB1|[]
-        (IP-REL|{}
-        (VP|[]
-            (PP-OB1|[] (IP-REL k i i r o i) (N m i ch i o))
-            (VB a r u \ k u)))
-        (N i n u \ o))
-    (ADVP y u k k u \ r i)
-    (VB m i \ t a y o \ o da t t a r a sh i i))
-    (PU .))
-"""
-# print("original")
-# src = ParentedTree.fromstring(src)
-# print(src)
-# print("")
-# print("reduce")
-# src = th.reduce(src)
-# print(src)
-# print("")
-# print("lapse")
-# src = th.lapse(src)
-# print(src)
-# print("")
-# print("flatten")
-# src = th.flatten(src)
-# print(src)
+print("original")
+src = ParentedTree.fromstring(src)
+print(src)
+print("")
+print("reduce")
+src = th.percolate(th.assign_bar(src))
+src = th.flatten(src)
+print(src)
+# %%
+# %%
+src = th._reduce_1(src)
+src = th.reduce(src)
+print(src)
+print("")
+print("lapse")
+src = th.lapse(src)
+print(src)
+print("")
+print("flatten")
+src = th.flatten(src)
+print(src)
 # # tgt = ParentedTree.fromstring(tgt).__str__()
 # # res = th.apply_constraints(src).__str__()
 # # res = th.apply_constraints(src).__str__()
