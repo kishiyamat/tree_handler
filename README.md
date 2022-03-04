@@ -14,6 +14,15 @@ $ python inf2model1.py Arabian01_00050
 
 ### oneliner
 
+1. psd, inf2 配置
+1. mph出力
+1. 実行
+1. 一つのファイルにまとめる
+
+```
+
+```
+
 ### make morph
 
 ```sh
