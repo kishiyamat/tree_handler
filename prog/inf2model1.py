@@ -150,7 +150,11 @@ def main():
         parser = InfParser(version)
         txt = parser.inf2txt(inf2_str)
 
-    print(sys.argv[1], txt)
+    if version==2:
+        # version2は冒頭にファイル名を入れない
+        print(txt)
+    else:
+        print(sys.argv[1], txt)
 
 
 if __name__ == "__main__":
