@@ -12,6 +12,8 @@ $ python inf2model1.py Arabian01_00050
 
 ## Hot to Use
 
+### oneliner
+
 ### make morph
 
 ```sh
