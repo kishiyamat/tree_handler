@@ -5,7 +5,7 @@
 
 ### oneliner
 
-1. psd, inf2 配置
+1. psd, inf2 を `./psd/` `./inf2/` に配置
 1. mph出力
 1. 実行
 1. 一つのファイルにまとめる
