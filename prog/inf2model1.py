@@ -135,26 +135,36 @@ def main():
     """
         arg1: file name w/o suffix
         arg2: experiment version
+            0: 先行研究
     """
+    SUFFIX = ".inf2"
+
     if len(sys.argv) < 2:
         print("処理ファイル名を指定してください。\n")
         sys.exit()
 
-    # test は -1
-    # デフォルトは先行研究の1
-    version = 1 if len(sys.argv) == 2 else int(sys.argv[2])
-    suffix = ".inf2"
+    if len(sys.argv) == 2:
+        # test
+        # - directory は yomi 配下
+        # - versionはなしだが、theirs の動作確認のため1を指定
+        file_dir = "yomi/"
+        version = 1
+    else:
+        file_dir = "inf/"
+        version = int(sys.argv[2])
 
-    with open("yomi/" + sys.argv[1] + suffix, "r") as f:
+    with open(file_dir + sys.argv[1] + SUFFIX, "r") as f:
         l_strip = [s.strip() for s in f.readlines()]  # readlines and remove \n
         inf2_str = list(filter(len, l_strip))  # filter zero-length str: ""
         parser = InfParser(version)
         txt = parser.inf2txt(inf2_str)
 
-    if version==2:
-        # version2は冒頭にファイル名を入れない
+    if version == 2:
+        # > で file ごとに作成していく
+        # version2は mph を生成し、mphは 冒頭にファイル名を入れない
         print(txt)
     else:
+        # >> で一つのファイルに書き足していく
         print(sys.argv[1], txt)
 
 

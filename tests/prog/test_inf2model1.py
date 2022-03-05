@@ -4,16 +4,13 @@ from prog.inf2model1 import InfParser
 
 
 def test_shell():
-    # todo: w/o version
-    subprocess.run(["bash", "oneliner.sh", "results_new.txt"])
+    # w/o version: theirs を実行するが、テスト用なので yomi/ を参照しに行く
+    subprocess.run(["bash", "oneliner.sh", "results_new.txt", "-1"])
     diff_res = subprocess.run(["diff", "results_original.txt", "results_new.txt"],
                               capture_output=True).stdout
     assert len(diff_res) == 0
+    # 以下はテスト未作成.
     # todo: version 0
-    subprocess.run(["bash", "oneliner.sh", "results_new.txt", "1"])
-    diff_res = subprocess.run(["diff", "results_original.txt", "results_new.txt"],
-                              capture_output=True).stdout
-    assert len(diff_res) == 0
     # todo: version 1
     # todo: version 2
     # subprocess.run(["bash", "oneliner.sh", "results_new.txt", "1"])
