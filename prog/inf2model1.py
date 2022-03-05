@@ -140,6 +140,7 @@ def main():
         print("処理ファイル名を指定してください。\n")
         sys.exit()
 
+    # test は -1
     # デフォルトは先行研究の1
     version = 1 if len(sys.argv) == 2 else int(sys.argv[2])
     suffix = ".inf2"
