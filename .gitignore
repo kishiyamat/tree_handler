@@ -6,3 +6,5 @@ psd/*
 inf/*
 mph/*
 !.gitkeep
+.RData
+.Rhistory

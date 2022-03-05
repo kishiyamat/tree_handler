@@ -21,7 +21,6 @@ $ # Prerequisites
 $ # 1. psd, inf2 を `./psd/` `./inf/` に配置
 $ cp yomi/*.inf2 inf/
 $ cp kaki/*.psd psd/  # comainuの結果
-$ FIXME: oneliner.sh の 2 option はsample00 しか使っていない 
 $ . oneliner.sh results.txt 2  # ours
 $ # 2の時はmph/に出力&別のpyが走る
 $ # . oneliner.sh results.txt 0  # baseline
