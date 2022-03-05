@@ -142,8 +142,8 @@ class TreeHandler:
                 # TODO: tryの幅を狭める
                 # popしたparticleに0は必ず存在する. 例: (P-ROLE が)
                 particle_leaf = tree[parent_idx].pop(key_pos_idx+1)[0]
-                # NPの下のNのインデックス
-                n_idx = len(tree[subtree_idx])-1
+                # NPの一番最後[-1]は葉っぱで、その上[:-1]がNのidx
+                n_idx = tree[subtree_idx].treepositions()[-1][:-1]
                 # Nの下に何この要素があるか(すでにくっついている場合がある)
                 len_n = len(tree[list(subtree_idx) + [n_idx]])
                 tree[list(subtree_idx) + [n_idx]].insert(len_n, particle_leaf)
@@ -165,7 +165,8 @@ class TreeHandler:
             parent_idx = list(subtree_idx[:-1])
             try:
                 leaf = tree[parent_idx].pop(key_pos_idx+1)[0]
-                # NPの下のNのインデックス
+                # FIXME: NPの一番最後[-1]は葉っぱで、その上[:-1]がNのidxなはず
+                # n_idx = tree[subtree_idx].treepositions()[-1][:-1]
                 n_idx = len(tree[subtree_idx])-1
                 # Nの下に何この要素があるか(すでにくっついている場合がある)
                 len_n = len(tree[list(subtree_idx) + [n_idx]])
@@ -618,31 +619,3 @@ class TreeHandler:
         # FIXME: 出力で"_"がたされる. おそらく前の方の処理で_を足している
         out = out.replace("_", " ")
         return out
-
-
-# %%
-th = TreeHandler()
-src = """
-(IP-MAT|{}
-    (PP-SBJ|[]
-    (NP (CONJP (NP (N 山吹色)) (P-CONN や)) (NP (N 青色)))
-    (P-ROLE が))
-    (ADVP (ADV お気に))
-    (NP-PRD (N 入り))
-    (AX だ)
-    (PU 。))
-"""
-tgt = """
-(IP-MAT|{}
-    (PP-SBJ|[] (NP (CONJP (NP (N 山吹色 や))) (NP (N 青色 が))))
-    (ADVP (ADV お気に))
-    (NP-PRD (N 入り))
-    (AX だ)
-    (PU 。))
-"""
-src, tgt = ParentedTree.fromstring(src), ParentedTree.fromstring(tgt)
-# print(src)
-# print(tgt)
-# print(th.align_np(src))
-# assert th.align_np(src) == tgt
-# %%
