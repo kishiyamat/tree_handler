@@ -618,3 +618,31 @@ class TreeHandler:
         # FIXME: 出力で"_"がたされる. おそらく前の方の処理で_を足している
         out = out.replace("_", " ")
         return out
+
+
+# %%
+th = TreeHandler()
+src = """
+(IP-MAT|{}
+    (PP-SBJ|[]
+    (NP (CONJP (NP (N 山吹色)) (P-CONN や)) (NP (N 青色)))
+    (P-ROLE が))
+    (ADVP (ADV お気に))
+    (NP-PRD (N 入り))
+    (AX だ)
+    (PU 。))
+"""
+tgt = """
+(IP-MAT|{}
+    (PP-SBJ|[] (NP (CONJP (NP (N 山吹色 や))) (NP (N 青色 が))))
+    (ADVP (ADV お気に))
+    (NP-PRD (N 入り))
+    (AX だ)
+    (PU 。))
+"""
+src, tgt = ParentedTree.fromstring(src), ParentedTree.fromstring(tgt)
+# print(src)
+# print(tgt)
+# print(th.align_np(src))
+# assert th.align_np(src) == tgt
+# %%

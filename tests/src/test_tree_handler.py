@@ -710,6 +710,30 @@ def test_align_vp():
     src, tgt = ParentedTree.fromstring(src), ParentedTree.fromstring(tgt)
     assert th.align_vp(src) == tgt
 
+    # 例0
+    src = """
+    (IP-MAT|{}
+      (PP-SBJ|[]
+        (NP (CONJP (NP (N 山吹色)) (P-CONN や)) (NP (N 青色)))
+        (P-ROLE が))
+      (ADVP (ADV お気に))
+      (NP-PRD (N 入り))
+      (AX だ)
+      (PU 。))
+    """
+    tgt = """
+    (IP-MAT|{}
+      (PP-SBJ|[] (NP (CONJP (NP (N 山吹色 や))) (NP (N 青色 が))))
+      (ADVP (ADV お気に))
+      (NP-PRD (N 入り))
+      (AX だ)
+      (PU 。))
+    """
+    src, tgt = ParentedTree.fromstring(src), ParentedTree.fromstring(tgt)
+    print(th.align_np(src))
+    assert th.align_np(src) == tgt
+
+
 
 def test_align_p_words():
     # 4. align () to each edge of PWords
