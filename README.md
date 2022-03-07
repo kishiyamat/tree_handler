@@ -27,6 +27,8 @@ $ # . oneliner.sh results.txt 0  # baseline
 $ # . oneliner.sh results.txt 1  # thiers
 ```
 
+### add test
+
 ## Appendix
 
 ### apply
@@ -59,3 +61,13 @@ $ . oneliner.sh results_new.txt
 $ # Assert: 変更による変化なし
 $ diff results_original.txt results_new.txt 
 ```
+
+## Bugfix
+
+```sh
+$ # 以下を実施していき、問題を潰していく
+$ . oneliner.sh results.txt 2  # mph を生成
+$ python3 src/combine_morph_tree.py Aa1_001  # 生成したmphを使って動作チェック
+$ # もし修正が必要なら、mphを手で書き換えてみる
+```
+

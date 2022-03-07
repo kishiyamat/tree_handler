@@ -2,9 +2,6 @@ venv
 **__pycache__/
 .vscode/
 **.DS_Store 
-psd/*
-inf/*
-mph/*
 !.gitkeep
 .RData
 .Rhistory
