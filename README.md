@@ -7,7 +7,7 @@
 
 
 ```sh
-$ python -m venv venv 
+$ python3 -m venv venv 
 $ . venv/bin/activate  # 仮想環境作成
 $ pip install -r requirements.txt  # ライブラリインストール
 ```
@@ -47,7 +47,7 @@ $ # /yomi の真上で /yomi に格納されているファイルを
 $ # 拡張子なしで変数に渡さないといけない
 $ . oneliner.sh results.txt
 $ cd data
-$ python inf2model1.py Arabian01_00050
+$ python3 inf2model1.py Arabian01_00050
 > Arabian01_00010 a / r a b i a N n a \ i t o
 ```
 
