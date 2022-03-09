@@ -1,0 +1,1 @@
+( (CP-IMP (PUL 「) (IP-SUB (IP-ADV (PP (NP (PRO あそこ)) (P-ROLE へ)) (VB 行っ) (P たら)) (ADVP (ADV 多分)) (PP-SBJ (NP (IP-REL (NP-SBJ *T*) (PP-OB1 (NP (CONJP (NP (D あの) (N 湖)) (P-CONN と)) (NP (PP (NP (N 魚)) (P-ROLE の)) (N 話))) (P-ROLE を)) (PP (NP (PRO わし)) (P-ROLE に)) (VB し) (P-CONN て) (VB2 くれる)) (N 人)) (P-ROLE が)) (VB いる) (MD かもしれない)) (PU 。) (PUR 」)) (ID 1_ex1646482989;JP))

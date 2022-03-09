@@ -1,0 +1,1 @@
+( (IP-MAT (IP-ADV (PP (NP (D その) (N 町)) (P-ROLE で)) (PP-OB1 (NP (IP-REL (NP-OB1 *T*) (PP-SBJ (NP (PRO 私)) (P-OPTR は)) (VB もっ) (P-CONN て) (VB2 行っ) (AXD た)) (N 商品)) (P-ROLE を)) (VB 売り)) (PU 、) (PP-SBJ (NP (IP-EMB (PP-SBJ (NP (PP (NP (N 最初)) (P-ROLE の)) (NUMCLP (NUM １０) (CL 倍))) (P-OPTR も)) (VB 儲ける)) (N こと)) (P-ROLE が)) (VB でき) (AX まし) (AXD た) (PU 。)) (ID 1_ex1646481232;JP))

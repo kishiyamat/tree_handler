@@ -31,6 +31,9 @@ def main():
         logging.debug("===debug")
         logging.debug(base_name)
         logging.debug(f'{str(e)}')
+    except TypeError as e:
+        logging.debug("===debug")
+        logging.debug(base_name)
 
 
 if __name__ == "__main__":
