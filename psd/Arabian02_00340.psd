@@ -1,1 +1,0 @@
-( (IP-MAT (PUL 「) (PP-SBJ (NP (PRO 私)) (P-OPTR は)) (CP-THT (IP-SUB (NP-SBJ *pro*) (PP (NP (NUMCLP (NUM １) (CL 日))) (P-ROLE に)) (PP (NP (NUMCLP (NUM ４) (CL 回))) (P-ROLE まで) (P-OPTR しか)) (PP-OB1 (NP (N 網)) (P-ROLE を)) (VB 打た) (NEG ない)) (P-COMP と)) (VB 決め) (P-CONN て) (VB2 い) (AX ます) (PU 。)) (ID 1_ex1646481479;JP))
