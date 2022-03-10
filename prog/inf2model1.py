@@ -5,6 +5,9 @@
 import sys
 import re
 from typing import List
+import logging
+
+logging.basicConfig(filename='error_inf.log', filemode='a', level=logging.DEBUG)
 
 
 class InfParser():
@@ -153,11 +156,18 @@ def main():
         file_dir = "inf/"
         version = int(sys.argv[2])
 
-    with open(file_dir + sys.argv[1] + SUFFIX, "r") as f:
+    filename = file_dir + sys.argv[1] + SUFFIX
+    with open(filename, "r") as f:
         l_strip = [s.strip() for s in f.readlines()]  # readlines and remove \n
         inf2_str = list(filter(len, l_strip))  # filter zero-length str: ""
         parser = InfParser(version)
-        txt = parser.inf2txt(inf2_str)
+        try:
+            txt = parser.inf2txt(inf2_str)
+        except IndexError:
+            logging.debug('value')
+        except ValueError:
+            logging.debug('index')
+        
 
     if version == 2:
         # > で file ごとに作成していく
