@@ -875,6 +875,34 @@ def test_align_p_words():
 
 def test_integrate_morph_accent():
     # 6. convert Japanese characters to phonemes & accents
+    # Mismatch 1
+    src_1 = """#0 i m a g a w a #1 y a k i #2 y a
+            #3 a m a z a k e #4 g a #5 h a N b a i #6 ch u u #7 d a #8 ."""
+    src_2 = """
+            (IP-MAT
+              (PP-SBJ|[] (NP (CONJP (NP (N #0-今川焼き #1-や))) (NP (N #2-甘酒 #3-が))))
+              (NP-PRD (N #4-販売中))
+              (AX #5-だ)
+            (PU #6-。))
+            """
+    src_2 = ParentedTree.fromstring(src_2)
+    with pytest.raises(IndexError):
+        res = th.integrate_morph_accent(src_2, src_1)
+
+    # Mismatch 2
+    src_1 = """#0 s o n o k o k u o \ o n i w a 
+               #1 f U t a r i \ #2 n o #3 o \ o j i #4 g a
+               #5 a r i #6 m a \ sh I #7 t a #8 ."""
+    src_2 = """
+        (IP-MAT
+          (PP (NP (D #0-その) (N #1-国王 #2-に #3-は)))
+          (PP-SBJ (NP (PP (NP (N #4-二人 #5-の))) (N #6-王子 #7-が)))
+          (VP (VB #8-あり #9-まし #10-た))
+          (PU #11-。))
+        """
+    src_2 = ParentedTree.fromstring(src_2)
+    with pytest.raises(IndexError):
+        res = th.integrate_morph_accent(src_2, src_1)
     # 例0
     src_1 = """#0 s o n o #1 k o k u o \ o #2 n i #3 w a 
                #4 f U t a r i \ #5 n o #6 o \ o j i #7 g a
