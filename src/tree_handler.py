@@ -203,6 +203,7 @@ class TreeHandler:
         return self.align_vp(self.align_np(tree))
 
     def integrate_morph_accent(self, tree: ParentedTree, idx_accent) -> ParentedTree:
+        # TODO: 
         idx_accent = idx_accent.strip()
         idx_accent = list(filter(len, idx_accent.split(self.morph_symbol)))
         idx_accent = list(map(self.split_idx_accent, idx_accent))
@@ -621,6 +622,42 @@ class TreeHandler:
         return out
 
 # %%
-th = TreeHandler()
-# Aa01_00050 { [ i m a g a w a y a k i y a a m a z a k e ] [ g a h a N b a i ch u u ] }
-# Aa01_00060 { [ [ a m e y a a \ r a r e ] [ y a a m a z a k e ] ] [ g a h a N b a i ch u u ] }
+# import sys
+# sys.path.append('..')
+# from prog.inf2model1 import InfParser
+# 
+# tgt_id = "Aa1_005"
+# tgt_inf_path = f"../tests/data/error_vanish/{tgt_id}.inf2"
+# tgt_psd_path = f"../tests/data/error_vanish/{tgt_id}.psd"
+# 
+# with open(tgt_inf_path, "r") as f:
+#     l_strip = [s.strip() for s in f.readlines()]  # readlines and remove \n
+#     tgt_inf_str = list(filter(len, l_strip))  # filter zero-length str: ""
+#     parser = InfParser(2)
+#     tgt_morph = parser.inf2txt(tgt_inf_str) 
+# 
+# th = TreeHandler()
+# 
+# with open(tgt_psd_path, "r") as f:
+#     tree_str = f.read()
+#     # out = th.workflow(tgt_morph, tree_str)
+# 
+# src, src_1 = ParentedTree.fromstring(tree_str), tgt_morph
+# print(src)
+# print(src_1)
+# src = th.remove_outmost_id(src)
+# src = th.create_vp_node(src)
+# src = th.add_phrase_type(src)
+# src = th.align_p_words(src)
+# print(src)
+# print(src_1)
+# src = th.integrate_morph_accent(src, src_1)
+# src = th.remove_redunduncy(src)
+# src = th.apply_constraints(src)
+# src = th.to_line(src)
+# print(src)
+# 
+# # Aa01_00050 { [ i m a g a w a y a k i y a a m a z a k e ] [ g a h a N b a i ch u u ] }
+# # Aa01_00060 { [ [ a m e y a a \ r a r e ] [ y a a m a z a k e ] ] [ g a h a N b a i ch u u ] }
+# # %%
+# 
