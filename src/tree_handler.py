@@ -627,9 +627,9 @@ class TreeHandler:
 
 
 # %%
-tgt_id = "Arabian01_00020"
-# tgt_id = "Arabian01_00070"
-# tgt_id = "Arabian01_00110"
+tgt_id = "Arabian01_00020"  # align np
+tgt_id = "Arabian01_00110"  # align np
+tgt_id = "Arabian01_00070"  # , の位置とか?
 error_type = "error_subtree"
 debug = 1
 
