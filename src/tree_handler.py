@@ -628,10 +628,10 @@ class TreeHandler:
 
 # %%
 tgt_id = "Arabian01_00020"
-tgt_id = "Arabian01_00070"
+# tgt_id = "Arabian01_00070"
 # tgt_id = "Arabian01_00110"
 error_type = "error_subtree"
-debug = 0
+debug = 1
 
 # %%
 if debug:
@@ -658,8 +658,8 @@ if debug:
     tree = th.remove_outmost_id(tree)
     tree = th.create_vp_node(tree)
     tree = th.add_phrase_type(tree)
-    tree = th.align_p_words(tree)
     print(tree)
+    tree = th.align_p_words(tree)
     # print(src_1)
     tree = th.integrate_morph_accent(tree, src_1)
     tree = th.remove_redunduncy(tree)
@@ -673,8 +673,4 @@ if debug:
     tree = th.reduce(tree)
     tree = th.apply_constraints(tree)
     tree = th.to_line(tree)
-    #
-    # # Aa01_00050 { [ i m a g a w a y a k i y a a m a z a k e ] [ g a h a N b a i ch u u ] }
-    # # Aa01_00060 { [ [ a m e y a a \ r a r e ] [ y a a m a z a k e ] ] [ g a h a N b a i ch u u ] }
-    # # %%
 # %%
