@@ -619,3 +619,8 @@ class TreeHandler:
         # FIXME: 出力で"_"がたされる. おそらく前の方の処理で_を足している
         out = out.replace("_", " ")
         return out
+
+# %%
+th = TreeHandler()
+# Aa01_00050 { [ i m a g a w a y a k i y a a m a z a k e ] [ g a h a N b a i ch u u ] }
+# Aa01_00060 { [ [ a m e y a a \ r a r e ] [ y a a m a z a k e ] ] [ g a h a N b a i ch u u ] }
