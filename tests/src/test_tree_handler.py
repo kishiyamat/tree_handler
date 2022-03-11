@@ -1416,6 +1416,13 @@ def test_reduce():
     res = th.reduce(src)
     assert tgt == res
 
+    src = "(X|[] (A| (B| b) (B2| b2) (B3|\ b3)) (C| c\))"
+    tgt = "(X|[] (C|\ a b c\) (D| d))"
+    src = ParentedTree.fromstring(src)
+    tgt = ParentedTree.fromstring(tgt)
+    res = th.reduce(src)
+    print(res)
+    assert tgt == res
 
 def test_lapse():
     src = "(X|[] (C|\ a b c\) (D| d))"

@@ -484,6 +484,7 @@ class TreeHandler:
         return True
 
     def _reduce_2(self, tree):
+        # reduce_2: (a)(b\)->(a b\)
         tree = deepcopy(tree)
         pos_list = [t[1] for t in tree.pos()]
         for subtree_idx in tree.treepositions():
@@ -498,10 +499,13 @@ class TreeHandler:
                 left = subtree[i].label().split("|")[1]
                 right = subtree[i+1].label().split("|")[1]
                 if left == "" and right == "\\":
+                    # print()
+                    # print(subtree)
                     leaves = subtree.pop(i)
                     leaves.reverse()
                     # iをpopしたからiに挿入できる
-                    _ = [subtree[i].insert(0, leaf) for leaf in leaves]
+                    for leaf in leaves: 
+                        subtree[i].insert(0, leaf) 
                     return tree
 
     def reduce(self, tree: ParentedTree) -> ParentedTree:
@@ -626,14 +630,12 @@ class TreeHandler:
         return out
 
 
-# %%
 tgt_id = "Arabian01_00020"  # align np
 tgt_id = "Arabian01_00110"  # align np
 tgt_id = "Arabian01_00070"  # , の位置とか?
 error_type = "error_subtree"
-debug = 1
+debug = 0
 
-# %%
 if debug:
     import sys
     sys.path.append('..')
@@ -654,11 +656,14 @@ if debug:
         tree_str = f.read()
         # out = th.workflow(tgt_morph, tree_str)
 
+    # >>>>>> morph 修正; Arabian01_00070の問題である可能性を排除
+    assert tgt_id == "Arabian01_00070"
+    tgt_morph = "#0 f U t a r i \ t o m o #1 y u u k a N #2 n a #3 u m a \ #4 n o #5 n o r i t e #6 d e sh I #7 t a \ #8 g a #9 , #10 t o \ k u n i #11 a \ n i #12 n o #13 h o \ o #14 g a #15 s u g u r e \ #16 t e #17 i #18 m a \ sh I #19 t a #20 . "
+    # <<<<<< 修正完了
     tree, src_1 = ParentedTree.fromstring(tree_str), tgt_morph
     tree = th.remove_outmost_id(tree)
     tree = th.create_vp_node(tree)
     tree = th.add_phrase_type(tree)
-    print(tree)
     tree = th.align_p_words(tree)
     # print(src_1)
     tree = th.integrate_morph_accent(tree, src_1)
@@ -667,10 +672,13 @@ if debug:
     tree = th.percolate(th.assign_bar(tree))
     while not th.is_reduced_1(tree):
         tree = th._reduce_1(tree)
-    print(tree)
     while not th.is_reduced_2(tree):
         tree = th._reduce_2(tree)
+        print()
+        print(tree)
     tree = th.reduce(tree)
     tree = th.apply_constraints(tree)
     tree = th.to_line(tree)
+# %%
+
 # %%
