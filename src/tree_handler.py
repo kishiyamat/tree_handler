@@ -625,17 +625,18 @@ class TreeHandler:
         return out
 
 # %%
-debug = False
+tgt_id = "Arabian01_00020"
+error_type = "error_subtree"
+debug = True
 
+# %%
 if debug:
-    # %%
     import sys
     sys.path.append('..')
     from prog.inf2model1 import InfParser
 
-    tgt_id = "Aa1_006"
-    tgt_inf_path = f"../tests/data/error_vanish/{tgt_id}.inf2"
-    tgt_psd_path = f"../tests/data/error_vanish/{tgt_id}.psd"
+    tgt_inf_path = f"../tests/data/{error_type}/{tgt_id}.inf2"
+    tgt_psd_path = f"../tests/data/{error_type}/{tgt_id}.psd"
 
     with open(tgt_inf_path, "r") as f:
         l_strip = [s.strip() for s in f.readlines()]  # readlines and remove \n
