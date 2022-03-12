@@ -1,512 +1,304 @@
-Arabian01_00050 { [ s o n o k o k u o \ o n i w a ] [ [ f U t a r i \ n o ] [ o \ o j i g a ] ] [ a r i m a \ sh I t a ] . }
-Arabian01_00070 { [ { [ f U t a r i \ ] [ [ t o m o y u u k a N ] [ n a u m a \ ] [ n o ] ] [ n o r i t e d e sh I ] } [ t a \ ] ] [ g a , t o \ k u n i ] [ [ a \ n i n o ] [ h o \ o g a ] ] [ s u g u r e \ t e i m a \ sh I t a ] . }
-Arabian01_00100 { [ o t o o t o \ w a ] { [ [ sh a \ a z e m a a N ] [ t o i cl ] ] } [ t e ] [ [ , s a m a r u k a \ N d o n o ] [ k o k u o \ o ] ] [ d e sh I t a . ] }
-Arabian01_00280 { [ o t o \ o s a m a ] [ , d o \ o z o ] [ w a t a sh i ] [ [ [ { [ [ o o o s a m a ] [ n i s a sh i a g e \ ] [ t e k u d a s a i m a \ s e . w a t a sh i ] ] } [ w a ] { [ { [ k o r o s a r e r u ] [ k a m o sh i r e m a s e \ ] } [ N ] ] [ g a ] [ [ [ { { [ , s o o s u r e \ b a ] } [ , ts u \ m i ] [ n o n a \ i ] [ h o k a ] } [ n o m u s u m e \ ] ] [ g a h I t o \ r i ] ] [ t a s U k a \ r u ] [ t o ] ] } ] [ i u ] ] [ m o n o \ ] ] [ d e s U . ] }
-Arabian01_00340 { [ s o n o t o k i \ ] [ ch I ch i w a ] [ i i m a \ sh I t a ] . }
-Arabian01_00480 { [ r o \ b a w a ] [ [ s o r e n i ] { [ k o t a \ e t e ] } [ i i m a \ sh I t a ] ] . }
-Arabian01_00530 { { [ k o o y u u w a \ k e ] [ d e ] } [ , n o \ o f u ] [ { [ g a h o sh I k u s a ] [ [ o o s u \ ] [ u sh i n i ] [ m o \ cl t e i cl t e y a \ cl t a ] ] } [ t o \ k i m o ] ] [ , o s u \ ] [ [ u sh i w a ] [ h o t o \ N d o ] [ s o r e o ] [ k U ch i n i ] [ sh i n a k a cl t a ] ] . }
-Arabian01_00570 { [ n o \ o f u w a ] [ [ s o n o t o o r i \ n i ] [ sh I t a ] ] . }
-Arabian01_00580 { [ s o sh I t e , r o \ b a ] [ { [ g a h i ] [ [ n o k u r e n i k a \ e cl ] [ t e k i \ t a t o \ k i ] ] } [ , o s u \ ] ] [ u sh i ] [ w a r o \ b a ] [ [ { [ g a s o n o ] [ h i , j i b u N ] [ [ n o ] [ { [ [ [ n a \ N g i o ] [ t a s U k e \ r u t a m e \ ] ] [ n i ] ] } [ ts U k u \ sh I t e ] ] [ k u r e t a k o \ o i n i ] ] } [ t a \ i sh I t e ] ] [ r o \ b a n i ] [ o r e e o ] [ i cl t a ] ] . }
-Arabian01_00600 { [ { [ k a \ r e w a ] [ [ [ k o k o \ r o n o ] [ n a \ k a d e ] ] [ h i j o o n i ] [ k o \ o k a i sh I t e i t a \ ] ] } [ k a r a ] ] [ d a . ] }
-Arabian01_00620 { [ r o \ b a w a ] [ [ [ h e t o h e t o n i n a \ cl ] [ t e ] ] [ k a \ e cl t e k i \ t a ] ] . }
-Arabian01_00650 { [ r o \ b a w a ] [ [ [ k u y a sh i \ ] [ s o o n i ] ] [ w a m e \ i t a ] ] . }
-Arabian01_00690 { [ [ { [ s o r e d a \ ] } [ k a r a ] ] [ o r e m o ] [ [ k i m i n o t a m e \ n i ] [ sh i N p a i sh I t e i r u N \ d a ] ] ] [ y o . ] }
-Arabian01_00710 { [ o s u \ u sh i ] { [ [ [ w a r o \ b a ] [ n o k o t o b a \ ] ] [ o k i i ] ] } [ [ t e ] [ , a i t e \ n i ] [ o r e e o ] [ i cl t a ] ] . }
-Arabian01_00740 { [ t o i cl t a ] . }
-Arabian01_00810 { [ t o ] [ , s a i sh o o ] [ w a m u s u m e \ ] [ { [ [ [ n o sh a \ a ] [ r a z a a d o n i ] ] [ m u k a cl t e ] ] } [ i i m a \ sh I t a ] ] . }
-Arabian01_00930 { [ t o k I k i m a \ sh I t a ] . }
-Arabian01_00980 { [ o \ ] [ [ a n e s a m a ] [ [ { [ [ [ { [ { [ , k o o sh I t e y o \ r u n i ] } [ m e \ o ] [ s a m a \ sh I t e ] [ i r u a i d a n o ] ] } [ t a i k U ts u o ] ] [ m a g i r a \ s U t a m e \ ] ] [ n i ] ] } [ , n a \ n i k a ] ] [ w a t a sh i \ ] [ d o m o n i ] { [ [ [ h a n a sh i \ o ] [ sh I t e ] ] [ i t a ] ] } [ d a k e m a s e \ N ] ] ] [ k a  ] }
-Arabian01_01000 { [ t o ] [ , sh a \ a ] [ r a z a a d o w a ] [ k o t a e m a \ sh I t a ] . }
-Arabian01_01070 { [ [ a \ r u ] [ t o k o r o n i ] ] [ [ h I t o \ r i n o ] [ sh o \ o n i N g a ] ] [ a r i m a \ sh I t a ] . }
-Arabian01_01080 { { [ [ t a i h e N n a ] [ o ] ] [ k a n e m o \ ch i ] } [ [ d e ] [ [ , t e b i r o \ k u ] [ m a w a r i n o ] [ [ k u n i \ g u n i t o ] [ t o r i \ h I k i o ] ] ] [ sh I t e o r i m a \ sh I t a ] ] . }
-Arabian01_01160 { [ t o i i m a \ sh I t a ] . }
-Arabian01_01170 [ [ sh o \ o n i N w a ] , ]
-Arabian01_01210 { [ sh o \ o n i N w a ] { [ [ s o n o k o t o b a \ o ] [ k i i t e ] ] } [ , w a m e k i d a sh i m a \ sh I t a ] . }
-Arabian01_01230 { [ w a t a sh i w a ] [ { [ [ a n a \ t a g a ] [ [ w a t a sh i o ] [ y u r u \ sh I t e k u d a s a \ r u d a r o o ] ] ] [ t o ] } [ sh i N r a i sh I t e o r i m a \ s U ] ] [  ] }
-Arabian01_01280 { [ sh o \ o n i N w a ] [ { [ [ s o r e o ] [ m i \ t e ] ] } [ h a g e sh I k u n a k i m a \ sh I t a ] ] . }
-Arabian01_01290 { [ s o sh I t e ] [ [ , m a \ ] { [ [ j i N n i ] [ m u k a cl t e ] ] } [ i i m a \ sh I t a ] ] . }
-Arabian01_01340 { [ { [ [ k a \ m i n i ] [ ch I k a cl t e ] ] } [ o y a \ k U s o k u i t a sh i ] ] [ m a \ s U ] . }
-Arabian01_01380 { [ [ sh a cl k i \ N o ] [ s u cl k a \ r i ] [ k a e sh i m a \ sh I t a ] ] . }
-Arabian01_01400 { { [ [ s o r e o ] [ k i i t e ] ] } [ , ts u \ m a ] [ y a k o d o m o o h a j i m e ] [ , i \ cl k a ] [ [ n o m o n o \ ] [ t a ch i w a ] ] [ m i N n a n a k i m a \ sh I t a ] . }
-Arabian01_01420 { [ s o o sh I t e , k a \ r e ] [ w a i y o \ i y o ] [ [ k a \ n a i ] { [ [ { [ [ [ [ n o m o n o \ ] [ y a r i N j i N ] ] [ y a sh i N s e k i i \ ch i d o o n i ] ] { [ [ [ w a k a r e \ n o ] [ a \ i s a ts u o ] ] [ sh I t e ] ] } [ s u s u m a n a i ] ] } [ a sh i \ o ] ] [ h I k i z u r i n a \ g a r a ] ] } [ d e t e i k i m a \ sh I t a ] ] . }
-Arabian01_01450 { [ ch o o d o ] [ s o r e w a ] [ [ sh i \ N n e N n o ] [ [ d a \ i ] [ i ch i n i ch i \ ] ] ] [ d e sh I t a . ] }
-Arabian01_01470 { [ o j i \ i s a N w a ] [ [ sh o \ o n i N n i ] [ a \ i s a ts U sh i m a \ sh I t a ] ] . }
-Arabian01_01520 { [ n a \ N t o ] [ { [ [ i u k o t o \ ] [ d a ] ] [ , w a t a sh i ] } [ w a ] [ m a \ j i N ] [ [ n o t a m e \ ] [ n i o m a e ] ] [ { [ [ s a N n o m i n i ] [ [ { [ [ [ d o \ N n a ] [ k o t o \ g a ] ] [ o k o \ r u n o ] ] [ k a ] } [ m i t o d o k e r u ] ] [ m a \ d e ] [ w a ] ] [ k o k o o ] [ s a r a \ n a i ] ] } [ ts u m o r i ] ] [ d a ] ] [ y o  ] }
-Arabian01_01530 { [ t o i i m a \ sh I t a ] . }
-Arabian01_01620 { [ [ k a \ r e n o ] [ m e \ w a ] ] [ [ h i \ b a n a o ] [ ch i r a sh I t e i m a \ sh I t a ] ] . }
-Arabian01_01660 { [ t o m o o sh i m a \ sh I t a ] . }
-Arabian01_01680 { [ [ [ s a N \ ] [ n i N n o ] ] [ o j i \ i s a N m o ] ] [ [ o \ i o i ] { [ [ k o \ e o ] [ a g e t e ] ] } [ n a i t e i m a \ sh I t a ] ] . }
-Arabian01_01710 { [ t o i i m a \ sh I t a ] . }
-Arabian01_01830 { [ s o sh I t e ] [ w a t a sh i g a ] [ [ r u \ s u n o ] [ a i d a n i ] ] [ , f U t a r i \ ] [ [ [ m e n o ] [ ts u \ m a o ] ] [ m e s u \ u sh i ] [ n i ] [ , k o d o m o o ] [ k o u sh i n i ] [ k a e t e sh i m a i m a \ sh I t a ] ] . }
-Arabian01_01880 { [ t o i i m a \ sh I t a ] . }
-Arabian01_01890 { { [ [ k o r e o ] [ k i i t e ] ] } [ , w a t a sh i ] [ w a s o n o ] [ [ a \ t o ] [ i ch i ] ] [ { [ [ n e \ N k a N ] [ t o i u ] ] [ m o n o k o k o \ r o ] [ g a ] } [ i t a m i ] [ { [ , n a i t e ] } [ b a k a r i ] ] [ s u g o sh i m a \ sh I t a ] ] . }
-Arabian01_01900 { [ s o n o u ch i n i ] [ i k e n i e n o m a ts u r i g a ] [ k i m a \ sh I t a ] . }
-Arabian01_01910 { [ [ [ k o n o ] [ m a ts u r i d e w a ] ] { [ [ u sh i o ] [ k o r o sh I t e ] ] } [ i k e n i e n i ] [ s u r u n o d e \ s U ] ] . }
-Arabian01_01920 { { [ { [ [ s o k o d e w a t a sh i ] [ { [ w a , u sh I ] [ k o y a ] [ [ { [ [ k a r a f U t o \ cl ] [ t a m e s u \ ] ] } [ u sh i o ] ] [ i cl t o o ] { [ e r a \ N d e ] } [ ts u r e t e k u \ r u ] ] } [ y o \ o n i ] ] ] [ t o ] } [ u sh I k a i n i ] [ m e e j i ] ] } [ , u sh I k a i ] [ w a m e s u \ ] [ [ u sh i o ] [ ts u r e t e k i m a \ sh I t a ] ] . }
-Arabian01_01950 { { [ [ s o r e o ] [ m i \ t e ] ] } [ , k a \ n o j o ] [ w a k a n a sh i ] [ { [ [ [ g e n a ] [ k o \ e o ] ] [ a g e t e ] ] } [ n a k i m a \ sh I t a ] ] . }
-Arabian01_01970 { [ { [ u sh I k a i w a ] [ [ m e e r e e d o \ o r i ] [ n i sh i m a \ sh I ] ] } [ t a ] ] [ g a ] [ [ { [ [ , d o \ o ] [ sh I t a ] ] } [ k o t o \ k a ] ] [ , n i k u \ ] [ m o n a \ k u ] [ , h o n e \ ] ] [ [ t o ] [ [ [ k a w a \ t o ] [ n o h o k a ] ] [ n i w a n a n i ] ] [ n i m o ] [ a r i m a s e \ N d e sh I t a ] ] . }
-Arabian01_01990 { [ s o r e d e , s o n o ] [ [ m e s u \ ] [ u sh i w a ] ] { [ [ { [ [ u sh I k a i n i ] [ a g e r u ] ] } [ k o t o \ n i ] ] [ sh I t e ] ] } [ [ , a r a t a \ m e t e ] [ { [ [ f U t o \ cl ] [ { [ t a k o \ ] } [ u sh i o ] ] [ ts u r e t e k u \ r u ] ] } [ y o \ o n i t o ] ] [ u sh I k a i n i ] [ m e e j i m a \ sh I t a ] ] . }
-Arabian01_02010 { [ k o \ u sh i ] [ { [ [ w a w a t a sh i ] [ o m i \ ] ] } [ t a ] ] [ [ t o \ k i ] { [ [ , n a w a \ o ] [ h I k i ch i g i \ cl t e ] ] } [ w a t a sh i n o s o \ b a n i ] [ k i m a \ sh I t a ] ] . }
-Arabian01_02050 { [ k o n o t o \ k i ] [ , sh a \ a ] [ r a z a a d o w a ] { [ [ [ [ [ m a \ d o n o ] [ s o \ t o g a ] ] [ a k a r u k u n a cl t e k i \ ] [ t a ] ] [ n o ] ] [ n i k i z u \ i ] ] } [ [ t e ] [ { [ [ , k o k o m a \ d e ] [ h a n a \ sh I t e k i \ t a ] ] } [ h a n a sh i \ o ] ] [ [ [ p U ts u \ r i ] [ t o ] ] [ t o ch u u d e ] ] [ k i r i m a \ sh I t a ] ] . }
-Arabian01_02060 { [ [ k a \ n o j o n o ] [ i m o o t o \ w a ] ] [ [ a n e n i ] [ i i m a \ sh I t a ] ] . }
-Arabian01_02100 { [ a sh I t a \ ] [ { [ [ { [ [ n o b a N w a t a sh i ] { [ { [ g a h a n a \ sh I ] [ t e a g e \ y o o ] } [ t o o m o \ cl ] ] [ t e ] } [ i r u n o n i ] ] } [ k u r a b e ] ] [ t a \ r a , a N n a ] ] } [ m o n o \ ] [ w a n a \ N d e ] [ m o n a \ i ] [ N \ ] [ d a ] ] [ y o . ] }
-Arabian01_02160 { [ s a i sh o o m o ] [ [ s o n o h e y a \ e ] [ i k i m a \ sh I t a ] ] . }
-Arabian01_02170 { [ { [ [ o \ o w a ] [ [ m u s u m e \ o ] [ sh o k e e s u r u ] ] ] [ t o ] } [ i u k o t o \ ] ] { [ w a h I t o \ k o t o ] [ m o i w a \ ] } [ [ z u ] [ , s o n o m a m a \ ] [ { [ h i n o k u r e r u ] } [ m a \ d e ] ] [ s e e j i n o sh i g o t o o ] [ sh i m a \ sh I t a ] ] . }
-Arabian01_02220 { [ [ o j i \ i s a N n o ] [ k o k o \ r o w a ] ] [ [ d o o j o o n i ] [ k u m o r i m a \ sh I t a ] ] . }
-Arabian01_02270 { [ { [ [ k o o y u u k o t o \ n o ] [ a \ cl t a ] ] } [ a i d a ] ] [ , w a t a sh i ] [ [ [ n o d a i \ ] [ i ch i n o ] ] [ ts u \ m a w a ] ] [ [ s o r e o ] [ m i \ t e i m a \ sh I t a ] ] . }
-Arabian01_02330 { [ u sh I k a i w a ] [ [ s o r e o ] [ ts u r e t e i cl t e sh i m a i m a \ sh I t a ] ] . }
-Arabian01_02350 { [ d a N n a ] [ [ , w a t a sh i w a ] [ a n a \ t a g a ] [ [ { [ { [ { [ [ { [ o k I k i ] [ n i ] } [ n a \ cl ] ] [ t a r a k i cl t o ] ] } [ o ] [ y o \ r o k o b i n i ] [ n a \ r u ] ] } [ y o \ o ] ] [ n a ] } [ k o t o \ o ] ] [ o sh i r a s e n i ] [ m a i r i m a \ sh I t a ] ] ] [ y o . ] }
-Arabian01_02420 { [ w a t a sh i w a ] [ k I k i m a \ sh I t a ] . }
-Arabian01_02460 { [ [ [ d a N n a n o ] [ h I t o r i \ m e ] ] [ n o o \ k U s a N ] ] [ g a ] [ [ [ , a n o ] [ [ m u s U k o t o ] [ m u s U k o n o ] ] [ o k a \ a s a N n i ] ] [ m a h o o o ] [ k a k e \ t e sh i m a \ cl t a N \ d e s U ] ] . }
-Arabian01_02470 { [ k o r e g a ] [ w a t a sh i n o w a r a cl t a w a \ k e n a N \ d e s U ] . }
-Arabian01_02560 { [ t o k I k i m a \ sh I t a ] . }
-Arabian01_02590 { [ t o k o t a e m a \ sh I t a ] . }
-Arabian01_02600 { [ w a t a sh i w a ] [ i i m a \ sh I t a ] . }
-Arabian01_02620 { [ k a \ n o j o w a ] [ { [ n i cl k o \ r i sh I t e ] } [ k o t a e m a \ sh I t a ] ] . }
-Arabian01_02710 { [ s o r e k a r a ] [ { [ [ k o \ u sh i ] [ n i m u k a cl ] ] } [ t e ] { [ [ , j u m o N o ] [ t o n a e n a \ g a r a ] ] } [ [ k o cl p u n o ] [ m i z u o ] ] [ f u r i k a k e m a \ sh I t a ] ] . }
-Arabian01_02730 { [ w a t a sh i w a ] [ { [ [ m u s U k o o ] [ d a k I sh i m e \ t e ] ] } [ i i m a \ sh I t a ] ] . }
-Arabian01_02790 { [ s o n o a \ t o d e ] [ , k a \ n o j o ] [ w a w a t a sh i ] [ [ [ [ n o d a i \ ] [ i ch i n o ] ] [ ts u \ m a o ] ] [ k o n o k a m o sh I k a n i ] [ k a e t e sh i m a \ cl t a n o d e \ s U ] ] . }
-Arabian01_02890 { [ t o k o t a e m a \ sh I t a ] . }
-Arabian01_02920 { [ a \ a ] [ , i d a i ] [ [ n a m a \ ] [ j i N y o ] ] [ , k o n o ] [ [ n i \ ] [ h I k i n o ry o o k e N ] [ w a w a t a sh i ] ] [ n o o t o o t o d o m o ] [ d e g o z a i m a \ s U ] . }
-Arabian01_02930 { [ w a t a sh i n o ch i \ ch i w a ] { [ sh i N d e ] } [ [ , a \ t o ] [ n i s a N ] [ [ [ z e N \ ] [ m a i n o ] ] [ o o g o N o ] ] [ n o k o \ sh I t e i k i m a \ sh I t a ] ] . }
-Arabian01_03140 { [ { [ k o n o a \ t o ] [ , sh i b a \ r a k u ] [ [ n o a i d a ] [ w a s a N \ ] ] [ [ n i N i cl sh o ] [ n i s u m i ] [ m a \ sh I t a g a ] ] } [ , o t o o t o \ ] ] [ t a ch i ] [ { [ [ w a m a t a ] [ [ t a b i \ ] [ n i d e ] [ t a \ i t o ] ] ] [ i i ] } [ d a sh i m a \ sh I t a ] ] . }
-Arabian01_03230 { [ w a t a sh i w a ] [ [ s o k o d e ] [ f U t a r i \ n i ] [ i i m a \ sh I t a ] ] . }
-Arabian01_03260 { [ t o ] [ , o t o o t o \ ] [ t a ch i w a ] [ i i m a \ sh I t a ] . }
-Arabian01_03310 { [ s a \ t e ] [ , w a t a sh i \ ] [ [ { [ t a ch i g a ] [ { [ [ f u \ n e n i ] [ n o cl t e ] ] } [ i e \ n i ] [ k a \ e r o o t o sh I t e i ] ] } [ t a ] ] [ t o \ k i ] [ { [ [ , h I t o \ r i n o ] [ m i s u b o r a sh i \ i ] [ o t o \ m e g a ] ] [ [ k a i g a N n i ] [ s a m a y o \ cl t e i r u ] ] } [ n o o ] ] [ m i m a \ sh I t a ] ] . }
-Arabian01_03400 { [ a n a \ t a g a ] [ [ w a t a sh i n i ] [ t a \ i sh I ] ] [ t e ] [ { [ [ y a s a sh I k u , a i j o o ] [ o m o \ cl t e k u d a s a \ cl ] ] } [ t a r a ] [ { [ [ , k a n a r a z u ] [ s o r e n i ] [ m u k u i \ r u ] ] } [ t o ] ] [ y a k U s o k u i t a sh i m a \ s U ] ] [  ] }
-Arabian01_03450 { [ s o sh I t e , w a t a sh i ] [ w a ts u \ m a ] [ { [ [ n i sh I ] [ t a o t o \ m e ] ] } [ n i t a \ i sh I ] ] [ [ t e ] [ [ , k o k o \ r o k a r a n o ] [ a i j o o o ] ] [ k a N j i t e k i m a \ sh I t a ] ] . }
-Arabian01_03480 [ [ s o r e w a ] , ]
-Arabian01_03500 { [ { [ t o i u ] } [ m o n o \ ] ] [ d e sh I t a . ] }
-Arabian01_03560 [ [ a n a \ t a w a ] { [ [ [ m i s u b o r a sh i \ i ] [ s u \ g a t a n o ] ] [ w a t a sh I t o ] [ k e cl k o N sh I t e k u d a s a ] ] } [ r i , sh i \ N s e ts u ] [ n i sh I t e k u d a s a i m a \ sh I ] [ t a . ] ]
-Arabian01_03570 { [ w a t a sh i w a ] [ [ [ a n a \ t a n o ] [ k o t o \ o ] ] [ t o t e m o k o i sh i \ k u ] [ o m o cl t e i m a \ s U ] ] . }
-Arabian01_03600 { [ w a t a sh i w a ] [ [ a n o ] [ { [ [ f U t a r i \ o ] [ k o r o s a z u ] ] } [ n i w a ] ] [ o k a n a i ] ] [  ] }
-Arabian01_03610 { [ w a t a sh i w a ] [ { [ [ [ k a \ n o j o n o ] [ h a n a sh i \ o ] ] [ k i i t e ] ] } [ b i cl k u \ r i sh I t e sh i m a i m a \ sh I t a ] ] . }
-Arabian01_03720 { [ ts u \ m a w a ] , }
-Arabian01_03740 { [ t o i i m a \ sh I t a ] . }
-Arabian01_03790 { [ [ f U t a r i \ w a ] [ [ { [ { [ [ j u u n e \ N k a N ] [ t a \ ts u m a d e ] ] } [ [ m o t o \ n o ] [ s u \ g a t a n i ] ] [ m o d o \ s U ] ] } [ k o t o \ w a ] ] [ d e k i m a s e \ N ] ] ] [ y o  ] }
-Arabian01_03820 { [ k o r e g a ] [ w a t a sh i n o m o n o g a t a r i ] [ d e g o z a i m a \ s U ] . }
-Arabian01_03840 { [ t o ] [ , m a \ ] [ j i N w a ] [ i i m a \ sh I t a ] . }
-Arabian01_03870 { { [ ts u z u i t e ] } [ s a N n i N \ ] [ m e n o r o o j i N g a ] [ [ h a n a sh i \ o ] [ sh i m a \ sh I t a ] ] . }
-Arabian01_03880 { [ { [ [ r o o j i N n o ] [ h a n a sh i \ g a ] ] [ o w a r u ] } [ t o ] ] [ , m a \ ] [ j i N w a ] [ [ [ y u k a i \ ] [ s o o n i ] ] [ a t a m a \ o ] [ f u r i m a \ sh I t a ] ] . }
-Arabian01_03900 { [ sh o \ o n i N w a ] { [ [ s o k o d e ] [ [ r o o j i N \ t a ch i ] [ n o s o \ b a ] ] [ e ch I k a z u \ i ] ] } [ [ t e ] [ , o r e e o ] [ i i m a \ sh I t a ] ] . }
-Arabian01_03910 { [ [ s a N \ ] [ n i N m o ] ] [ [ [ k a \ r e n o ] [ b u j i o ] ] [ i w a \ cl t e k u r e m a \ sh I t a ] ] . }
-Arabian01_03920 { [ s o sh I t e ] [ [ , i ch i d o o ] [ w a k a r e w a \ k a r e n i ] [ k a e r i m a \ sh I t a ] ] . }
-Arabian01_03940 { [ t o ] [ , sh a \ a ] [ r a z a a d o w a ] [ i i m a \ sh I t a ] . }
-Arabian01_03960 { [ o \ o w a ] [ [ k a \ n o j o n i ] [ t a z u n e m a \ sh I t a ] ] . }
-Arabian02_00040 { [ [ [ i ch i ry o \ o sh i ] [ n o h a n a sh i ] ] [  ] ]
-Arabian02_00070 { [ [ [ a \ r u ] [ h i n o ] ] [ h i r u \ g o r o ] ] [ n i ] [ , ry o \ o sh i w a ] [ [ k a i g a N e ] [ d e t e i k i m a \ sh I t a ] ] . }
-Arabian02_00080 { [ s o sh I t e , k a g o ] [ [ [ o sh I t a ] [ n i o \ i ] ] [ t e ] [ , a m i \ o ] [ n a g e m a \ sh I t a ] ] . }
-Arabian02_00140 { { [ [ s o r e o ] [ m i \ t e ] ] } [ ry o \ o sh i w a ] [ t o t e m o g a cl k a \ r i sh i m a \ sh I t a ] . }
-Arabian02_00350 { [ ts u g i \ w a ] [ [ [ ky o \ o n o ] [ s a \ i g o n o ] ] [ a m i u ch i ] ] [ d e \ s U ] . }
-Arabian02_00570 { [ s o n o m a \ j i N ] [ [ w a k u \ m o ] [ { [ n i a t a m a \ ] [ g a t o d o k i \ s o o ] } [ n a ] ] [ h o d o ] ] [ o \ o k I k u ] [ [ { [ { [ [ , a sh i \ o ] [ u g o k a \ s U ] ] } [ t o ] ] [ d a \ i ch i g a ] [ y u r e r u ] } [ h o d o n o ] ] [ r i cl p a n a ] [ m a j i N ] ] [ d e sh I t a . ] }
-Arabian02_00600 { [ { [ ry o \ o sh i w a ] [ [ k o n o m a \ j i N ] [ o m i \ ] ] } [ t a ] ] [ t o \ k i ] [ , w a k i b a r a g a ] [ [ [ b u \ r u b u r u ] [ t o ] ] [ f u r u e m a \ sh I t a ] ] . }
-Arabian02_00640 { [ t o ] [ , w a m e k i d a sh i m a \ sh I t a ] . }
-Arabian02_00680 { [ a n a \ t a ] [ [ w a , s u \ r e i ] [ m a a N ] [ { [ [ g a k a \ m i ] [ n o y o g e N sh a ] [ d a ] ] [ t o ] } [ o cl sh a \ r u n o d e \ s U ] ] ] [ k a . ] }
-Arabian02_00770 { [ t o i i m a \ sh I t a ] . }
-Arabian02_01000 { [ s o k o d e w a sh i ] [ w a m a t a ] [ ch I k a cl t a  ] }
-Arabian02_01080 { [ s o sh I t e ] [ [ , k o k o \ r o ] [ [ n o n a \ k a ] [ d e ch I k a cl ] ] [ t a  ] ]
-Arabian02_01100 [ { [ [ [ s o sh I t e ] [ t a \ d a ] [ [ { [ [ { [ d o \ o y u u ] [ { [ k a z e ] } [ n i ] ] [ sh I t e ] } [ sh i n i ] ] [ t a \ i k a ] ] [ t o ] } [ i u ] ] [ k o t o d a k e o ] ] [ a i t e \ n i ] [ e r a \ b a s e t e ] ] [ y a r o o ] ] [ . t o ] } . ]
-Arabian02_01130 { [ ry o \ o sh i w a ] [ { [ [ [ m a \ j i N ] [ n o h a n a sh i \ ] ] [ o k i i ] ] } [ t a ] ] [ [ t o \ k i ] { [ [ , k o \ e o ] [ a g e t e ] ] } [ s a k e b i m a \ sh I t a ] ] . }
-Arabian02_01220 { [ t o i i m a \ sh I t a ] . }
-Arabian02_01230 { [ k e \ r e d o ] [ , m a \ ] [ j i N w a ] [ [ { [ k I k u ] } [ m i m i \ o ] ] [ m o ch i m a s e \ N ] ] . }
-Arabian02_01240 { [ s o k o d e ry o \ o sh i ] [ w a i i ] [ m a \ sh I t a  ] }
-Arabian02_01250 { [ a n a \ t a ] [ [ w a d o o sh I t e \ m o ] [ w a t a sh i ] [ { [ [ o k o r o s u ] [ g o ] ] } [ k e \ cl sh i N ] ] [ n a n o d e \ s U ] ] [ n e  ] }
-Arabian02_01270 { [ t o ] [ , m a \ ] [ j i N w a ] [ k o t a e m a \ sh I t a ] . }
-Arabian02_01350 { [ d o \ o sh I t e ] [ [ { [ [ [ a n a \ t a ] [ w a k o N n a ] [ [ [ [ ts u b o ] [ n o n a \ k a ] ] [ n i w a ] ] [ i cl t e i t a n o d e \ s U ] ] ] [ k a ] ] [ [ . a n a \ t a ] [ { [ [ [ n o k a t a u d e ] [ k a k a t a a sh i d a k e d e \ m o h a i r a \ ] ] [ n a i y o \ o ] ] } [ n i o m o e ] ] [ m a \ s U k e r e d o ] ] } [ , a n a \ t a ] ] [ w a ] [ d o \ o y a \ cl ] [ t e ] [ [ k a r a d a z e \ N b u ] [ [ [ , k o N n a ] [ ch i \ i s a n a ] [ ts u b o n o ] ] [ n a \ k a n i ] ] [ h a \ i cl t e i r a r e t a N \ d e s U ] ] ] [ k a  ] }
-Arabian02_01370 { [ t o ] [ , m a \ ] [ j i N w a ] [ i i m a \ sh I t a ] . }
-Arabian02_01380 [ [ ry o \ o sh i w a ] , ]
-Arabian02_01400 { [ t o i i m a \ sh I t a ] . }
-Arabian02_01410 { [ { [ [ k o r e o ] [ k I k u ] ] } [ t o ] ] [ , m a \ ] [ j i N w a ] [ [ [ [ b u r u \ cl ] [ t o ] ] [ k a r a d a o ] ] [ f u r u w a s e m a \ sh I t a ] ] . }
-Arabian02_01510 { { [ ry o \ o sh i g a ] [ [ [ s o o y u u ] [ n o o ] ] [ k i i t e ] ] } [ , m a \ ] [ j i N w a ] { [ [ m i o ] [ m o g a \ i t e ] ] } [ [ , n o g a r e \ y o o ] [ t o sh i m a \ sh I t a ] ] . }
-Arabian02_01540 { [ ry o \ o sh i w a ] [ [ s o r e k a r a ] [ s o n o ts u b o o ] [ [ u \ m i n o ] [ ch i \ k a k u m a d e ] ] [ m o \ cl t e i k i m a \ sh I t a ] ] . }
-Arabian02_01680 [ [ s o r e ] [ { [ w a i cl t a i ] [ d o \ o y u u ] [ h a n a sh i \ ] [ { [ n a ] } [ N \ ] ] [ d a . y u u n a a N \ ] } [ o o ] { [ { [ [ [ [ n o d a \ i j i N ] [ t o g a k U sh a n o z u u ] ] [ b a \ a N g a ] ] [ [ i cl t a i ] [ d o \ o ] [ sh I t a \ ] ] ] [ t o ] } [ i u N \ d a ] ] } ] [  ] ]
-Arabian02_01690 { [ ry o \ o sh i w a ] [ [ [ ts u g i \ n o ] [ y o \ o n i ] ] [ k o t a e m a \ sh I t a ] ] . }
-Arabian02_01710 { [ k o n o o o s a m a w a ] [ [ [ [ [ o \ o k u n o ] [ t a k a r a \ t o ] ] [ [ o o z e \ e n o ] [ y u u k a N n a ] [ h e e t a i \ t a ch I ] ] [ t o ] [ [ [ , s a m a \ z a m a ] [ n a ] ] [ sh u \ r u i n o ] ] ] [ g u \ N t a i o ] ] [ m o \ cl t e i t a ] ] . }
-Arabian02_01740 { [ i sh a \ t a ch i ] [ w a ] [ [ m i n a ] [ [ , o \ o n o ] [ ch i ry o o o ] ] [ a k i r a m e \ t e sh i m a \ cl t a ] ] . }
-Arabian02_01820 { [ s o sh I t e , j i b u N ] [ g a i cl t a i ] [ [ { [ n a n i m o n o d e a r u n o ] [ k a ] } [ o ] ] [ s e ts u m e e sh I t a ] ] . }
-Arabian02_01890 { [ [ s o sh I t e , o m a e ] [ [ n o n e g a \ i ] [ w a n a \ n i ] ] [ d e m o k a n a e \ t e a g e r u ] ] [ y o . ] }
-Arabian02_02090 { [ t a \ m a w a ] [ [ [ k a \ r e n o ] [ m a \ e n i ] ] [ n a g e \ r a r e t a ] ] . }
-Arabian02_02130 [ [ o \ o w a ] [ u r e sh i \ k u ] [ n a cl t a . ] ]
-Arabian02_02160 { [ ch o o t e e n o y a k u n i N \ t a ch i ] [ [ g a z u r a \ r i t o ] [ [ k a \ r e n o ] [ m a \ e n i ] ] [ n a r a N d a ] ] . }
-Arabian02_02200 { [ s o r e d e ] [ [ , i ch i n i ch i j u u ] [ [ [ [ o \ o ] [ n o ] ] [ t a i s e ts u n a ] ] [ [ o ky a k U s a \ m a ] [ t o ] ] [ sh I t e ] ] [ a ts U k a w a r e t a ] ] . }
-Arabian02_02270 { [ t o i cl t a ] . }
-Arabian02_02280 { [ s o r e k a r a t o i u ] [ m o n o , o \ o ] [ w a m a \ i n i ch i ] [ { [ [ , g a k U sh a z u u b a \ a N ] [ o j i b u N n o s o \ b a ] [ n i ] ] } [ o k i ] [ , t a i s e ts u n i ] [ a ts U k a cl t a ] ] . }
-Arabian02_02400 { [ d a \ i j i N w a ] [ s o k o d e ] , }
-Arabian02_02460 { [ s o sh I t e i cl t a ] . }
-Arabian02_02480 { [ k a \ r e w a ] [ k o t a \ e t a ] . }
-Arabian02_02500 { [ o \ o w a ] [ i cl t a ] . }
-Arabian02_02540 { [ [ { [ [ d o \ N n a ] [ i sh a m o ] ] [ [ s a \ j i o ] [ n a g e \ t a ] ] } [ w a sh i n o by o o k i o ] ] [ n a o \ sh I t e k u r e t a ] ] . }
-Arabian02_02600 { [ { [ [ { [ o m a e n o i u ] } [ t o o r i \ n i ] ] [ sh I t a \ r a ] ] } [ , w a sh i ] [ w a k i cl t o ] [ o \ o m u ] [ [ [ { [ [ o k o r o sh I ] [ t a o t o k o \ ] ] } [ n o y o \ o ] ] [ n i , a \ t o ] ] [ k a r a ] [ k o \ o k a i s u r u ] [ n i ch i g a i n a i ] ] ] [ y o . ] }
-Arabian02_02650 { [ g a , a \ r u ] [ t o k i , d o o sh I t e \ m o ] [ [ h a z u s e ] { [ { [ n a i y o o j i g a ] } [ d e k i \ t e ] ] [ , d o o sh I t e \ m o t a b i \ ] } [ n i ] [ { [ [ d e ] [ n a k e r e \ b a ] [ n a r a \ n a i ] ] } [ k o t o \ n i ] ] [ n a \ cl t a ] ] . }
-Arabian02_02800 { [ sh o \ o n i N w a ] { [ [ t a b i \ k a r a ] [ k a \ e cl t e k i \ t e ] ] } [ [ , m a t a o u m u ] [ n i r u s U ] [ ch u u n o h a n a sh i \ o ] [ k i i t a ] ] . }
-Arabian02_02810 [ [ s u r u t o ] [ o u m u w a ] , ]
-Arabian02_02840 { [ sh o \ o n i N w a ] [ , s o n o ] [ [ { [ [ [ s u u \ ] [ n i ch i w a t o t e m o ] ] [ [ [ i \ i ] [ t e \ N k i ] ] [ d e , a m e \ ] ] [ [ ts u b u ] [ [ i cl \ ] [ t e k i m o f u r a \ ] ] [ n a k a cl t a t o ] ] ] [ i u ] } [ k o t o \ o ] ] [ sh i cl t e i t a ] ] . }
-Arabian02_02870 { [ t o i cl t a ] . }
-Arabian02_02900 { [ t o i cl t a ] . }
-Arabian02_02920 { [ s o r e d e ] [ [ h a r a d a ch i m a g i r e \ ] [ n i ] [ , o u m u o ] [ i e \ k a r a ] [ o i d a sh I t e sh i m a \ cl t a ] ] . }
-Arabian02_02960 { [ sh o \ o n i N w a ] [ { [ [ o u m u g a ] [ [ { [ j i b u N n o ] [ m i \ t a ] } [ k o t o \ o ] ] [ [ sh o o j i \ k i ] [ n i ] ] [ h a n a \ sh I t a n o d a ] ] ] [ t o ] } [ sh i cl t a ] ] . }
-Arabian02_03010 { [ w a t a sh i w a ] { [ [ h e \ e k a n i ] [ t a i s u \ r u d o o j o o ] ] [ [ k a r a ] [ { [ , a i ts u g a ] [ [ { [ [ [ h e \ e k a n o ] [ k o o f U k u o ] ] [ b u ch I k o w a sh i ] ] } [ n i ] ] [ sh I t e sh i m a u ] ] } [ n o o ] ] [ o s o r e \ t e ] ] } [ [ , a n o ] [ [ [ o t o k o \ ] [ n o k o t o \ ] ] [ o m i cl k o k U ] ] [ s u r u n o d e g o z a i m a \ s U ] ] . }
-Arabian02_03020 { [ m o \ sh i ] [ w a t a sh i n o k o t o b a \ g a ] { [ h o N t o o d e n a k a cl t a \ r a ] } [ , d o \ o z o ] [ [ { [ sh i \ N j i ] [ [ b a a d o \ o o ] [ n o d a \ i j i N ] ] [ g a k o r o s a r e ] } [ t a y o \ o ] ] [ n i ] [ , w a t a sh i o ] [ k o r o sh I t e k u d a s a i m a \ s e ] ] [  ] }
-Arabian02_03060 [ [ y o \ N ] [  ] ]
-Arabian02_03130 { [ d a \ i j i N m o ] [ [ k a \ r e t o ] [ i cl sh o n i ] [ i k i m a \ sh I t a ] ] . }
-Arabian02_03170 { [ s o r e d e ] [ o \ o j i w a ] [ [ s o r e o ] [ o i k a k e \ t e i k i m a \ sh I t a ] ] . }
-Arabian02_03260 { [ w a t a sh i ] [ w a i \ N d o ] [ [ { [ [ n i i r u ] [ t a k U s a N ] ] } [ [ [ n o o o \ ] [ t a ch i n o ] ] [ u ch i n o ] ] [ h I t o \ r i n o ] [ o \ o n o ] ] [ m u s u m e ] ] [ d e g o z a i m a \ s U ] . }
-Arabian02_03320 { [ s o n o t o k i ] [ m u \ s u m e w a ] [ [ o \ o j i n i ] [ i i m a \ sh I t a ] ] . }
-Arabian02_03370 { [ { [ { [ { [ [ [ n a \ n i ] [ k a ] ] [ o k a sh i \ i ] ] [ t o ] } [ o m o \ cl t a ] ] } [ n o d e ] ] [ [ , k i z u k a ] [ { [ r e \ n a i y o \ o ] } [ n i k o cl s o \ r i ] ] [ [ [ t o ] [ a \ t o ] ] [ k a r a h a \ i cl ] ] [ t e i cl t e m i \ r u t o ] ] } [ , g u \ u ] ] [ [ r e \ e ] [ [ t o i u ] [ o s o r o sh i \ i ] [ y o o k a i o ] ] [ m i ts U k e m a \ sh I t a ] ] . }
-Arabian02_03420 { { [ [ s o r e o ] [ k i i t e ] ] } [ , k o d o m o \ ] [ t a ch i w a ] [ [ k U ch i \ g u ch i n i ] [ i i m a \ sh I t a ] ] . }
-Arabian02_03440 { [ [ h a \ y a k U ] [ s o n o o t o k o \ o ] [ ts u r e t e k i \ t e ] ] . }
-Arabian02_03450 { [ [ o n a k a ] [ [ i \ cl p a i ] [ s o n o n i k u \ ] ] [ g a t a b e ] ] [ t a \ i ] [ y o . ] }
-Arabian02_03490 [ [ { [ { [ w a t a sh i g a ] [ [ { [ [ [ i n o r i \ n o ] [ k o t o b a \ g a ] ] [ n i g a t e d a \ ] ] [ n a N t e ] } [ k o t o \ w a ] ] [ sh i r a n a i ] ] } [ h a z u ] ] [ d a \ ] } [ k a r a ] ] [ n e  ] ]
-Arabian02_03540 [ { [ [ { [ o \ o j i g a ] [ [ [ o s o r o sh i \ ] [ s o o n i ] ] [ [ b u \ r u b u r u ] [ t o ] ] [ f u r u e t e i r u ] ] } [ n o o ] ] [ m i \ t e ] ] } , ]
-Arabian02_03560 { [ t o t a z u n e m a \ sh I t a ] . }
-Arabian02_03620 { [ o \ o j i w a ] [ [ s o r e n i ] [ k o t a e m a \ sh I t a ] ] . }
-Arabian02_03640 { [ { [ [ d o o sh I t e \ m o ] [ i \ n o ch i o ] [ t o r i t a \ i ] ] [ t o ] } [ i u N \ d a ] ] . }
-Arabian02_03670 { [ s o r e ] [ { [ [ n a r a \ b a ] [ a n a \ t a w a ] [ [ [ t e k i n o ] [ n i g a t e n a ] [ k o t o \ o ] ] [ y a \ cl t e a g e r u ] ] ] [ t o ] } [ i \ i ] [ d e s U ] ] [ y o . ] }
-Arabian02_03690 { [ t o i i m a \ sh I t a ] . }
-Arabian02_03750 { [ s o sh I t e , d a \ i j i N ] [ { [ g a a n o ] [ { [ [ { [ s a b a k u n i g u \ u ] [ r e \ e g a ] [ i r u ] } [ k o t o \ o ] ] [ sh i cl t e i t e ] ] } [ o \ o j i o ] { [ [ s a b a k u n o h o \ o n i ] [ i k a ] ] } [ s e t a ] ] } [ k o t o \ g a ] ] [ w a k a \ cl t a n o d e \ s U ] . }
-Arabian02_03800 { [ t o ] [ , y u u ] [ [ n a a N \ o o ] [ n o d a \ i j i N ] ] [ [ w a s o n o g o o ] [ ts u z u k e t a ] ] . }
-Arabian02_03870 { [ [ k i cl t o ] [ { [ o m a e n o i u ] } [ t o o r i \ ] ] [ d a ] ] [ n e . ] }
-Arabian02_03880 { [ a n o g a k U sh a w a ] { [ [ w a t a sh i o ] [ k o r o s o o t o sh I ] ] } [ [ t e ] [ { [ { [ [ , m a \ z u ] [ w a t a sh i n i ] [ sh i N y o o s a ] ] } [ s e r u ] ] } [ y o \ o n i ] ] [ t o r i i \ cl t a N \ d a ] ] . }
-Arabian02_03900 { [ d a \ i j i N w a ] [ k o t a e \ t a ] . }
-Arabian02_04040 { [ s o n o t o k i \ ] [ o o w a ] [ i cl t a ] . }
-Arabian02_04090 { [ o \ o w a ] [ k o t a \ e t a ] . }
-Arabian02_04130 { [ k o n o ] [ [ [ h a N gy a k U sh a n o ] [ k u b i o ] ] [ h a n e \ r o ] ] . }
-Arabian02_04170 { [ [ m a \ j i N ] [ [ y o ] { [ [ , k o n o g a k U sh a m o ] [ [ [ w a t a sh I t o ] [ o n a j i ] ] [ y o \ o n i ] ] [ [ , n a N \ ] [ d o m o ] [ k o r o s a n a \ i d e k u r e ] ] ] [ t o ] } [ k u r i k a \ e sh I t a N \ d a ] ] ] [ y o . ] }
-Arabian02_04240 { [ g a k U sh a w a ] [ i cl t a ] . }
-Arabian02_04270 { [ o \ o w a ] [ { [ [ [ d a \ N k o ] [ t o ] ] [ sh I t e ] ] } [ i cl t a ] ] . }
-Arabian02_04390 { [ o \ o w a ] [ k i \ i t a ] . }
-Arabian02_04410 { [ r o o j i N w a ] [ k o t a \ e t a ] . }
-Arabian02_04480 { [ r o o j i N w a ] [ k o t a \ e t a ] . }
-Arabian02_04510 { [ o \ o w a ] { [ [ s o r e k a r a ] [ k o n o e \ h e e ] { [ [ n i k a N sh i ] [ o ] ] } [ s a s e ] ] } [ [ t e ] [ , k a \ r e o ] [ i e \ n i ] [ o k u r i k a \ e sh I t a ] ] . }
-Arabian02_04580 { [ t o i cl t a ] . }
-Arabian02_04620 { [ h e \ e k a ] [ , k o n o ] [ [ h o \ N ] [ o o m o ch I ] [ k u d a s a i ] ] . }
-Arabian02_04630 { [ [ { [ [ { [ w a t a sh i n o k u b i g a ] [ t o b u ] } [ n o o ] ] [ g o r a N n i ] [ n a \ r u ] ] } [ m a d e ] [ w a ] ] [ [ n a \ n i ] [ m o ] ] [ n a s u cl t e w a i k e m a s e \ N ] ] . }
-Arabian02_04690 { [ s o sh I t e ] [ s o n o m e e r e e w a ] [ [ t a \ d a ch i n i ] [ o k o n a w a r e t a ] ] . }
-Arabian02_04770 { [ g a k U sh a n o k u b i w a ] [ k o t a \ e t a ] . }
-Arabian02_04820 { [ o \ o w a ] [ { [ [ a o m u k e n i ] [ t a o r e n a \ g a r a ] ] } [ i cl t a ] ] . }
-Arabian02_04870 { [ k e \ r e d o m o ] [ o \ o w a ] [ [ [ w a r u \ i ] [ o k o n a i o ] ] [ sh I t a ] ] . }
-Arabian02_04960 { [ d a \ k a r a ] [ , k a \ m i s a m a ] [ m o o \ o ] [ [ o sh i n i ] [ m i ch i b i k a r e t a n o d a ] ] . }
-Arabian02_05040 { [ [ { [ w a sh i n o ] [ sh I t a ] } [ k o t o \ o ] ] [ i \ ts u m a d e m o ] [ o k o \ cl t e k u r e r u \ ] ] [ n a . ] }
-Arabian02_05050 { [ [ d o \ o z o ] [ w a sh i o ] [ k a i h o o sh I t e k u r e ] ] . }
-Arabian02_05070 { [ [ w a sh i w a ] [ [ k o N g o k e cl sh I t e ] [ { [ [ o m a e n i ] [ g a \ i o ] [ k u w a e \ n a i ] ] } [ k o t o \ o ] ] [ ch I k a u ] ] ] [ y o . ] }
-Arabian02_05100 { [ s o sh I t e , m a \ ] { [ [ j i N n i ] [ ch I k a w a s e ] ] } [ t e ] [ , ry o \ o sh i w a ] [ [ s o n o ts u b o o ] [ a k e t e y a r i m a \ sh I t a ] ] . }
-Arabian02_05150 { { [ [ { [ o b i e t e i r u ] } [ ry o \ o sh i o ] ] [ m i \ t e ] ] } [ , m a \ ] [ j i N w a ] [ { [ [ k o \ e o ] [ t a t e \ t e ] ] } [ w a r a i m a \ sh I t a ] ] . }
-Arabian02_05170 [ [ w a sh i ] [ { [ n i ts u \ i ] [ t e ] } [ k u \ r u ] ] { g a } [ i \ i ] . ]
-Arabian02_05180 { [ t o i i m a \ sh I t a ] . }
-Arabian02_05200 { [ t o o t o o ] [ f U t a r i \ w a ] [ { [ [ m a ch i \ k a r a ] [ h a \ n a r e t e ] ] } [ y a m a \ n i ] [ n o b o r i m a \ sh I t a ] ] . }
-Arabian02_05210 { [ [ s o r e k a r a ] [ m a N n a k a n i ] [ { [ m i z u u \ m i n o ] [ a \ r u ] } [ h i r o \ i ] [ s a b a k u n i ] ] [ o r i m a \ sh I t a ] ] . }
-Arabian02_05220 { [ m a \ j i N ] { [ [ w a s o k o ] [ n i a sh i \ ] [ o t o m e ] ] } [ [ t e ] [ { [ [ , ry o \ o sh i n i ] { [ [ a m i \ o ] [ n a g e \ t e ] ] } [ s a k a n a o ] [ t o \ r u ] ] } [ y o \ o n i ] ] [ i i m a \ sh I t a ] ] . }
-Arabian02_05240 { [ s o r e n i w a ] [ k a \ r e m o ] [ o d o r o \ i t e sh i m a i m a \ sh I t a ] . }
-Arabian02_05400 { [ o o s a m a w a ] [ { [ [ s o r e o ] [ m i \ t e ] ] } [ h i j o o n i ] [ o d o r o k i m a \ sh I t a ] ] . }
-Arabian02_05410 { [ k a \ r e w a ] [ { [ u m a r e t e ] } [ k a r a ] ] [ m a \ d a ] [ { [ s o N n a m o n o \ w a ] [ m i \ t a ] } [ k o t o \ ] ] [ g a n a \ k a cl ] [ t a n o d e \ s U ] . }
-Arabian02_05420 { [ s o sh I t e , o \ o ] [ w a ry o \ o sh i ] [ [ { [ [ n i o o g o N ] [ o y o N ] [ [ hy a k u \ ] [ m a i ] ] [ a t a e r u ] ] } [ y o \ o n i ] ] [ d a \ i j i N n i ] [ m e e j i m a \ sh I t a ] ] . }
-Arabian02_05430 { [ ry o \ o sh i w a ] [ { [ [ o o g o N o ] [ y o r o k o b i i s a \ N d e ] ] } { [ [ u ch i n i ] [ m o \ cl t e ] ] } [ k a e r i m a \ sh I t a ] ] . }
-Arabian02_05470 { [ t o m e e j i m a \ sh I t a ] . }
-Arabian02_05490 { [ s o sh I t e i i m a \ sh I t a ] . }
-Arabian02_05620 { [ t o i i m a \ sh I t a ] . }
-Arabian02_05670 { [ t o k o t a e m a \ sh I t a ] . }
-Arabian02_05680 { [ [ s o r e k a r a ] [ [ ts u g i \ n o ] [ u t a \ o ] ] [ k u r i k a e sh i m a \ sh I t a ] ] . }
-Arabian02_05700 { { [ a n a \ t a g a ] [ k u \ r e b a ] } [ , w a r e \ ] [ r a m o ] [ k u \ r u ] . }
-Arabian02_05730 { [ [ s o sh I t e ] [ [ { [ h a \ i cl t e k i \ t a ] } [ k a b e n o ] ] [ a n a \ k a r a ] ] [ f U t a t a b i d e t e i k i m a \ sh I t a ] ] . }
-Arabian02_05740 { [ k a b e w a ] [ [ f U t a t a b i ] [ [ m o t o \ n o ] [ t o o r i \ n i ] ] [ f U s a g a r i m a \ sh I t a ] ] . }
-Arabian02_05790 { { [ [ s o r e o ] [ m i \ t e ] ] } [ k a \ n o j o w a ] [ { [ n a k i n a \ g a r a ] } [ { [ [ s a k I h o d o ] [ a \ cl t a ] ] } [ d e k i \ g o t o o ] ] [ s e ts u m e e sh i m a \ sh I t a ] ] . }
-Arabian02_05800 { [ d a \ i j i N w a ] [ { [ [ s o n o h a n a sh i \ o ] [ k i i t e ] ] } [ o d o r o k i m a \ sh I t a ] ] . }
-Arabian02_05850 [ { [ d a \ i j i N w a ] [ [ s o r e o ] [ ry o o r i n i N n i ] [ w a t a sh I t e ] ] } , ]
-Arabian02_05880 { [ ry o o r i n i N w a ] { [ [ s o k o d e ] [ s a k a n a o ] [ a r a cl t e ] ] } [ [ , f u r a i \ ] [ [ n a b e n o ] [ n a \ k a n i ] ] [ i r e m a \ sh I t a ] ] . }
-Arabian02_05900 [ { [ k a \ n o j o w a ] [ [ [ ts u \ e n o ] [ s a k i o ] ] [ [ n a \ b e n o ] [ n a \ k a n i ] ] [ ts U k e \ t e ] ] } , ]
-Arabian02_05920 { [ t o i i m a \ sh I t a ] . }
-Arabian02_05940 { [ s o k o d e m u s u m e \ ] [ w a m a t a ] [ [ ts u \ e ] [ d e f u r a i \ ] [ n a b e o ] [ h i cl k u r i k a e sh i m a \ sh I t a ] ] . }
-Arabian02_05960 { [ k a b e w a ] [ [ m a t a ] [ [ m o t o \ n o ] [ t o o r i \ n i ] ] [ f U s a g a r i m a \ sh I t a ] ] . }
-Arabian02_05970 { [ s o n o t o k i ] [ d a \ i j i N w a ] [ i i m a \ sh I t a ] . }
-Arabian02_06040 { [ ry o \ o sh i w a ] [ [ m a t a ] [ m i z u u \ m i e ] [ d e k a k e m a \ sh I t a ] ] . }
-Arabian02_06090 { [ t o i i m a \ sh I t a ] . }
-Arabian02_06160 [ [ s o sh I t e , m a \ e ] [ [ n o y o \ o ] [ n i  ] ]
-Arabian02_06190 { [ { [ [ [ [ [ s a k a n a \ t a ch i ] [ g a m a \ e ] ] [ t o ] ] [ o n a j i y o \ o ] ] [ n i u t a \ ] [ o ] ] } [ u t a u ] ] [ t o ] [ , o t o k o \ w a ] { [ [ f u r a i \ n a b e ] [ n i ch I k a z u \ i ] ] } [ [ t e ] [ [ , r e \ e n o ] [ ts u \ e d e ] ] [ s o r e o ] [ h i cl k u r i k a e sh i m a \ sh I t a ] ] . }
-Arabian02_06200 { [ s a k a n a w a ] [ [ y a h a \ r i ] [ [ m o k U t a \ N n o ] [ y o \ o n i ] ] [ k o g e \ t e sh i m a i m a \ sh I t a ] ] . }
-Arabian02_06210 { [ s o sh I t e ] [ k a \ r e w a ] [ [ { [ h a \ i cl t e k i \ t a ] } [ y o \ o n i ] ] [ d e t e i cl t e sh i m a i m a \ sh I t a ] ] . }
-Arabian02_06240 { [ [ m a ch i g a \ i ] [ n a k U k o n o s a k a n a n i ] [ [ [ w a n a \ n i ] [ k a f U sh i g i ] ] [ n a j i j o o ] ] [ g a k a N k e e sh I t e i r u y o \ o ] ] [ d a . ] }
-Arabian02_06250 { [ o \ o w a ] [ [ { [ [ s o r e k a r a ] [ ry o \ o sh i o ] [ ts u r e t e k u \ r u ] ] } [ y o \ o n i ] ] [ m e e j i m a \ sh I t a ] ] . }
-Arabian02_06280 { [ t o k I k i m a \ sh I t a ] . }
-Arabian02_06290 { [ ry o \ o sh i w a ] [ k o t a e m a \ sh I t a ] . }
-Arabian02_06310 { [ o o s a m a w a ] [ [ k a \ r e n i ] [ i i m a \ sh I t a ] ] . }
-Arabian02_06330 { [ ry o \ o sh i w a ] [ k o t a e m a \ sh I t a ] . }
-Arabian02_06350 { { [ [ s o r e o ] [ k i i t e ] ] } [ o o s a m a w a ] [ b i cl k u \ r i sh I t e sh i m a i m a \ sh I t a ] . }
-Arabian02_06380 { [ k o N n a t o k o r o w a ] [ { [ [ { [ u m a r e t e ] } [ k a r a ] ] [ [ d a \ r e ] [ m o ] ] [ k o r e m a \ d e ] [ m i \ t a ] ] } [ k o t o \ g a ] ] [ a r i m a s e \ N d e sh I t a ] . }
-Arabian02_06420 { [ t o t a z u n e m a \ sh I t a ] . }
-Arabian02_06440 { [ o \ o w a ] [ [ s o r e k a r a ] [ i i m a \ sh I t a ] ] . }
-Arabian02_06470 { [ o \ o w a ] [ [ s o r e k a r a ] [ d a \ i j i N o ] [ y o b i m a \ sh I t a ] ] . }
-Arabian02_06490 { [ o \ o w a ] [ { [ [ d a \ i j i N n i ] [ m u k a cl t e ] ] } [ i i m a \ sh I t a ] ] . }
-Arabian02_06510 { [ s o r e w a ] [ k o \ o ] [ d a . ] }
-Arabian02_06550 { [ d a \ i j i N w a ] [ [ { [ [ [ o \ o n o ] [ k e e k a k u n i ] ] [ h a N t a i s u r u ] ] } [ k o t o \ w a ] ] [ d e k i m a s e \ N d e sh I t a ] ] . }
-Arabian02_06570 { [ k a \ r e w a ] [ [ a \ s a m a d e ] [ d o \ N d o N ] [ t a b i \ o ] [ sh i m a \ sh I t a ] ] . }
-Arabian02_06600 [ { [ [ s o r e o ] [ m i \ t e ] ] } [ , o \ o ] [ w a  ] ]
-Arabian02_06610 { [ a s o k o ] [ { [ [ e i cl ] [ t a \ r a t a \ b u N ] ] } [ a n o ] [ { [ [ [ [ m i z u u \ m i ] [ t o s a k a n a ] ] [ [ n o h a n a sh i \ ] [ o w a sh i ] ] ] [ n i sh I ] [ t e k u r e r u h I t o ] ] } [ g a i r u ] ] [ k a m o sh i r e ] ] [ n a i . ] }
-Arabian02_06620 { [ t o o m o i m a \ sh I t a ] . }
-Arabian02_06640 { [ [ [ t o g u ch i n o ] [ i cl p o \ o n o ] ] [ t o b i r a g a ] ] [ h i r a \ i t e i m a \ sh I t a ] . }
-Arabian02_06660 { [ { [ [ n a N \ d o ] [ m o t o b i r a ] [ o h a t a k i m a \ sh I ] ] } [ t a ] ] [ g a ] [ [ , h e N j i \ w a ] [ y a h a \ r i ] [ k I k o e m a s e \ N ] ] . }
-Arabian02_06670 [ [ s o k o d e o \ o ] [ w a  ] ]
-Arabian02_06690 { [ t o o m o i m a \ sh I t a ] . }
-Arabian02_06730 { [ { [ k a \ r e w a ] [ { [ [ n a N \ d o ] [ m o k u r i k a \ e sh I ] ] } [ t e i i m a \ sh I ] ] } [ t a ] ] [ g a ] [ [ , h e N j i w a ] [ a r i m a s e \ N d e sh I t a ] ] . }
-Arabian02_06750 { [ [ k e \ r e d o m o ] [ s o k o n i m o ] [ [ d a \ r e ] [ m o ] ] [ i m a s e \ N d e sh I t a ] ] . }
-Arabian02_06780 { [ s o n o m a w a r i n i w a ] [ t o r i g a ] [ a s o N d e i m a \ sh I t a ] . }
-Arabian02_06810 { [ s o sh I t e ] [ [ , f U t o ] [ { [ , k a \ s U k a ] [ n i ] [ k a n a sh i g e ] [ [ n a k o \ e ] [ g a t o n a r i ] ] [ [ [ n o h e y a \ ] [ k a r a k I k o e ] ] [ t e i r u n o ] ] } [ n i ] ] [ k i z u k i m a \ sh I t a ] ] . }
-Arabian02_06880 { [ [ s o sh I t e ] [ k a \ r e n i ] [ i i m a \ sh I t a ] ] . }
-Arabian02_06900 { [ o \ o w a ] [ i i m a \ sh I t a ] . }
-Arabian02_06920 { [ { [ [ k o n o k o t o b a \ o ] [ k i i t a ] ] } [ t o \ k i ] ] [ , w a k a m o n o ] [ [ n o h o \ o ] [ n i h o \ r o h o r o ] ] [ t o ] [ n a \ m i d a g a ] [ k o b o r e m a \ sh I t a ] . }
-Arabian02_06940 { [ o \ o w a ] [ b i cl k u \ r i sh i m a \ sh I t a ] . }
-Arabian02_06970 { [ t o i i m a \ sh I t a ] . }
-Arabian02_06980 { [ w a k a m o n o w a ] [ k o t a e m a \ sh I t a ] . }
-Arabian02_07030 { [ w a k a m o n o w a ] [ i i m a \ sh I t a ] . }
-Arabian02_07050 { [ s o o sh I t e , k a \ r e ] [ w a ts u g i \ ] [ [ [ n o y o \ o ] [ n i h a n a sh I ] ] [ h a j i m e m a \ sh I t a ] ] . }
-Arabian02_07060 [ [ n a \ n a ] [  ] ]
-Arabian02_07090 { [ [ k a \ r e n o ] [ n a w a ] ] { [ [ m a a m u \ u d o ] [ t o ] ] } [ i \ i ] [ [ [ [ , k u r o sh i m a t o ] [ [ y o cl ts u \ ] [ n o y a m a \ ] ] ] [ n o a r u \ ] ] [ j i ] ] [ d e sh I t a . ] }
-Arabian02_07100 { [ { [ [ n a n a j u u \ ] [ n e N k o n o t o ch i ] [ o o s a m e \ ] ] } [ t a a \ t o ] ] [ n i ] [ , k a \ r e w a ] [ sh i n i m a \ sh I t a ] . }
-Arabian02_07120 { [ s o r e k a r a ] [ w a t a sh i w a ] [ [ o j i n o m u s u m e \ o ] [ ts u \ m a n i ] [ m e t o r i m a \ sh I t a ] ] . }
-Arabian02_07130 { [ ts u \ m a w a ] [ [ h i j o o n i ] [ w a t a sh i o ] [ a \ i sh I t e k u r e m a \ sh I t a ] ] . }
-Arabian02_07150 { [ [ { [ { [ [ s o n o y o \ o n i ] [ sh I t e ] ] } [ [ g o \ ] [ n e N ] ] [ t a \ cl t a ] ] } [ a \ t o n o ] ] [ k o t o \ ] ] [ d e s U . ] }
-Arabian02_07160 { [ [ a \ r u ] [ h i \ z u m a g a ] ] [ [ y o k u j o o e ] [ i k i m a \ sh I t a ] ] . }
-Arabian02_07170 { [ w a t a sh i w a ] [ [ s o n o t o k I ] [ h i \ r u n e o ] [ sh I t e i m a \ sh I t a ] ] . }
-Arabian02_07180 { [ [ f U t a r i \ n o ] [ m e sh I ts u \ k a i g a ] ] [ [ w a t a sh i n o s o \ b a d e ] [ o o g i \ d e ] [ a o \ i d e i m a \ sh I t a ] ] . }
-Arabian02_07210 { [ t o n o s a m a ] [ { [ [ w a o \ k U s a m a ] [ [ [ n o k o t o \ ] [ n i ts u \ i ] ] [ t e n a \ n i ] [ m o w a k a \ cl t e i ] ] ] [ n a i \ ] } [ n a N t e , k a w a i s o \ o ] [ d a ] ] [ n e e  ] }
-Arabian02_07330 { [ ts u \ m a w a ] [ [ s o n o h a \ i o ] [ w a t a sh i n i ] [ w a t a sh i m a \ sh I t a ] ] . }
-Arabian02_07480 { [ { [ { [ s o o sh i y o o t o sh I ] } [ t e u d e \ ] [ o f u r i a g e \ ] ] } [ t a ] ] [ t o \ k i ] [ , k a \ n o j o w a ] [ [ s u cl k u \ t o ] [ t a ch i a g a r i m a \ sh I t a ] ] . }
-Arabian02_07620 { [ w a k a m o n o w a ] [ k o t a e m a \ sh I t a ] . }
-Arabian02_07660 { [ o \ o w a ] [ i i m a \ sh I t a ] . }
-Arabian02_07780 { { [ [ [ t a t e \ m o n o n o ] [ n a \ k a n i ] ] [ h a \ i cl t e ] ] } [ [ , n a i ] { [ t a \ r i t a \ N ] } [ i t a \ r i sh I t e i m a \ sh I t a ] ] . }
-Arabian02_07810 { [ [ m a h o o ts u \ k a i n o ] [ o N n a \ w a ] ] [ b i cl k u \ r i sh i m a \ sh I t a ] . }
-Arabian02_07830 { [ o \ o w a ] [ i i m a \ sh I t a ] . }
-Arabian02_07860 { [ [ m a h o o ts u \ k a i n o ] [ o N n a \ w a ] ] [ i i m a \ sh I t a ] . }
-Arabian02_07930 { [ i \ m a ] [ { [ w a t a sh i ] [ g a t o n a e \ ] [ t a k o t o b a \ ] } [ n o ch I k a r a \ ] [ n i y o ] ] [ cl t e ] [ , o m a e w a ] [ [ [ m o t o \ n o ] [ s u \ g a t a n i ] ] [ m o d o \ r e ] ] [  ] }
-Arabian02_07960 { [ k a \ r e w a ] [ [ [ m o t o \ n o ] [ s u \ g a t a n i ] ] [ m o d o \ cl t e i m a \ sh I t a ] ] . }
-Arabian02_07970 { [ k a \ n o j o w a ] [ i i m a \ sh I t a ] . }
-Arabian02_08010 { [ s o r e k a r a ] [ k a \ n o j o w a ] [ { [ [ [ t a t e \ m o n o n o ] [ n a \ k a e ] ] [ m o d o \ cl t e k i \ t e ] ] } [ i i m a \ sh I t a ] ] . }
-Arabian02_08030 { [ o \ o w a ] [ k o t a e m a \ sh I t a ] . }
-Arabian02_08090 { [ o \ o w a ] [ [ [ h I k u \ i ] [ k o \ e d e ] ] [ i i m a \ sh I t a ] ] . }
-Arabian02_08100 { [ m o \ cl t o ] [ [ s o \ b a ] [ e o \ ] [ y o r i ] ] [  ] }
-Arabian02_08120 { [ k a \ r e w a ] [ [ [ s u r u d o \ i ] [ k e \ N d e ] ] { [ [ k a \ n o j o o ] [ s a sh i \ t e ] ] } [ k o r o sh I t e sh i m a i m a \ sh I t a ] ] . }
-Arabian02_08160 { [ [ w a k a \ i ] [ o \ o w a ] ] [ [ [ k a \ r e n o ] [ t e \ n i ] ] { [ [ k i \ s u o ] [ sh I t e ] ] } [ f U k a \ k U ] [ k a \ r e n i ] [ o r e e o ] [ i i m a \ sh I t a ] ] . }
-Arabian02_08190 { [ [ w a k a \ i ] [ o \ o w a ] ] [ i i m a \ sh I t a ] . }
-Arabian02_08210 { [ o \ o w a ] [ k o t a e m a \ sh I t a ] . }
-Arabian02_08230 { [ w a k a m o n o w a ] [ i i m a \ sh I t a ] . }
-Arabian02_08260 { [ o \ o w a ] [ { [ [ [ k a \ r e n o ] [ k o t o b a \ o ] ] [ k i i t e ] ] } [ y o r o k o b i m a \ sh I t a ] ] . }
-Arabian02_08410 { [ t o m e e j i m a \ sh I t a ] . }
-Arabian02_08430 { [ k o n o ry o \ o sh I k o s o ] [ [ { [ [ { [ [ a n o m a h o o n i ] [ k a k a \ cl t a ] ] } [ m a ch i \ n o ] [ j u u m i N o ] ] [ s U k u cl t e y a r u ] ] } [ m o t o \ n i ] ] [ n a \ cl t a n o d e \ s U ] ] . }
-Arabian02_08460 { [ ry o \ o sh i w a ] [ { [ [ [ [ h I t o \ r i n o ] [ m u s U k o t o ] ] [ [ f U t a r i \ n o ] [ m u s u m e \ g a ] ] ] [ a \ r u ] ] [ t o ] } [ m o o sh i a g e m a \ sh I t a ] ] . }
-Arabian02_08470 { { [ o o s a m a w a ] [ [ s o r e o ] [ k i i t e ] ] } [ , f U t a r i \ ] { [ [ n o m u s u m e \ ] [ t a ch i w a ] ] [ [ [ r i cl p a n a ] [ k i \ z o k U t o ] ] [ k e cl k o N s a s e ] ] } [ , m u s U k o ] [ w a ky u u d e N ] [ [ [ n o s u i t o o \ ] [ k a N n i ] ] [ n i N m e e sh i m a \ sh I t a ] ] . }
-Arabian03_00060 { [ { [ [ [ b a g u d a \ a d o n o ] [ t o \ n i ] ] [ m a \ d a ] [ k e cl k o N sh i n a i ] ] } [ h I t o \ r i n o ] [ o t o k o \ g a ] ] [ a r i m a \ sh I t a ] . }
-Arabian03_00160 { [ k a \ n o j o w a ] [ [ [ [ i ch i \ ] [ m a i n o ] ] [ o o g o N o ] ] [ k a \ r e n i ] [ w a t a sh i m a \ sh I t a ] ] . }
-Arabian03_00180 [ { [ k a \ n o j o w a ] [ [ s o r e o ] [ k a g o n o n a \ k a n i ] [ i r e t e ] ] } , ]
-Arabian03_00200 { [ t o i i m a \ sh I t a ] . }
-Arabian03_00260 { [ t o i i m a \ sh I t a ] . }
-Arabian03_00300 { { [ [ s o r e o ] [ m i \ t e ] ] } [ , k a t a N \ ] [ g i f u w a ] , }
-Arabian03_00320 { [ t o i i m a \ sh I t a ] . }
-Arabian03_00350 [ { [ [ s o r e o ] [ m i N n a \ ] [ k a g o n o n a \ k a n i ] [ i r e n a \ g a r a ] ] } , ]
-Arabian03_00370 { [ t o i i m a \ sh I t a ] . }
-Arabian03_00390 { [ t o o t o o ] [ k a \ n o j o w a ] [ [ { [ m a \ e n i ] [ [ h i r o \ i ] [ n i w a n o ] ] [ a \ r u ] } [ u ts U k u sh i \ i ] [ i e \ n i ] ] [ ts U k i m a \ sh I t a ] ] . }
-Arabian03_00400 { [ s o r e w a ] [ { [ [ ry o o b i \ r a k i n o ] [ t o b i r a n o ] ] [ ts u \ i t a ] } [ r i cl p a n a ] [ t a k a \ i ] [ t a t e \ m o n o ] ] [ d e sh I t a . ] }
-Arabian03_00410 { [ [ w a k a \ i ] [ k I f u \ j i N w a ] ] [ [ s o n o m a \ e n i ] [ a sh i \ o ] [ t o m e m a \ sh I t a ] ] . }
-Arabian03_00480 { [ o t o \ m e w a ] [ i i m a \ sh I t a ] . }
-Arabian03_00490 { [ d o \ o z o ] [ o h a i r i n a s a i ] [  ] }
-Arabian03_00500 { [ f U t a r i \ w a ] [ h a i r i m a \ sh I t a ] . }
-Arabian03_00550 { [ s o sh I t e , n i \ ] { [ [ [ m a i n o o o g o N ] [ o k a t a N \ ] ] [ g i f u n i ] [ w a t a sh i ] ] } [ [ , k o r e ] [ { [ d e sh i g o t o ] [ g a o w a cl ] [ t a \ n o d e ] } [ , k a \ e cl ] ] [ t e ] [ { [ m o i \ i ] } [ t o ] ] [ i i m a \ sh I t a ] ] . }
-Arabian03_00620 { [ m o \ o ] [ [ [ i ch i \ ] [ m a i o o g o N ] ] [ o o ] [ y a r i n a s a i ] ] [  ] }
-Arabian03_00630 { [ t o i i m a \ sh I t a ] . }
-Arabian03_00660 { [ { [ [ { [ k e cl sh I t e i t a d a i t a ] } [ m o n o \ o ] ] [ s U k u n a \ i ] ] [ n a N t e ] } [ o m o \ cl t e o r i m a s e \ N ] ] . }
-Arabian03_00670 { [ t a \ d a ] [ [ , a n a t a \ ] [ k a t a n o k o t o \ b a k a r i o ] [ k a N g a \ e t e i t a n o d e \ s U ] ] . }
-Arabian03_00700 { [ sh i m a i \ ] [ [ t a ch i , ky o \ o ] [ w a k o n o ] [ [ h I t o w a w a t a sh i \ ] [ t a ch i n o t a m e \ n i ] { [ [ t a i h e N n i ] [ k u \ r o o sh I t e ] ] } [ n i \ m o ts u o ] [ h a k o N d e k u r e t a \ n o ] ] ] [ y o . ] }
-Arabian03_00710 { [ [ [ t a \ n o ] [ h I t o n a r a ] ] [ [ w a t a sh i \ t a ch i ] [ n o t a m e \ ] ] [ n i k o N n a n i ] [ sh i \ N b o o sh I t e w a k u r e n a i \ d e sh o o ] ] . }
-Arabian03_00780 { [ { [ { [ [ k a t a N \ g i f u ] [ g a k a e r i t a k u \ ] ] [ n a i ] } [ t o o m o \ cl t e ] ] } [ i r u ] ] [ t o ] [ [ , o t o \ m e n o ] [ h I t o \ r i g a ] ] [ i i m a \ sh I t a ] . }
-Arabian03_00820 { [ k a \ r e r a w a ] [ i i m a \ sh I t a ] . }
-Arabian03_00910 { [ { [ [ t o o ] [ t a t a \ i t e i t a ] ] } [ n o w a ] ] [ , s a N \ ] [ [ n i N n o t a k U h a ts u \ ] [ s o o ] ] [ d e sh I t a . ] }
-Arabian03_00960 { [ { [ [ t o o ] [ t a t a \ i t a ] ] } [ n o w a ] ] [ , k o n o ] [ [ [ k u n i n o o \ o ] [ , h a a r u \ u N ] ] [ , e \ r u ] [ , r a sh i \ i d o t o ] [ , d a \ i j i N ] [ [ [ t o k e e g o \ ] [ k a N n o ] ] [ [ s a N \ ] [ n i N ] ] ] ] [ d e sh I t a . ] }
-Arabian03_01110 { [ i r e ] [ t e o a g e n a s a i ] [ y o  ] }
-Arabian03_01170 { [ t o i i m a \ sh I t a ] . }
-Arabian03_01190 { [ [ j i \ j o n o ] [ k I f u \ j i N w a ] ] [ k o t a e m a \ sh I t a ] . }
-Arabian03_01200 { [ s u e n o k I f u \ j i N m o ] [ t a ch i a g a r i m a \ sh I t a ] . }
-Arabian03_01210 { [ s o sh I t e ] [ [ , k a t a N \ ] [ g i f u n i ] [ m u k a cl t e ] ] , }
-Arabian03_01230 { [ t o i i m a \ sh I t a ] . }
-Arabian03_01280 { [ k a \ r e w a ] [ s o r e ] [ [ d e ] [ [ , i cl \ ] [ p I k i o ] ] [ [ k I f u \ j i N n o ] [ m a \ e n i ] ] [ ts u r e t e i k i m a \ sh I t a ] ] . }
-Arabian03_01350 { [ k a \ n o j o w a ] [ [ [ [ s a k I h o d o t o ] [ o n a j i ] ] [ y o \ o n i ] ] [ [ [ m o \ o ] [ [ i cl \ ] [ p I k i n o ] ] ] [ i n u \ n i m o ] ] [ sh i m a \ sh I t a ] ] . }
-Arabian03_01370 { [ { [ { [ m u n e \ g a ] [ sh i m e ts U k e r a r e \ r u ] } [ y o \ o ] ] [ n a ] } [ k i g a ] ] [ sh i m a \ sh I t a ] . }
-Arabian03_01400 { [ { [ [ k o n o a r i s a m a o ] [ m i \ t a ] ] } [ t o \ k i ] ] [ , s o o ry o \ ] [ t a ch i w a ] [ i i m a \ sh I t a ] . }
-Arabian03_01420 { [ [ k o N n a d e k i \ g o t o n o ] [ t a m e \ n i ] ] [ k o \ N y a w a ] [ [ s u cl k a \ r i ] [ [ [ i y a \ ] [ n a ] ] [ b a N n i ] ] [ n a \ cl t e sh i m a i m a \ sh I t a ] ] [  ] }
-Arabian03_01450 { [ [ s a N \ ] [ n i N w a ] ] [ k o t a e m a \ sh I t a ] . }
-Arabian03_01470 { [ { [ [ [ [ h I t o \ ] [ b a N n o ] ] [ y a \ d o o ] ] [ t a n o \ N d e ] ] } [ k o n o i e \ n i ] [ i r u n o d e \ s U ] ] . }
-Arabian03_01480 { [ [ w a t a sh i \ t a ch i ] [ [ { [ [ { [ [ [ w a a n a \ t a ] [ n o s o \ b a ] ] [ n i s u w a cl t e ] ] } [ i r u ] [ , s o n o h o \ o n o ] [ u ch i ] ] [ d a ] ] [ t o ] } [ b a k a r i ] ] [ o m o \ cl t e i m a \ sh I t a ] ] ] [ y o  ] }
-Arabian03_01490 { { [ [ s o r e o ] [ k i i t e ] ] } [ , k a t a N \ ] [ g i f u g a ] [ i i m a \ sh I t a ] . }
-Arabian03_01520 { [ k a \ r e r a w a ] [ [ s o r e ] [ k a r a t a g a i n i ] [ s o o d a N sh i m a \ sh I t a ] ] . }
-Arabian03_01530 { [ w a t a sh i \ ] [ t a ch i w a ] [ m i N n a \ d e ] [ [ sh I ch i \ ] [ n i N ] ] [ d a . ] }
-Arabian03_01550 [ [ sh I k a \ sh i ] [ , d a i j i N ] [ d a k e w a  ] ]
-Arabian03_01580 { [ { [ [ a \ t o ] [ i ch i j i \ k a N m o ] ] [ s u r e \ b a ] } [ y o \ r u g a ] [ a k e r u j a n a i d e s U \ ] ] [ k a . ] }
-Arabian03_01590 [ [ { { [ s o o s u r e \ b a ] } [ [ , m e i m e \ i ] [ [ b e ts u b e ts u ] [ n i ] ] [ w a k a r e \ r u N \ d e s U ] ] } [ k a r a ] ] [  ] ]
-Arabian03_01620 { [ t o i i m a \ sh I t a ] . }
-Arabian03_01660 { [ k a t a N \ g i f u ] [ w a ] { [ [ [ , k I f u j i N \ t a ch i ] [ n o m a \ e ] ] [ n i d e ] ] } [ t e , i i m a \ sh I t a ] . }
-Arabian03_01690 { [ k I f u \ j i N w a ] [ { [ [ [ t a \ n o ] [ i ch i d o \ o n i ] ] [ m u k a cl t e ] ] } [ i i m a \ sh I t a ] ] . }
-Arabian03_01700 { [ k o n o ] [ [ { [ h I t o g a i cl ] [ t a k o t o \ ] } [ w a , t a \ ] ] [ n o ] [ [ [ [ [ o ky a k u j i N \ ] [ t a ch i m o ] ] [ o n a j i ] ] [ y o \ o n i ] ] [ o m o \ cl t e i r u n o d e \ s U ] ] ] [ k a  ] }
-Arabian03_01710 [ [ k a \ r e r a w a ] [ m i n a , ] ]
-Arabian03_01730 { [ t o k o t a e m a \ sh I t a ] . }
-Arabian03_01810 { [ k I f u \ j i N w a ] [ [ k a \ r e r a n i ] [ i i m a \ sh I t a ] ] . }
-Arabian03_01820 { [ k o n o ] [ [ [ [ o sh a b e r i \ ] [ t a ch i n o ] ] [ t e \ o ] ] [ u sh i r o e ] [ sh i b a r i a g e \ r o ] ] . }
-Arabian03_01840 { [ k a \ r e r a w a ] [ [ { [ i w a r e t a ] } [ t o o r i \ n i ] ] [ sh i m a \ sh I t a ] ] . }
-Arabian03_01850 { [ s o sh I t e i i m a \ sh I t a ] . }
-Arabian03_01860 { [ h i \ m e ] [ [ y o , s u \ g u n i ] [ [ k o i ts U ] [ [ t o \ o ] [ n o ] ] [ k u b i o h a n e \ t e ] [ m o i \ i d e sh o o ] ] ] [ k a  ] }
-Arabian03_01870 { [ k a \ n o j o w a ] [ k o t a e m a \ sh I t a ] . }
-Arabian03_01890 { [ s o sh I t e ] [ [ , s a N \ ] { [ [ [ [ n i N n o s o o ry o \ ] [ t a ch i n o ] ] [ s o \ b a n i ] ] [ ch I k a z u \ i t e ] ] } [ i i m a \ sh I t a ] ] . }
-Arabian03_01900 { [ a n a t a \ ] [ [ t a ch i w a ] [ ky o \ o d a i ] [ n a ] ] [ n o  ] }
-Arabian03_01910 { [ k a \ r e r a w a ] [ k o t a e m a \ sh I t a ] . }
-Arabian03_01950 { [ a n a \ t a ] [ [ w a u m a r e ts U k i ] [ k a \ t a m e g a ] [ f u j i \ y u u ] [ n a ] ] [ n o  ] }
-Arabian03_01960 { [ [ s o \ o ry o n o ] [ h I t o \ r i w a ] ] [ i i m a \ sh I t a ] . }
-Arabian03_02080 { [ w a t a sh i ] [ w a k a t a N ] [ g i f u d e g o z a i m a \ s U ] . }
-Arabian03_02090 { [ { [ [ sh i \ j o o d e ] [ m a \ cl t e i r u ] ] } [ t o ] ] [ , a n a t a \ ] [ [ k a t a sh i \ m a i ] [ n o h I t o \ r i ] ] { { [ [ [ g a w a t a sh i ] [ n i k o \ e ] ] [ o k a k e \ ] ] } [ [ t e ] [ , n i \ m o ts u o ] [ m o \ t a s e ] ] } [ [ t e ] [ , k o k o e ] [ ts u r e t e k i m a \ sh I t a ] ] . }
-Arabian03_02100 { [ s o r e k a r a ] [ { { [ [ [ a n a t a \ t a ch i ] [ n o n a k a m a \ ] ] [ n i h a \ i cl ] ] } [ t e , k o k o d e a cl t a ] } [ k o t o \ w a ] ] [ , m i n a a n a t a \ ] [ k a t a g a ] [ [ g o z o \ N j i n o ] [ t o o r i ] ] [ d e g o z a i m a \ s U ] . }
-Arabian03_02110 { [ k o r e g a ] [ w a t a sh i n o h a n a sh i \ ] [ d e s U  ] }
-Arabian03_02120 { [ k I f u \ j i N w a ] [ i i m a \ sh I t a ] . }
-Arabian03_02140 { [ k e \ r e d o ] [ , k a t a N \ ] [ g i f u w a ] [ k o t a e m a \ sh I t a ] . }
-Arabian03_02160 { [ s o r e k a r a , d a i \ ] [ i ch i n o s o \ o ry o g a ] [ [ m a \ e e ] [ s u s u m i m a \ sh I t a ] ] . }
-Arabian03_02210 { [ w a t a sh i n o ch i \ ch i w a ] [ k o k u o \ o ] [ d e sh I t a . ] }
-Arabian03_02230 { [ w a t a sh i n o h a \ h a w a ] [ [ [ [ { [ [ [ w a t a sh i n o ] [ o j i n o ] ] [ k o g a ] ] [ u m a r e t a ] } [ n o t o ] ] [ o n a j i ] ] [ h i n i ] ] [ w a t a sh i o ] [ u m i o t o sh i m a \ sh I t a ] ] . }
-Arabian03_02260 { [ [ [ k o n o ] [ h o o m o N n o ] ] [ t o k i \ n i w a ] ] [ i \ ts u ] [ m o ] [ , w a t a sh i n o i t o \ k o w a ] [ [ w a t a sh i n o t a m e \ n i ] [ e N k a i o ] [ h i r a \ i t e k u r e m a \ sh I t a ] ] . }
-Arabian03_02270 { [ [ [ a \ r u ] [ t o sh i \ n o ] ] [ k o t o \ ] ] [ d e s U . ] }
-Arabian03_02300 { [ [ d a \ r e n i m o ] [ n a i sh o d e ] [ t e ts u d a \ cl t e k u r e m a s e \ N ] ] [ k a  ] }
-Arabian03_02340 { [ k a \ r e w a ] [ { [ [ j o s e e o ] [ u sh i r o n i ] [ t a \ t a s e ] ] } [ t a ] ] [ [ m a m a ] { [ [ [ , w a t a sh i n o ] [ h o \ o o ] ] [ m i n a \ g a r a ] ] } [ i i m a \ sh I t a ] ] . }
-Arabian03_02360 { [ k a \ r e w a ] [ [ s o n o b a sh o o ] [ k u w a sh i \ k u ] [ w a t a sh i n i ] [ o sh i e m a \ sh I t a ] ] . }
-Arabian03_02370 { [ w a t a sh i m o ] [ [ s o r e o ] [ o b o e m a \ sh I t a ] ] . }
-Arabian03_02400 { [ t o i i m a \ sh I t a ] . }
-Arabian03_02460 { [ s o r e k a r a ] [ { [ [ ch o o n a \ d e ] [ ts U ch i \ o ] [ h o r i s a g e \ t e ] ] } [ , ch i \ i s a n a ] [ [ [ t o b i r a k u \ r a i n o o o k i \ ] [ s a n o ] ] [ h i r a t a i i sh i \ o ] ] [ h o r i a t e m a \ sh I t a ] ] . }
-Arabian03_02470 { [ s o n o sh I t a k a r a ] [ k a i d a N g a ] [ a r a w a r e m a \ sh I t a ] . }
-Arabian03_02530 { [ w a t a sh i w a ] [ { [ [ [ i ch i \ ] [ n e N m o ] ] [ k a k e \ t e ] ] } [ k o n o k o t o \ o ] [ j u \ N b i sh I t e k i \ t a n o d e \ s U ] ] . }
-Arabian03_02580 { [ t o o t o o ] [ h a k a \ w a ] [ [ [ { [ s a i sh o a \ cl t a ] } [ t o o r i \ n o ] ] [ j o o t a i n i ] ] [ m o d o r i m a \ sh I t a ] ] . }
-Arabian03_02590 { [ s o r e k a r a ] [ w a t a sh i w a ] [ [ o j i n o ky u u d e N n i ] [ k a e r i m a \ sh I t a ] ] . }
-Arabian03_02600 { [ s o n o t o k i \ ] [ o j i w a ] { [ [ sh u ry o o n o t a b i \ n i ] [ d e t e i t e ] ] } [ r u \ s u ] [ d e sh I t a . ] }
-Arabian03_02630 { [ k e \ r e d o m o ] [ { [ [ s o r e o ] [ h a cl k e N s u r u ] ] } [ k o t o \ g a ] ] [ d e k i m a s e \ N d e sh I t a ] . }
-Arabian03_02720 { [ k a \ r e r a w a ] [ i i m a \ sh I t a ] . }
-Arabian03_02830 { [ w a t a sh i w a ] [ [ k a \ r e n i ] [ i i m a \ sh I t a ] ] . }
-Arabian03_02900 { [ s o sh I t e ] [ [ , sh o k e e \ ] [ j i N n i ] [ i i m a \ sh I t a ] ] . }
-Arabian03_02930 { [ s o k o d e sh o k e e \ ] [ j i N w a ] [ [ w a t a sh i o ] [ [ t o \ n o ] [ s o \ t o e ] ] [ ts u r e t e i k i m a \ sh I t a ] ] . }
-Arabian03_02970 { [ [ w a t a sh i w a ] [ [ [ [ a n a \ t a t o ] [ o n a j i ] ] [ k u n i n o ] ] [ n i N g e N ] ] [ d e \ s U ] ] [ y o . ] }
-Arabian03_02990 { [ k a \ ts U t e ] [ { [ [ w a t a sh i n o ch i \ ch i n i ] [ ts U k a e \ t e i t a ] ] } [ sh o k e e \ j i N ] ] { [ [ w a w a t a sh i n o k o t o \ ] [ o a \ w a r e ] [ n i o m o \ cl t a ] ] [ n o ] } [ [ k a , k o \ o ] [ i i m a \ sh I t a ] ] . }
-Arabian03_03020 { [ k o k o ] [ [ k a r a n a \ n i ] { [ [ m o m o t a \ ] [ z u o ] ] } [ n i g e n a s a i ] ] . }
-Arabian03_03050 { [ { { [ [ { [ [ { [ [ i \ n o ch i o ] [ u sh i n a w a z u ] ] } [ n i ] ] [ s u \ N d a ] ] } [ k o t o \ n i ] ] [ k u r a b e t a \ r a ] ] } [ [ , h i d a r i m e ] [ o u sh i n a cl ] [ t a k o t o \ ] ] } [ n a d o , w a t a sh i ] ] [ [ n i ] [ w a n a \ N d e ] [ [ [ m o n a \ i ] [ k o t o \ n o ] ] [ y o \ o n i ] ] [ o m o w a r e m a \ sh I t a ] ] . }
-Arabian03_03100 { [ [ [ k o n o ] [ s u u n i ch i \ k a N t o ] ] [ i u ] ] [ m o n o ] [ [ [ , o m a e n o ] [ i t o \ k o n o ] ] [ y u k u e g a ] ] [ w a k a r a \ n a i n o d a ] . }
-Arabian03_03110 { [ [ d a \ r e ] [ m o ] ] [ { [ { [ [ a r e g a ] [ [ i cl t a i ] [ d o \ k o n i ] [ i cl t e sh i m a \ cl t a n o ] ] ] [ k a ] } [ sh i cl t e i r u ] ] } [ m o n o \ g a ] ] [ i n a i n o d a ] [  ] }
-Arabian03_03160 { [ w a t a sh i w a ] [ [ { [ [ [ i t o \ k o n o ] [ m i n i ] ] [ o k o \ cl t a ] ] } [ i ch i b u sh i \ j u u o ] ] [ k a t a r i m a \ sh I t a ] ] . }
-Arabian03_03210 { [ w a t a sh i w a ] [ i i m a \ sh I t a ] . }
-Arabian03_03230 { [ k e \ r e d o ] [ , t o \ n i k a k u ] [ w a t a sh i \ ] [ t a ch i w a ] [ [ { [ [ h a k a b a \ n i ] [ i cl t e m i \ r u ] ] } [ k o t o \ n i ] ] [ sh i m a \ sh I t a ] ] . }
-Arabian03_03240 { [ { [ k o \ N d o w a ] [ [ o o z e \ e d e ] [ m i g i n i ] [ h i d a r i n i ] [ s a g a sh i m a w a \ cl t a ] ] } [ n o d e ] ] [ , t o o t o o w a t a sh i \ ] [ t a ch i w a ] [ { [ [ s o r e o ] [ h a cl k e N s u r u ] ] } [ k o t o \ g a ] ] [ d e k i m a \ sh I t a ] . }
-Arabian03_03280 { { [ o \ k u n i w a ] [ [ h i r o \ i ] [ h e y a \ g a ] ] [ a \ r i ] } [ , s o k o ] [ n i w a s a m a \ z a m a ] [ [ n a sh o k u ry o o \ ] [ h i N g a ] ] [ t a k U s a N o i t e a r i m a \ sh I t a ] . }
-Arabian03_03390 { [ s o o sh I t e ] [ o j i w a ] [ { [ [ sh i b a \ r a k U ] [ t a \ N i t e i m a \ sh I ] ] } [ t a ] ] [ g a ] [ [ , sh i b a \ r a k u ] [ sh I t e ] ] , }
-Arabian03_03420 { [ t o i i m a \ sh I t a ] . }
-Arabian03_03460 { [ s o sh I t e ] [ [ , f U t a t a b i w a t a sh i \ ] [ t a ch i n o i e \ e ] [ m o d o \ cl t e k i m a \ sh I t a ] ] . }
-Arabian03_03480 { [ w a t a sh i \ t a ch i ] { [ { [ [ w a n a \ n i ] [ g a o k o \ cl t a ] ] [ n o ] } [ k a w a k a r a \ ] ] } [ z u , m a \ g o m a g o sh I t e i m a \ sh I t a ] . }
-Arabian03_03580 { [ w a t a sh i w a ] [ [ k a \ r e n i ] [ a \ i s a ts U sh i m a \ sh I t a ] ] . }
-Arabian03_03650 { [ t o i i m a \ sh I t a ] . }
-Arabian03_03670 { [ w a t a sh i \ ] [ t a ch i m o ] [ y a h a \ r i ] [ t a k o k u n o m o n o ] [ d e g o z a i m a \ s U ] [  ] }
-Arabian03_03710 { [ [ i ch i d o \ o n o ] [ m o n o \ w a ] ] [ [ m i n a \ ] { [ [ k a r e n o h a n a sh i \ o ] [ k i i t e ] ] } [ o d o r o k i m a \ sh I t a ] ] . }
-Arabian03_03780 { [ s o n o t o k i ] [ , d a i \ ] [ n i n o s o \ o ry o g a ] [ [ m a \ e n i ] [ s u s u m i m a \ sh I t a ] ] . }
-Arabian03_03820 [ { [ w a t a sh i m o ] [ u m a r e n a \ g a r a ] } [ k a t a m e g a ] [ f u j i y u u d e w a a r i m a s e \ ] [ N d e sh I t a . ] ]
-Arabian03_03830 { [ w a t a sh i w a ] [ [ k o k u o \ o n o ] [ m u s U k o ] ] [ d e sh I t a . ] }
-Arabian03_03900 { [ s o r e w a ] [ , a r a b i a \ ] [ j i N n o g o o t o o ] [ d e sh I t a . ] }
-Arabian03_03910 { [ k a \ r e r a w a ] { [ [ w a t a sh i \ t a ch i ] [ n i o s o \ i k a k a cl t e ] ] } [ [ k i \ ] [ t e , m i n a i \ n o ch I k a r a g a r a ] [ n i g e m a \ sh I t a ] ] . }
-Arabian03_03960 { [ [ [ k o n o ] [ t o \ n i w a ] ] [ { [ sh i cl t e i r u ] } [ h I t o m o ] ] [ n a \ k u ] ] [ [ , d o \ k o ] [ e i cl ] [ { [ t e i i \ ] } [ k a ] ] [ w a k a r i m a s e \ N d e sh I t a ] ] . }
-Arabian03_04000 { [ w a t a sh i w a ] [ s o r e ] [ [ d e ] [ { [ [ [ , j i b u N n o ] [ m i n i ] ] [ o k o \ cl t a ] ] } [ k o t o g a r a o ] ] [ s a i sh o k a r a ] [ s a \ i g o m a d e ] [ k a \ r e n i ] [ h a n a sh i m a \ sh I t a ] ] . }
-Arabian03_04050 { [ s o sh I t e ] [ w a t a sh i w a ] [ [ { [ h i g a ] [ k u r e r u ] } [ m a \ d e ] ] [ k a \ r e t o ] [ i cl sh o n i ] [ h a n a sh i \ o ] [ sh I t e i m a \ sh I t a ] ] . }
-Arabian03_04090 { [ w a t a sh i w a ] [ i i m a \ sh I t a ] . }
-Arabian03_04130 { [ { [ { [ [ k o n o m a ch i \ n o ] [ n i N g e N w a ] ] [ [ { [ [ [ g a k u \ m o N y a ] [ m o n o \ o ] ] [ k a \ k U ] ] } [ k o t o \ o ] ] [ sh i cl t e i r u ] ] } [ y o \ o ] ] [ n a ] } [ m o n o \ w a ] ] [ [ [ h I t o \ r i ] [ m o ] ] [ i m a s e \ N ] ] [  ] }
-Arabian03_04180 { [ [ s o o sh I t e ] [ { [ [ s e e k a ts u n i ] [ [ h I ts u y o o n a ] [ o k a n e o ] ] [ k a s e \ g u ] ] } [ t o ] ] [ i \ i ] [ d e s U ] ] [ y o . ] }
-Arabian03_04270 { [ s o r e k a r a ] [ [ [ [ i cl \ ] [ p o N n o ] ] [ k i \ n o ] ] [ m a w a r i o ] ] [ h o r i \ ] [ r i h a j i m e m a sh I t a . ] }
-Arabian03_04320 { [ s o k o n i w a ] [ { [ sh i N j u n o y o \ o ] [ n a ] } [ h I t o \ r i n o ] [ k I f u \ j i N g a ] ] [ i m a \ sh I t a ] . }
-Arabian03_04340 [ { [ k a \ n o j o w a ] [ [ w a t a sh i n o h o \ o o ] [ m i n a \ g a r a ] ] } , ]
-Arabian03_04360 { [ t o i i m a \ sh I t a ] . }
-Arabian03_04460 { [ w a t a sh i ] [ [ m o j i b u N ] [ [ n o m i n o u e b a \ n a sh i o ] [ sh i m a \ s U ] ] ] [ y o  ] }
-Arabian03_04470 { [ t o i i m a \ sh I t a ] . }
-Arabian03_04540 { [ { [ w a t a sh i g a ] [ [ [ m a \ j i N ] [ n i y o \ o ] ] [ n o ] ] } [ a \ r u t o \ k i n i ] ] [ [ w a ] { [ { [ [ [ { [ [ , t e e b u r u n o u e n i ] [ h o \ cl t e a \ r u ] ] } [ j u m o N n o ] ] [ k o t o b a \ n i ] ] [ t e \ o ] [ f u r e r u ] ] } [ y o \ o n i ] ] [ t o ] } [ i w a r e t e i m a \ s U ] ] . }
-Arabian03_04550 { [ { [ { [ [ w a t a sh i g a ] [ [ t e \ o ] [ f u r e r u \ ] ] ] [ k a ] } [ f u r e n a i ] ] } [ u ch i n i ] ] [ , m a \ ] [ j i N w a ] [ [ w a t a sh i n o m a \ e n i ] [ a r a w a r e \ r u n o d e \ s U ] ] . }
-Arabian03_04590 { [ w a t a sh i w a ] [ { [ y o r o k o \ N d e ] } [ sh o o ch I sh i m a \ sh I t a ] ] . }
-Arabian03_04680 { [ t o i i m a \ sh I t a ] . }
-Arabian03_04700 { [ a n o ] [ [ [ m a \ ] [ j i N w a ] ] [ t o t e m o o s o r o sh i \ i ] [ N \ ] [ d e s U ] ] [ y o . ] }
-Arabian03_04750 { [ t o i i m a \ sh I t a ] . }
-Arabian03_04800 { [ [ w a t a sh i w a ] [ [ a r e h o d o ] [ t o m e t a \ j a n a i d e s U ] ] ] [ k a . ] }
-Arabian03_04880 { [ k a \ n o j o w a ] [ k o t a e m a \ sh I t a ] . }
-Arabian03_04900 { [ k a \ r e w a ] [ { [ [ [ o s o r o sh i \ i ] [ k a o o ] ] [ sh I t e ] ] } [ i i m a \ sh I t a ] ] . }
-Arabian03_04910 [ [ k o n o ] [ u s o ts U k i m e ] [  ] ]
-Arabian03_04940 { [ k a \ n o j o w a ] [ k o t a e m a \ sh I t a ] . }
-Arabian03_04990 { [ { [ [ s o N n a u \ s o g a ] [ [ o r e n i ] [ ts u u y o o s u r u ] ] ] [ t o ] } [ o m o \ cl t e i r u n o ] ] [ k a  ] }
-Arabian03_05010 { [ w a t a sh i w a ] [ { [ [ [ s o n o ] [ k o \ e o ] ] [ u sh i r o n i ] [ k I k i n a \ g a r a ] ] } [ m o ] ] [ [ , ky o \ o f u ] [ [ n o t a m e \ ] [ n i k a i d a N ] ] [ o k a k e ] [ a g a r i m a \ sh I t a ] ] . }
-Arabian03_05050 { [ k a \ r e w a ] , }
-Arabian03_05080 { [ t o i i m a \ sh I t a ] . }
-Arabian03_05190 { [ { [ m a \ j i N ] [ [ w a a n o j o s e e ] [ o t o i ts u m e m a \ sh I ] ] } [ t a ] ] [ g a ] [ [ , k a \ n o j o w a ] [ d o o sh I t e \ m o ] [ h a \ k u j o o sh i m a s e \ N d e sh I t a ] ] . }
-Arabian03_05230 { [ s o k o n i w a ] [ , m a \ ] { [ [ j i N n i ] [ [ h i d o \ i ] [ m e \ n i ] ] [ a w a \ s a r e t e ] ] } [ , k i z u ] [ [ [ d a \ r a k e ] [ n i n a \ cl ] [ t e i r u ] ] [ a n o j o s e e g a ] ] [ t a o r e \ t e i m a \ sh I t a ] . }
-Arabian03_05240 { [ w a t a sh i n o m e \ k a r a w a ] [ n a \ m i d a g a ] [ [ [ p o \ r o p o r o ] [ t o ] ] [ k o b o r e m a \ sh I t a ] ] . }
-Arabian03_05270 { [ k a \ n o j o w a ] [ k o t a e m a \ sh I t a ] . }
-Arabian03_05290 { { [ [ s o r e o ] [ k i i t e ] ] } [ , m a \ ] [ j i N w a ] [ i i m a \ sh I t a ] . }
-Arabian03_05310 { [ k a \ n o j o w a ] [ { [ [ k e \ N o ] [ t o \ cl t e ] ] } [ w a t a sh i n o s o \ b a n i ] [ k i m a \ sh I t a ] ] . }
-Arabian03_05330 { [ n a \ m i d a w a ] [ [ w a t a sh i n o h o \ o o ] [ n a g a r e m a \ sh I t a ] ] . }
-Arabian03_05340 { [ k a \ n o j o w a ] [ [ [ [ k a r a \ r i ] [ t o ] ] [ k e \ N o ] ] [ n a g e d a sh i m a \ sh I t a ] ] . }
-Arabian03_05390 { [ w a t a sh i w a ] [ k o t a e m a \ sh I t a ] . }
-Arabian03_05430 { [ m a \ j i N ] { [ { [ [ w a o s o r o sh i \ i k a o ] [ o sh I ] ] } [ t e w a t a sh i ] [ n i ] ] } [ [ ch I k a z u \ k i ] [ , i i m a \ sh I t a ] ] . }
-Arabian03_05450 { [ w a t a sh i w a ] [ m o \ o ] [ { [ [ m i e \ m o ] [ g a i b u N m o ] ] [ w a s u r e t e ] } [ , m a \ ] [ j i N n i ] [ s u g a r i ts U k i m a \ sh I t a ] ] . }
-Arabian03_05490 { [ w a t a sh i w a ] [ [ [ ts u g i \ n o ] [ y o \ o n i ] ] [ h a n a sh i m a \ sh I t a ] ] . }
-Arabian03_05500 [ [ y o \ N ] [  ] ]
-Arabian03_05520 { [ [ a \ r u ] [ t o k o r o n i ] ] [ { [ [ t o n a r i n o o t o k o \ k a r a ] [ s o n e \ m a r e t e i t a ] ] } [ h I t o \ r i n o ] [ o t o k o \ g a ] ] [ i m a \ sh I t a ] . }
-Arabian03_05570 { [ s o n o u ch i , sh i N j i \ N ] [ f U k a \ i ] [ [ h I t o \ ] [ t a ch i g a ] ] [ [ [ k a \ r e n o ] [ m a w a r i n i ] ] [ a ts u m a \ cl t e k i m a \ sh I t a ] ] . }
-Arabian03_05620 { [ r i N j i N w a ] [ [ k a \ r e n i ] [ i i m a \ sh I t a ] ] . }
-Arabian03_05710 { [ s o sh I t e ] [ [ , i \ d o ] [ [ [ [ n o n a \ k a ] [ n o o \ o k i n a ] ] [ i sh i \ ] [ n o u e ] ] [ n i k a \ r e ] ] [ o s u w a r a ] [ s e m a \ sh I t a ] ] . }
-Arabian03_05730 { [ o m a e \ ] [ [ t a ch i w a ] [ [ k o n o h I t o o ] [ sh i cl t e i r u \ ] ] ] [ k a  ] }
-Arabian03_05740 { [ k a \ r e r a w a ] [ k o t a e m a \ sh I t a ] . }
-Arabian03_05790 { [ [ { [ w a t a sh i \ t a ch i ] [ g a n a g u s a m e r a r e ] } [ t a n o ] ] [ w a ] [ { [ , k o n o h I t o g a ] [ [ m a \ i n i ch i ] [ i n o \ cl t e i t a \ ] ] } [ k a r a ] ] [ d a ] ] [ y o  ] }
-Arabian03_05800 { [ s o r e d e ] [ j i N \ t a ch i ] [ w a ] [ [ , k a \ r e n i ] [ [ h i \ m e n o ] [ k o t o \ o ] ] [ o sh i e m a \ sh I t a ] ] . }
-Arabian03_05860 { [ [ [ ts u g i \ n o ] [ h i n o ] ] [ a \ s a ] ] [ , j i N \ ] [ t a ch i w a ] [ [ [ i \ d o n o ] [ n a \ k a k a r a ] ] [ k a \ r e o ] [ ch i j o o n i ] [ m o d o sh i m a \ sh I t a ] ] . }
-Arabian03_05870 { [ [ [ sh i N j i \ N ] [ f U k a \ i ] ] [ h I t o \ t a ch i ] ] [ w a ] { [ [ { [ , k a \ r e g a ] [ [ [ i \ d o n o ] [ n a \ k a k a r a ] ] [ ch i j o o n i ] [ a g a cl t e k u \ r u ] ] } [ n o o ] ] [ m i \ t e ] ] } [ [ , m a s u \ m a s U ] [ k a \ r e ] [ [ [ n i t a i s u \ r u ] [ s o N k e e n o ] ] [ k i m o ch i o ] ] [ m o ch i m a \ sh I t a ] ] . }
-Arabian03_05900 { [ k a \ r e w a ] [ [ k o o t e e n i ] [ i i m a \ sh I t a ] ] . }
-Arabian03_05920 { [ [ [ a n a \ t a n o ] [ m u s u m e \ s a N ] ] [ [ g a by o o k i ] [ n i n a \ cl t a N \ ] ] ] [ d e s U n e . ] }
-Arabian03_05930 { [ k o o t e e w a ] [ { [ b i cl k u \ r i sh I t e ] } [ i i m a \ sh I t a ] ] . }
-Arabian03_05960 { [ k a \ r e w a ] [ i i m a \ sh I t a ] . }
-Arabian03_06020 { [ o \ o w a ] [ [ k a \ n o j o n i ] [ i i m a \ sh I t a ] ] . }
-Arabian03_06170 { [ { [ [ k o n o h a n a sh i \ o ] [ k i i t a ] ] } [ t o \ k i ] ] [ , m a \ ] [ j i N w a ] [ k o t a e m a \ sh I t a ] . }
-Arabian03_06210 { [ [ o r e g a ] [ [ { [ [ o m a e n i ] [ m a h o o o ] [ k a k e \ r u ] ] } [ k o t o d a k e w a ] ] { [ [ d o \ o ] [ sh I t a \ ] ] } [ cl t e n o g a r e r a r e \ n a i N \ ] ] ] [ d a y o . ] }
-Arabian03_06230 { [ s o sh I t e ] [ [ , w a t a sh i ] [ o ts U k a m i ] { [ n a \ g a r a o o z o \ r a ] } [ t a k a k U k a k e ] [ a g a r i m a \ sh I t a ] ] . }
-Arabian03_06360 { [ k e \ r e d o m o ] [ , k a N p a N ] [ [ [ n o u e ] [ n o h I t o \ ] ] [ t a ch i g a ] ] { [ [ w a t a sh i o ] [ m i ts U k e t e ] ] } [ [ , m i n a ] [ d e w a t a sh i ] [ o k o r o s o o ] [ t o sh i m a \ sh I t a ] ] . }
-Arabian03_06390 [ [ { [ w a t a sh i g a ] [ [ [ k o n o s a \ r u n o ] [ m e N d o \ o o ] ] [ m i m a \ s U ] ] } [ k a r a ] ] [  ] ]
-Arabian03_06400 { [ k a \ r e w a ] [ [ s o r e k a r a ] [ [ sh i \ N s e ts u ] [ n i ] ] [ w a t a sh i o ] [ i t a w a \ cl t e k u r e m a \ sh I t a ] ] . }
-Arabian03_06430 { [ s o n o t o k i ] [ , s o n o ] [ [ [ m a ch i \ ] [ n o o \ o ] ] [ k a r a , sh i \ sh a ] ] [ t o ] [ [ [ sh I t e ] [ [ s u u \ ] [ n i N n o ] ] ] [ y a k u n i N g a ] ] [ [ f u \ n e n i ] [ y a \ cl t e m a i r i m a \ sh I t a ] ] . }
-Arabian03_06440 { [ s o sh I t e i i m a \ sh I t a ] . }
-Arabian03_06460 { [ { [ w a t a sh i \ t a ch i ] [ [ g a k o n o f u \ n e ] [ e ts U k a w a s a r e ] ] } [ t a n o ] ] [ w a ] [ [ , k o n o t a b i ] { [ d a \ i j i N g a ] [ n a k u n a cl t e ] } [ s o n o k a w a r i o ] [ s a g a sh I t e i r u n o d e \ s U ] ] . }
-Arabian03_06530 { [ m a \ a ] [ { [ [ k o i ts u ] [ n i k a \ k a ] [ s e t e ] ] } [ g o r a N n a s a \ i ] ] . }
-Arabian03_06580 { [ s o sh I t e ] [ [ , s o n o ] [ [ k a m i \ ] [ o y a k u n i N \ ] ] [ t a ch i n i ] [ k a e sh i m a \ sh I t a ] ] . }
-Arabian03_06590 { [ k a \ r e r a w a ] [ [ s o r e o ] { [ [ [ o \ o n o ] [ m o t o \ n i ] ] [ m o \ cl t e ] ] } [ k a e r i m a \ sh I t a ] ] . }
-Arabian03_06610 { [ s o sh I t e ] [ [ , y a k u n i N \ ] [ t a ch i n i ] [ i i m a \ sh I t a ] ] . }
-Arabian03_06640 { [ o \ o w a ] [ { [ [ s o r e o ] [ m i \ t e ] ] } [ h a r a \ o ] [ t a t e ] ] , }
-Arabian03_06650 { [ w a t a sh i ] { [ [ n o m e e r e e o k i i ] [ t e o m a e \ ] ] } [ t a ch i w a ] [ [ n a \ z e ] [ w a r a u N \ d a ] ] [  ] }
-Arabian03_06680 { [ o \ o ] [ y o , w a t a sh i \ ] [ d o m o ] [ w a k e cl sh I t e ] [ [ d e \ N k a ] [ { [ [ n o o k o \ t o b a o ] [ w a r a cl t a ] ] } [ w a k e d e w a ] ] [ a r i m a s e \ N ] ] . }
-Arabian03_06690 { [ { [ [ k o r e o ] [ k a \ i t a ] ] } [ m o n o \ w a ] ] { [ s a \ r u ] [ d e ] } [ [ , n i N g e N ] [ [ [ d e w a n a i \ ] [ k a r a ] ] [ w a r a cl ] ] [ t a n o d e g o z a i m a \ s U ] ] . }
-Arabian03_06710 { [ o \ o w a ] [ { [ [ [ k a \ r e r a n o ] [ k o t o b a \ o ] ] [ k i i t e ] ] } [ a k i r e t e sh i m a i m a \ sh I t a ] ] . }
-Arabian03_06780 { [ h I t o \ b i t o w a ] [ { [ [ s o r e o ] [ m i \ t e ] ] } [ a k i r e k a e r i m a \ sh I t a ] ] . }
-Arabian03_06820 { [ { [ [ s o k o n i ] [ i t a ] ] } [ h I t o \ t a ch i ] ] [ w a ] [ [ , m i n a \ ] [ [ w a t a sh i n o ] [ [ sh I t o \ y a k a ] [ n a ] ] [ s a \ h o o n i ] ] [ m e \ o ] [ m i h a r i m a \ sh I t a ] ] . }
-Arabian03_06830 { [ o \ o g a ] [ [ i ch i \ b a N ] [ o d o r o \ i t e i m a \ sh I t a ] ] . }
-Arabian03_06860 { [ t o m e e j i m a \ sh I t a ] . }
-Arabian03_06890 { [ o \ o w a ] [ { [ [ s o r e k a r a ] [ { [ [ t a b e \ m o n o o ] [ m o \ cl t e k u \ r u ] ] } [ y o \ o n i ] ] ] [ t o ] } [ m e e j i m a \ sh I t a ] ] . }
-Arabian03_06930 { [ { [ o \ s a r a ] [ g a s a g e \ r a r e ] } [ t a ] ] [ t o \ k i ] [ , w a t a sh i w a ] [ [ t e \ o ] [ a r a i m a \ sh I t a ] ] . }
-Arabian03_07030 { [ o \ o w a ] [ { [ [ i y o \ i y o ] [ b i cl k u \ r i sh I t e ] ] } [ i i m a \ sh I t a ] ] . }
-Arabian03_07050 { [ k a \ r e w a ] [ [ s o r e k a r a ] [ k e \ r a i n i ] [ i i m a \ sh I t a ] ] . }
-Arabian03_07100 { [ o \ o w a ] [ k o t a e m a \ sh I t a ] . }
-Arabian03_07130 { [ h i \ m e w a ] [ i i m a \ sh I t a ] . }
-Arabian03_07150 { [ s o sh I t e , k o n o ] [ [ [ [ h o \ o ] [ n o o ] ] [ t o \ o s a m a n o ] ] [ n a m a e w a ] ] [ [ e \ i ] [ m a a r u t o ] [ i i m a \ s U ] ] . }
-Arabian03_07160 { [ k o n o h o \ o w a ] [ [ m a h o o n i ] [ k a k e \ r a r e t a n o d e \ s U ] ] . }
-Arabian03_07170 { [ { [ [ k o n o h o \ o o ] [ s a \ r u n i ] [ k a e t e sh i m a \ cl t a ] ] } [ n o w a ] ] [ , m a j i N d e g o z a i m a \ s U ] . }
-Arabian03_07220 [ { [ w a t a sh i w a ] [ u n a z u \ i t e ] } , ]
-Arabian03_07260 { [ o \ o w a ] [ [ s o r e k a r a ] [ m u s u m e \ n i ] [ t a z u n e m a \ sh I t a ] ] . }
-Arabian03_07280 { [ k a \ n o j o w a ] [ k o t a e m a \ sh I t a ] . }
-Arabian03_07300 { [ [ w a t a sh i w a ] { [ [ u \ b a n i ] [ n a r a \ cl t e ] ] } [ [ , hy a k u n a n a ] [ [ j u cl \ sh u r u i ] [ n o m a h o o ] ] [ o sh u u t o k u sh I t a N \ ] ] ] [ d e s U y o . ] }
-Arabian03_07310 { [ o \ o w a ] [ i i m a \ sh I t a ] . }
-Arabian03_07350 { [ w a sh i w a ] [ { [ [ k o n o w a k a m o n o o ] [ w a sh i n o d a \ i j i N n i ] [ s u r u ] ] } [ ts u m o r i ] ] [ n a N \ ] [ d a  ] }
-Arabian03_07450 { [ h i \ m e w a ] [ i i m a \ sh I t a ] . }
-Arabian03_07580 { [ [ s o sh I t e ] [ [ n a g a \ i ] [ a i d a ] ] [ h a g e sh I k u t a t a k a i m a \ sh I t a ] ] . }
-Arabian03_07660 { [ [ [ sh i b a \ r a k u ] [ n o ] ] [ a i d a ] ] [ [ , m i z u ] [ [ n o n a \ k a ] [ d e n a \ n i ] ] { [ [ g a o k o \ cl ] [ t e i r u n o k a ] ] [ w a t a sh i \ ] } [ t a ch i n i w a ] [ w a k a r i m a s e \ N d e sh I t a ] ] . }
-Arabian03_07690 { [ h i \ m e m o ] [ [ { [ { [ m i a g e r u ] } [ y o \ o ] ] [ n a ] } [ k a e N n o s u \ g a t a n i ] ] [ n a r i m a \ sh I t a ] ] . }
-Arabian03_07740 { [ s o n o t o \ k i ] [ , h i m e \ g i m i ] [ g a s a k e b i ] [ m a \ sh I t a  ] }
-Arabian03_07770 { [ { [ w a t a sh i \ t a ch i ] [ [ g a k a \ r e ] [ o ] ] } [ m i \ r u ] ] [ t o ] [ , k a \ r e w a ] [ [ [ h I t o k a \ t a m a r i n o ] [ h a i n i ] ] [ n a \ cl t e i m a \ sh I t a ] ] . }
-Arabian03_07780 { [ h i \ m e w a ] [ [ s o r e ] [ [ k a r a w a t a sh i \ ] [ t a ch i n o ] ] [ s o \ b a e y a cl t e k i m a \ sh I t a ] ] . }
-Arabian03_07810 { [ t o i i m a \ sh I t a ] . }
-Arabian03_07820 { [ k a \ n o j o w a ] { [ [ s o n o m i z u o ] [ m o \ ch i ] ] } [ [ , s o n o ] [ [ u e ] [ d e n a \ n i ] ] [ k a w a t a sh i \ ] [ { [ [ t a ch i n i w a ] [ w a k a r a \ n a i ] ] } [ k o t o b a \ o ] ] [ k U ch i n i ] [ sh i m a \ sh I t a ] ] . }
-Arabian03_07850 { [ t o i i m a \ sh I t a ] . }
-Arabian03_07950 { [ o \ o m o ] [ [ w a t a sh i m o ] [ [ k a \ n o j o n o ] [ t a m e \ n i ] ] [ o \ i o i ] [ n a k i m a \ sh I t a ] ] . }
+Arabian01_00020 [ [ r e N s a i ] [ [ s o n o ] [ i ch i ] ]
+Arabian01_00050 { [ s o n o k o k u o \ o n i w a ] [ [ f U t a r i \ n o ] [ o \ o j i g a ] ] [ a r i m a \ sh I t a ] 。 }
+Arabian01_00060 { { [ h I t o \ r i w a ] [ m o \ o ] [ [ r i cl p a n a ] [ o t o n a ] ] [ d e ] } 、 [ h I t o \ r i w a ] [ m a \ d a ] [ s e e n e N d e sh I t a 。 ] }
+Arabian01_00120 { [ [ a \ r u ] [ h i ] ] 、 [ [ a \ n i n o ] [ o \ o w a ] ] [ [ [ [ k I s a \ k i g a ] { [ [ j i b u N o ] [ u r a g i \ cl t e ] ] } 、 [ s o r e o ] [ h i m i ts u n i sh I t e i r u ] ] [ k o t o \ o ] ] [ sh i r i m a \ sh I t a ] ] 。 }
+Arabian01_00150 { [ { [ m u s u m e \ n o ] [ a \ r u ] } [ h I t o w a ] ] { [ [ m i n a \ ] [ o o o ] [ o s o r e ] ] } [ 、 { [ [ m u s u m e \ o ] [ ts u r e t e ] ] } [ n i g e d a sh i m a \ sh I t a ] ] 。 }
+Arabian01_00160 { [ s o r e d e 、 ] [ i \ m a d e w a ] [ t o sh i g o r o n o m u s u m e \ w a ] [ [ [ t o \ n o ] [ n a \ k a n i ] ] [ [ h I t o \ r i ] [ m o ] ] [ n o k o \ cl t e i m a s e \ N d e sh I t a ] ] 。 }
+Arabian01_00170 { [ { [ { [ o \ o n i ] [ 、 { [ [ o t o \ m e o ] [ h I t o \ r i ] [ ts u r e t e k o \ i ] ] [ t o ] } [ m e e r e e s a r e t a ] ] } [ s a i sh o o w a ] ] 、 [ [ [ t o \ n o ] [ n a \ k a o ] ] [ s a g a sh i m a w a r i m a \ sh I t a ] ] } [ g a ] ] 、 [ [ [ h I t o \ r i ] [ m o ] ] [ m i a t a r i m a s e \ N ] ] 。 }
+Arabian01_00180 { [ s o sh I t e 、 ] [ { [ [ [ [ i \ r a i r a ] [ t o ] ] [ k i o ] ] [ m o m i n a \ g a r a ] ] } 、 { [ [ { [ [ o \ o n i ] [ h i d o k U s e m e r a r e \ r u ] ] } [ n o o ] ] [ sh i N p a i sh i n a \ g a r a ] ] } [ j i b u N n o i e \ n i ] [ m o d o r i m a \ sh I t a ] ] 。 }
+Arabian01_00190 { [ t o k o r o \ d e ] 、 [ s a i sh o o n i w a ] [ m u s u m e \ g a ] [ f U t a r i i m a \ sh I t a ] 。 }
+Arabian01_00210 { [ a n e w a ] [ [ { { [ [ [ [ i r o i r o n a ] [ r e k I sh i n o ] ] [ h o \ N o ] ] [ y o \ N d e ] ] } 、 [ [ [ [ m u k a sh i n o ] [ o o s a m a n o ] ] [ d e N k i d a \ n o ] ] 、 [ m u k a sh i n o m o n o g a \ t a r i ] ] [ d a ] } [ n o o ] ] [ t a k U s a N sh i cl t e i m a \ sh I t a ] ] 。 }
+Arabian01_00250 { { [ [ w a t a sh i n i ] [ h a n a \ sh I t e k u r e m a s e \ N ] ] [ k a ] } [ 、 { [ [ [ s U k o \ sh i ] [ w a ] ] [ k i g a ] [ m a g i r e \ r u ] ] [ t o ] } [ o m o i m a \ s U ] ] 」 }
+Arabian01_00260 { [ s a i sh o o w a ] [ [ { { [ [ s o n o k o t o b a \ o ] [ k I k i ] ] } [ 、 [ { [ [ o \ o k a r a ] [ m e e r e e s a r e t a ] ] } [ a \ t o n i ] ] [ o k o \ cl t a ] ] } [ k o t o \ o ] ] [ h a n a sh i m a \ sh I t a ] ] 。 }
+Arabian01_00270 { { [ [ s o r e o ] [ k i i t e ] ] } 、 [ k a \ n o j o w a ] [ i i m a \ sh I t a ] 。 }
+Arabian01_00310 { [ t o ] 、 [ ch I ch i o y a w a ] [ i i m a \ sh I t a ] 。 }
+Arabian01_00320 { [ k e \ r e d o ] 、 [ k a \ n o j o w a ] [ [ a k u \ m a d e ] [ i i h a r i m a \ sh I t a ] ] 。 }
+Arabian01_00340 { [ s o n o t o k i \ ] [ ch I ch i w a ] [ i i m a \ sh I t a ] 。 }
+Arabian01_00370 { { [ [ 「 n e \ e ] [ 、 m u s u m e \ ] [ y a 」 ] ] [ t o ] } 、 [ s a i sh o o w a ] [ i i m a \ sh I t a ] 。 }
+Arabian01_00380 { [ 「 m u k a sh i 、 ] { [ [ [ a \ r u ] [ h I t o \ r i n o ] ] [ sh o \ o n i N g a ] ] [ a \ cl t e ] } 、 [ { [ [ k o n o o t o k o \ n i w a ] [ [ t o r i y a k e m o n o n o ] [ k o t o b a \ g a ] ] [ w a k a \ r u ] ] } [ ch I k a r a \ g a ] ] [ a \ cl t a s o o d a ] 。 }
+Arabian01_00410 { { [ [ r o \ b a t o ] [ i \ e b a ] ] } 、 [ { [ [ { [ t a m a n i ] [ sh u \ j i N g a ] [ { { { [ { [ [ { [ d e k a k e r u ] } [ t o \ k i n i ] ] [ n o cl t e ] ] } [ d e \ r u b a k a r i d e ] ] } 、 [ { [ [ [ k i \ r e i ] [ n i ] ] [ s o o j i s a r e t a ] ] } [ k o y a ] ] [ d e ] } [ 、 [ f u r u i n i ] [ k a k e \ t a ] ] } [ o o m u g i t o ] ] [ 、 k i \ cl ] [ t a ] } [ w a \ r a o ] ] [ [ j i y u \ u ] [ n i ] ] [ t a b e n a \ g a r a ] ] } 、 { [ [ [ r a k u r a \ k U ] [ t o ] ] [ n e \ t e ] ] } [ s u g o \ sh I t e i t a ] ] 。 }
+Arabian01_00450 { [ k i m i w a ] { [ [ { [ [ f u r u i n i ] [ k a k e \ t a ] ] } [ o o m u g i o ] ] [ t a b e \ r u ] ] } 、 [ n i N g e N g a ] [ [ k i m i n o s e w a \ o ] [ sh I t e k u r e r u ] ] 。 }
+Arabian01_00480 { [ r o \ b a w a ] [ [ s o r e n i ] { [ k o t a \ e t e ] } [ i i m a \ sh I t a ] ] 。 }
+Arabian01_00500 { [ { [ [ m o \ sh i ] [ o k i a g a cl t a \ r a ] ] } 、 [ { [ m a t a t a o r e \ r u ] } [ t o ] ] [ i \ i ] ] [ y o 。 ] }
+Arabian01_00570 { [ n o \ o f u w a ] [ [ s o n o t o o r i \ n i ] [ sh I t a ] ] 。 }
+Arabian01_00600 { [ { [ k a \ r e w a ] [ [ [ k o k o \ r o n o ] [ n a \ k a d e ] ] [ h i j o o n i ] [ k o \ o k a i sh I t e i t a \ ] ] } [ k a r a ] ] [ d a 。 ] }
+Arabian01_00620 { [ r o \ b a w a ] [ [ [ h e t o h e t o n i n a \ cl ] [ t e ] ] [ k a \ e cl t e k i \ t a ] ] 。 }
+Arabian01_00640 { [ s o sh I t e ] [ 、 { [ [ o r e e o ] [ i cl t e ] ] } [ h o m e s o y a \ sh I t a ] ] 。 }
+Arabian01_00650 { [ r o \ b a w a ] [ [ [ k u y a sh i \ ] [ s o o n i ] ] [ w a m e \ i t a ] ] 。 }
+Arabian01_00660 { 「 [ o r e w a ] { [ { [ [ [ r a k u r a \ k U ] [ t o ] ] [ k u r a sh I t e i t a ] ] } [ m o n o \ o ] ] [ 、 [ [ y o k e e n a ] [ s e w a \ o ] ] [ y a i t a \ b a k a r i d e ] ] } [ 、 [ k o N n a k o t o \ n i ] [ n a \ cl t e sh i m a \ cl t a N \ d a ] ] 」 }
+Arabian01_00690 { [ [ { [ s o r e d a \ ] } [ k a r a ] ] [ o r e m o ] [ [ k i m i n o t a m e \ n i ] [ sh i N p a i sh I t e i r u N \ d a ] ] ] [ y o 。 ] }
+Arabian01_00730 { 「 [ [ a sh I t a \ w a ] [ w a sh i m o ] [ { [ g e \ N k i ] [ [ y o \ k u ] [ d e k a k e r u ] ] } [ ts u m o r i ] ] [ d a ] ] [ y o 」 ] }
+Arabian01_00740 { [ t o i cl t a ] 。 }
+Arabian01_00830 { [ s a i sh o o n o m u s u m e \ w a ] 、 [ { [ [ ch I ch i o y a n o k o t o b a \ o ] [ k i i t e sh i m a \ cl t a ] ] } [ t o \ k i ] ] 、 [ { [ [ ch i \ ch i n i ] [ m u k a cl t e ] ] } 、 { [ [ 「 y a cl p a \ r i ] [ { [ { [ [ { [ w a t a sh i n o n e g a \ i sh I t a ] } [ t o o r i \ n i ] ] [ sh I t e ] ] } [ i t a d a k U ] ] } [ h o k a w a ] ] [ a r i m a s e \ N ] 」 ] [ t o ] } [ i i m a \ sh I t a ] ] 。 }
+Arabian01_00900 { [ { [ o \ o g a ] [ [ [ a n e m u \ s u m e ] [ t o f U t a r i k i r i n i ] ] [ n a \ cl t a ] ] } [ t o \ k i ] ] 、 [ k a \ n o j o w a ] [ [ [ s a m e z a \ m e ] [ t o ] ] [ n a k i m a \ sh I t a ] ] 。 }
+Arabian01_00910 { [ o \ o w a ] [ k a \ n o j o n i ] }
+Arabian01_00930 { [ t o k I k i m a \ sh I t a ] 。 }
+Arabian01_00940 { [ k a \ n o j o w a ] [ k o t a e m a \ sh I t a ] }
+Arabian01_00950 [ 「 { [ a \ a ] [ 、 h e \ e k a ] } 。 { [ w a t a sh i n i w a ] [ [ h I t o \ r i n o ] [ i m o o t o \ g a ] ] [ g o z a i m a \ s U ] } 。 { [ w a t a sh i w a ] [ [ s o n o ] [ i m o o t o \ n i ] ] [ [ s a \ i g o n o ] [ w a k a r e \ g a ] ] [ sh I t a \ i n o d e \ s U ] } 」 ]
+Arabian01_00970 { [ s o sh I t e ] { [ [ k a \ n o j o o ] [ d a k I sh i m e ] ] } [ 、 [ { [ [ sh i b a \ r a k u ] [ y o o s u o ] [ m i \ t e i t a ] ] } [ a \ t o d e ] ] [ 、 k o \ o ] [ i i m a \ sh I t a ] ] 。 }
+Arabian01_00990 { 「 [ [ a \ a ] [ 、 sh I t e a g e m a \ s U ] ] [ y o 」 ] }
+Arabian01_01020 { [ o \ o w a ] 、 { [ [ s o n o k o t o b a \ o ] [ k i i t e ] ] } [ 、 { [ [ { [ [ s o N n a h a n a sh i \ o ] [ k I k u ] ] } [ n o m o ] ] [ o m o sh i r o \ i ] [ d a r o o ] ] [ t o ] } [ o m o i m a \ sh I t a ] ] 。 }
+Arabian01_01050 { [ [ [ i ch i sh o \ o n i N ] [ t o m a \ ] [ j i N n o ] ] [ h a n a sh i ] ]
+Arabian01_01060 { [ a \ a ] 、 [ [ [ k o \ o ] [ o \ o k i ] ] [ d e \ N k a ] ] 、 [ w a t a sh i w a ] [ [ k o o y u u h a n a sh i \ o ] [ k I k i m a \ sh I t a ] ] 。 }
+Arabian01_01070 { [ [ a \ r u ] [ t o k o r o n i ] ] [ [ h I t o \ r i n o ] [ sh o \ o n i N g a ] ] [ a r i m a \ sh I t a ] 。 }
+Arabian01_01090 { [ [ a \ r u ] [ h i ] ] 、 [ k o n o sh o \ o n i N g a ] { [ [ u m a \ n i ] [ n o cl t e ] ] } [ 、 [ { [ [ { [ [ sh i g o t o d e ] [ ts U k a u ] ] } [ sh o \ o h i N o ] ] [ a ts u m e ] ] } [ n i ] ] [ [ t o n a r i n o ] [ k u n i e ] ] [ t a b i \ o ] [ sh i m a \ sh I t a ] ] 。 }
+Arabian01_01110 { [ s o r e k a r a 、 ] [ [ [ { [ [ [ { [ [ [ u m a \ n o ] [ k u r a \ n i ] ] [ ts u \ i t e i r u ] ] } [ f U k u r o \ n o ] ] [ n a \ k a n i ] ] [ y o \ o i sh I t e a \ cl t a ] ] } [ t a b e \ m o n o n o ] ] [ n a \ k a k a r a ] ] 、 { [ [ [ [ [ h I t o \ ] [ k i r e n o ] ] [ p a \ N t o ] ] 、 [ [ n a ts u m e \ y a sh I ] [ t o o ] ] ] [ t o r i d a \ sh I t e ] ] } [ t a b e m a \ sh I t a ] ] 。 }
+Arabian01_01150 { 「 [ { [ [ t a t e 、 ] [ o m a e w a ] [ [ o r e n o ] [ m u s U k o o ] ] [ k o r o sh I ] ] [ t a \ ] } [ k a r a ] ] 、 [ w a t a sh i w a ] [ [ o m a e o ] [ k o r o s u N \ d a ] ] 」 }
+Arabian01_01160 { [ t o i i m a \ sh I t a ] 。 }
+Arabian01_01170 [ [ sh o \ o n i N w a ] 、 ]
+Arabian01_01180 { [ { 「 [ [ d o \ o sh I t e ] [ w a t a sh i g a ] [ [ [ a n a \ t a n o ] [ m u s U k o o ] ] [ k o r o sh I t a n o d e \ s u ] ] ] [ ？ 」 ] } [ t o ] ] [ 、 k I k i m a \ sh I t a ] 。 }
+Arabian01_01200 { [ { 「 [ [ { [ { [ o m a e g a ] { [ [ n a ts u m e \ y a sh i o ] [ t a b e \ t e ] ] } [ 、 [ s o n o t a \ n e o ] [ w a k i \ n i ] [ n a g e \ t a ] ] } [ t o \ k i n i ] ] 、 [ { [ s o r e g a ] [ [ m u s U k o n o m u n e \ n i ] [ a t a cl t e ] ] } [ 、 d o \ o ] [ sh I t a ] ] } [ m o n o \ k a ] ] 、 [ [ s o n o m a m a ] [ sh i N d e sh i m a \ cl t a N \ d a ] ] ] [ 。 」 ] } [ t o ] ] 、 [ k a \ r e w a ] [ k o t a e m a \ sh I t a ] 。 }
+Arabian01_01230 { [ w a t a sh i w a ] [ { [ [ a n a \ t a g a ] [ [ w a t a sh i o ] [ y u r u \ sh I t e k u d a s a \ r u d a r o o ] ] ] [ t o ] } [ sh i N r a i sh I t e o r i m a \ s U ] ] 」 }
+Arabian01_01260 { [ t o ] [ 、 k o t a e m a \ sh I t a ] 。 }
+Arabian01_01280 { [ sh o \ o n i N w a ] [ { [ [ s o r e o ] [ m i \ t e ] ] } [ h a g e sh I k u n a k i m a \ sh I t a ] ] 。 }
+Arabian01_01320 { [ d e \ s U k a r a ] 、 [ i ch i d o w a t a sh i ] [ [ o i e \ ] [ n i k a \ e r a ] [ s e t e k u d a s a \ i ] ] 。 }
+Arabian01_01360 { [ s o sh I t e ] [ { [ [ { [ [ [ s o n o t o sh i \ n o ] [ o w a r i m a \ d e n i ] ] [ m o d o \ cl t e k u \ r u ] ] } [ k o t o \ o ] ] [ y a k U s o k U sh i ] ] } 、 [ k a \ r e o ] [ h a n a sh i m a \ sh I t a ] ] 。 }
+Arabian01_01380 { [ [ sh a cl k i \ N o ] [ s u cl k a \ r i ] [ k a e sh i m a \ sh I t a ] ] 。 }
+Arabian01_01430 { [ [ i \ cl k a n o ] [ m o n o \ w a ] ] { [ [ n a k i g o \ e o ] [ a g e \ t e ] ] } [ 、 n a g e k I k a n a sh i m i m a \ sh I t a ] 。 }
+Arabian01_01440 { [ sh o \ o n i N w a ] { [ [ { [ a r u k i \ ] } [ n i ] ] [ a r u \ i t e ] ] } [ 、 [ { [ [ m a \ e n i ] [ i t a ] ] } [ t e e e N n i ] ] [ t o o ch a k U sh i m a \ sh I t a ] ] 。 }
+Arabian01_01450 { [ ch o o d o ] [ s o r e w a ] [ [ sh i \ N n e N n o ] [ [ d a \ i ] [ i ch i n i ch i \ ] ] ] [ d e sh I t a 。 ] }
+Arabian01_01470 { [ o j i \ i s a N w a ] [ [ sh o \ o n i N n i ] [ a \ i s a ts U sh i m a \ sh I t a ] ] 。 }
+Arabian01_01500 { { [ [ s o r e o ] [ k i i t e ] ] } 、 [ { [ [ k a m o sh I k a o ] [ ts u r e t a ] ] } [ o j i \ i s a N w a ] ] [ b i cl k u \ r i sh I t e sh i m a i m a \ sh I t a ] 。 }
+Arabian01_01530 { [ t o i i m a \ sh I t a ] 。 }
+Arabian01_01560 { [ s o sh I t e 、 ] { [ [ o n a j i y o \ o n i ] [ [ [ d o \ o sh I t e ] [ k o N n a a b u n a i t o k o r o n i ] [ s u w a cl t e i r u n o ] ] [ k a ] ] [ f U t a r i \ n i ] [ k I k i ] ] } 、 [ sh o \ o n i N w a ] [ [ [ i \ m a m a d e n o ] [ i k I s a ts u o ] ] [ h a n a sh i m a \ sh I t a ] ] 。 }
+Arabian01_01570 { [ s o sh I t e 、 ] [ { [ { [ [ [ f U t a r i \ m e ] [ n o o j i \ i s a N ] ] [ [ g a s o k o ] [ n i ] ] ] [ s u w a r u \ ] } [ k a s u w a r a ] ] } [ n a i u ch i ] ] 、 [ { [ [ n i r a \ b a ] [ o ts u r e ] ] } [ t a d a i \ ] [ s a N n o ] ] [ [ [ o j i \ i s a N g a ] [ k a \ r e r a n o ] ] [ s o \ b a e y a cl t e k i m a \ sh I t a ] ] 。 }
+Arabian01_01580 { [ s o sh I t e 、 ] [ { [ [ o n a j i sh I ts u m o N o ] [ sh i ] ] } 、 [ o n a j i y o \ o n i ] [ h e N j i \ o ] [ sh i m a \ sh I t a ] ] 。 }
+Arabian01_01600 { [ s o r e g a ] { [ [ [ { [ [ k u \ m o ] [ ts u \ k u ] ] } [ b a k a r i n o ] ] { [ [ g u \ r u g u r u ] [ m a w a r u ] ] } [ h a sh i r a \ t o ] ] [ n a \ cl t e ] ] } [ 、 [ s a b a k u n o m a N n a k a k a r a ] [ [ k a \ r e r a n o ] [ s o \ b a e ] ] [ ch I k a z u \ i t e k i m a \ sh I t a ] ] 。 }
+Arabian01_01620 { [ [ k a \ r e n o ] [ m e \ w a ] ] [ [ h i \ b a n a o ] [ ch i r a sh I t e i m a \ sh I t a ] ] 。 }
+Arabian01_01660 { [ t o m o o sh i m a \ sh I t a ] 。 }
+Arabian01_01680 { [ [ [ s a N \ ] [ n i N n o ] ] [ o j i \ i s a N m o ] ] [ [ o \ i o i ] { [ [ k o \ e o ] [ a g e t e ] ] } [ n a i t e i m a \ sh I t a ] ] 。 }
+Arabian01_01710 { [ t o i i m a \ sh I t a ] 。 }
+Arabian01_01760 { { [ [ w a t a sh i n o ] [ ts u \ m a w a ] ] 、 [ [ [ [ w a t a sh i n o ] [ ch I ch i k a t a n o ] ] [ o j i n o ] ] [ m u s u m e \ ] ] [ d e ] } 、 [ w a t a sh i w a ] [ [ [ [ k a \ n o j o g a ] [ m a \ d a ] [ w a k a \ k a cl ] [ t a ] ] [ t o \ k i n i ] ] [ ts u \ m a n i ] [ sh i m a \ sh I t a ] ] 。 }
+Arabian01_01810 { [ s o n o k o \ r o ] 、 [ w a t a sh i w a ] { [ [ { [ [ { [ a \ r u ] } [ m a ch i \ e ] ] [ t a b i \ o ] [ s u r u ] ] } [ k o t o \ n i ] ] [ n a \ cl t e ] ] } 、 [ { [ [ [ t a k U s a N n o ] [ sh o \ o h i N o ] ] [ m o \ cl t e ] ] } 、 [ s o n o m a ch i \ n i ] [ d e k a k e m a \ sh I t a ] ] 。 }
+Arabian01_01850 { { [ [ sh i b a \ r a k u ] [ sh I t e ] ] } 、 [ { [ [ [ n a g a \ i ] [ t a b i \ k a r a ] ] [ k a \ e cl t e k i \ t a ] ] } [ w a t a sh i w a ] ] 、 [ [ [ [ k o d o m o y a ] [ s o n o h a h a o y a n o ] ] [ k o t o \ o ] ] [ t a z u n e m a \ sh I t a ] ] 。 }
+Arabian01_01870 { 「 [ [ [ { [ [ [ a n a \ t a n o ] [ m u s U k o n o ] ] [ h a h a o y a w a ] ] [ sh i n i m a \ sh I t a ] } 。 { [ m u s U k o w a ] { [ n i g e d a \ sh I t e ] } [ 、 [ d o \ k o e ] [ i cl t a \ ] ] } ] [ k a ] ] [ w a t a sh i w a ] [ sh i r i m a s e \ N ] ] [ y o 」 ] }
+Arabian01_01880 { [ t o i i m a \ sh I t a ] 。 }
+Arabian01_01900 { [ s o n o u ch i n i ] [ i k e n i e n o m a ts u r i g a ] [ k i m a \ sh I t a ] 。 }
+Arabian01_01910 { [ [ [ k o n o ] [ m a ts u r i d e w a ] ] { [ [ u sh i o ] [ k o r o sh I t e ] ] } [ i k e n i e n i ] [ s u r u n o d e \ s U ] ] 。 }
+Arabian01_01980 { [ w a t a sh i w a ] { [ g a cl k a \ r i sh I t e ] } [ 、 [ { [ [ k a \ n o j o o ] [ k o r o sh I t a ] ] } [ k o t o \ o ] ] [ t o t e m o k o \ o k a i sh i m a \ sh I t a ] ] 。 }
+Arabian01_02000 { [ u sh I k a i w a ] 、 [ [ { [ [ m a h o o d e ] [ k o u sh i n i ] [ k a e r a r e t a ] ] } [ w a t a sh i n o m u s U k o o ] ] [ ts u r e t e k i m a \ sh I t a ] ] 。 }
+Arabian01_02020 { [ s o sh I t e 、 ] [ { [ [ w a t a sh i n i ] [ s u g a r i ts u \ i t e ] ] } 、 { [ [ [ k a n a sh i \ i ] [ k o \ e o ] ] [ a g e n a \ g a r a ] ] } [ n a k i m a \ sh I t a ] ] 。 }
+Arabian01_02030 { [ w a t a sh i w a ] [ { [ [ k o r e o ] [ m i \ t e ] ] } [ 、 k a w a i s o \ o ] [ n i n a \ r i ] ] [ 、 [ u sh I k a i n i ] [ i i m a \ sh I t a ] ] 。 }
+Arabian01_02040 [ 「 [ { [ [ [ t a \ n o ] [ m e s u \ u sh i ] ] [ o m o \ cl t e ] ] } 。 [ [ k o \ i ] 、 [ s o sh I t e k o n o u sh i ] ] ] [ w a 」 ] ]
+Arabian01_02060 { [ [ k a \ n o j o n o ] [ i m o o t o \ w a ] ] [ [ a n e n i ] [ i i m a \ sh I t a ] ] 。 }
+Arabian01_02080 { [ [ [ k i \ r e i ] [ d e ] ] 、 [ [ o m o sh i r o \ k U ] [ t e ] ] [ 、 t a n o sh i \ k a cl ] [ t a d e s U ] ] [ w a 」 ] }
+Arabian01_02090 { [ k e \ r e d o ] 、 [ k a \ n o j o w a ] [ k o t a e m a \ sh I t a ] 。 }
+Arabian01_02120 { [ s o sh I t e 、 ] [ o \ o m o ] [ i i m a \ sh I t a ] 。 }
+Arabian01_02130 { 「 [ [ { { [ [ k a \ m i n i ] [ ch I k a cl t e ] ] } [ 、 [ [ a n o h a n a sh i \ n o ] [ n o k o r i \ o ] ] [ k i i t e sh i m a u ] ] } [ m a \ d e ] [ w a ] ] 、 [ w a sh i m o ] [ [ k o n o o N n a \ o ] [ k o r o sh i \ w a ] [ sh i n a i ] ] ] [ y o 」 ] }
+Arabian01_02150 { { [ [ a \ s a n i ] [ n a \ cl t e ] ] } 、 [ o \ o w a ] [ [ { [ [ s e e j i o ] [ o k o n a u ] ] } [ h e y a \ e ] ] [ d e t e i k i m a \ sh I t a ] ] 。 }
+Arabian01_02160 { [ s a i sh o o m o ] [ [ s o n o h e y a \ e ] [ i k i m a \ sh I t a ] ] 。 }
+Arabian01_02180 { [ s o r e k a r a ] { [ sh i \ N k a w a ] [ [ s o r e \ z o r e n i ] [ i e \ n i ] [ k a \ e cl t e ] ] } 、 [ o \ o m o ] [ [ ky u u d e N n o o \ k u e ] [ h I k i a g e m a \ sh I t a ] ] 。 }
+Arabian01_02220 { [ [ o j i \ i s a N n o ] [ k o k o \ r o w a ] ] [ [ d o o j o o n i ] [ k u m o r i m a \ sh I t a ] ] 。 }
+Arabian01_02230 { [ s o sh I t e ] [ 、 [ u sh I k a i n i ] [ i i m a \ sh I t a ] ] 。 }
+Arabian01_02240 { 「 [ k o i ts u w a ] [ [ k a ch I k u n o n a \ k a n i ] [ t a s U k e \ t e o \ i t e y a \ r e ] ] 」 }
+Arabian01_02250 { [ [ s o n o k a \ N ] [ m a \ ] ] 、 [ j i N w a ] [ [ s u cl k a \ r i ] [ k o n o h a n a sh i \ n i ] [ k i o ] [ t o \ r a r e t e sh i m a i m a \ sh I t a ] ] 。 }
+Arabian01_02260 { [ s o sh I t e 、 ] [ k a m o sh I k a n o m o ch i \ n u sh i w a ] [ [ [ ts u g i \ n o ] [ y o \ o n i ] ] [ k a t a r i ts u z u k e m a \ sh I t a ] ] 。 }
+Arabian01_02310 { [ g a 、 ] [ w a t a sh i w a ] [ { [ [ d o \ o m o ] [ u ch I k o r o \ s U ] ] } [ k o t o \ g a ] ] [ d e k i m a s e \ N d e sh I t a ] 。 }
+Arabian01_02320 { [ s o r e d e ] [ 、 [ { [ [ u sh I k a i n i ] { [ [ s o n o k o u sh i o ] [ ts u r e t e ] ] } [ k a \ e r u ] ] } [ y o \ o n i ] ] [ m e e j i m a \ sh I t a ] ] 。 }
+Arabian01_02330 { [ u sh I k a i w a ] [ [ s o r e o ] [ ts u r e t e i cl t e sh i m a i m a \ sh I t a ] ] 。 }
+Arabian01_02340 { [ [ ts u g i \ n o ] [ h i ] ] 、 [ { [ w a t a sh i g a ] [ [ h I t o \ r i d e ] [ s u w a cl t e i t a ] ] } [ t o \ k i ] ] 、 [ k a \ r e w a ] [ { [ [ w a t a sh i n o s o \ b a n i ] [ k i \ t e ] ] } [ i i m a \ sh I t a ] ] 。 }
+Arabian01_02360 { { [ [ o r e e o ] [ t a k U s a N i t a d a k e t a \ r a ] ] } [ 、 o h a n a sh i i t a sh i m a \ s U ] [ 。 」 ] }
+Arabian01_02370 { [ s o r e d e 、 ] [ w a t a sh i w a ] [ { [ [ 「 i \ i ] [ d a r o o 」 ] ] [ t o ] } [ i i m a \ sh I t a ] ] 。 }
+Arabian01_02390 { 「 [ [ { [ d a N n a 、 ] [ w a t a sh i w a ] [ h I t o r i m u \ s u m e g a ] [ g o z a i m a \ s U ] } [ g a ] ] 、 [ [ m u s u m e \ w a ] [ k o d o m o n o t o \ k i n i ] [ u ch i n o o b a \ a s a N k a r a ] [ m a h o o o ] [ n a r a \ cl t e i r u N \ d e s U ] ] ] [ y o 。 ] }
+Arabian01_02420 { [ w a t a sh i w a ] [ k I k i m a \ sh I t a ] 。 }
+Arabian01_02440 { [ s u r u t o 、 ] [ k a \ n o j o w a ] [ k o t a e m a \ sh I t a ] 。 }
+Arabian01_02470 { [ k o r e g a ] [ w a t a sh i n o w a r a cl t a w a \ k e n a N \ d e s U ] 。 }
+Arabian01_02490 { [ [ [ a n o ] [ o t o \ o s a N w a ] [ a n o o k a \ a s a N o ] ] [ k o r o sh I t e o sh i m a i n a s u cl t a N \ d e s U ] ] [ m o n o \ ] [ n e 。 」 ] }
+Arabian01_02500 { { [ [ k o r e o ] [ k i i t e ] ] } 、 [ w a t a sh i w a ] [ [ s u cl k a \ r i ] [ b i cl k u \ r i sh I t e sh i m a i m a \ sh I t a ] ] 。 }
+Arabian01_02520 { [ { [ [ u sh I k a i n o h a n a sh i \ o ] [ k i i t a ] ] } [ t o \ k i ] ] 、 [ w a t a sh i w a ] { [ [ { [ { [ { [ [ k o t o b a \ n i ] [ ts U k u s e n u ] ] } [ y o r o k o b i t o k o o f U k u k a r a ] ] [ 、 [ { [ s a k e m o ] [ n o m a \ n a i ] } [ n o n i ] ] [ y o w a \ s a r e t a ] ] } [ y o \ o ] ] [ n a ] } [ k a N j i n i ] ] [ n a \ cl t e ] ] } 、 [ { [ [ u sh I k a i t o i cl sh o n i ] [ d e t e ] ] } 、 [ [ k a \ r e n o ] [ u ch i n i ] ] [ ts U k i m a \ sh I t a ] ] 。 }
+Arabian01_02560 { [ t o k I k i m a \ sh I t a ] 。 }
+Arabian01_02590 { [ t o k o t a e m a \ sh I t a ] 。 }
+Arabian01_02600 { [ w a t a sh i w a ] [ i i m a \ sh I t a ] 。 }
+Arabian01_02610 { 「 [ [ a \ a ] 、 [ m u s u m e \ y o ] 、 { [ o m a e g a ] [ [ m o \ sh i ] [ m u s U k o o ] [ m o t o d o \ o r i n i ] [ sh I t e k u r e t a \ r a ] ] } 、 [ w a t a sh i w a ] [ [ { [ i \ m a ] [ [ o m a e n o ] [ ch i \ ch i g a ] ] [ k a N t o k u sh I t e i r u ] } [ k a ch I k u y a z a \ i s a N o ] ] [ m i n a ] [ o \ m a e n i ] [ a g e r u ] ] ] [ y o 」 ] }
+Arabian01_02620 { [ k a \ n o j o w a ] [ { [ n i cl k o \ r i sh I t e ] } [ k o t a e m a \ sh I t a ] ] 。 }
+Arabian01_02630 { [ 「 d a N n a 、 ] [ [ { [ s a m a w a t a sh i ] [ { [ [ [ w a f U t a ts u \ n o ] [ n e g a \ i o ] ] [ k i i t e ] ] } [ i t a d a k e r u ] ] } [ n a r a ] ] 、 [ s o N n a z a \ i s a N ] [ h a i r i m a s e \ N ] ] 。 }
+Arabian01_02660 [ [ { { [ [ k o n o m a m a \ n i ] [ sh I t e i t a \ r a ] ] } [ 、 { [ [ i ts U ] [ k a \ n o j o n i ] [ m a t a ] [ w a r u d a \ k u m i o ] [ s a r e r u \ ] ] [ k a ] } [ w a k a r i m a s e \ N ] ] } [ k a r a ] ] [ 。 」 ] ]
+Arabian01_02670 { { [ [ s o r e o ] [ k i i t e ] ] } 、 [ w a t a sh i w a ] [ [ u sh I k a i n o m u s u m e \ n i ] [ i i m a \ sh I t a ] ] 。 }
+Arabian01_02690 { { [ [ [ s o n o ] [ k o t o b a \ o ] ] [ k i i t e ] ] } 、 [ k a \ n o j o w a ] [ { [ [ k o cl p u o ] [ t o \ cl t e ] ] } [ s o r e n i ] [ m i z u o ] [ k u m i m a \ sh I t a ] ] 。 }
+Arabian01_02700 { [ s o sh I t e ] [ 、 [ s o n o u e d e ] [ j u m o N o ] [ t o n a e m a \ sh I t a ] ] 。 }
+Arabian01_02720 { [ s o n o t o \ k i ] 、 [ k o u sh i w a ] { [ [ m i b u \ r u i o ] [ sh I t e ] ] } [ 、 [ [ m o t o \ n o ] [ n i N g e N n i ] ] [ n a r i m a \ sh I t a ] ] 。 }
+Arabian01_02730 { [ w a t a sh i w a ] [ { [ [ m u s U k o o ] [ d a k I sh i m e \ t e ] ] } [ i i m a \ sh I t a ] ] 。 }
+Arabian01_02740 { 「 [ m u s U k o y o ] [ 、 [ { [ [ [ w a t a sh i n o ] [ h I t o r i \ m e ] ] [ n o ts u \ m a ] ] [ [ g a o m a e ] [ [ t o o m a e ] [ n o h a \ h a ] ] [ n i sh I ] ] } [ t a k o t o \ ] ] [ o s u \ b e t e h a n a \ sh I t e o \ k u r e ] ] 」 }
+Arabian01_02760 { [ w a t a sh i w a ] [ { [ [ k a \ r e n i ] [ m u k a cl t e ] ] } [ i i m a \ sh I t a ] ]
+Arabian01_02780 { [ s o sh I t e 、 ] [ m u s U k o w a ] [ { [ y o r o k o \ N d e ] } [ m u s u m e \ o ] [ y o m e n i ] [ m o r a i m a \ sh I t a ] ] 。 }
+Arabian01_02800 { [ s o sh I t e ] [ 、 { [ [ { [ [ k o n o m i ch i o ] [ t o o r i k a k a \ cl t a ] ] } [ t o \ k i ] ] 、 [ w a t a sh i w a ] { [ [ k o n o sh o \ o n i N n i ] [ a \ cl t e ] ] } [ [ 、 i cl t a i d o \ o ] [ sh I t a N \ d a ] ] ] [ t o ] } [ t a z u n e m a \ sh I t a ] ] 。 }
+Arabian01_02880 { [ 「 y o r o sh i \ i ] 」 }
+Arabian01_02890 { [ t o k o t a e m a \ sh I t a ] 。 }
+Arabian01_02950 { [ w a t a sh i w a ] { [ [ s o r e d e ] [ m i s e \ o ] [ h i r a k i ] ] } [ 、 [ { [ [ sh o \ o b a i o ] [ s u r u ] ] } [ k o t o \ n i ] ] [ sh i m a \ sh I t a ] ] 。 }
+Arabian01_02960 { [ [ [ w a t a sh i n o ] [ o t o o t o \ n o ] ] [ h I t o \ r i w a ] ] 、 { [ [ sh o \ o h i N o ] [ m o \ cl t e ] ] } [ 、 [ [ sh o \ o b a i n o ] [ t a b i \ n i ] ] [ d e m a \ sh I t a ] ] 。 }
+Arabian01_02970 { [ s o sh I t e ] [ 、 [ [ s u u t o o \ n o ] [ r a k u d a t o i cl sh o n i ] ] [ s a N n e \ N k a N ] [ r u \ s u n i ] [ sh I t e i m a \ sh I t a ] ] 。 }
+Arabian01_02980 { [ g a 、 ] [ { [ { [ [ [ s a N \ ] [ n e N ] ] [ t a \ cl t e ] ] } [ k a \ e cl t e k i \ t a ] ] } [ o t o o t o \ w a ] ] 、 { [ [ s u cl k a \ r i ] [ [ m i s u b o r a sh i \ i ] [ s u \ g a t a n i ] ] [ n a \ cl t e ] ] } [ 、 { [ [ [ i ch i b u N \ ] [ n a sh i n i ] ] [ n a \ cl t e ] ] } [ m o d o \ cl t e m a i r i m a \ sh I t a ] ] 。 }
+Arabian01_02990 { 「 [ { [ [ { [ a n o t o k i ] 、 [ ry o k o o w a ] [ y a m e \ t a ] } [ h o \ o g a ] ] [ i \ i ] ] [ t o ] } [ a r e d a k e ] [ i cl t a \ j a n a i ] ] [ k a 」 ] }
+Arabian01_03000 { [ t o ] 、 [ w a t a sh i w a ] [ [ o t o o t o \ n i ] [ i i m a \ sh I t a ] ] 。 }
+Arabian01_03010 { [ g a 、 ] [ o t o o t o \ w a ] [ { [ n a i t e ] } [ i i m a \ sh I t a ] ] 。 }
+Arabian01_03020 { 「 [ [ n i \ i s a N ] 。 { [ [ s o N n a k o t o \ o ] [ i cl t a \ cl t e ] ] } [ 、 i \ m a s a r a ] [ sh i y o o g a n a \ i ] [ j a n a i d e s U ] ] [ k a 。 ] }
+Arabian01_03040 { [ s o k o d e w a t a sh i ] [ w a h I t o \ m a z u ] { [ [ k a \ r e ] [ o m i s e \ ] [ [ n o n a \ k a ] [ n i i r e ] ] [ t e i cl sh o ] ] } [ 、 [ n i o \ ] [ f u r o n i ] [ i k i m a \ sh I t a ] ] 。 }
+Arabian01_03050 { [ s o sh I t e ] [ [ [ [ w a t a sh i n o ] [ k i m o n o n o ] ] [ n a \ k a k a r a ] ] 、 { [ [ [ r i cl p a n a ] [ [ i cl \ ] [ ch a k u o ] ] ] [ t o r i d a \ sh I t e ] ] } [ k I s e m a \ sh I t a ] ] 。 }
+Arabian01_03060 { [ [ s o n o g o ] [ d e w a t a sh i \ ] ] 、 [ t a ch i w a ] [ [ i cl sh o n i ] [ g o \ h a N o ] [ t a b e m a \ sh I t a ] ] 。 }
+Arabian01_03070 { [ w a t a sh i w a ] [ k a \ r e n i ] }
+Arabian01_03160 { [ g a 、 ] [ w a t a sh i w a ] [ sh o o ch I sh i m a s e \ N d e sh I t a ] 。 }
+Arabian01_03170 { 「 [ [ [ [ [ { [ { [ i m a m a \ d e o m a e \ ] [ t a ch i w a ] [ [ t a b i \ n i ] [ d e t e ] ] } [ m o o k e \ r u ] ] } [ k o t o \ g a ] ] [ d e k i \ n a k a cl t a d e w a n a i ] ] [ k a ] ] 、 [ [ { [ [ w a t a sh i g a ] { [ [ i cl sh o n i ] [ i cl t a \ cl t e ] ] } [ 、 m o o k e r a r e \ r u ] ] [ k a ] } [ d o \ o ] ] [ k a ] ] ] [ 、 w a k a r a \ n a i j a n a i ] ] [ k a 」 ] }
+Arabian01_03180 { [ k e \ r e d o m o ] 、 [ f U t a r i \ w a ] [ { [ { [ w a t a sh i n o ] [ i u ] } [ k o t o \ w a ] ] [ k I k a z u ] } [ n i ] ] [ 、 [ sh I ts u k o \ k u ] [ w a t a sh i n i ] [ t a n o m i m a \ sh I t a ] ] 。 }
+Arabian01_03190 { [ sh I k a \ sh i ] 、 [ w a t a sh i w a ] [ [ d o o sh I t e \ m o ] [ [ k a \ r e r a n o ] [ n e g a \ i o ] ] [ k I k i i r e m a s e \ N d e sh I t a ] ] 。 }
+Arabian01_03230 { [ w a t a sh i w a ] [ [ s o k o d e ] [ f U t a r i \ n i ] [ i i m a \ sh I t a ] ] 。 }
+Arabian01_03250 { 「 [ [ s o r e w a ] [ [ i \ i ] [ k a N g a \ e ] ] [ d e s U ] ] [ n e 」 ] }
+Arabian01_03290 { [ s o r e k a r a ] [ { [ [ [ i cl k a \ g e ts u n o ] [ a i d a ] ] [ k o \ o k a i sh i ] ] } 、 [ [ a \ r u ] [ m a ch i \ n i ] ] [ t o o ch a k U sh i m a \ sh I t a ] ] 。 }
+Arabian01_03300 { { [ [ s o n o m a ch i \ d e ] [ { [ w a t a sh i w a ] [ m o \ cl t e i cl t a ] } [ sh o \ o h i N o ] ] [ u r i ] ] } 、 [ { [ [ s a i sh o n o ] [ [ j u u \ ] [ b a i m o ] ] ] [ m o o k e \ r u ] } [ k o t o \ g a ] ] [ d e k i m a \ sh I t a ] 。 }
+Arabian01_03320 { [ o t o \ m e w a ] [ { [ [ w a t a sh i o ] [ m i \ r u ] ] } [ t o ] ] [ 、 [ w a t a sh i n o t e \ n i ] [ k i \ s u o ] [ sh I t e ] ] 、 }
+Arabian01_03340 { [ t o ] [ 、 i i m a \ sh I t a ] 。 }
+Arabian01_03350 { 「 [ [ i y a 、 ] [ [ { [ o r e e w a ] [ i r a n a i \ ] } [ k e r e d o ] ] 、 { [ [ w a t a sh i w a ] [ [ s o o y u u s e e sh I ts u o ] [ m o \ cl t e i r u ] ] ] [ t o ] } [ o m o \ u ] ] ] [ y o 」 ] }
+Arabian01_03360 { [ t o ] 、 [ w a t a sh i w a ] [ k o t a e m a \ sh I t a ] 。 }
+Arabian01_03370 { [ s o n o t o \ k i ] 、 [ k a \ n o j o w a ] [ i i m a \ sh I t a ] 。 }
+Arabian01_03390 { [ { [ w a t a sh i w a ] [ [ { [ k o n o y o \ o ] [ n a ] } [ s u \ g a t a o ] ] [ sh I t e i m a \ s U ] ] } [ g a ] ] [ 、 j i ts u \ w a ] [ [ [ m i \ b u N n o ] [ t a k a \ i ] ] [ m o n o \ ] ] [ n a n o d e \ s U ] 。 }
+Arabian01_03480 [ [ s o r e w a ] 、 ]
+Arabian01_03490 { 「 [ { [ [ a \ n i k i o ] [ k o r o sh I t e sh i m a o o j a n a i \ ] ] [ k a ] } [ 、 { [ s o o s u r e \ b a ] } { [ z a \ i s a N w a ] [ n o k o r a \ z u ] } [ [ f U t a r i \ n o ] [ m o n o \ n i ] ] [ n a \ r u j a n a i ] ] ] [ k a 」 ] }
+Arabian01_03500 { [ { [ t o i u ] } [ m o n o \ ] ] [ d e sh I t a 。 ] }
+Arabian01_03510 { [ f U t a r i \ w a ] { [ [ { [ [ a \ r u ] [ b a N ] ] 、 [ w a t a sh I t o ] [ ts u \ m a g a ] [ n e \ t e i r u ] } [ t o k o r o e ] ] [ k i \ t e ] ] } 、 [ { [ [ w a t a sh I t o ] [ ts u \ m a o ] [ d a k i a g e \ t e ] ] } 、 [ u \ m i n i ] [ h o o r i k o \ N d e sh i m a \ cl t a n o d e \ s U ] ] 。 }
+Arabian01_03530 { [ { [ [ [ [ sh i b a \ r a k u ] [ n o ] ] [ a i d a ] ] [ s u \ g a t a o ] [ k e sh I t e i t a ] ] } [ k a \ n o j o w a ] ] 、 [ { [ [ a \ s a n i ] [ n a \ cl t e ] ] } [ m o d o \ cl t e k i m a \ sh I t a ] ] 。 }
+Arabian01_03540 { [ s o sh I t e ] [ 、 [ w a t a sh i n i ] [ i i m a \ sh I t a ] ] 。 }
+Arabian01_03570 { [ w a t a sh i w a ] [ [ [ a n a \ t a n o ] [ k o t o \ o ] ] [ t o t e m o k o i sh i \ k u ] [ o m o cl t e i m a \ s U ] ] 。 }
+Arabian01_03580 { [ { [ [ m a \ e n i ] [ i cl t a ] ] } [ t o o r i ] ] 、 [ [ { [ w a t a sh i w a ] [ [ o r e e o ] [ sh i m a \ sh I t a ] ] } [ y o ] ] 、 [ { [ a n a \ t a g a ] [ k o r o s a r e \ s o o n i n a \ cl t a ] } [ n o o ] ] [ s U k u i m a \ sh I t a ] ] 。 }
+Arabian01_03590 { [ s o r e n i sh I t e \ m o ] 、 [ { [ [ a n o f U t a r i \ n o ] [ o t o o t o \ w a ] ] [ y u r u \ s U ] } [ k o t o \ g a ] ] [ d e k i \ n a i ] 。 }
+Arabian01_03600 { [ w a t a sh i w a ] [ [ a n o ] [ { [ [ f U t a r i \ o ] [ k o r o s a z u ] ] } [ n i w a ] ] [ o k a n a i ] ] 」 }
+Arabian01_03610 { [ w a t a sh i w a ] [ { [ [ [ k a \ n o j o n o ] [ h a n a sh i \ o ] ] [ k i i t e ] ] } [ b i cl k u \ r i sh I t e sh i m a i m a \ sh I t a ] ] 。 }
+Arabian01_03620 { [ s o sh I t e ] [ 、 [ { [ k a \ n o j o n o ] [ sh I t e k u r e t a ] } [ k o t o \ n i ] ] [ k a \ N sh a o ] [ sh i m a \ sh I t a ] ] 。 }
+Arabian01_03630 [ [ 「 sh I k a \ sh i ] 」 ]
+Arabian01_03640 { [ t o ] 、 [ w a t a sh i w a ] [ i i m a \ sh I t a ] 。 }
+Arabian01_03650 [ 「 [ { { [ { [ [ d o \ o ] [ k a ] ] [ o n e g a i d a \ ] } [ k a r a ] ] [ 、 [ o t o o t o \ t a ch i ] [ o k o r o s a n a i d e o k u r e ] ] } 、 [ a n o f U t a r i \ w a ] [ w a t a sh i n o ky o \ o d a i ] [ n a n o d a \ ] } [ k a r a ] ] 」 ]
+Arabian01_03670 { [ w a t a sh i w a ] { [ [ { [ [ [ y a \ n e n o ] [ u e n i ] ] [ a \ r u ] ] } [ t o b i r a k a r a ] ] [ [ i e \ n o ] [ n a \ k a n i ] ] [ h a i r i ] ] } [ 、 [ { [ [ [ ts U ch i \ n o ] [ n a \ k a n i ] ] [ k a k U sh i \ t e o \ i t a ] ] } [ o o g o N o ] ] [ h o r i d a sh i m a \ sh I t a ] ] 。 }
+Arabian01_03690 { [ [ ts u g i \ n o ] [ y o \ r u ] ] 、 [ { [ [ i e \ n i ] [ k a \ e cl t a ] ] } [ t o \ k i ] ] 、 [ w a t a sh i w a ] [ [ { [ [ i e \ n o ] [ n a \ k a n i ] ] [ [ [ n i \ ] [ h I k i n o ] ] [ i n u \ g a ] ] [ sh i b a \ r a r e t e i r u ] } [ n o o ] ] [ m i ts U k e m a \ sh I t a ] ] 。 }
+Arabian01_03710 { [ { [ { [ [ k o r e w a ] [ { [ [ d o \ o ] [ sh I t a ] ] } [ k o t o \ ] ] ] [ k a ] } [ t o ] ] [ w a t a sh i g a ] [ b i cl k u \ r i sh I t e i r u ] } [ t o ] ] 、 [ s o k o e ] [ ts u \ m a g a ] [ a r a w a r e m a \ sh I t a ] 。 }
+Arabian01_03720 { [ ts u \ m a w a ] 、 }
+Arabian01_03730 { 「 [ [ [ k o n o ] [ [ n i \ ] [ h I k i w a ] ] ] [ [ a n a \ t a n o ] [ ky o \ o d a i ] ] [ d e s U ] ] [ y o 」 ] }
+Arabian01_03740 { [ t o i i m a \ sh I t a ] 。 }
+Arabian01_03760 { [ t o ] 、 [ w a t a sh i w a ] [ k I k i m a \ sh I t a ] 。 }
+Arabian01_03790 { [ [ f U t a r i \ w a ] [ [ { [ { [ [ j u u n e \ N k a N ] [ t a \ ts u m a d e ] ] } [ [ m o t o \ n o ] [ s u \ g a t a n i ] ] [ m o d o \ s U ] ] } [ k o t o \ w a ] ] [ d e k i m a s e \ N ] ] ] [ y o 」 ] }
+Arabian01_03810 { [ s o sh I t e 、 ] [ { [ [ { [ [ [ k a \ r e n o ] [ m i n i ] ] [ o k o \ cl t a ] ] } [ h a n a sh i \ o ] ] [ k i i t e ] ] } 、 { [ [ { [ [ k e cl k a o ] [ m i t o d o k e r u ] ] } [ m a \ d e ] [ w a ] ] [ k o k o o ] [ s a r a \ n a i ] ] [ t o ] } [ k e \ cl sh i N sh I t a n o d e \ s U ] ] 。 }
+Arabian01_03820 { [ k o r e g a ] [ w a t a sh i n o m o n o g a t a r i ] [ d e g o z a i m a \ s U ] 。 }
+Arabian01_03850 { 「 [ k o r e m o ] [ { [ o d o r o \ k u b e k I ] } [ h a n a sh i \ ] ] [ d a 。 ] }
+Arabian01_03870 { { [ ts u z u i t e ] } [ s a N n i N \ ] [ m e n o r o o j i N g a ] [ [ h a n a sh i \ o ] [ sh i m a \ sh I t a ] ] 。 }
+Arabian01_03910 { [ [ s a N \ ] [ n i N m o ] ] [ [ [ k a \ r e n o ] [ b u j i o ] ] [ i w a \ cl t e k u r e m a \ sh I t a ] ] 。 }
+Arabian01_03930 { [ 「 d e \ s U ] [ g a 、 ] [ k o r e m o ] 」 }
+Arabian01_03950 { 「 [ [ { [ { [ [ [ ry o \ o sh i n o ] [ h a n a sh i \ n i ] ] [ k u r a b e t a \ r a ] ] } [ m a \ d a ] [ o m o sh i r o \ i ] ] [ t o ] } [ w a ] ] [ m o o s a r e m a s e \ N ] ] 」 }
+Arabian01_03960 { [ o \ o w a ] [ [ k a \ n o j o n i ] [ t a z u n e m a \ sh I t a ] ] 。 }
+Arabian02_00050 { [ { [ [ [ a \ r u ] [ t o sh i \ o ] ] [ t o \ cl t a ] ] } 、 { [ [ [ ts u \ m a t o ] [ [ s a N \ ] [ n i N n o ] ] ] [ k o d o m o n o ] ] [ a \ r u ] } [ ry o \ o sh i g a ] ] [ a r i m a \ sh I t a ] 。 }
+Arabian02_00090 { [ s o r e k a r a \ ] [ { { [ [ { [ m o o g a ] [ [ [ m i z u n o ] [ n a \ k a d e ] ] [ u g o k a \ n a k u n a \ r u ] ] } [ n o o ] ] [ m a \ cl t e ] ] } [ 、 { [ [ ts u n a \ o ] [ i cl sh o n i ] [ k a t a m e t e ] ] } [ { [ h i cl p a r i ] } [ n i ] ] [ k a k a r i m a \ sh I t a ] ] } [ g a ] ] 、 { [ [ [ s o n o ] [ o m o i ] [ k o t o \ t o ] ] [ i cl t a \ r a ] ] } 、 [ [ { [ [ i \ k u r a ] [ h i cl p a \ cl t e ] ] } [ m o ] ] 、 [ { [ h I k i a g e \ r u ] } [ k o t o \ g a ] ] [ d e k i m a s e \ N d e sh I t a ] ] 。 }
+Arabian02_00110 { [ s o r e k a r a ] { [ [ k i m o n o o ] [ n u \ i d e ] ] } 、 [ { [ [ [ a m i \ n o ] [ m a w a r i n i ] ] [ t o b i k o m i n a \ g a r a ] ] } 、 { [ [ [ s o \ r o s o r o ] [ t o ] ] [ h i cl p a \ cl t e ] ] } [ 、 t o o t o o ] [ s o r e o ] [ h I k i a g e m a \ sh I t a ] ] 。 }
+Arabian02_00120 { [ ry o \ o sh i w a ] { [ [ t a \ i s o o ] [ y o r o k o \ N d e ] ] } [ 、 [ k i m o n o o ] [ k i m a \ sh I t a ] ] 。 }
+Arabian02_00130 { [ g a 、 ] [ { [ [ a m i \ o ] [ sh i r a b e \ t e m i \ r u ] ] } [ t o ] ] 、 [ [ r o \ b a n o ] [ sh i g a i g a ] ] [ h i cl k a k a \ cl t e i t a n o d e sh I t a ] 。 }
+Arabian02_00140 { { [ [ s o r e o ] [ m i \ t e ] ] } [ ry o \ o sh i w a ] [ t o t e m o g a cl k a \ r i sh i m a \ sh I t a ] 。 }
+Arabian02_00150 { [ k e \ r e d o ] { [ [ k i o ] [ t o r i n a o \ sh I t e ] ] } [ 、 { [ [ [ { [ [ a m i \ n i ] [ k a k a \ cl t a ] ] } [ r o \ b a n o ] ] [ sh i g a i o ] ] [ t o r i n o z o \ i t e ] ] } [ 、 s U t e m a \ sh I t a ] ] 。 }
+Arabian02_00160 { [ s o r e k a r a ] [ { [ [ m a t a ] [ a m i \ o ] [ h i r o g e t e ] ] } 、 [ u \ m i n i ] [ o r i \ t e i k i m a \ sh I t a ] ] 。 }
+Arabian02_00180 [ 「 [ [ [ k o \ N d o w a ] [ u m a k u i k i m a \ s U ] ] [ y o \ o n i ] ] 」 ]
+Arabian02_00190 { { [ t o s a k e b i n a \ g a r a ] } [ [ 、 f U t a t a b i ] [ s o r e o ] [ n a g e m a \ sh I t a ] ] 。 }
+Arabian02_00200 { [ s o sh I t e 、 ] [ { [ [ [ { [ a m i \ g a ] [ sh i z u N d e ] } [ sh i \ z u k a ] [ n i n a \ r u ] ] [ n o o ] ] [ m a ch i n a \ g a r a ] ] } 、 [ s o r e o ] [ h I k i a g e n i ] [ k a k a r i m a \ sh I t a ] ] 。 }
+Arabian02_00210 { [ k o \ N d o w a ] [ [ { [ [ m a \ e y o r i m o ] [ i \ cl s o o ] [ o m o k u ] ] 、 [ [ t a k U s a N n o ] [ s a k a n a g a ] ] [ h a \ i cl t e i r u ] } [ y o \ o n i ] ] [ m i e m a \ sh I t a ] ] 。 }
+Arabian02_00220 { [ d e 、 ] { [ [ m a t a ] [ k i m o n o o ] [ n u \ i d e ] ] } [ 、 { [ [ [ m i z u n o ] [ n a \ k a n i ] ] [ t o b i k o \ N d e ] ] } 、 [ [ s o \ r o s o r o ] [ t o ] ] [ a m i \ o ] [ h I k i a g e n i ] [ k a k a r i m a \ sh I t a ] ] 。 }
+Arabian02_00230 { [ s o sh I t e ] [ 、 [ k a i g a N n i ] [ h I k i a g e m a \ sh I t a ] ] 。 }
+Arabian02_00250 { { [ [ s o r e o ] [ m i \ t e ] ] } 、 [ k a \ r e w a ] [ [ [ t o t e m o k a n a sh i \ i ] [ k i m o ch i n i ] ] [ n a r i m a \ sh I t a ] ] 。 }
+Arabian02_00270 { 「 { [ i cl t a i ky o \ o ] [ w a d o \ o sh I t a N \ d a r o o ] } 、 [ { [ k o m a \ cl t a ] } [ k o t o \ ] ] [ d a 。 」 ] }
+Arabian02_00280 { { [ t o i i n a \ g a r a ] } [ 、 [ s o n o k a \ m e o ] [ w a k i \ n i ] [ n a g e s U t e m a \ sh I t a ] ] 。 }
+Arabian02_00290 { [ s o r e k a r a ] [ { [ [ s o n o a m i \ o ] [ sh i b o \ cl t e ] ] } 、 [ [ k i \ r e i ] [ n i ] ] [ a r a i m a \ sh I t a ] ] 。 }
+Arabian02_00310 { [ s o sh I t e ] [ 、 [ { [ s o r e g a ] [ { [ sh i z u N d e ] } [ u g o k a \ n a k u n a \ r u ] ] } [ n o o ] ] [ m a \ cl t e i m a \ sh I t a ] ] 。 }
+Arabian02_00320 { [ s o o sh I t e 、 ] [ { [ [ s o r e o ] [ h I k i a g e m a \ sh I t a ] ] } [ g a ] ] 、 [ [ [ a m i \ n o ] [ n a \ k a n i w a ] ] [ [ { [ k o w a r e \ t a ] } [ k a \ m e y a ] ] [ ts u b o n o k a k e r a sh i \ k a ] ] [ a r i m a s e \ N d e sh I t a ] ] 。 }
+Arabian02_00330 { [ ts u \ i n i ] [ k a \ r e w a ] 、 [ { [ [ s o \ r a o ] [ m i \ t e ] ] } [ i i m a \ sh I t a ] ] 。 }
+Arabian02_00350 { [ ts u g i \ w a ] [ [ [ ky o \ o n o ] [ s a \ i g o n o ] ] [ a m i u ch i ] ] [ d e \ s U ] 。 }
+Arabian02_00360 { [ [ d o \ o ] [ k a ] ] 、 [ k o \ N d o k o s o ] [ { [ s a k a n a g a ] [ t a k U s a N k a k a r i m a \ s U ] } [ y o \ o n i ] ] 。 }
+Arabian02_00370 { [ { [ s o o d e n a i ] } [ t o ] ] 、 [ { [ [ [ ts u \ m a y a ] [ k o d o m o n i ] ] [ t a b e \ m o n o o ] [ k a cl t e i k U ] ] } [ k o t o \ g a ] ] [ d e k i \ n a i n o d e \ s U ] [ 。 」 ] }
+Arabian02_00380 { [ s o r e k a r a ] [ 、 [ [ y o N d o m e n o ] [ a m i \ o ] ] [ u ch i m a \ sh I t a ] ] 。 }
+Arabian02_00400 { [ k a \ r e w a ] { [ [ m a t a ] [ k i m o n o o ] [ n u \ i d e ] ] } [ 、 [ [ a m i \ n o ] [ m a w a r i n i ] ] [ t o b i k o m i m a \ sh I t a ] ] 。 }
+Arabian02_00410 { [ s o sh I t e 、 ] [ { [ [ [ s o \ r o s o r o ] [ t o ] ] [ s o r e o ] [ h i cl p a r i n a \ g a r a ] ] } 、 [ k a i g a N m a \ d e ] [ h I k i a g e \ t e k i m a \ sh I t a ] ] 。 }
+Arabian02_00440 { [ ry o \ o sh i w a ] [ { [ [ k o r e o ] [ m i \ r u ] ] } [ t o ] ] [ 、 [ t a i h e N n i ] { [ y o r o k o \ N d e ] } [ i i m a \ sh I t a ] ] 。 }
+Arabian02_00450 { 「 [ [ k o n o ts u b o w a ] [ [ [ [ t o t e m o k o \ o k a ] [ n a ] ] [ ts u b o n i ] ] [ m i e \ r u ] ] ] [ n a a 。 ] }
+Arabian02_00460 { { [ { [ [ sh i \ j o o n i ] [ m o \ cl t e i cl t e ] ] } [ u r e \ b a ] ] } [ 、 [ [ o o g o N ] [ j u u m a i k u \ r a i n i w a ] ] [ n a r i \ s o o d a ] ] 」 }
+Arabian02_00470 { [ { { [ s o o i i n a \ g a r a ] } [ 、 [ k o n o ts u b o o ] [ f u cl t e m i m a \ sh I t a ] ] } [ g a ] ] 、 [ [ [ [ t a i h e N ] [ n i ] ] [ o m o i ] ] [ m o n o \ ] ] [ d e sh I t a 。 ] }
+Arabian02_00510 [ [ s o sh I t e 、 ] [ { [ [ [ k a r a \ n o ] [ ts u b o d a k e o ] ] [ sh i \ j o o d e ] [ u cl t a ] ] } [ h o \ o g a ] ] [ i \ i ] [ d a r o o 」 ] ]
+Arabian02_00530 { [ k e \ r e d o m o ] 、 [ { [ [ f U t a o ] [ a k e t e m i \ r u ] ] } [ t o ] ] [ 、 { [ ch u \ u k a r a w a ] [ k e m u r i g a ] [ d e t e k i \ t a d a k e d e ] } 、 [ h o k a n i w a ] [ [ n a \ n i ] [ m o ] ] [ h a \ i cl t e i m a s e \ N d e sh I t a ] ] 。 }
+Arabian02_00550 { [ { [ [ s o r e o ] [ m i \ r u ] ] } [ t o ] ] 、 [ ry o \ o sh i w a ] [ [ s u cl k a \ r i ] [ o d o r o \ i t e sh i m a i m a \ sh I t a ] ] 。 }
+Arabian02_00580 { { [ s o n o t e \ w a ] [ k u m a d e n o y o \ o ] [ d e ] } 、 { [ a sh i \ w a ] [ [ [ f u \ n e n o ] [ h o b a sh i r a h o d o m o ] ] [ a \ r i ] ] } 、 { [ s o n o k U ch i w a ] [ d o o k U ts u n o y o \ o ] [ d e ] } 、 [ h a \ w a ] [ [ i sh i \ n o ] [ y o \ o ] ] [ d e sh I t a 。 ] }
+Arabian02_00610 { { [ [ h a \ o ] [ k u i sh i b a \ r i ] ] } 、 [ k U ch i n o n a \ k a w a ] [ k a w a \ i t e sh i m a i m a \ sh I t a ] 。 }
+Arabian02_00670 { { [ [ s o r e o ] [ k i i t e ] ] } 、 [ ry o \ o sh i w a ] [ i i m a \ sh I t a ] 。 }
+Arabian02_00700 [ [ { [ [ i cl t a i 、 ] [ a n a \ t a w a ] [ { [ [ d o \ o y u u ] [ o k a t a ] ] } [ d e \ s U ] ] [ k a ] ] [ s o sh I t e ] } [ 、 i cl t a i ] ] [ [ [ d o \ o sh I t e ] [ k o N n a ] [ [ ts u b o n o n a \ k a ] [ n i h a \ i cl ] ] [ t e i r a \ sh I t a N \ d e s U ] ] [ k a ] ] 」 ]
+Arabian02_00720 { 「 [ ry o \ o sh i y o ] [ 、 [ { [ o r e n o ] [ i u ] } [ k o t o \ o ] ] [ k I k e ] ] 」 }
+Arabian02_00730 { 「 [ n a N d e g o z a i m a \ s U ] [ k a 」 ] }
+Arabian02_00740 { [ t o ] 、 [ ry o \ o sh i w a ] [ i i m a \ sh I t a ] 。 }
+Arabian02_00760 { 「 [ [ o m a e w a ] [ { [ [ i \ m a k a r a ] [ [ s u \ g u n i ] [ t o t e m o ] ] [ [ z a N k o k u n a h o o h o o ] [ d e k o r o s a ] ] [ r e r u t o ] ] [ i u ] } [ k o t o \ ] ] [ d a ] ] [ y o 」 ] }
+Arabian02_00770 { [ t o i i m a \ sh I t a ] 。 }
+Arabian02_00780 { { [ [ s o r e o ] [ k i i t e ] ] } 、 [ ry o \ o sh i w a ] [ { [ [ k o \ e o ] [ a g e \ t e ] ] } [ w a m e k i m a \ sh I t a ] ] 。 }
+Arabian02_00810 { [ [ { [ [ ts u b o n o n a \ k a k a r a ] [ a n a \ t a o ] [ k a i h o o sh I t e a g e \ t a ] ] } [ n o w a ] ] 、 [ { { [ [ [ u \ m i n o ] [ s o k o k a r a ] ] [ a n a \ t a o ] [ f U t a t a b i s U k u i d a \ sh I t e ] ] } [ 、 [ { [ [ { [ f U t a t a b i k a w a \ i t a ] } [ ts U ch i \ o ] ] [ f u m e r u ] ] } [ y o \ o n i ] ] [ sh I t e a g e \ t a ] ] } [ n o w a ] ] [ 、 k o n o w a t a sh i j a n a i d e s U \ ] ] [ k a 」 ] }
+Arabian02_00830 { 「 [ [ { [ [ { [ [ d o \ N n a ] [ k a z e ] ] [ n i sh I ] } [ t e ] ] [ sh i n i t a \ i n o ] ] [ k a ] } [ 、 m a t a ] ] 、 { [ { [ [ d o \ N n a ] [ k a z e ] ] [ n i sh I t e ] } [ k o r o s a r e t a \ i n o ] ] [ k a ] } ] [ 、 [ s o r e o ] [ e r a \ b i n a s a i ] ] 」 }
+Arabian02_00840 { [ ry o \ o sh i w a ] [ i i m a \ sh I t a ] }
+Arabian02_00850 { 「 [ { [ { [ [ w a t a sh i g a ] [ [ [ d o \ N n a ] [ w a r u \ i ] [ k o t o \ o ] ] [ sh I t a \ ] ] ] [ t o ] } [ i u n o d e \ s U ] ] [ k a ] } 、 [ { [ [ [ d o \ N n a ] [ k o t o \ o ] ] [ s u r e \ b a ] ] } 、 { [ [ a n a \ t a k a r a ] [ s o N n a m u k u \ i o ] [ u k e \ r u ] ] [ t o ] } [ i u N \ d e s U ] ] ] [ k a ] }
+Arabian02_00870 { 「 [ [ j a \ a ] 、 { [ [ o r e n o h a n a sh i \ o ] [ k I k e ] ] } [ 、 ry o \ o sh i ] ] [ y o 」 ] }
+Arabian02_00880 { [ ry o \ o sh i w a ] [ i i m a \ sh I t a ] }
+Arabian02_00920 { [ o \ o w a ] { [ [ g u N z e e o ] [ w a t a sh i n o t o k o r o e ] [ y a \ cl t e ] ] } [ 、 { [ [ w a t a sh i o ] [ sh i b a \ cl t e ] ] } [ [ o \ o n o ] [ m a \ e e ] ] [ ts u r e t e i cl t a ] ] 。 }
+Arabian02_00940 { [ d a \ g a ] 、 [ w a sh i w a ] [ [ s o r e o ] [ ky o z e ts u sh I t a ] ] 。 }
+Arabian02_00950 { [ s u r u t o 、 ] [ k a \ r e w a ] { [ [ [ k o n o ] [ ts u b o o ] ] [ m o \ cl t e k i \ t e ] ] } [ 、 [ [ k o n o ts u b o n o ] [ n a \ k a n i ] ] [ w a sh i o ] [ f u u j i k o m e \ t a n o d a ] ] 。 }
+Arabian02_00960 { [ s o sh I t e 、 ] { [ [ u e k a r a ] [ n a m a r i n o s e \ N o ] [ sh I t e ] ] } [ 、 { [ [ s o r e n i s u \ r e i ] [ m a a N n o n a m a e o ] [ k i z a m i ] ] } [ 、 f u u i N sh I t a ] ] 。 }
+Arabian02_00990 { [ g a 、 ] [ { [ [ [ hy a k u \ ] [ n e N ] ] [ t a \ cl t e ] ] } [ m o ] ] [ { [ [ w a sh i o ] [ k a i h o o sh I t e k u r e r u ] ] } [ m o n o \ w a ] ] [ i n a i ] 。 }
+Arabian02_01030 { [ g a 、 ] [ [ { [ [ [ d a \ r e ] [ m o ] ] [ s o o sh I t e k u r e r u ] ] } [ m o n o \ g a ] ] [ n a \ k u ] ] 、 [ [ s o n o k a \ N ] [ n i m a t a ] ] [ y o N ] [ [ [ hy a k u \ ] [ n e N n o ] ] [ s a \ i g e ts u g a ] ] [ t a \ cl t e sh i m a \ cl t a ] 。 }
+Arabian02_01040 [ [ s o sh I t e ] [ w a sh i w a ] [ m a t a ] ]
+Arabian02_01060 { [ k e \ r e d o ] 、 [ [ d a r e \ ] [ m o ] ] [ { [ [ w a sh i o ] [ t a s U k e \ t e k u r e r u ] ] } [ m o n o \ w a ] ] [ n a \ i ] 。 }
+Arabian02_01080 { [ s o sh I t e ] [ 、 [ [ k o k o \ r o n o ] [ n a \ k a d e ] ] [ ch I k a cl t a ] ]
+Arabian02_01100 [ { [ [ [ s o sh I t e ] [ t a \ d a ] [ [ { [ [ { [ d o \ o y u u ] [ { [ k a z e ] } [ n i ] ] [ sh I t e ] } [ sh i n i ] ] [ t a \ i k a ] ] [ t o ] } [ i u ] ] [ k o t o d a k e o ] ] [ a i t e \ n i ] [ e r a \ b a s e t e ] ] [ y a r o o ] ] [ t o ] } 。 ]
+Arabian02_01110 { [ s o sh I t e 、 i \ m a ] 、 [ o m a e w a ] [ [ w a sh i o ] [ k a i h o o sh I t e k u r e t a ] ] 。 }
+Arabian02_01120 { [ d a \ k a r a ] [ { [ { [ [ d o \ o y u u ] { [ { [ k a z e ] } [ n i ] ] [ sh i n u \ ] } [ k a ] ] [ o m a e ] } [ n i e r a \ b a ] [ s e t e y a \ cl t e ] ] } 、 [ o m a e o ] [ k o r o sh I t e y a r u N \ d a ] ] 」 }
+Arabian02_01140 { 「 { [ [ n a \ N t o i u ] [ k o t o \ ] ] [ d a ] } 、 [ { [ [ s o N n a k o t o \ t o ] [ sh i cl t e i t a \ r a ] ] } 、 [ k o N n a t o \ k i n i ] [ a n a \ t a o ] [ s U k u cl t e y a r u N \ j a n a k a cl t a ] ] 」 }
+Arabian02_01160 [ 「 [ { [ [ [ d o \ o ] [ k a ] ] [ w a t a sh i o ] [ k o r o s a n a \ i d e k u d a s a \ i ] ] } 。 { [ o n e g a i d e \ s U ] } ] 」 ]
+Arabian02_01210 { [ 「 d o \ o z o ] 、 [ { [ { [ [ w a t a sh i g a ] [ { [ [ a n a \ t a o ] [ s U k u cl t e a g e \ t a ] ] } [ o r e e ] ] [ d a ] ] [ t o ] } [ o m o \ cl t e ] ] } 、 [ w a t a sh i o ] [ y u r u \ sh I t e k u d a s a \ i ] ] 」 }
+Arabian02_01220 { [ t o i i m a \ sh I t a ] 。 }
+Arabian02_01260 { [ 「 s o o d a 」 ] }
+Arabian02_01280 [ 「 [ { [ d e \ w a ] 、 [ { [ { [ [ i d a i n a ] [ m a \ ] ] [ j i N d e ] } [ a r u a n a \ t a ] ] [ 、 [ e h I t o \ ts u ] [ u k a g a i t a \ i ] ] } [ k o t o \ g a ] ] [ a \ r u N \ d e s U ] } [ g a ] ] [ n e 」 ] ]
+Arabian02_01290 { [ t o ] 、 [ ry o \ o sh i w a ] [ i i m a \ sh I t a ] 。 }
+Arabian02_01300 { 「 [ [ a n a \ t a w a ] [ [ h o N t o o n o k o t o \ o ] [ k o t a \ e t e k u r e m a \ s U ] ] ] [ k a 」 ] }
+Arabian02_01330 [ 「 { [ a \ a ] 、 [ { [ k I k u ] } [ g a ] ] [ i \ i ] } 。 { [ [ sh I k a \ sh I ] [ k a N t a N n i ] [ d a ] ] [ y o ] } 」 ]
+Arabian02_01360 { 「 [ { [ [ o m a e w a ] [ [ { [ w a sh i g a ] [ [ s o n o n a \ k a n i ] [ h a \ i cl t e i t a ] ] } [ k o t o \ o ] ] [ sh i N j i \ n a i ] ] ] [ t o ] } [ i u n o ] ] [ k a 」 ] }
+Arabian02_01380 [ [ ry o \ o sh i w a ] 、 ]
+Arabian02_01390 { 「 [ [ { [ a n a \ t a g a ] [ [ s o n o n a \ k a n i ] [ h a \ i cl t e m i s e \ t e k u d a s a \ r u ] ] } [ m a d e w a ] ] [ sh i N j i r a r e m a s e \ N ] ] [ n e 」 ] }
+Arabian02_01400 { [ t o i i m a \ sh I t a ] 。 }
+Arabian02_01420 { [ s o o sh I t e ] [ [ 、 f U t a t a b i ] [ { [ { [ [ t e \ N n i ] [ n o b o r u ] ] } [ y o \ o ] ] [ n a ] } [ k e m u r i n i ] ] [ k a w a cl t e sh i m a i m a \ sh I t a ] ] 。 }
+Arabian02_01440 { [ s o sh I t e ] [ [ 、 t o o t o o s u cl k a \ r i ] [ s o n o n a \ k a n i ] [ t o j i k o m o \ cl t e sh i m a i m a \ sh I t a ] ] 。 }
+Arabian02_01450 { [ s o n o t o \ k i ] 、 [ ry o \ o sh i w a ] [ { [ a w a t e t e ] } [ [ [ { [ f u u i N n o ] [ sh I t e a \ r u ] } [ n a m a r i n o ] ] [ ts u b o n o ] ] [ s e \ N o ] ] [ h i r o i a g e m a \ sh I t a ] ] 。 }
+Arabian02_01470 [ { 「 [ [ { [ [ d o \ N n a ] [ k a z e ] ] [ n i sh I ] } [ t e ] ] [ sh i n i t a \ i ] ] [ k a ] } 、 [ { [ [ h a \ y a k U ] [ s o r e o ] [ e r a \ b u ] ] } [ g a ] ] [ i \ i ] 。 ]
+Arabian02_01480 { [ [ w a t a sh i w a ] [ d a i j o \ o b u ] [ 、 [ o m a e o ] [ [ u \ m i n o ] [ n a \ k a n i ] ] [ h o o r i k o \ N d e a g e r u ] ] ] [ y o 。 ] }
+Arabian02_01490 { [ s o sh I t e ] [ 、 [ k o k o n i ] [ i e \ o ] [ t a t e \ r u N \ d a ] ] 。 }
+Arabian02_01540 { [ ry o \ o sh i w a ] [ [ s o r e k a r a ] [ s o n o ts u b o o ] [ [ u \ m i n o ] [ ch i \ k a k u m a d e ] ] [ m o \ cl t e i k i m a \ sh I t a ] ] 。 }
+Arabian02_01620 { [ d a \ k a r a ] 、 [ w a t a sh i w a ] [ { [ [ o m a e o ] [ d a m a \ sh I t e ] ] } [ [ m o t o \ n o ] [ ts u b o n i ] ] [ m o d o \ sh I t e y a \ cl t a N \ d a ] ] [ 。 」 ] }
+Arabian02_01640 [ 「 { [ [ k o k o o ] [ a k e t e o k u r e ] ] } 。 [ { [ w a sh i w a ] [ [ o m a e n i ] [ d o cl s a \ r i ] [ o r e e o ] [ sh I t e a g e r u ] ] } [ y o ] ] 」 ]
+Arabian02_01650 { [ ry o \ o sh i w a ] [ [ s o r e n i ] [ k o t a e m a \ sh I t a ] ]
+Arabian02_01690 { [ ry o \ o sh i w a ] [ [ [ ts u g i \ n o ] [ y o \ o n i ] ] [ k o t a e m a \ sh I t a ] ] 。 }
+Arabian02_01730 { [ m i z u g u \ s u r i m o ] 、 [ k o g u \ s u r i m o ] 、 [ n u r i g u \ s u r i m o ] 、 [ k a \ r e n i w a ] [ [ n a \ N n o ] [ k I k i m e m o ] ] [ n a \ k a cl ] [ t a 。 ] }
+Arabian02_01780 { [ k a \ r e w a ] [ m a t a ] [ 、 [ [ [ [ t e ts u g a k U sh a ] [ n o ch i \ sh I k i ] ] 、 [ y a ] 、 [ [ [ i \ g a k u ] [ s o n o \ t a n o ] ] [ s u \ b e t e n o ] ] ] [ ch i \ sh I k i o ] ] [ t a k u w a \ e t e i t a ] ] 。 }
+Arabian02_01790 { [ [ k o n o ] [ g a k U sh a w a ] ] { [ [ t o \ e ] [ y a cl t e k I t e n i m i cl k a ] ] } 、 [ [ { [ [ t a i z a i sh I ] [ t a a \ t o d e ] ] } [ o \ o n o ] ] 、 [ [ [ [ by o o k i n o ] [ sh o o j o \ o t o ] ] [ i sh a \ t a ch i ] ] 、 [ { [ [ g a s o n o ] [ [ ch i ry o o o a k i r a m e \ ] [ t e sh i m a \ cl t a t o ] ] ] [ i u ] } [ h a n a sh i \ o ] ] ] [ m i m i \ n i ] [ sh I t a ] ] 。 }
+Arabian02_01800 { [ { [ [ s o r e o ] [ k i i t a ] ] } [ a \ t o ] ] 、 [ k a \ r e w a ] [ [ s o n o y o \ r u n i ] [ h I t o \ r i d e ] [ [ n e \ cl sh i N ] [ n i ] ] [ k e N ky u u o ] [ sh I t a ] ] 。 }
+Arabian02_01870 { [ s o sh I t e ] [ 、 [ k a \ r e n i ] [ i cl t a ] ] 。 }
+Arabian02_01900 { [ s o sh I t e 、 ] [ o m a e w a ] [ i cl sh o o ] [ 、 [ w a sh i n o t o m o d a ch i n i ] [ n a \ r u d a r o o ] ] [ 。 」 ] }
+Arabian02_01940 { { [ t o i cl t e ] } 、 [ { [ [ [ o \ o n o ] [ m a \ e k a r a ] ] [ sh i r i z o \ i t e ] ] } 、 [ [ [ i cl \ ] [ k e N n o ] ] [ i e \ o ] ] [ k a r i i r e \ t a ] ] 。 }
+Arabian02_01950 { [ s o n o n a \ k a n i ] [ 、 [ [ sh o \ m o ts u y a ] [ 、 k U s u r i y a 、 y a k U h i N o ] ] [ h a k o N d e k i \ t a ] ] 。 }
+Arabian02_01970 { [ ts u g i \ n i n a \ k a ] [ 、 [ { [ [ o k u u d o o ] [ n i sh I ] [ t a g o r u f U ] ] } [ k u \ r a b u o ] ] [ ts U k u \ cl t a ] ] 。 }
+Arabian02_01980 { [ s o n o n a \ k a n i ] 、 [ k a \ r e w a ] [ [ { [ e r a \ N d a ] } [ k U s u r i o ] ] [ i r e t a ] ] 。 }
+Arabian02_01990 { [ s a \ i g o n i ] [ 、 [ t a m a \ o ] [ ts U k u \ cl t a ] ] 。 }
+Arabian02_02000 { [ [ ts u g i \ n o ] [ h i ] ] 、 [ { [ [ { [ ts U k u \ cl t a ] } [ m o n o \ o ] ] [ m o ch i ] ] } [ 、 f U t a t a b i ] [ [ o \ o n o ] [ m a \ e n i ] ] [ i cl t a ] ] 。 }
+Arabian02_02080 { [ s o sh I t e ] [ 、 [ u m a \ n i ] [ n o cl t a ] ] 。 }
+Arabian02_02090 { [ t a \ m a w a ] [ [ [ k a \ r e n o ] [ m a \ e n i ] ] [ n a g e \ r a r e t a ] ] 。 }
+Arabian02_02130 [ [ o \ o w a ] [ u r e sh i \ k u ] [ n a cl t a 。 ] ]
+Arabian02_02140 { [ k a \ r e w a ] { [ [ s u g a s u g a sh i \ i ] [ k i m o ch i ] ] [ d e ] } [ 、 [ k o o f U k u n i ] [ m i ch i \ t e i t a ] ] 。 }
+Arabian02_02150 { [ [ ts u g i \ n o ] [ a \ s a ] ] 、 [ o \ o w a ] [ [ [ gy o \ k u z a n o ] [ u e n i ] ] [ k o sh I k a k e t a ] ] 。 }
+Arabian02_02160 { [ ch o o t e e n o y a k u n i N \ t a ch i ] [ [ g a z u r a \ r i t o ] [ [ k a \ r e n o ] [ m a \ e n i ] ] [ n a r a N d a ] ] 。 }
+Arabian02_02190 { { [ [ [ s a m a \ z a m a ] [ n a ] ] [ g o ch I s o o g a ] ] [ [ [ k a \ r e r a n o ] [ m a \ e n i ] ] [ n a r a b e r a r e t e ] ] } 、 [ o \ o w a ] [ [ g a k U sh a t o i cl sh o n i ] [ s o r e o ] [ t a b e \ t a ] ] 。 }
+Arabian02_02230 { [ o \ o w a ] 、 [ [ [ [ g a k U sh a n o ] [ ch i \ sh I k i n o ] ] [ h o o f u n a ] [ k o t o \ n i ] ] [ s u cl k a \ r i ] [ o d o r o \ i t e sh i m a \ cl t a ] ] 。 }
+Arabian02_02270 { [ t o i cl t a ] 。 }
+Arabian02_02290 { [ s a \ t e ] 、 [ [ [ o \ o n o ] [ d a \ i j i N n o ] ] [ n a \ k a n i ] ] [ 、 h I t o \ r i ] 、 [ [ [ t a i h e N w a r u \ i ] [ k o k o \ r o n o ] ] [ o t o k o \ g a ] ] [ a \ cl t a ] 。 }
+Arabian02_02320 { [ s o r e d e 、 ] [ d a \ i j i N w a ] [ { [ [ [ o \ o n o ] [ m a \ e n i ] ] [ ch I k a z u \ i t e ] ] } [ i cl t a ] ] 。 }
+Arabian02_02330 { [ [ 「 o \ o ] [ y o ] ] 。 [ w a t a sh i w a ] [ { [ [ a n a \ t a n i ] [ m o o sh i a g e t a \ i ] ] } [ t a i s e ts u n a ] [ j o g e N g a ] ] [ a r i m a \ s U ] 。 }
+Arabian02_02340 { { [ { [ [ k o r e o ] [ k a k U sh i \ t e ] ] } [ m o o sh i a g e \ n a k a cl t a r a ] ] } 、 [ w a t a sh i w a ] [ [ { [ [ [ o \ o n o ] [ sh i N r a i o ] ] [ u r a g i \ r u ] ] } [ m o n o \ t o ] ] [ n a r i m a sh o \ o ] ] 。 }
+Arabian02_02350 { [ d e \ s U k a r a ] [ 、 { [ { [ [ o \ o n o ] [ g o m e \ e r e e ] ] [ s a e a r e \ ] } 、 [ b a w a t a sh i ] [ [ w a s u \ g u n i ] [ m o o sh i a g e t a \ i ] ] ] [ t o ] } [ o m o i m a \ s U ] ] 。 }
+Arabian02_02400 { [ d a \ i j i N w a ] [ s o k o d e ] 、 }
+Arabian02_02430 { [ [ s a i k o o n o ] [ m e \ e y o o ] ] [ { [ [ [ s o n o m o n o \ ] [ n i a t a e ] ] [ s o sh I t e ] ] } [ 、 s o n o m o n o \ ] [ o sh i N y u u t o ] [ sh I t e ] [ t a i g u u n a s a i m a \ sh I t a ] ] 。 }
+Arabian02_02450 { { [ [ s o r e o ] [ k i i t e ] ] } 、 [ o \ o w a ] [ { [ [ [ [ i y a \ ] [ n a ] ] [ o m o \ i o ] ] [ sh i n a \ g a r a ] ] } [ k a o i r o o ] [ k a e t a ] ] 。 }
+Arabian02_02460 { [ s o sh I t e i cl t a ] 。 }
+Arabian02_02470 { 「 [ [ { [ o m a e g a ] [ { [ [ w a sh i n o t e k i ] [ d a ] ] [ t o ] } [ o m o \ cl t e i r u ] ] } [ m o n o \ w a ] ] [ d a \ r e ] [ d a ] ] [ 。 」 ] }
+Arabian02_02480 { [ k a \ r e w a ] [ k o t a \ e t a ] 。 }
+Arabian02_02500 { [ o \ o w a ] [ i cl t a ] 。 }
+Arabian02_02530 { [ [ a n o ] [ h o \ o w a ] ] 、 { [ w a sh i g a ] [ [ t a \ d a ] [ [ a n o \ ] [ ts u e o ] ] [ t e \ n i ] [ n i g i cl t a \ d a k e d e ] ] } [ 、 [ w a sh i o ] [ n a o \ sh I t e k u r e t a N \ d a ] ] 。 }
+Arabian02_02540 { [ [ { [ [ d o \ N n a ] [ i sh a m o ] ] [ [ s a \ j i o ] [ n a g e \ t a ] ] } [ w a sh i n o by o o k i o ] ] [ n a o \ sh I t e k u r e t a ] ] 。 }

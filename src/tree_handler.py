@@ -657,7 +657,7 @@ class TreeHandler:
                 out += " " + stack.pop()  # 直近をpopする
             nest_prev = len(subtree_idx)
         out += " " + stack.pop()
-        for adhoc in adhoc_list:
+        for adhoc in self.symbol_list:
             out = out.replace(f"[ {adhoc} ]", adhoc)
         out = out.strip()
         # FIXME: 出力で"_"がたされる. おそらく前の方の処理で_を足している
