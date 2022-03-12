@@ -7,7 +7,8 @@ import re
 from typing import List
 import logging
 
-logging.basicConfig(filename='error_inf.log', filemode='a', level=logging.DEBUG)
+logging.basicConfig(filename='error_inf.log',
+                    filemode='a', level=logging.DEBUG)
 
 
 class InfParser():
@@ -82,7 +83,11 @@ class InfParser():
             morph_idx += 1
         for i, line_i in enumerate(lines):
             if line_i["p3"] in ["sil", "pau"]:
-                txt += lines[i-1]["M"]  # 現在がsil等なら一つ前のMを参照(理由不明)
+                if self.version != 2:
+                    txt += lines[i-1]["M"]  # 現在がsil等なら一つ前のMを参照(理由不明)
+                else:
+                    # ver2なら.や,は無視する
+                    txt += ""
                 continue
 
             txt += line_i["p3"] + " "
@@ -120,10 +125,13 @@ class InfParser():
                     if (lines[i+1]["L"] != 200):
                         txt += dependency_dist
             elif self.version == 2:
-                is_not_switched = line_i["B"] == lines[i+1]["B"] and line_i["C"] == lines[i +
-                                                                                          1]["C"] and line_i["D"] == lines[i+1]["D"]
+                is_not_switched = \
+                    line_i["B"] == lines[i+1]["B"] and \
+                    line_i["C"] == lines[i + 1]["C"] and \
+                    line_i["D"] == lines[i+1]["D"]
                 is_switched = not is_not_switched
-                if is_switched:
+                final = len(lines) == i+2
+                if is_switched and not final:
                     txt += f"#{morph_idx} "
                     morph_idx += 1
             else:
@@ -167,7 +175,6 @@ def main():
             logging.debug('value')
         except ValueError:
             logging.debug('index')
-        
 
     if version == 2:
         # > で file ごとに作成していく

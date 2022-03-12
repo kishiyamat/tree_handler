@@ -927,59 +927,22 @@ def test_integrate_morph_accent():
     # 6. convert Japanese characters to phonemes & accents
     # Mismatch 1
     src_1 = """#0 i m a g a w a #1 y a k i #2 y a
-            #3 a m a z a k e #4 g a #5 h a N b a i #6 ch u u #7 d a #8 ."""
+            #3 a m a z a k e #4 g a #5 h a N b a i #6 ch u u #7 d a """
     src_2 = """
             (IP-MAT
               (PP-SBJ|[] (NP (CONJP (NP (N #0-今川焼き #1-や))) (NP (N #2-甘酒 #3-が))))
               (NP-PRD (N #4-販売中))
               (AX #5-だ)
-            (PU #6-。))
+            (PU 。))
             """
     src_2 = ParentedTree.fromstring(src_2)
     with pytest.raises(IndexError):
         res = th.integrate_morph_accent(src_2, src_1)
-
-    # Mismatch 2
-    src_1 = """#0 s o n o k o k u o \ o n i w a 
-               #1 f U t a r i \ #2 n o #3 o \ o j i #4 g a
-               #5 a r i #6 m a \ sh I #7 t a #8 ."""
-    src_2 = """
-        (IP-MAT
-          (PP (NP (D #0-その) (N #1-国王 #2-に #3-は)))
-          (PP-SBJ (NP (PP (NP (N #4-二人 #5-の))) (N #6-王子 #7-が)))
-          (VP (VB #8-あり #9-まし #10-た))
-          (PU #11-。))
-        """
-    src_2 = ParentedTree.fromstring(src_2)
-    with pytest.raises(IndexError):
-        res = th.integrate_morph_accent(src_2, src_1)
-    # 例0
-    src_1 = """#0 s o n o #1 k o k u o \ o #2 n i #3 w a 
-               #4 f U t a r i \ #5 n o #6 o \ o j i #7 g a
-               #8 a r i #9 m a \ sh I #10 t a #11 ."""
-    src_2 = """
-        (IP-MAT
-          (PP (NP (D #0-その) (N #1-国王 #2-に #3-は)))
-          (PP-SBJ (NP (PP (NP (N #4-二人 #5-の))) (N #6-王子 #7-が)))
-          (VP (VB #8-あり #9-まし #10-た))
-          (PU #11-。))
-        """
-    tgt = """
-        (IP-MAT
-          (PP (NP (D s_o_n_o) (N k_o_k_u_o_\_o n_i w_a)))
-          (PP-SBJ (NP (PP (NP (N f_U_t_a_r_i_\ n_o))) (N o_\_o_j_i g_a)))
-          (VP (VB a_r_i m_a_\_sh_I t_a))
-          (PU .))
-        """
-    src_2, tgt = ParentedTree.fromstring(src_2), ParentedTree.fromstring(tgt)
-    res = th.integrate_morph_accent(src_2, src_1)
-    assert tgt == res  # tree自体は異なる. tgtはスペース区切りがすべて独立したPOSになっている
-
     # 例1
     src_1 = """#0 k a \ n o #1 n e k o \ #2 w a
                #3 k i i r o i #4 m i ch i #5 o #6 a r u \ k u #7 i n u \  #8 o
                #9 y u k k u \ r i #10 m i \ #11 t a #12 y o \ o #13 da t  #14 t a 
-               #15 r a sh i i #16 ."""
+               #15 r a sh i i """
     src_2 = """
         (IP-MAT
           (PP-SBJ (NP (D #0-かの) (N #1-猫 #2-は)))
@@ -997,7 +960,7 @@ def test_integrate_morph_accent():
                 (N #7-犬 #8-を)))
             (ADVP (ADV #9-ゆっくり))
             (VB #10-見 #11-た #12-よう #13-だっ #14-た #15-らしい))
-          (PU #16-。))
+          (PU 。))
         """
     tgt = """
         (IP-MAT
@@ -1016,14 +979,97 @@ def test_integrate_morph_accent():
                 (N i_n_u_\ o)))
             (ADVP (ADV y_u_k_k_u_\_r_i))
             (VB m_i_\ t_a y_o_\_o da_t t_a r_a_sh_i_i))
-          (PU .))
+          (PU 。))
+        """
+    src_2, tgt = ParentedTree.fromstring(src_2), ParentedTree.fromstring(tgt)
+    res = th.integrate_morph_accent(src_2, src_1)
+    assert tgt == res
+
+    # Mismatch 2
+    src_1 = """#0 s o n o k o k u o \ o n i w a 
+               #1 f U t a r i \ #2 n o #3 o \ o j i #4 g a
+               #5 a r i #6 m a \ sh I #7 t a """
+    src_2 = """
+        (IP-MAT
+          (PP (NP (D #0-その) (N #1-国王 #2-に #3-は)))
+          (PP-SBJ (NP (PP (NP (N #4-二人 #5-の))) (N #6-王子 #7-が)))
+          (VP (VB #8-あり #9-まし #10-た))
+          (PU 。))
+        """
+    src_2 = ParentedTree.fromstring(src_2)
+    with pytest.raises(IndexError):
+        res = th.integrate_morph_accent(src_2, src_1)
+    # 例0
+    src_1 = """#0 s o n o #1 k o k u o \ o #2 n i #3 w a 
+               #4 f U t a r i \ #5 n o #6 o \ o j i #7 g a
+               #8 a r i #9 m a \ sh I #10 t a """
+    src_2 = """
+        (IP-MAT
+          (PP (NP (D #0-その) (N #1-国王 #2-に #3-は)))
+          (PP-SBJ (NP (PP (NP (N #4-二人 #5-の))) (N #6-王子 #7-が)))
+          (VP (VB #8-あり #9-まし #10-た))
+          (PU 。))
+        """
+    tgt = """
+        (IP-MAT
+          (PP (NP (D s_o_n_o) (N k_o_k_u_o_\_o n_i w_a)))
+          (PP-SBJ (NP (PP (NP (N f_U_t_a_r_i_\ n_o))) (N o_\_o_j_i g_a)))
+          (VP (VB a_r_i m_a_\_sh_I t_a))
+          (PU 。))
+        """
+    src_2, tgt = ParentedTree.fromstring(src_2), ParentedTree.fromstring(tgt)
+    res = th.integrate_morph_accent(src_2, src_1)
+    assert tgt == res  # tree自体は異なる. tgtはスペース区切りがすべて独立したPOSになっている
+
+    # 例1
+    src_1 = """#0 k a \ n o #1 n e k o \ #2 w a
+               #3 k i i r o i #4 m i ch i #5 o #6 a r u \ k u #7 i n u \  #8 o
+               #9 y u k k u \ r i #10 m i \ #11 t a #12 y o \ o #13 da t  #14 t a 
+               #15 r a sh i i """
+    src_2 = """
+        (IP-MAT
+          (PP-SBJ (NP (D #0-かの) (N #1-猫 #2-は)))
+          (VP
+            (PP-OB1
+              (NP
+                (IP-REL
+                  (NP-SBJ *T*)
+                  (VP
+                    (PP-OB1
+                      (NP
+                        (IP-REL (NP-SBJ *T*) (ADJI #3-黄色い))
+                        (N #4-道 #5-を)))
+                    (VB #6-歩く)))
+                (N #7-犬 #8-を)))
+            (ADVP (ADV #9-ゆっくり))
+            (VB #10-見 #11-た #12-よう #13-だっ #14-た #15-らしい))
+          (PU 。))
+        """
+    tgt = """
+        (IP-MAT
+          (PP-SBJ (NP (D k_a_\_n_o) (N n_e_k_o_\ w_a)))
+          (VP
+            (PP-OB1
+              (NP
+                (IP-REL
+                  (NP-SBJ *T*)
+                  (VP
+                    (PP-OB1
+                      (NP
+                        (IP-REL (NP-SBJ *T*) (ADJI k_i_i_r_o_i))
+                        (N m_i_ch_i o)))
+                    (VB a_r_u_\_k_u)))
+                (N i_n_u_\ o)))
+            (ADVP (ADV y_u_k_k_u_\_r_i))
+            (VB m_i_\ t_a y_o_\_o da_t t_a r_a_sh_i_i))
+          (PU 。))
         """
     src_2, tgt = ParentedTree.fromstring(src_2), ParentedTree.fromstring(tgt)
     res = th.integrate_morph_accent(src_2, src_1)
     assert tgt == res
 
     # 例2
-    src_1 = "#0 n a \ n i #1 o #2 k a t #3 t e #4 a g e #5 y o \ o #6 k a #7 ?"
+    src_1 = "#0 n a \ n i #1 o #2 k a t #3 t e #4 a g e #5 y o \ o #6 k a "
     src_2 = """
     (CP-QUE
       (IP-SUB
@@ -1032,7 +1078,7 @@ def test_integrate_morph_accent():
           (PP-OB1 (NP (WPRO #0-何 #1-を)))
           (VB #2-買っ #3-て #4-あげ #5-よう)))
       (P-FINAL #6-か)
-      (PU #7-？))
+      (PU ？))
     """
     tgt = """
     (CP-QUE
@@ -1042,7 +1088,7 @@ def test_integrate_morph_accent():
           (PP-OB1 (NP (WPRO n_a_\_n_i o)))
           (VB k_a_t t_e a_g_e y_o_\_o)))
       (P-FINAL k_a)
-      (PU ?))
+      (PU ？))
     """
     src_2, tgt = ParentedTree.fromstring(src_2), ParentedTree.fromstring(tgt)
     res = th.integrate_morph_accent(src_2, src_1)
@@ -1050,47 +1096,46 @@ def test_integrate_morph_accent():
 
     # 例3
     src_1 = """
-    #0 t a r o \ o #1 w a #2 , #3 “ #4 j i r o \ o #5 o #6 h a \ n a k o
-    #7 g a #8 n a g u \ t  #9 t a #10 y o #11 “ #12 t o #13 h a \ n a k o
-    #14 n i #15 i t #16 t a #17 .
-    """
+    #0 t a r o \ o #1 w a #2 j i r o \ o #3 o #4 h a \ n a k o
+    #5 g a #6 n a g u \ t #7 t a #8 y o #9 t o #10 h a \ n a k o
+    #11 n i #12 i t #13 t a """
     src_2 = """
     (IP-MAT
       (PP-SBJ (NP (NPR #0-太郎 #1-は)))
-      (PU #2-、)
+      (PU 、)
       (VP
         (CP-THT
           (CP-FINAL
-            (PUL #3-「)
+            (PUL 「)
             (IP-SUB
               (PP-OB1 (NP (NPR #4-二郎 #5-を)))
               (PP-SBJ (NP (NPR #6-花子 #7-が)))
               (VP (VB #8-殴っ #9-た)))
             (P-FINAL #10-よ)
-            (PUR #11-」))
+            (PUR 」))
           (P-COMP #12-と))
         (PP (NP (NPR #13-花子 #14-に)))
         (VB #15-言っ #16-た))
-      (PU #17-。))
+      (PU 。))
     """
     tgt = """
     (IP-MAT
       (PP-SBJ (NP (NPR t_a_r_o_\_o w_a)))
-      (PU ,)
+      (PU 、)
       (VP
         (CP-THT
           (CP-FINAL
-            (PUL “)
+            (PUL 「)
             (IP-SUB
               (PP-OB1 (NP (NPR j_i_r_o_\_o o)))
               (PP-SBJ (NP (NPR h_a_\_n_a_k_o g_a)))
               (VP (VB n_a_g_u_\_t t_a)))
             (P-FINAL y_o)
-            (PUR “))
+            (PUR 」))
           (P-COMP t_o))
         (PP (NP (NPR h_a_\_n_a_k_o n_i)))
         (VB i_t t_a))
-      (PU .))
+      (PU 。))
     """
     src_2, tgt = ParentedTree.fromstring(src_2), ParentedTree.fromstring(tgt)
     res = th.integrate_morph_accent(src_2, src_1)
@@ -1407,6 +1452,14 @@ def test_remove_redunduncy():
 
 
 def test_reduce():
+    # Ignore symbols
+    src = "(X|[] (A| 、) (B| b) (C| c\) (D| d))"
+    tgt = "(X|[] (A| 、) (C|\ b c\) (D| d))"
+    src = ParentedTree.fromstring(src)
+    tgt = ParentedTree.fromstring(tgt)
+    res = th.reduce(src)
+    assert tgt == res
+
     src = "(X|[] (A| a) (B| b) (C| c\) (D| d))"
     tgt = "(X|[] (C|\ a b c\) (D| d))"
     src = ParentedTree.fromstring(src)
@@ -1568,7 +1621,8 @@ def test_apply_constraints():
     tgt = """
     (CP-QUE|{}
       (VP|[] (PP-OB1|[]\ n a \ n i o) (VB|[]\ k a t t e a g e y o \ o))
-      (PU|[] k a ?))
+      (P-FINAL|[] k a)
+      (PU|[] ?))
     """
     src = ParentedTree.fromstring(src)
     tgt = ParentedTree.fromstring(tgt).__str__()
@@ -1609,7 +1663,8 @@ def test_apply_constraints():
               (PP-OB1|[]\ j i r o \ o o)
               (PP-SBJ|[]\ h a \ n a k o g a)
               (VP|[]\ n a g u \ t t a))
-            (PUR|[] y o “))
+            (P-FINAL|[] y o)
+            (PUR|[] “))
           (P-COMP|[] t o))
         (PP|[]\ h a \ n a k o n i)
         (VB|[] i t t a))

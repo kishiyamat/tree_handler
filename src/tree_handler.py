@@ -16,14 +16,22 @@ class TreeHandler:
         self.n_type = ""  # iやpとことなり()は""で表現
         self.phoneme_split = " "
         self.phoneme_bind = "_"
+        self._symbol_list_half = ",.()[]?!“"
+        self._symbol_list_full = "、。（）「」？！"
+        self.symbol_list = self._symbol_list_half + self._symbol_list_full
 
     def assign_morph(self, tree: ParentedTree) -> ParentedTree:
+        # symbol_list は morph に含めない.
+        # inf2の結果のmphで.や,を無視するため
+        # cf. https://github.com/kishiyamat/tree_handler/pull/60
         tree = deepcopy(tree)
         morph_idx = 0
         for subtree_idx in tree.treepositions():  # tree を上から順番に走査
             subtree = tree[subtree_idx]
             if isinstance(subtree, str):  # leaveなら
                 if subtree in self.not_morph_list:  # *等なら無視
+                    continue
+                if subtree in self.symbol_list:  # *等なら無視
                     continue
                 # ## 1. assign morpheme IDs  to terminal nodes
                 tree[subtree_idx] = f"{self.morph_symbol}{morph_idx}-{tree[subtree_idx]}"
@@ -229,9 +237,10 @@ class TreeHandler:
         return self.align_vp(self.align_np(tree))
 
     def integrate_morph_accent(self, tree: ParentedTree, idx_accent) -> ParentedTree:
+        # PUならそのまま
         idx_accent = idx_accent.strip()
         idx_accent = list(filter(len, idx_accent.split(self.morph_symbol)))
-        idx_accent = list(map(self.split_idx_accent, idx_accent))
+        idx_accent_wo_pu = list(map(self.split_idx_accent, idx_accent))
         tree = deepcopy(tree)
         morph_idx = 0
         for subtree_idx in tree.treepositions():  # tree を上から順番に走査
@@ -239,7 +248,9 @@ class TreeHandler:
             if isinstance(subtree, str):  # leaveなら
                 if subtree in self.not_morph_list:  # *等なら無視
                     continue
-                idx, accent = idx_accent[morph_idx]
+                if subtree in self.symbol_list:
+                    continue
+                idx, accent = idx_accent_wo_pu[morph_idx]
                 if morph_idx != idx:
                     raise IndexError("The morph idx is not compatible!")
                 # ## 1. assign morpheme IDs  to terminal nodes
@@ -248,8 +259,9 @@ class TreeHandler:
                     .join(accent.split(self.phoneme_split))
                 morph_idx += 1
         # わかりづらいが、morph_idxをcountupしてtreeのインデックスをgetしている
-        if morph_idx != len(idx_accent):
-            raise IndexError(f"tree:morph={morph_idx}:{len(idx_accent)}")
+        # FIXME: 一旦、ここは中断
+        if morph_idx != len(idx_accent_wo_pu):
+            raise IndexError(f"tree:morph={morph_idx}:{len(idx_accent_wo_pu)}")
         return tree
 
     def p_conditional_operation(self, subtree: ParentedTree) -> ParentedTree:
@@ -453,6 +465,9 @@ class TreeHandler:
                 # とりあえず pos のみを統合
                 if not (isinstance(subtree[i][0], str) and isinstance(subtree[i+1][0], str)):
                     continue
+                if subtree[i][0] in self.symbol_list or subtree[i+1][0] in self.symbol_list:
+                    # 、や。はマージしない
+                    continue
                 left = subtree[i].label().split("|")[1]
                 right = subtree[i+1].label().split("|")[1]
                 if left == "" and right == "":
@@ -473,6 +488,9 @@ class TreeHandler:
             n_sisters = len(subtree)
             for i in range(n_sisters-1):
                 if not (isinstance(subtree[i][0], str) and isinstance(subtree[i+1][0], str)):
+                    continue
+                if subtree[i][0] in self.symbol_list or subtree[i+1][0] in self.symbol_list:
+                    # 、や。はマージしない
                     continue
                 left = subtree[i].label().split("|")[1]
                 right = subtree[i+1].label().split("|")[1]
@@ -499,6 +517,9 @@ class TreeHandler:
             for i in range(n_sisters-1):
                 if not (isinstance(subtree[i][0], str) and isinstance(subtree[i+1][0], str)):
                     continue
+                if subtree[i][0] in self.symbol_list or subtree[i+1][0] in self.symbol_list:
+                    # 、や。はマージしない
+                    continue
                 left = subtree[i].label().split("|")[1]
                 right = subtree[i+1].label().split("|")[1]
                 if left == "" and right == "\\":
@@ -520,6 +541,9 @@ class TreeHandler:
             for i in range(n_sisters-1):
                 # 対象は (POS leaf) 間の関係(両方、子がstr)
                 if not (isinstance(subtree[i][0], str) and isinstance(subtree[i+1][0], str)):
+                    continue
+                if subtree[i][0] in self.symbol_list or subtree[i+1][0] in self.symbol_list:
+                    # 、や。はマージしない
                     continue
                 left = subtree[i].label().split("|")[1]
                 right = subtree[i+1].label().split("|")[1]
@@ -645,8 +669,11 @@ class TreeHandler:
                 out += " " + stack.pop()  # 直近をpopする
             nest_prev = len(subtree_idx)
         out += " " + stack.pop()
-        for adhoc in adhoc_list:
+        for adhoc in self.symbol_list:
             out = out.replace(f"[ {adhoc} ]", adhoc)
+        # 最終手段は入れ替えること
+        # for adhoc in self.symbol_list:
+        #     out = out.replace(f"[ {adhoc} ]", f"[ {adhoc} ]")
         out = out.strip()
         # FIXME: 出力で"_"がたされる. おそらく前の方の処理で_を足している
         out = out.replace("_", " ")
@@ -656,7 +683,7 @@ class TreeHandler:
 # WONTFIX
 # DONE
 # WIP
-tgt_id = "" # reduce_1起因
+tgt_id = ""  # reduce_1起因
 # PATH
 error_type = "error_*"  # エラータイプ
 debug = 0
