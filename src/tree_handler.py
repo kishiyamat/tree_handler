@@ -147,7 +147,6 @@ class TreeHandler:
             key_pos_idx = subtree_idx[-1]  # NPの位置
             parent_idx = list(subtree_idx[:-1])
             try:
-                # TODO: 右隣が "P-*" でない場合は無視
                 # popしたparticleに0は必ず存在する. 例: (P-ROLE が)
                 right_pos = tree[parent_idx+[key_pos_idx+1]].label()
                 if right_pos[:2] != "P-":
@@ -672,7 +671,7 @@ tgt_id = "Arabian02_05860"  #fix align_vp -> IndexError
 tgt_id = "Arabian01_01150"  #fix align_vp -> IndexError
 tgt_id = "Arabian01_01420"  #reduce_1起因
 error_type = "error_subtree2"  # エラータイプ
-debug = 1
+debug = 0
 
 if debug:
     import sys
@@ -695,16 +694,15 @@ if debug:
         # out = th.workflow(tgt_morph, tree_str)
 
     tree, src_1 = ParentedTree.fromstring(tree_str), tgt_morph
-    print(src_1)
     tree = th.remove_outmost_id(tree)
     tree = th.create_vp_node(tree)
     tree = th.add_phrase_type(tree)
-    print(len(tree.leaves()))
     tree = th.align_p_words(tree)
-    print(len(tree.leaves()))
     tree = th.integrate_morph_accent(tree, src_1)
     tree = th.remove_redunduncy(tree)
+    print(tree)
     tree = th.reduce(tree)
+    print(tree)
     tree = th.apply_constraints(tree)
     tree = th.to_line(tree)
     print(tree)
