@@ -51,9 +51,23 @@ def test_inf2txt():
         parser = InfParser(version=version)
         res = parser.inf2txt(inf2_str)
         assert res == tgt
+
+    # 途中に句読点入るパターン + 最初の最後の「」が落ちているパターン
+    idx = "Arabian01_01150"
+    tgt = "#0 t a t e #1 o m a e #2 w a #3 o r e #4 n o #5 m u s U k o #6 o #7 k o r o sh I #8 t a \ #9 k a r a #10 w a t a sh i #11 w a #12 o m a e #13 o #14 k o r o s u #15 N \ #16 d a"
+    path = "error_subtree2"  # エラータイプ
+    tgt_inf_path = f"./tests/data/{path}/{idx}.inf2"
+    with open(tgt_inf_path, "r") as f:
+        l_strip = [s.strip() for s in f.readlines()]  # readlines and remove \n
+        tgt_inf_str = list(filter(len, l_strip))  # filter zero-length str: ""
+        parser = InfParser(2)
+        res = parser.inf2txt(tgt_inf_str)
+        print(res)
+        assert res == tgt
+
     # 途中に句読点入るパターン
-    idx = "Arabian01_00220" 
-    tgt = """#0 k a \ n o j o #1 w a #2 m u k a sh i #3 n o #4 o o s a m a #5 n o #6 j i d a i #7 n i #8 k a N s u \ r u #9 , #10 i cl #11 s e N #12 k a \ N #13 n o #14 r e k I sh i #15 n o #16 h o \ N #17 o #18 a ts u m e #19 , #20 sh I sh u u #21 m o #22 n a N \ #23 s a ts u #24 m o #25 m o \ cl #26 t e #27 i #28 t a #29 s o o #30 d e \ s U #31 . """
+    idx = "Arabian01_00220"
+    tgt = """#0 k a \ n o j o #1 w a #2 m u k a sh i #3 n o #4 o o s a m a #5 n o #6 j i d a i #7 n i #8 k a N s u \ r u #9 i cl #10 s e N #11 k a \ N #12 n o #13 r e k I sh i #14 n o #15 h o \ N #16 o #17 a ts u m e #18 sh I sh u u #19 m o #20 n a N \ #21 s a ts u #22 m o #23 m o \ cl #24 t e #25 i #26 t a #27 s o o #28 d e \ s U"""
     path = "error_subtree"  # エラータイプ
     tgt_inf_path = f"./tests/data/{path}/{idx}.inf2"
     with open(tgt_inf_path, "r") as f:
@@ -61,10 +75,8 @@ def test_inf2txt():
         tgt_inf_str = list(filter(len, l_strip))  # filter zero-length str: ""
         parser = InfParser(2)
         res = parser.inf2txt(tgt_inf_str)
+        print(res)
         assert res == tgt
-    print(res)
-    # assert False
-
 
 
 def test_content2columns():
