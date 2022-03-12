@@ -44,7 +44,7 @@ def test_inf2txt():
         assert res == tgt
     # inf2: version 2 (提案手法)
     version = 2
-    tgt = "#0 s o n o #1 k o k u o \ o #2 n i #3 w a #4 f U t a r i \ #5 n o #6 o \ o j i #7 g a #8 a r i #9 m a \ sh I #10 t a #11 . "
+    tgt = "#0 s o n o #1 k o k u o \ o #2 n i #3 w a #4 f U t a r i \ #5 n o #6 o \ o j i #7 g a #8 a r i #9 m a \ sh I #10 t a "
     with open(FNAME, "r") as f:
         l_strip = [s.strip() for s in f.readlines()]  # readlines and remove \n
         inf2_str = list(filter(len, l_strip))  # filter zero-length str: ""
@@ -54,7 +54,7 @@ def test_inf2txt():
 
     # 途中に句読点入るパターン + 最初の最後の「」が落ちているパターン
     idx = "Arabian01_01150"
-    tgt = "#0 t a t e #1 o m a e #2 w a #3 o r e #4 n o #5 m u s U k o #6 o #7 k o r o sh I #8 t a \ #9 k a r a #10 w a t a sh i #11 w a #12 o m a e #13 o #14 k o r o s u #15 N \ #16 d a"
+    tgt = "#0 t a t e #1 o m a e #2 w a #3 o r e #4 n o #5 m u s U k o #6 o #7 k o r o sh I #8 t a \ #9 k a r a #10 w a t a sh i #11 w a #12 o m a e #13 o #14 k o r o s u #15 N \ #16 d a "
     path = "error_subtree2"  # エラータイプ
     tgt_inf_path = f"./tests/data/{path}/{idx}.inf2"
     with open(tgt_inf_path, "r") as f:
@@ -67,7 +67,7 @@ def test_inf2txt():
 
     # 途中に句読点入るパターン
     idx = "Arabian01_00220"
-    tgt = """#0 k a \ n o j o #1 w a #2 m u k a sh i #3 n o #4 o o s a m a #5 n o #6 j i d a i #7 n i #8 k a N s u \ r u #9 i cl #10 s e N #11 k a \ N #12 n o #13 r e k I sh i #14 n o #15 h o \ N #16 o #17 a ts u m e #18 sh I sh u u #19 m o #20 n a N \ #21 s a ts u #22 m o #23 m o \ cl #24 t e #25 i #26 t a #27 s o o #28 d e \ s U"""
+    tgt = """#0 k a \ n o j o #1 w a #2 m u k a sh i #3 n o #4 o o s a m a #5 n o #6 j i d a i #7 n i #8 k a N s u \ r u #9 i cl #10 s e N #11 k a \ N #12 n o #13 r e k I sh i #14 n o #15 h o \ N #16 o #17 a ts u m e #18 sh I sh u u #19 m o #20 n a N \ #21 s a ts u #22 m o #23 m o \ cl #24 t e #25 i #26 t a #27 s o o #28 d e \ s U """
     path = "error_subtree"  # エラータイプ
     tgt_inf_path = f"./tests/data/{path}/{idx}.inf2"
     with open(tgt_inf_path, "r") as f:
