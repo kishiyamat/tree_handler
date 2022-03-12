@@ -177,7 +177,7 @@ class TreeHandler:
             try:
                 # 右がPUなら continue
                 right_pos = tree[parent_idx+[key_pos_idx+1]].label()
-                if right_pos[:2] != "PU":
+                if right_pos[:2] == "PU":
                     continue
                 # 右が葉っぱじゃないならcontinue
                 # 右隣のノードの葉っぱをpopして、さらにleafを取る
@@ -197,7 +197,7 @@ class TreeHandler:
             try:
                 # 右がPUなら continue
                 right_pos = tree[parent_idx+[key_pos_idx+1]].label()
-                if right_pos[:2] != "PU":
+                if right_pos[:2] == "PU":
                     continue
                 # 右が葉っぱじゃないならcontinue
                 # 親(VP)の隣を参照できるなら存在する
