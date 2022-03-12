@@ -1452,6 +1452,14 @@ def test_remove_redunduncy():
 
 
 def test_reduce():
+    # Ignore symbols
+    src = "(X|[] (A| 、) (B| b) (C| c\) (D| d))"
+    tgt = "(X|[] (A| 、) (C|\ b c\) (D| d))"
+    src = ParentedTree.fromstring(src)
+    tgt = ParentedTree.fromstring(tgt)
+    res = th.reduce(src)
+    assert tgt == res
+
     src = "(X|[] (A| a) (B| b) (C| c\) (D| d))"
     tgt = "(X|[] (C|\ a b c\) (D| d))"
     src = ParentedTree.fromstring(src)
@@ -1613,7 +1621,8 @@ def test_apply_constraints():
     tgt = """
     (CP-QUE|{}
       (VP|[] (PP-OB1|[]\ n a \ n i o) (VB|[]\ k a t t e a g e y o \ o))
-      (PU|[] k a ?))
+      (P-FINAL|[] k a)
+      (PU|[] ?))
     """
     src = ParentedTree.fromstring(src)
     tgt = ParentedTree.fromstring(tgt).__str__()
@@ -1654,7 +1663,8 @@ def test_apply_constraints():
               (PP-OB1|[]\ j i r o \ o o)
               (PP-SBJ|[]\ h a \ n a k o g a)
               (VP|[]\ n a g u \ t t a))
-            (PUR|[] y o “))
+            (P-FINAL|[] y o)
+            (PUR|[] “))
           (P-COMP|[] t o))
         (PP|[]\ h a \ n a k o n i)
         (VB|[] i t t a))

@@ -2074,3 +2074,621 @@ DEBUG:root:list index out of range
 DEBUG:root:===debug
 DEBUG:root:psd/Arabian03_03100
 DEBUG:root:tree:morph=15:16
+DEBUG:root:===debug
+DEBUG:root:psd/Arabian03_03140
+DEBUG:root:list index out of range
+DEBUG:root:===debug
+DEBUG:root:psd/Arabian03_03150
+DEBUG:root:tree:morph=21:23
+DEBUG:root:===debug
+DEBUG:root:psd/Arabian03_03180
+DEBUG:root:pop from empty list
+DEBUG:root:===debug
+DEBUG:root:psd/Arabian03_03190
+DEBUG:root:list index out of range
+DEBUG:root:===debug
+DEBUG:root:psd/Arabian03_03230
+DEBUG:root:tree:morph=14:15
+DEBUG:root:===debug
+DEBUG:root:psd/Arabian03_03240
+DEBUG:root:tree:morph=23:24
+DEBUG:root:===debug
+DEBUG:root:psd/Arabian03_03260
+DEBUG:root:tree:morph=23:24
+DEBUG:root:===debug
+DEBUG:root:psd/Arabian03_03280
+DEBUG:root:tree:morph=20:21
+DEBUG:root:===debug
+DEBUG:root:psd/Arabian03_03310
+DEBUG:root:tree:morph=15:16
+DEBUG:root:===debug
+DEBUG:root:psd/Arabian03_03340
+DEBUG:root:list index out of range
+DEBUG:root:===debug
+DEBUG:root:psd/Arabian03_03350
+DEBUG:root:list index out of range
+DEBUG:root:===debug
+DEBUG:root:psd/Arabian03_03370
+DEBUG:root:list index out of range
+DEBUG:root:===debug
+DEBUG:root:psd/Arabian03_03380
+DEBUG:root:list index out of range
+DEBUG:root:===debug
+DEBUG:root:psd/Arabian03_03390
+DEBUG:root:tree:morph=13:14
+DEBUG:root:===debug
+DEBUG:root:psd/Arabian03_03400
+DEBUG:root:list index out of range
+DEBUG:root:===debug
+DEBUG:root:psd/Arabian03_03410
+DEBUG:root:list index out of range
+DEBUG:root:===debug
+DEBUG:root:psd/Arabian03_03430
+DEBUG:root:list index out of range
+DEBUG:root:===debug
+DEBUG:root:psd/Arabian03_03460
+DEBUG:root:tree:morph=11:12
+DEBUG:root:===debug
+DEBUG:root:psd/Arabian03_03470
+DEBUG:root:tree:morph=20:21
+DEBUG:root:===debug
+DEBUG:root:psd/Arabian03_03480
+DEBUG:root:tree:morph=16:17
+DEBUG:root:===debug
+DEBUG:root:psd/Arabian03_03490
+DEBUG:root:list index out of range
+DEBUG:root:===debug
+DEBUG:root:psd/Arabian03_03500
+DEBUG:root:tree:morph=30:31
+DEBUG:root:===debug
+DEBUG:root:psd/Arabian03_03510
+DEBUG:root:tree:morph=15:16
+DEBUG:root:===debug
+DEBUG:root:psd/Arabian03_03530
+DEBUG:root:tree:morph=14:15
+DEBUG:root:===debug
+DEBUG:root:psd/Arabian03_03550
+DEBUG:root:list index out of range
+DEBUG:root:===debug
+DEBUG:root:psd/Arabian03_03570
+DEBUG:root:list index out of range
+DEBUG:root:===debug
+DEBUG:root:psd/Arabian03_03620
+DEBUG:root:list index out of range
+DEBUG:root:===debug
+DEBUG:root:psd/Arabian03_03630
+DEBUG:root:tree:morph=8:9
+DEBUG:root:===debug
+DEBUG:root:psd/Arabian03_03660
+DEBUG:root:tree:morph=5:6
+DEBUG:root:===debug
+DEBUG:root:psd/Arabian03_03670
+DEBUG:root:tree:morph=9:10
+DEBUG:root:===debug
+DEBUG:root:psd/Arabian03_03680
+DEBUG:root:tree:morph=11:12
+DEBUG:root:===debug
+DEBUG:root:psd/Arabian03_03780
+DEBUG:root:tree:morph=11:12
+DEBUG:root:===debug
+DEBUG:root:psd/Arabian03_03800
+DEBUG:root:list index out of range
+DEBUG:root:===debug
+DEBUG:root:psd/Arabian03_03810
+DEBUG:root:tree:morph=5:6
+DEBUG:root:===debug
+DEBUG:root:psd/Arabian03_03860
+DEBUG:root:list index out of range
+DEBUG:root:===debug
+DEBUG:root:psd/Arabian03_03890
+DEBUG:root:tree:morph=34:35
+DEBUG:root:===debug
+DEBUG:root:psd/Arabian03_03900
+DEBUG:root:tree:morph=7:8
+DEBUG:root:===debug
+DEBUG:root:psd/Arabian03_03910
+DEBUG:root:tree:morph=14:15
+DEBUG:root:===debug
+DEBUG:root:psd/Arabian03_03940
+DEBUG:root:list index out of range
+DEBUG:root:===debug
+DEBUG:root:psd/Arabian03_03960
+DEBUG:root:tree:morph=20:21
+DEBUG:root:===debug
+DEBUG:root:psd/Arabian03_03970
+DEBUG:root:list index out of range
+DEBUG:root:===debug
+DEBUG:root:psd/Arabian03_03990
+DEBUG:root:list index out of range
+DEBUG:root:===debug
+DEBUG:root:psd/Arabian03_04000
+DEBUG:root:tree:morph=20:21
+DEBUG:root:===debug
+DEBUG:root:psd/Arabian03_04020
+DEBUG:root:list index out of range
+DEBUG:root:===debug
+DEBUG:root:psd/Arabian03_04030
+DEBUG:root:tree:morph=27:34
+DEBUG:root:===debug
+DEBUG:root:psd/Arabian03_04040
+DEBUG:root:tree:morph=17:19
+DEBUG:root:===debug
+DEBUG:root:psd/Arabian03_04070
+DEBUG:root:list index out of range
+DEBUG:root:===debug
+DEBUG:root:psd/Arabian03_04100
+DEBUG:root:tree:morph=28:29
+DEBUG:root:===debug
+DEBUG:root:psd/Arabian03_04150
+DEBUG:root:tree:morph=18:20
+DEBUG:root:===debug
+DEBUG:root:psd/Arabian03_04170
+DEBUG:root:tree:morph=21:22
+DEBUG:root:===debug
+DEBUG:root:psd/Arabian03_04200
+DEBUG:root:tree:morph=11:14
+DEBUG:root:===debug
+DEBUG:root:psd/Arabian03_04210
+DEBUG:root:tree:morph=30:33
+DEBUG:root:===debug
+DEBUG:root:psd/Arabian03_04350
+DEBUG:root:list index out of range
+DEBUG:root:===debug
+DEBUG:root:psd/Arabian03_04410
+DEBUG:root:tree:morph=26:28
+DEBUG:root:===debug
+DEBUG:root:psd/Arabian03_04420
+DEBUG:root:list index out of range
+DEBUG:root:===debug
+DEBUG:root:psd/Arabian03_04430
+DEBUG:root:tree:morph=15:16
+DEBUG:root:===debug
+DEBUG:root:psd/Arabian03_04450
+DEBUG:root:pop from empty list
+DEBUG:root:===debug
+DEBUG:root:psd/Arabian03_04460
+DEBUG:root:tree:morph=9:10
+DEBUG:root:===debug
+DEBUG:root:psd/Arabian03_04480
+DEBUG:root:tree:morph=17:18
+DEBUG:root:===debug
+DEBUG:root:psd/Arabian03_04490
+DEBUG:root:tree:morph=11:12
+DEBUG:root:===debug
+DEBUG:root:psd/Arabian03_04500
+DEBUG:root:tree:morph=20:24
+DEBUG:root:===debug
+DEBUG:root:psd/Arabian03_04520
+DEBUG:root:tree:morph=14:15
+DEBUG:root:===debug
+DEBUG:root:psd/Arabian03_04530
+DEBUG:root:tree:morph=18:19
+DEBUG:root:===debug
+DEBUG:root:psd/Arabian03_04540
+DEBUG:root:tree:morph=32:33
+DEBUG:root:===debug
+DEBUG:root:psd/Arabian03_04550
+DEBUG:root:tree:morph=19:20
+DEBUG:root:===debug
+DEBUG:root:psd/Arabian03_04560
+DEBUG:root:list index out of range
+DEBUG:root:===debug
+DEBUG:root:psd/Arabian03_04630
+DEBUG:root:tree:morph=18:22
+DEBUG:root:===debug
+DEBUG:root:psd/Arabian03_04650
+DEBUG:root:tree:morph=17:19
+DEBUG:root:===debug
+DEBUG:root:psd/Arabian03_04660
+DEBUG:root:pop from empty list
+DEBUG:root:===debug
+DEBUG:root:psd/Arabian03_04670
+DEBUG:root:list index out of range
+DEBUG:root:===debug
+DEBUG:root:psd/Arabian03_04700
+DEBUG:root:tree:morph=8:9
+DEBUG:root:===debug
+DEBUG:root:psd/Arabian03_04710
+DEBUG:root:tree:morph=21:22
+DEBUG:root:===debug
+DEBUG:root:psd/Arabian03_04730
+DEBUG:root:tree:morph=33:34
+DEBUG:root:===debug
+DEBUG:root:psd/Arabian03_04740
+DEBUG:root:tree:morph=17:19
+DEBUG:root:===debug
+DEBUG:root:psd/Arabian03_04790
+DEBUG:root:list index out of range
+DEBUG:root:===debug
+DEBUG:root:psd/Arabian03_04820
+DEBUG:root:tree:morph=9:10
+DEBUG:root:===debug
+DEBUG:root:psd/Arabian03_04850
+DEBUG:root:tree:morph=33:34
+DEBUG:root:===debug
+DEBUG:root:psd/Arabian03_04860
+DEBUG:root:tree:morph=5:6
+DEBUG:root:===debug
+DEBUG:root:psd/Arabian03_04870
+DEBUG:root:list index out of range
+DEBUG:root:===debug
+DEBUG:root:psd/Arabian03_04890
+DEBUG:root:list index out of range
+DEBUG:root:===debug
+DEBUG:root:psd/Arabian03_04910
+DEBUG:root:tree:morph=2:3
+DEBUG:root:===debug
+DEBUG:root:psd/Arabian03_04920
+DEBUG:root:list index out of range
+DEBUG:root:===debug
+DEBUG:root:psd/Arabian03_04960
+DEBUG:root:list index out of range
+DEBUG:root:===debug
+DEBUG:root:psd/Arabian03_05010
+DEBUG:root:tree:morph=19:20
+DEBUG:root:===debug
+DEBUG:root:psd/Arabian03_05060
+DEBUG:root:list index out of range
+DEBUG:root:===debug
+DEBUG:root:psd/Arabian03_05070
+DEBUG:root:list index out of range
+DEBUG:root:===debug
+DEBUG:root:psd/Arabian03_05110
+DEBUG:root:list index out of range
+DEBUG:root:===debug
+DEBUG:root:psd/Arabian03_05150
+DEBUG:root:tree:morph=20:21
+DEBUG:root:===debug
+DEBUG:root:psd/Arabian03_05170
+DEBUG:root:list index out of range
+DEBUG:root:===debug
+DEBUG:root:psd/Arabian03_05190
+DEBUG:root:tree:morph=18:19
+DEBUG:root:===debug
+DEBUG:root:psd/Arabian03_05230
+DEBUG:root:tree:morph=24:26
+DEBUG:root:===debug
+DEBUG:root:psd/Arabian03_05250
+DEBUG:root:tree:morph=7:8
+DEBUG:root:===debug
+DEBUG:root:psd/Arabian03_05290
+DEBUG:root:tree:morph=9:10
+DEBUG:root:===debug
+DEBUG:root:psd/Arabian03_05300
+DEBUG:root:list index out of range
+DEBUG:root:===debug
+DEBUG:root:psd/Arabian03_05350
+DEBUG:root:tree:morph=15:16
+DEBUG:root:===debug
+DEBUG:root:psd/Arabian03_05370
+DEBUG:root:list index out of range
+DEBUG:root:===debug
+DEBUG:root:psd/Arabian03_05430
+DEBUG:root:tree:morph=13:14
+DEBUG:root:===debug
+DEBUG:root:psd/Arabian03_05450
+DEBUG:root:tree:morph=14:15
+DEBUG:root:===debug
+DEBUG:root:psd/Arabian03_05460
+DEBUG:root:tree:morph=19:21
+DEBUG:root:===debug
+DEBUG:root:psd/Arabian03_05470
+DEBUG:root:tree:morph=5:6
+DEBUG:root:===debug
+DEBUG:root:psd/Arabian03_05480
+DEBUG:root:list index out of range
+DEBUG:root:===debug
+DEBUG:root:psd/Arabian03_05500
+DEBUG:root:list index out of range
+DEBUG:root:===debug
+DEBUG:root:psd/Arabian03_05510
+DEBUG:root:tree:morph=9:10
+DEBUG:root:===debug
+DEBUG:root:psd/Arabian03_05550
+DEBUG:root:tree:morph=38:39
+DEBUG:root:===debug
+DEBUG:root:psd/Arabian03_05560
+DEBUG:root:tree:morph=15:16
+DEBUG:root:===debug
+DEBUG:root:psd/Arabian03_05570
+DEBUG:root:tree:morph=14:15
+DEBUG:root:===debug
+DEBUG:root:psd/Arabian03_05670
+DEBUG:root:list index out of range
+DEBUG:root:===debug
+DEBUG:root:psd/Arabian03_05700
+DEBUG:root:tree:morph=21:22
+DEBUG:root:===debug
+DEBUG:root:psd/Arabian03_05710
+DEBUG:root:tree:morph=15:16
+DEBUG:root:===debug
+DEBUG:root:psd/Arabian03_05720
+DEBUG:root:list index out of range
+DEBUG:root:===debug
+DEBUG:root:psd/Arabian03_05730
+DEBUG:root:tree:morph=9:10
+DEBUG:root:===debug
+DEBUG:root:psd/Arabian03_05780
+DEBUG:root:tree:morph=24:25
+DEBUG:root:===debug
+DEBUG:root:psd/Arabian03_05790
+DEBUG:root:tree:morph=18:19
+DEBUG:root:===debug
+DEBUG:root:psd/Arabian03_05800
+DEBUG:root:tree:morph=12:13
+DEBUG:root:===debug
+DEBUG:root:psd/Arabian03_05820
+DEBUG:root:tree:morph=30:31
+DEBUG:root:===debug
+DEBUG:root:psd/Arabian03_05840
+DEBUG:root:tree:morph=41:43
+DEBUG:root:===debug
+DEBUG:root:psd/Arabian03_05850
+DEBUG:root:tree:morph=17:18
+DEBUG:root:===debug
+DEBUG:root:psd/Arabian03_05860
+DEBUG:root:tree:morph=18:19
+DEBUG:root:===debug
+DEBUG:root:psd/Arabian03_05870
+DEBUG:root:tree:morph=29:31
+DEBUG:root:===debug
+DEBUG:root:psd/Arabian03_05890
+DEBUG:root:list index out of range
+DEBUG:root:===debug
+DEBUG:root:psd/Arabian03_05920
+DEBUG:root:tree:morph=11:12
+DEBUG:root:===debug
+DEBUG:root:psd/Arabian03_05980
+DEBUG:root:list index out of range
+DEBUG:root:===debug
+DEBUG:root:psd/Arabian03_05990
+DEBUG:root:tree:morph=33:34
+DEBUG:root:===debug
+DEBUG:root:psd/Arabian03_06000
+DEBUG:root:tree:morph=22:23
+DEBUG:root:===debug
+DEBUG:root:psd/Arabian03_06010
+DEBUG:root:list index out of range
+DEBUG:root:===debug
+DEBUG:root:psd/Arabian03_06090
+DEBUG:root:list index out of range
+DEBUG:root:===debug
+DEBUG:root:psd/Arabian03_06120
+DEBUG:root:list index out of range
+DEBUG:root:===debug
+DEBUG:root:psd/Arabian03_06140
+DEBUG:root:tree:morph=39:42
+DEBUG:root:===debug
+DEBUG:root:psd/Arabian03_06150
+DEBUG:root:list index out of range
+DEBUG:root:===debug
+DEBUG:root:psd/Arabian03_06160
+DEBUG:root:tree:morph=7:8
+DEBUG:root:===debug
+DEBUG:root:psd/Arabian03_06170
+DEBUG:root:tree:morph=11:12
+DEBUG:root:===debug
+DEBUG:root:psd/Arabian03_06210
+DEBUG:root:tree:morph=19:20
+DEBUG:root:===debug
+DEBUG:root:psd/Arabian03_06220
+DEBUG:root:list index out of range
+DEBUG:root:===debug
+DEBUG:root:psd/Arabian03_06230
+DEBUG:root:tree:morph=10:11
+DEBUG:root:===debug
+DEBUG:root:psd/Arabian03_06250
+DEBUG:root:list index out of range
+DEBUG:root:===debug
+DEBUG:root:psd/Arabian03_06260
+DEBUG:root:tree:morph=16:17
+DEBUG:root:===debug
+DEBUG:root:psd/Arabian03_06300
+DEBUG:root:list index out of range
+DEBUG:root:===debug
+DEBUG:root:psd/Arabian03_06360
+DEBUG:root:tree:morph=19:21
+DEBUG:root:===debug
+DEBUG:root:psd/Arabian03_06410
+DEBUG:root:tree:morph=24:26
+DEBUG:root:===debug
+DEBUG:root:psd/Arabian03_06420
+DEBUG:root:tree:morph=22:24
+DEBUG:root:===debug
+DEBUG:root:psd/Arabian03_06430
+DEBUG:root:tree:morph=21:23
+DEBUG:root:===debug
+DEBUG:root:psd/Arabian03_06460
+DEBUG:root:tree:morph=24:25
+DEBUG:root:===debug
+DEBUG:root:psd/Arabian03_06480
+DEBUG:root:tree:morph=13:15
+DEBUG:root:===debug
+DEBUG:root:psd/Arabian03_06530
+DEBUG:root:tree:morph=7:8
+DEBUG:root:===debug
+DEBUG:root:psd/Arabian03_06540
+DEBUG:root:tree:morph=10:11
+DEBUG:root:===debug
+DEBUG:root:psd/Arabian03_06550
+DEBUG:root:list index out of range
+DEBUG:root:===debug
+DEBUG:root:psd/Arabian03_06560
+DEBUG:root:list index out of range
+DEBUG:root:===debug
+DEBUG:root:psd/Arabian03_06570
+DEBUG:root:list index out of range
+DEBUG:root:===debug
+DEBUG:root:psd/Arabian03_06580
+DEBUG:root:tree:morph=9:10
+DEBUG:root:===debug
+DEBUG:root:psd/Arabian03_06600
+DEBUG:root:list index out of range
+DEBUG:root:===debug
+DEBUG:root:psd/Arabian03_06610
+DEBUG:root:tree:morph=6:7
+DEBUG:root:===debug
+DEBUG:root:psd/Arabian03_06650
+DEBUG:root:tree:morph=12:13
+DEBUG:root:===debug
+DEBUG:root:psd/Arabian03_06680
+DEBUG:root:tree:morph=17:19
+DEBUG:root:===debug
+DEBUG:root:psd/Arabian03_06690
+DEBUG:root:tree:morph=18:19
+DEBUG:root:===debug
+DEBUG:root:psd/Arabian03_06740
+DEBUG:root:tree:morph=18:20
+DEBUG:root:===debug
+DEBUG:root:psd/Arabian03_06750
+DEBUG:root:tree:morph=23:24
+DEBUG:root:===debug
+DEBUG:root:psd/Arabian03_06760
+DEBUG:root:list index out of range
+DEBUG:root:===debug
+DEBUG:root:psd/Arabian03_06790
+DEBUG:root:list index out of range
+DEBUG:root:===debug
+DEBUG:root:psd/Arabian03_06820
+DEBUG:root:tree:morph=18:19
+DEBUG:root:===debug
+DEBUG:root:psd/Arabian03_06840
+DEBUG:root:list index out of range
+DEBUG:root:===debug
+DEBUG:root:psd/Arabian03_06870
+DEBUG:root:tree:morph=10:11
+DEBUG:root:===debug
+DEBUG:root:psd/Arabian03_06880
+DEBUG:root:tree:morph=15:16
+DEBUG:root:===debug
+DEBUG:root:psd/Arabian03_06900
+DEBUG:root:list index out of range
+DEBUG:root:===debug
+DEBUG:root:psd/Arabian03_06920
+DEBUG:root:tree:morph=22:23
+DEBUG:root:===debug
+DEBUG:root:psd/Arabian03_06930
+DEBUG:root:tree:morph=13:14
+DEBUG:root:===debug
+DEBUG:root:psd/Arabian03_06940
+DEBUG:root:tree:morph=19:21
+DEBUG:root:===debug
+DEBUG:root:psd/Arabian03_06980
+DEBUG:root:tree:morph=13:14
+DEBUG:root:===debug
+DEBUG:root:psd/Arabian03_07000
+DEBUG:root:list index out of range
+DEBUG:root:===debug
+DEBUG:root:psd/Arabian03_07020
+DEBUG:root:list index out of range
+DEBUG:root:===debug
+DEBUG:root:psd/Arabian03_07070
+DEBUG:root:list index out of range
+DEBUG:root:===debug
+DEBUG:root:psd/Arabian03_07120
+DEBUG:root:list index out of range
+DEBUG:root:===debug
+DEBUG:root:psd/Arabian03_07150
+DEBUG:root:tree:morph=13:14
+DEBUG:root:===debug
+DEBUG:root:psd/Arabian03_07170
+DEBUG:root:tree:morph=15:16
+DEBUG:root:===debug
+DEBUG:root:psd/Arabian03_07180
+DEBUG:root:tree:morph=16:17
+DEBUG:root:===debug
+DEBUG:root:psd/Arabian03_07210
+DEBUG:root:tree:morph=17:18
+DEBUG:root:===debug
+DEBUG:root:psd/Arabian03_07300
+DEBUG:root:tree:morph=17:19
+DEBUG:root:===debug
+DEBUG:root:psd/Arabian03_07330
+DEBUG:root:list index out of range
+DEBUG:root:===debug
+DEBUG:root:psd/Arabian03_07360
+DEBUG:root:tree:morph=6:7
+DEBUG:root:===debug
+DEBUG:root:psd/Arabian03_07400
+DEBUG:root:tree:morph=26:28
+DEBUG:root:===debug
+DEBUG:root:psd/Arabian03_07410
+DEBUG:root:tree:morph=9:11
+DEBUG:root:===debug
+DEBUG:root:psd/Arabian03_07420
+DEBUG:root:tree:morph=9:10
+DEBUG:root:===debug
+DEBUG:root:psd/Arabian03_07440
+DEBUG:root:list index out of range
+DEBUG:root:===debug
+DEBUG:root:psd/Arabian03_07470
+DEBUG:root:tree:morph=22:23
+DEBUG:root:===debug
+DEBUG:root:psd/Arabian03_07480
+DEBUG:root:list index out of range
+DEBUG:root:===debug
+DEBUG:root:psd/Arabian03_07490
+DEBUG:root:list index out of range
+DEBUG:root:===debug
+DEBUG:root:psd/Arabian03_07500
+DEBUG:root:list index out of range
+DEBUG:root:===debug
+DEBUG:root:psd/Arabian03_07540
+DEBUG:root:list index out of range
+DEBUG:root:===debug
+DEBUG:root:psd/Arabian03_07560
+DEBUG:root:list index out of range
+DEBUG:root:===debug
+DEBUG:root:psd/Arabian03_07610
+DEBUG:root:tree:morph=16:18
+DEBUG:root:===debug
+DEBUG:root:psd/Arabian03_07630
+DEBUG:root:list index out of range
+DEBUG:root:===debug
+DEBUG:root:psd/Arabian03_07640
+DEBUG:root:list index out of range
+DEBUG:root:===debug
+DEBUG:root:psd/Arabian03_07660
+DEBUG:root:tree:morph=22:23
+DEBUG:root:===debug
+DEBUG:root:psd/Arabian03_07670
+DEBUG:root:tree:morph=9:10
+DEBUG:root:===debug
+DEBUG:root:psd/Arabian03_07680
+DEBUG:root:tree:morph=16:17
+DEBUG:root:===debug
+DEBUG:root:psd/Arabian03_07700
+DEBUG:root:tree:morph=33:35
+DEBUG:root:===debug
+DEBUG:root:psd/Arabian03_07710
+DEBUG:root:tree:morph=13:15
+DEBUG:root:===debug
+DEBUG:root:psd/Arabian03_07750
+DEBUG:root:tree:morph=5:6
+DEBUG:root:===debug
+DEBUG:root:psd/Arabian03_07760
+DEBUG:root:tree:morph=8:9
+DEBUG:root:===debug
+DEBUG:root:psd/Arabian03_07770
+DEBUG:root:tree:morph=17:18
+DEBUG:root:===debug
+DEBUG:root:psd/Arabian03_07790
+DEBUG:root:pop from empty list
+DEBUG:root:===debug
+DEBUG:root:psd/Arabian03_07820
+DEBUG:root:tree:morph=23:24
+DEBUG:root:===debug
+DEBUG:root:psd/Arabian03_07890
+DEBUG:root:list index out of range
+DEBUG:root:===debug
+DEBUG:root:psd/Arabian03_07900
+DEBUG:root:tree:morph=9:10
+DEBUG:root:===debug
+DEBUG:root:psd/Arabian03_07920
+DEBUG:root:list index out of range
+DEBUG:root:===debug
+DEBUG:root:psd/Arabian03_07980
+DEBUG:root:list index out of range
+DEBUG:root:===debug
+DEBUG:root:psd/Arabian03_08000
+DEBUG:root:tree:morph=19:20

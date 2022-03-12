@@ -465,6 +465,9 @@ class TreeHandler:
                 # とりあえず pos のみを統合
                 if not (isinstance(subtree[i][0], str) and isinstance(subtree[i+1][0], str)):
                     continue
+                if subtree[i][0] in self.symbol_list or subtree[i+1][0] in self.symbol_list:
+                    # 、や。はマージしない
+                    continue
                 left = subtree[i].label().split("|")[1]
                 right = subtree[i+1].label().split("|")[1]
                 if left == "" and right == "":
@@ -485,6 +488,9 @@ class TreeHandler:
             n_sisters = len(subtree)
             for i in range(n_sisters-1):
                 if not (isinstance(subtree[i][0], str) and isinstance(subtree[i+1][0], str)):
+                    continue
+                if subtree[i][0] in self.symbol_list or subtree[i+1][0] in self.symbol_list:
+                    # 、や。はマージしない
                     continue
                 left = subtree[i].label().split("|")[1]
                 right = subtree[i+1].label().split("|")[1]
@@ -511,6 +517,9 @@ class TreeHandler:
             for i in range(n_sisters-1):
                 if not (isinstance(subtree[i][0], str) and isinstance(subtree[i+1][0], str)):
                     continue
+                if subtree[i][0] in self.symbol_list or subtree[i+1][0] in self.symbol_list:
+                    # 、や。はマージしない
+                    continue
                 left = subtree[i].label().split("|")[1]
                 right = subtree[i+1].label().split("|")[1]
                 if left == "" and right == "\\":
@@ -532,6 +541,9 @@ class TreeHandler:
             for i in range(n_sisters-1):
                 # 対象は (POS leaf) 間の関係(両方、子がstr)
                 if not (isinstance(subtree[i][0], str) and isinstance(subtree[i+1][0], str)):
+                    continue
+                if subtree[i][0] in self.symbol_list or subtree[i+1][0] in self.symbol_list:
+                    # 、や。はマージしない
                     continue
                 left = subtree[i].label().split("|")[1]
                 right = subtree[i+1].label().split("|")[1]
@@ -659,6 +671,9 @@ class TreeHandler:
         out += " " + stack.pop()
         for adhoc in self.symbol_list:
             out = out.replace(f"[ {adhoc} ]", adhoc)
+        # 最終手段は入れ替えること
+        # for adhoc in self.symbol_list:
+        #     out = out.replace(f"[ {adhoc} ]", f"[ {adhoc} ]")
         out = out.strip()
         # FIXME: 出力で"_"がたされる. おそらく前の方の処理で_を足している
         out = out.replace("_", " ")
