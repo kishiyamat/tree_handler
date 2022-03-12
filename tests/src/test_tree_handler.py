@@ -429,6 +429,17 @@ def test_all_wrapped():
 
 def test_align_np():
     # 4. align () to each edge of PWords | NP
+    src = """
+    ( (FRAG (NP (N 連載)) (NP (NUMCLP (D その) (NUM １))))
+      (ID 1_ex1646480399;JP))
+    """
+    # NPの後ろがNPの場合は変わらない
+    tgt = """
+    ( (FRAG (NP (N 連載)) (NP (NUMCLP (D その) (NUM １))))
+      (ID 1_ex1646480399;JP))
+        """
+    src, tgt = ParentedTree.fromstring(src), ParentedTree.fromstring(tgt)
+    assert th.align_np(src) == tgt
     # 例0
     src = """
         (IP-MAT

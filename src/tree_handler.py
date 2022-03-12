@@ -119,8 +119,12 @@ class TreeHandler:
             parent_idx = list(subtree_idx[:-1])
             try:
                 # 参照できるなら存在する
-                _ = tree[[parent_idx] + [key_pos_idx+1]]
-                return False
+                right_pos = tree[parent_idx+[key_pos_idx+1]].label()
+                if right_pos[:2] != "P-":
+                    # このケースはNP--P-ROLEではないので対象外
+                    continue
+                else:
+                    return False
             except IndexError:
                 # すでにNPの右隣は存在しない場合は続ける
                 continue
@@ -145,7 +149,11 @@ class TreeHandler:
             try:
                 # TODO: 右隣が "P-*" でない場合は無視
                 # popしたparticleに0は必ず存在する. 例: (P-ROLE が)
-                particle_leaf = tree[parent_idx].pop(key_pos_idx+1)[0]
+                right_pos = tree[parent_idx+[key_pos_idx+1]].label()
+                if right_pos[:2] != "P-":
+                    continue
+                else:  # NPの後ろにP-ROLEなどがある場合
+                    particle_leaf = tree[parent_idx].pop(key_pos_idx+1)[0]
             except IndexError:
                 # すでにNPの右隣は存在しない場合は続ける
                 continue
@@ -636,20 +644,18 @@ class TreeHandler:
 
 
 # WONTFIX
-tgt_id = "Arabian01_00220"  # IndexError
-tgt_id = "Arabian01_00330"  # IndexError
-tgt_id = "Arabian01_00350"  # IndexError
-tgt_id = "Arabian01_00390"  # IndexError
-# TODO
-tgt_id = "Arabian01_00020"  # align np
-tgt_id = "Arabian01_00110"  # align np
-tgt_id = "Arabian01_00130"  # align np
-tgt_id = "Arabian01_00280"  # align np
-tgt_id = "Arabian01_00490"  # align np
+tgt_id = "Arabian01_00220"  # IndexError(LESS) # _reduce_2起因
+tgt_id = "Arabian01_00330"  # IndexError(LESS) # _reduce_2起因
+tgt_id = "Arabian01_00350"  # IndexError(LESS) # _reduce_2起因
+tgt_id = "Arabian01_00390"  # IndexError(LESS) # _reduce_2起因
+tgt_id = "Arabian01_00020"  # IndexError(LESS) # align_np起因
+tgt_id = "Arabian01_00110"  # IndexError(LESS) # align_np起因
+tgt_id = "Arabian01_00130"  # IndexError(OOR) # align_np起因
+tgt_id = "Arabian01_00490"  # IndexError(OOR) # align_np起因
 # DONE
 tgt_id = "Arabian01_00070"  # _reduce_2 で POS--LEAVEの操作になっていた
+tgt_id = "Arabian01_00280"  # align np -> Fixed
 # WIP
-tgt_id = "Arabian01_00020"
 error_type = "error_subtree"
 debug = 0
 
