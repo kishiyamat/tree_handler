@@ -176,6 +176,11 @@ class TreeHandler:
             key_pos_idx = subtree_idx[-1]  # sister内でのVB位置
             parent_idx = list(subtree_idx[:-1])
             try:
+                # 右がPUなら continue
+                right_pos = tree[parent_idx+[key_pos_idx+1]].label()
+                if right_pos[:2] != "PU":
+                    continue
+                # 右が葉っぱじゃないならcontinue
                 # 右隣のノードの葉っぱをpopして、さらにleafを取る
                 leaf = tree[parent_idx].pop(key_pos_idx+1)[0]
                 tree[subtree_idx].insert(len(tree[subtree_idx]), leaf)
@@ -191,6 +196,11 @@ class TreeHandler:
             key_pos_idx = subtree_idx[-1]
             parent_idx = list(subtree_idx[:-1])
             try:
+                # 右がPUなら continue
+                right_pos = tree[parent_idx+[key_pos_idx+1]].label()
+                if right_pos[:2] != "PU":
+                    continue
+                # 右が葉っぱじゃないならcontinue
                 # 親(VP)の隣を参照できるなら存在する
                 _ = tree[[parent_idx] + [key_pos_idx+1]]
                 return False
@@ -642,26 +652,25 @@ class TreeHandler:
 
 # WONTFIX
 # DONE
-
-tgt_id = "Arabian03_03100"
-tgt_id = "Arabian03_04540"
-tgt_id = "Arabian03_02230"
-tgt_id = "Arabian03_02100"
-tgt_id = "Arabian02_06640"
-tgt_id = "Arabian02_01350"
-tgt_id = "Arabian01_02930"
-tgt_id = "Arabian01_02920"
-tgt_id = "Arabian01_02460"
-tgt_id = "Arabian01_01420"
-
-# TODO
-tgt_id = "Arabian02_05860"
-tgt_id = "Arabian02_00890"
-tgt_id = "Arabian01_03980"
-tgt_id = "Arabian01_01150"
+tgt_id = "Arabian03_03100"  #reduce_1起因
+tgt_id = "Arabian03_04540"  #reduce_1起因
+tgt_id = "Arabian03_02230"  #reduce_1起因
+tgt_id = "Arabian03_02100"  #reduce_1起因
+tgt_id = "Arabian02_06640"  #reduce_1起因
+tgt_id = "Arabian02_01350"  #reduce_1起因
+tgt_id = "Arabian01_02930"  #reduce_1起因
+tgt_id = "Arabian01_02920"  #reduce_1起因
+tgt_id = "Arabian01_02460"  #reduce_1起因
+tgt_id = "Arabian01_01420"  #reduce_1起因
+tgt_id = "Arabian01_01420"  #reduce_1起因
+tgt_id = "Arabian01_01150"  #fix align_vp -> IndexError
+tgt_id = "Arabian01_03980"  #fix align_vp -> IndexError
+tgt_id = "Arabian02_00890"  #fix align_vp -> IndexError
+tgt_id = "Arabian02_05860"  #fix align_vp -> IndexError
 
 # WIP
-
+tgt_id = "Arabian01_01150"  #fix align_vp -> IndexError
+tgt_id = "Arabian01_01420"  #reduce_1起因
 error_type = "error_subtree2"  # エラータイプ
 debug = 1
 
@@ -686,10 +695,13 @@ if debug:
         # out = th.workflow(tgt_morph, tree_str)
 
     tree, src_1 = ParentedTree.fromstring(tree_str), tgt_morph
+    print(src_1)
     tree = th.remove_outmost_id(tree)
     tree = th.create_vp_node(tree)
     tree = th.add_phrase_type(tree)
+    print(len(tree.leaves()))
     tree = th.align_p_words(tree)
+    print(len(tree.leaves()))
     tree = th.integrate_morph_accent(tree, src_1)
     tree = th.remove_redunduncy(tree)
     tree = th.reduce(tree)
