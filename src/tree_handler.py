@@ -504,7 +504,7 @@ class TreeHandler:
                 left = subtree[i].label().split("|")[1]
                 right = subtree[i+1].label().split("|")[1]
                 if left == "" and right == "\\":
-                    print(subtree[i].label(), subtree[i+1].label())
+                    # print(subtree[i].label(), subtree[i+1].label())
                     # print(subtree)
                     leaves = subtree.pop(i)
                     leaves.reverse()
@@ -635,11 +635,23 @@ class TreeHandler:
         return out
 
 
+# WONTFIX
+tgt_id = "Arabian01_00220"  # IndexError
+tgt_id = "Arabian01_00330"  # IndexError
+tgt_id = "Arabian01_00350"  # IndexError
+tgt_id = "Arabian01_00390"  # IndexError
+# TODO
 tgt_id = "Arabian01_00020"  # align np
 tgt_id = "Arabian01_00110"  # align np
-tgt_id = "Arabian01_00070"  # , の位置とか?
+tgt_id = "Arabian01_00130"  # align np
+tgt_id = "Arabian01_00280"  # align np
+tgt_id = "Arabian01_00490"  # align np
+# DONE
+tgt_id = "Arabian01_00070"  # _reduce_2 で POS--LEAVEの操作になっていた
+# WIP
+tgt_id = "Arabian01_00020"
 error_type = "error_subtree"
-debug = 0
+debug = 1
 
 if debug:
     import sys
@@ -661,10 +673,6 @@ if debug:
         tree_str = f.read()
         # out = th.workflow(tgt_morph, tree_str)
 
-    # >>>>>> morph 修正; Arabian01_00070の問題である可能性を排除
-    assert tgt_id == "Arabian01_00070"
-    tgt_morph = "#0 f U t a r i \ t o m o #1 y u u k a N #2 n a #3 u m a \ #4 n o #5 n o r i t e #6 d e sh I #7 t a \ #8 g a #9 , #10 t o \ k u n i #11 a \ n i #12 n o #13 h o \ o #14 g a #15 s u g u r e \ #16 t e #17 i #18 m a \ sh I #19 t a #20 . "
-    # <<<<<< 修正完了
     tree, src_1 = ParentedTree.fromstring(tree_str), tgt_morph
     tree = th.remove_outmost_id(tree)
     tree = th.create_vp_node(tree)
