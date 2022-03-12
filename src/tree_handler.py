@@ -642,24 +642,28 @@ class TreeHandler:
 
 # WONTFIX
 # DONE
-# TODO
-tgt_id = "Arabian01_01150"
-tgt_id = "Arabian01_01420"
-tgt_id = "Arabian01_02460"
-tgt_id = "Arabian01_02920"
-tgt_id = "Arabian01_02930"
-tgt_id = "Arabian01_03980"
-tgt_id = "Arabian02_00890"
-tgt_id = "Arabian02_01350"
-tgt_id = "Arabian02_05860"
-tgt_id = "Arabian02_06640"
-tgt_id = "Arabian03_02100"
-tgt_id = "Arabian03_02230"
+
 tgt_id = "Arabian03_03100"
 tgt_id = "Arabian03_04540"
+tgt_id = "Arabian03_02230"
+tgt_id = "Arabian03_02100"
+tgt_id = "Arabian02_06640"
+tgt_id = "Arabian02_01350"
+tgt_id = "Arabian01_02930"
+tgt_id = "Arabian01_02920"
+tgt_id = "Arabian01_02460"
+tgt_id = "Arabian01_01420"
+
+# TODO
+tgt_id = "Arabian02_05860"
+tgt_id = "Arabian02_00890"
+tgt_id = "Arabian01_03980"
+tgt_id = "Arabian01_01150"
+
 # WIP
+
 error_type = "error_subtree2"  # エラータイプ
-debug = 0
+debug = 1
 
 if debug:
     import sys
@@ -682,11 +686,9 @@ if debug:
         # out = th.workflow(tgt_morph, tree_str)
 
     tree, src_1 = ParentedTree.fromstring(tree_str), tgt_morph
-    print(tree)
     tree = th.remove_outmost_id(tree)
     tree = th.create_vp_node(tree)
     tree = th.add_phrase_type(tree)
-    print(tree)
     tree = th.align_p_words(tree)
     tree = th.integrate_morph_accent(tree, src_1)
     tree = th.remove_redunduncy(tree)
