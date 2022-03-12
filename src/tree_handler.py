@@ -246,7 +246,6 @@ class TreeHandler:
         for subtree_idx in tree.treepositions():  # tree を上から順番に走査
             subtree = tree[subtree_idx]
             if isinstance(subtree, str):  # leaveなら
-                print(subtree)
                 if subtree in self.not_morph_list:  # *等なら無視
                     continue
                 if subtree in self.symbol_list:

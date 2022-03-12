@@ -28,7 +28,7 @@ def pathidx2mphpsd(path, idx):
     return tgt_morph, tree_str
 
 
-def _test_data():
+def test_data():
     # 報告のあったエラーが解消されていることを確認
     # IndexError はスコープ外
     th = TreeHandler()
