@@ -436,9 +436,7 @@ class TreeHandler:
             n_sisters = len(subtree)
             for i in range(n_sisters-1):
                 # とりあえず pos のみを統合
-                if subtree[i].label() not in pos_list:
-                    continue
-                if subtree[i+1].label() not in pos_list:
+                if not (isinstance(subtree[i][0], str) and isinstance(subtree[i+1][0], str)):
                     continue
                 left = subtree[i].label().split("|")[1]
                 right = subtree[i+1].label().split("|")[1]
@@ -447,6 +445,7 @@ class TreeHandler:
         return True
 
     def _reduce_1(self, tree):
+        # reduce_1: (a)＊→(a＊)  # この時点で存在するすべての（）は一つになる
         tree = deepcopy(tree)
         pos_list = [t[1] for t in tree.pos()]
         for subtree_idx in tree.treepositions():
@@ -458,9 +457,7 @@ class TreeHandler:
                 continue
             n_sisters = len(subtree)
             for i in range(n_sisters-1):
-                if subtree[i].label() not in pos_list:
-                    continue
-                if subtree[i+1].label() not in pos_list:
+                if not (isinstance(subtree[i][0], str) and isinstance(subtree[i+1][0], str)):
                     continue
                 left = subtree[i].label().split("|")[1]
                 right = subtree[i+1].label().split("|")[1]
@@ -645,9 +642,23 @@ class TreeHandler:
 
 # WONTFIX
 # DONE
+# TODO
+tgt_id = "Arabian01_01150"
+tgt_id = "Arabian01_01420"
+tgt_id = "Arabian01_02460"
+tgt_id = "Arabian01_02920"
+tgt_id = "Arabian01_02930"
+tgt_id = "Arabian01_03980"
+tgt_id = "Arabian02_00890"
+tgt_id = "Arabian02_01350"
+tgt_id = "Arabian02_05860"
+tgt_id = "Arabian02_06640"
+tgt_id = "Arabian03_02100"
+tgt_id = "Arabian03_02230"
+tgt_id = "Arabian03_03100"
+tgt_id = "Arabian03_04540"
 # WIP
-tgt_id = ""  # ファイルのID
-error_type = "error_"  # エラータイプ
+error_type = "error_subtree2"  # エラータイプ
 debug = 0
 
 if debug:
