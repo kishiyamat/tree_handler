@@ -143,17 +143,17 @@ class TreeHandler:
             key_pos_idx = subtree_idx[-1]  # NPの位置
             parent_idx = list(subtree_idx[:-1])
             try:
-                # TODO: tryの幅を狭める
+                # TODO: 右隣が "P-*" でない場合は無視
                 # popしたparticleに0は必ず存在する. 例: (P-ROLE が)
                 particle_leaf = tree[parent_idx].pop(key_pos_idx+1)[0]
-                # NPの一番最後[-1]は葉っぱで、その上[:-1]がNのidx
-                n_idx = tree[subtree_idx].treepositions()[-1][:-1]
-                # Nの下に何この要素があるか(すでにくっついている場合がある)
-                len_n = len(tree[list(subtree_idx) + [n_idx]])
-                tree[list(subtree_idx) + [n_idx]].insert(len_n, particle_leaf)
             except IndexError:
                 # すでにNPの右隣は存在しない場合は続ける
                 continue
+            # NPの一番最後[-1]は葉っぱで、その上[:-1]がNのidx
+            n_idx = tree[subtree_idx].treepositions()[-1][:-1]
+            # Nの下に何この要素があるか(すでにくっついている場合がある)
+            len_n = len(tree[list(subtree_idx) + [n_idx]])
+            tree[list(subtree_idx) + [n_idx]].insert(len_n, particle_leaf)
             break
         return tree
 
@@ -651,7 +651,7 @@ tgt_id = "Arabian01_00070"  # _reduce_2 で POS--LEAVEの操作になってい�
 # WIP
 tgt_id = "Arabian01_00020"
 error_type = "error_subtree"
-debug = 1
+debug = 0
 
 if debug:
     import sys
@@ -674,9 +674,11 @@ if debug:
         # out = th.workflow(tgt_morph, tree_str)
 
     tree, src_1 = ParentedTree.fromstring(tree_str), tgt_morph
+    print(tree)
     tree = th.remove_outmost_id(tree)
     tree = th.create_vp_node(tree)
     tree = th.add_phrase_type(tree)
+    print(tree)
     tree = th.align_p_words(tree)
     tree = th.integrate_morph_accent(tree, src_1)
     tree = th.remove_redunduncy(tree)
