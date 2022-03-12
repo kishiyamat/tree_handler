@@ -1,4 +1,5 @@
 # %%
+from copy import deepcopy
 from nltk.tree import ParentedTree
 import pytest
 
@@ -1416,13 +1417,28 @@ def test_reduce():
     res = th.reduce(src)
     assert tgt == res
 
-    src = "(X|[] (A| (B| b) (B2| b2) (B3|\ b3)) (C| c\))"
-    tgt = "(X|[] (C|\ a b c\) (D| d))"
+    # nodeレベルに操作を制限しているので不変
+    src = """
+      (X (NP-PRD
+            (IP-REL (AX y_u_u_k_a_N n_a))
+            (PP u_m_a_\ n_o)
+            (N n_o_r_i_t_e))
+         (AXD d_e_sh_I t_a_\))
+      """
+    # percolate されて | や |\ を付与するがNP-PRD--AXD間のreduceはない
+    tgt = """
+      (X| (NP-PRD|
+            (IP-REL| (AX| y_u_u_k_a_N n_a))
+            (PP|\ u_m_a_\ n_o)
+            (N| n_o_r_i_t_e))
+          (AXD|\ d_e_sh_I t_a_\))
+    """
     src = ParentedTree.fromstring(src)
     tgt = ParentedTree.fromstring(tgt)
     res = th.reduce(src)
-    print(res)
+    print(src, tgt, res)
     assert tgt == res
+
 
 def test_lapse():
     src = "(X|[] (C|\ a b c\) (D| d))"

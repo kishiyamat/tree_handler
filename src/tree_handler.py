@@ -477,6 +477,8 @@ class TreeHandler:
                 continue
             n_sisters = len(subtree)
             for i in range(n_sisters-1):
+                if not (isinstance(subtree[i][0], str) and isinstance(subtree[i+1][0], str)):
+                    continue
                 left = subtree[i].label().split("|")[1]
                 right = subtree[i+1].label().split("|")[1]
                 if left == "" and right == "\\":
@@ -496,16 +498,19 @@ class TreeHandler:
                 continue
             n_sisters = len(subtree)
             for i in range(n_sisters-1):
+                # 対象は (POS leaf) 間の関係(両方、子がstr)
+                if not (isinstance(subtree[i][0], str) and isinstance(subtree[i+1][0], str)):
+                    continue
                 left = subtree[i].label().split("|")[1]
                 right = subtree[i+1].label().split("|")[1]
                 if left == "" and right == "\\":
-                    # print()
+                    print(subtree[i].label(), subtree[i+1].label())
                     # print(subtree)
                     leaves = subtree.pop(i)
                     leaves.reverse()
                     # iをpopしたからiに挿入できる
-                    for leaf in leaves: 
-                        subtree[i].insert(0, leaf) 
+                    for leaf in leaves:
+                        subtree[i].insert(0, leaf)
                     return tree
 
     def reduce(self, tree: ParentedTree) -> ParentedTree:
@@ -665,20 +670,12 @@ if debug:
     tree = th.create_vp_node(tree)
     tree = th.add_phrase_type(tree)
     tree = th.align_p_words(tree)
-    # print(src_1)
     tree = th.integrate_morph_accent(tree, src_1)
     tree = th.remove_redunduncy(tree)
-    tree = deepcopy(tree)
-    tree = th.percolate(th.assign_bar(tree))
-    while not th.is_reduced_1(tree):
-        tree = th._reduce_1(tree)
-    while not th.is_reduced_2(tree):
-        tree = th._reduce_2(tree)
-        print()
-        print(tree)
     tree = th.reduce(tree)
     tree = th.apply_constraints(tree)
     tree = th.to_line(tree)
+    print(tree)
 # %%
 
 # %%
