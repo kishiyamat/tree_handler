@@ -16,7 +16,7 @@ class TreeHandler:
         self.n_type = ""  # iやpとことなり()は""で表現
         self.phoneme_split = " "
         self.phoneme_bind = "_"
-        self._symbol_list_half = ",.()[]?!"
+        self._symbol_list_half = ",.()[]?!“"
         self._symbol_list_full = "、。（）「」？！"
         self.symbol_list = self._symbol_list_half + self._symbol_list_full
 
