@@ -644,19 +644,10 @@ class TreeHandler:
 
 
 # WONTFIX
-tgt_id = "Arabian01_00220"  # IndexError(LESS) # _reduce_2起因
-tgt_id = "Arabian01_00330"  # IndexError(LESS) # _reduce_2起因
-tgt_id = "Arabian01_00350"  # IndexError(LESS) # _reduce_2起因
-tgt_id = "Arabian01_00390"  # IndexError(LESS) # _reduce_2起因
-tgt_id = "Arabian01_00020"  # IndexError(LESS) # align_np起因
-tgt_id = "Arabian01_00110"  # IndexError(LESS) # align_np起因
-tgt_id = "Arabian01_00130"  # IndexError(OOR) # align_np起因
-tgt_id = "Arabian01_00490"  # IndexError(OOR) # align_np起因
 # DONE
-tgt_id = "Arabian01_00070"  # _reduce_2 で POS--LEAVEの操作になっていた
-tgt_id = "Arabian01_00280"  # align np -> Fixed
 # WIP
-error_type = "error_subtree"
+tgt_id = ""  # ファイルのID
+error_type = "error_"  # エラータイプ
 debug = 0
 
 if debug:
