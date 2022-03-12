@@ -1,6 +1,7 @@
 - reduce_1起因のものも、POSとleaveの操作になっていたので修正
-- align_vp のものは VB->PUのケースを除外(かき混ぜによる誤パース?)
-    - VB-> NP_SBJ(ネスト)のものは検討中
+- align_vp(VB以下の葉っぱの結合)で以下のケースを除外
+    - VB -> PUのケース(かき混ぜによる誤パース?)
+    - VB -> 非POS(NP_SBJ(ネスト)のものなど)
 ```
 tgt_id = "Arabian03_03100"  #reduce_1起因
 tgt_id = "Arabian03_04540"  #reduce_1起因

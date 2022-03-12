@@ -179,6 +179,10 @@ class TreeHandler:
                 right_pos = tree[parent_idx+[key_pos_idx+1]].label()
                 if right_pos[:2] == "PU":
                     continue
+                # 右がPOSじゃない(最初の子[0]がstrじゃない)ならcontinue
+                print(tree[parent_idx+[key_pos_idx+1]][0])
+                if not isinstance(tree[parent_idx+[key_pos_idx+1]][0], str):
+                    continue
                 # 右が葉っぱじゃないならcontinue
                 # 右隣のノードの葉っぱをpopして、さらにleafを取る
                 leaf = tree[parent_idx].pop(key_pos_idx+1)[0]
@@ -198,6 +202,9 @@ class TreeHandler:
                 # 右がPUなら continue
                 right_pos = tree[parent_idx+[key_pos_idx+1]].label()
                 if right_pos[:2] == "PU":
+                    continue
+                # 右がPOSじゃない(最初の子[0]がstrじゃない)ならcontinue
+                if not isinstance(tree[parent_idx+[key_pos_idx+1]][0], str):
                     continue
                 # 右が葉っぱじゃないならcontinue
                 # 親(VP)の隣を参照できるなら存在する
@@ -651,25 +658,23 @@ class TreeHandler:
 
 # WONTFIX
 # DONE
-tgt_id = "Arabian03_03100"  #reduce_1起因
-tgt_id = "Arabian03_04540"  #reduce_1起因
-tgt_id = "Arabian03_02230"  #reduce_1起因
-tgt_id = "Arabian03_02100"  #reduce_1起因
-tgt_id = "Arabian02_06640"  #reduce_1起因
-tgt_id = "Arabian02_01350"  #reduce_1起因
-tgt_id = "Arabian01_02930"  #reduce_1起因
-tgt_id = "Arabian01_02920"  #reduce_1起因
-tgt_id = "Arabian01_02460"  #reduce_1起因
-tgt_id = "Arabian01_01420"  #reduce_1起因
-tgt_id = "Arabian01_01420"  #reduce_1起因
-tgt_id = "Arabian01_01150"  #fix align_vp -> IndexError
-tgt_id = "Arabian01_03980"  #fix align_vp -> IndexError
-tgt_id = "Arabian02_00890"  #fix align_vp -> IndexError
-tgt_id = "Arabian02_05860"  #fix align_vp -> IndexError
+tgt_id = "Arabian03_03100"  # reduce_1起因
+tgt_id = "Arabian03_04540"  # reduce_1起因
+tgt_id = "Arabian03_02230"  # reduce_1起因
+tgt_id = "Arabian03_02100"  # reduce_1起因
+tgt_id = "Arabian02_06640"  # reduce_1起因
+tgt_id = "Arabian02_01350"  # reduce_1起因
+tgt_id = "Arabian01_02930"  # reduce_1起因
+tgt_id = "Arabian01_02920"  # reduce_1起因
+tgt_id = "Arabian01_02460"  # reduce_1起因
+tgt_id = "Arabian01_01420"  # reduce_1起因
+tgt_id = "Arabian01_01420"  # reduce_1起因
+tgt_id = "Arabian01_01150"  # fix align_vp -> IndexError
+tgt_id = "Arabian02_00890"  # fix align_vp -> IndexError
+tgt_id = "Arabian02_05860"  # fix align_vp -> IndexError
+tgt_id = "Arabian01_03980"  # fix align_vp -> IndexError
 
 # WIP
-tgt_id = "Arabian01_01150"  #fix align_vp -> IndexError
-tgt_id = "Arabian01_01420"  #reduce_1起因
 error_type = "error_subtree2"  # エラータイプ
 debug = 0
 
@@ -697,10 +702,10 @@ if debug:
     tree = th.remove_outmost_id(tree)
     tree = th.create_vp_node(tree)
     tree = th.add_phrase_type(tree)
+    print(tree)
     tree = th.align_p_words(tree)
     tree = th.integrate_morph_accent(tree, src_1)
     tree = th.remove_redunduncy(tree)
-    print(tree)
     tree = th.reduce(tree)
     print(tree)
     tree = th.apply_constraints(tree)
