@@ -119,8 +119,12 @@ class TreeHandler:
             parent_idx = list(subtree_idx[:-1])
             try:
                 # 参照できるなら存在する
-                _ = tree[[parent_idx] + [key_pos_idx+1]]
-                return False
+                right_pos = tree[parent_idx+[key_pos_idx+1]].label()
+                if right_pos[:2] != "P-":
+                    # このケースはNP--P-ROLEではないので対象外
+                    continue
+                else:
+                    return False
             except IndexError:
                 # すでにNPの右隣は存在しない場合は続ける
                 continue
@@ -128,8 +132,12 @@ class TreeHandler:
 
     def align_np(self, tree: ParentedTree) -> ParentedTree:
         tree = deepcopy(tree)
+        counter = 0
         while not self.all_align_np(tree):
             tree = self._align_np(tree)
+            counter += 1
+            if counter > 10000:  # inf loop 対策
+                raise ValueError("reached max")
         return tree
 
     def _align_np(self, tree: ParentedTree) -> ParentedTree:
@@ -139,17 +147,20 @@ class TreeHandler:
             key_pos_idx = subtree_idx[-1]  # NPの位置
             parent_idx = list(subtree_idx[:-1])
             try:
-                # TODO: tryの幅を狭める
-                # popしたparticleに0は必ず存在する. 例: (P-ROLE が)
-                particle_leaf = tree[parent_idx].pop(key_pos_idx+1)[0]
-                # NPの一番最後[-1]は葉っぱで、その上[:-1]がNのidx
-                n_idx = tree[subtree_idx].treepositions()[-1][:-1]
-                # Nの下に何この要素があるか(すでにくっついている場合がある)
-                len_n = len(tree[list(subtree_idx) + [n_idx]])
-                tree[list(subtree_idx) + [n_idx]].insert(len_n, particle_leaf)
+                # popしたparticleに0は必ず存在する. 例: (P-ROLE が)
+                right_pos = tree[parent_idx+[key_pos_idx+1]].label()
+                if right_pos[:2] != "P-":
+                    continue
+                else:  # NPの後ろにP-ROLEなどがある場合
+                    particle_leaf = tree[parent_idx].pop(key_pos_idx+1)[0]
             except IndexError:
                 # すでにNPの右隣は存在しない場合は続ける
                 continue
+            # NPの一番最後[-1]は葉っぱで、その上[:-1]がNのidx
+            n_idx = tree[subtree_idx].treepositions()[-1][:-1]
+            # Nの下に何この要素があるか(すでにくっついている場合がある)
+            len_n = len(tree[list(subtree_idx) + [n_idx]])
+            tree[list(subtree_idx) + [n_idx]].insert(len_n, particle_leaf)
             break
         return tree
 
@@ -161,18 +172,21 @@ class TreeHandler:
         for subtree_idx in tree.treepositions():
             if not self.is_key_pos(tree[subtree_idx], "VB"):  # leaf node
                 continue
-            key_pos_idx = subtree_idx[-1]  # VBの位置
+            key_pos_idx = subtree_idx[-1]  # sister内でのVB位置
             parent_idx = list(subtree_idx[:-1])
             try:
+                # 右がPUなら continue
+                right_pos = tree[parent_idx+[key_pos_idx+1]].label()
+                if right_pos[:2] == "PU":
+                    continue
+                # 右がPOSじゃない(最初の子[0]がstrじゃない)ならcontinue
+                if not isinstance(tree[parent_idx+[key_pos_idx+1]][0], str):
+                    continue
+                # 右が葉っぱじゃないならcontinue
+                # 右隣のノードの葉っぱをpopして、さらにleafを取る
                 leaf = tree[parent_idx].pop(key_pos_idx+1)[0]
-                # FIXME: NPの一番最後[-1]は葉っぱで、その上[:-1]がNのidxなはず
-                # n_idx = tree[subtree_idx].treepositions()[-1][:-1]
-                n_idx = len(tree[subtree_idx])-1
-                # Nの下に何この要素があるか(すでにくっついている場合がある)
-                len_n = len(tree[list(subtree_idx) + [n_idx]])
-                tree[subtree_idx].insert(len_n, leaf)
+                tree[subtree_idx].insert(len(tree[subtree_idx]), leaf)
             except IndexError:
-                # すでにVPの右隣は存在しない場合は続ける
                 continue
             break
         return tree
@@ -184,6 +198,14 @@ class TreeHandler:
             key_pos_idx = subtree_idx[-1]
             parent_idx = list(subtree_idx[:-1])
             try:
+                # 右がPUなら continue
+                right_pos = tree[parent_idx+[key_pos_idx+1]].label()
+                if right_pos[:2] == "PU":
+                    continue
+                # 右がPOSじゃない(最初の子[0]がstrじゃない)ならcontinue
+                if not isinstance(tree[parent_idx+[key_pos_idx+1]][0], str):
+                    continue
+                # 右が葉っぱじゃないならcontinue
                 # 親(VP)の隣を参照できるなら存在する
                 _ = tree[[parent_idx] + [key_pos_idx+1]]
                 return False
@@ -194,8 +216,12 @@ class TreeHandler:
 
     def align_vp(self, tree: ParentedTree) -> ParentedTree:
         tree = deepcopy(tree)
+        counter = 0
         while not self.all_align_vp(tree):
             tree = self._align_vp(tree)
+            counter += 1
+            if counter > 10000:  # inf loop 対策
+                raise ValueError("reached max")
         return tree
 
     def align_p_words(self, tree: ParentedTree) -> ParentedTree:
@@ -203,11 +229,9 @@ class TreeHandler:
         return self.align_vp(self.align_np(tree))
 
     def integrate_morph_accent(self, tree: ParentedTree, idx_accent) -> ParentedTree:
-        # TODO: 
         idx_accent = idx_accent.strip()
         idx_accent = list(filter(len, idx_accent.split(self.morph_symbol)))
         idx_accent = list(map(self.split_idx_accent, idx_accent))
-        # TODO: flattenを検討
         tree = deepcopy(tree)
         morph_idx = 0
         for subtree_idx in tree.treepositions():  # tree を上から順番に走査
@@ -427,9 +451,7 @@ class TreeHandler:
             n_sisters = len(subtree)
             for i in range(n_sisters-1):
                 # とりあえず pos のみを統合
-                if subtree[i].label() not in pos_list:
-                    continue
-                if subtree[i+1].label() not in pos_list:
+                if not (isinstance(subtree[i][0], str) and isinstance(subtree[i+1][0], str)):
                     continue
                 left = subtree[i].label().split("|")[1]
                 right = subtree[i+1].label().split("|")[1]
@@ -438,6 +460,7 @@ class TreeHandler:
         return True
 
     def _reduce_1(self, tree):
+        # reduce_1: (a)＊→(a＊)  # この時点で存在するすべての（）は一つになる
         tree = deepcopy(tree)
         pos_list = [t[1] for t in tree.pos()]
         for subtree_idx in tree.treepositions():
@@ -449,9 +472,7 @@ class TreeHandler:
                 continue
             n_sisters = len(subtree)
             for i in range(n_sisters-1):
-                if subtree[i].label() not in pos_list:
-                    continue
-                if subtree[i+1].label() not in pos_list:
+                if not (isinstance(subtree[i][0], str) and isinstance(subtree[i+1][0], str)):
                     continue
                 left = subtree[i].label().split("|")[1]
                 right = subtree[i+1].label().split("|")[1]
@@ -476,6 +497,8 @@ class TreeHandler:
                 continue
             n_sisters = len(subtree)
             for i in range(n_sisters-1):
+                if not (isinstance(subtree[i][0], str) and isinstance(subtree[i+1][0], str)):
+                    continue
                 left = subtree[i].label().split("|")[1]
                 right = subtree[i+1].label().split("|")[1]
                 if left == "" and right == "\\":
@@ -483,6 +506,7 @@ class TreeHandler:
         return True
 
     def _reduce_2(self, tree):
+        # reduce_2: (a)(b\)->(a b\)
         tree = deepcopy(tree)
         pos_list = [t[1] for t in tree.pos()]
         for subtree_idx in tree.treepositions():
@@ -494,13 +518,17 @@ class TreeHandler:
                 continue
             n_sisters = len(subtree)
             for i in range(n_sisters-1):
+                # 対象は (POS leaf) 間の関係(両方、子がstr)
+                if not (isinstance(subtree[i][0], str) and isinstance(subtree[i+1][0], str)):
+                    continue
                 left = subtree[i].label().split("|")[1]
                 right = subtree[i+1].label().split("|")[1]
                 if left == "" and right == "\\":
                     leaves = subtree.pop(i)
                     leaves.reverse()
                     # iをpopしたからiに挿入できる
-                    _ = [subtree[i].insert(0, leaf) for leaf in leaves]
+                    for leaf in leaves:
+                        subtree[i].insert(0, leaf)
                     return tree
 
     def reduce(self, tree: ParentedTree) -> ParentedTree:
@@ -624,24 +652,28 @@ class TreeHandler:
         out = out.replace("_", " ")
         return out
 
-# %%
-debug = False
+
+# WONTFIX
+# DONE
+# WIP
+tgt_id = "" # reduce_1起因
+# PATH
+error_type = "error_*"  # エラータイプ
+debug = 0
 
 if debug:
-    # %%
     import sys
     sys.path.append('..')
     from prog.inf2model1 import InfParser
 
-    tgt_id = "Aa1_006"
-    tgt_inf_path = f"../tests/data/error_vanish/{tgt_id}.inf2"
-    tgt_psd_path = f"../tests/data/error_vanish/{tgt_id}.psd"
+    tgt_inf_path = f"../tests/data/{error_type}/{tgt_id}.inf2"
+    tgt_psd_path = f"../tests/data/{error_type}/{tgt_id}.psd"
 
     with open(tgt_inf_path, "r") as f:
         l_strip = [s.strip() for s in f.readlines()]  # readlines and remove \n
         tgt_inf_str = list(filter(len, l_strip))  # filter zero-length str: ""
         parser = InfParser(2)
-        tgt_morph = parser.inf2txt(tgt_inf_str) 
+        tgt_morph = parser.inf2txt(tgt_inf_str)
 
     th = TreeHandler()
 
@@ -649,18 +681,19 @@ if debug:
         tree_str = f.read()
         # out = th.workflow(tgt_morph, tree_str)
 
-    src, src_1 = ParentedTree.fromstring(tree_str), tgt_morph
-    src = th.remove_outmost_id(src)
-    src = th.create_vp_node(src)
-    src = th.add_phrase_type(src)
-    src = th.align_p_words(src)
-    src = th.integrate_morph_accent(src, src_1)
-    src = th.remove_redunduncy(src)
-    src = th.apply_constraints(src)
-    src = th.to_line(src)
-    print(src)
-    # 
-    # # Aa01_00050 { [ i m a g a w a y a k i y a a m a z a k e ] [ g a h a N b a i ch u u ] }
-    # # Aa01_00060 { [ [ a m e y a a \ r a r e ] [ y a a m a z a k e ] ] [ g a h a N b a i ch u u ] }
-    # # %%
+    tree, src_1 = ParentedTree.fromstring(tree_str), tgt_morph
+    tree = th.remove_outmost_id(tree)
+    tree = th.create_vp_node(tree)
+    tree = th.add_phrase_type(tree)
+    print(tree)
+    tree = th.align_p_words(tree)
+    tree = th.integrate_morph_accent(tree, src_1)
+    tree = th.remove_redunduncy(tree)
+    tree = th.reduce(tree)
+    print(tree)
+    tree = th.apply_constraints(tree)
+    tree = th.to_line(tree)
+    print(tree)
+# %%
+
 # %%

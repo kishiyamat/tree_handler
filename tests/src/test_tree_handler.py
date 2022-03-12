@@ -1,4 +1,5 @@
 # %%
+from copy import deepcopy
 from nltk.tree import ParentedTree
 import pytest
 
@@ -428,6 +429,17 @@ def test_all_wrapped():
 
 def test_align_np():
     # 4. align () to each edge of PWords | NP
+    src = """
+    ( (FRAG (NP (N 連載)) (NP (NUMCLP (D その) (NUM １))))
+      (ID 1_ex1646480399;JP))
+    """
+    # NPの後ろがNPの場合は変わらない
+    tgt = """
+    ( (FRAG (NP (N 連載)) (NP (NUMCLP (D その) (NUM １))))
+      (ID 1_ex1646480399;JP))
+        """
+    src, tgt = ParentedTree.fromstring(src), ParentedTree.fromstring(tgt)
+    assert th.align_np(src) == tgt
     # 例0
     src = """
         (IP-MAT
@@ -734,8 +746,46 @@ def test_align_vp():
     assert th.align_np(src) == tgt
 
 
-
 def test_align_p_words():
+    src = """
+          (IP-MAT|{}
+            (PP-OB1|[]
+              (IP-ADV|{}
+                (ADVP (ADV 二人とも))
+                (NP-PRD
+                  (IP-REL (NP-SBJ *T*) (ADJN 勇敢) (AX な))
+                  (PP (NP (N 馬)) (P-ROLE の))
+                  (N 乗り手))
+                (AX でし)
+                (AXD た))
+              (P-ROLE が))
+            (PU 、)
+            (ADVP (ADV 特に))
+            (PP-SBJ|[] (NP (PP (NP (N 兄)) (P-ROLE の)) (N 方)) (P-ROLE が))
+            (VP|[] (VB 優れ) (P-CONN て) (VB2 い) (AX まし) (AXD た))
+            (PU 。))
+          """
+    tgt = """
+          (IP-MAT|{}
+            (PP-OB1|[]
+              (IP-ADV|{}
+                (ADVP (ADV 二人とも))
+                (NP-PRD
+                  (IP-REL (NP-SBJ *T*) (ADJN 勇敢) (AX な))
+                  (PP (NP (N 馬 の)))
+                  (N 乗り手))
+                (AX でし)
+                (AXD た))
+              (P-ROLE が))
+            (PU 、)
+            (ADVP (ADV 特に))
+            (PP-SBJ|[] (NP (PP (NP (N 兄 の))) (N 方 が)))
+            (VP|[] (VB 優れ て い まし た))
+            (PU 。))
+          """
+    src, tgt = ParentedTree.fromstring(src), ParentedTree.fromstring(tgt)
+    assert th.align_p_words(src) == tgt
+
     # 4. align () to each edge of PWords
     # 例0
     src = """
@@ -1378,6 +1428,29 @@ def test_reduce():
     res = th.reduce(src)
     assert tgt == res
 
+    # nodeレベルに操作を制限しているので不変
+    src = """
+      (X (NP-PRD
+            (IP-REL (AX y_u_u_k_a_N n_a))
+            (PP u_m_a_\ n_o)
+            (N n_o_r_i_t_e))
+         (AXD d_e_sh_I t_a_\))
+      """
+    # percolate されて | や |\ を付与するがNP-PRD--AXD間のreduceはない
+    tgt = """
+      (X| (NP-PRD|
+            (IP-REL| (AX| y_u_u_k_a_N n_a))
+            (PP|\ u_m_a_\ n_o)
+            (N| n_o_r_i_t_e))
+          (AXD|\ d_e_sh_I t_a_\))
+    """
+    src = ParentedTree.fromstring(src)
+    tgt = ParentedTree.fromstring(tgt)
+    res = th.reduce(src)
+    print(src, tgt, res)
+    assert tgt == res
+
+
 def test_lapse():
     src = "(X|[] (C|\ a b c\) (D| d))"
     tgt = "(X|[] (C|[]\ a b c\) (D|[] d))"
@@ -1399,6 +1472,7 @@ def test_lapse():
     tgt = ParentedTree.fromstring(tgt)
     res = th.lapse(src)
     assert tgt == res
+
 
 def test_flatten():
     src = "(X|[] (C|[]\ a b c\) (D|[] d))"

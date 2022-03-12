@@ -40,5 +40,6 @@ $ # 以下を実施していき、問題を潰していく
 $ . oneliner.sh results.txt 2  # mph を生成
 $ python3 src/combine_morph_tree.py Aa1_001  # 生成したmphを使って動作チェック
 $ # もし修正が必要なら、mphを手で書き換えてみる
+$ cat error.log | grep -B 2 "subtree" とかで拾う
 ```
 

@@ -4,4 +4,6 @@ venv
 **.DS_Store 
 !.gitkeep
 .RData
-.Rhistory
+/psd
+/inf
+/mph

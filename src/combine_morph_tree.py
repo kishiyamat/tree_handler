@@ -35,6 +35,10 @@ def main():
         logging.debug("===debug")
         logging.debug(base_name)
         logging.debug(f'{str(e)}')
+    except FileNotFoundError as e:
+        logging.debug("===debug")
+        logging.debug(base_name)
+        logging.debug(f'{str(e)}')
 
 
 if __name__ == "__main__":
